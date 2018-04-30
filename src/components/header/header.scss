@@ -1,19 +1,30 @@
 .header {
-    background: rebeccapurple;
     margin-bottom: 1.45rem;
 
-    .inner {
+    .header__menu {
         margin: 0 auto;
         max-width: 960px;
         padding: 1.45rem 1.0875rem;
     }
-
-    h1 {
-        margin: 0;
-    }
-
-    a {
+    .header__menu-register {
+        padding: 4px;
         color: white;
+        background-color: blue;
         text-decoration: none;
+    }
+    .header__hero {
+        a {
+            display: block;
+            margin: 0 auto;
+            max-width: 960px;
+            padding: 1.45rem 1.0875rem;
+            text-decoration: none;
+            color: white;
+            background-color: rgba($color: blue, $alpha: .4);
+            span {
+                margin-left: 200px;
+                display: block;
+            }
+        }
     }
 }

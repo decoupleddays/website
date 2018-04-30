@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import './sponsors.scss';
+import './sponsors.scss'
 
 const Sponsors = () => (
   <div className="sponsors">
