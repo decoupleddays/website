@@ -10,9 +10,10 @@ import tickets from '../sections/tickets';
 const IndexPage = () => (
   <div>
     <Section data={papers} />
+    <Sponsors level="Diamond" />
     <Section data={tickets} />
 
-    <Sponsors />
+    <Sponsors level="Gold" />
 
   </div>
 )
