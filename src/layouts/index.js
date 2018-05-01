@@ -52,7 +52,7 @@ export const query = graphql`
       childImageSharp {
         sizes(
           maxWidth: 3600
-          duotone: { highlight: "#80a7d5", shadow: "#000" }
+          duotone: { highlight: "#80a7d5", shadow: "#192550" }
         ) {
           ...GatsbyImageSharpSizes_noBase64
         }
