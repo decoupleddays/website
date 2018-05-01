@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import './footer.scss'
-
 const Footer = ({ siteTitle }) => (
   <FooterContainer>
     <Masthead>
