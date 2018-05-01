@@ -1,23 +1,41 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import Section from '../components/section/section';
-import Sponsors from '../components/sponsors/sponsors';
+import Section from '../components/section/section'
+import Sponsors from '../components/sponsors/sponsors'
 
-import papers from '../sections/papers';
-import tickets from '../sections/tickets';
+const IndexPage = ({ data }) => {
+  const sections = data.allSectionsJson.edges
+  console.log(sections)
 
-const IndexPage = () => (
-  <div>
-    <Section data={papers} />
-    <Section data={tickets} />
+  return (
+    <div>
+      {sections.map(section => <Section data={section.node} />)}
 
-    <h3>Our Sponsors</h3>
-    <Sponsors level="Diamond" />
-    <Sponsors level="Gold" />
-    <Sponsors level="Silver" />
-
-  </div>
-)
+      <h3>Our Sponsors</h3>
+      <Sponsors level="Diamond" />
+      <Sponsors level="Gold" />
+      <Sponsors level="Silver" />
+    </div>
+  )
+}
 
 export default IndexPage
+
+export const query = graphql`
+  query IndexPageQuery {
+    allSectionsJson {
+      edges {
+        node {
+          title
+          content
+          link {
+            url
+            external
+            title
+          }
+        }
+      }
+    }
+  }
+`
