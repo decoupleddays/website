@@ -46,7 +46,7 @@ const HeaderHero = styled.div`
   justify-content: center;
   flex-direction: column;
   color: ${colors.white};
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 `
 
 const HeaderTitle = styled.h1`
@@ -60,7 +60,7 @@ const HeaderTitle = styled.h1`
     display: block;
     background: ${colors.white};
     content: '';
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
   }
 `
 
