@@ -1,15 +1,23 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import styled from 'styled-components'
 
-import './section.scss';
+import Link from '../link/link'
 
-const Section = ({data}) => (
-  <div className="section">
-      { /** <img src={data.image.url} alt={data.image.alt} /> **/}
-      <h2 className="section__title">{data.title}</h2>
-      <div className="section__content">{data.content}</div>
-      <a href={data.link.url} className="section__link">{data.link.title}</a>
-  </div>
+const Section = ({ data }) => (
+  <StyledSection>
+    {/** <img src={data.image.url} alt={data.image.alt} /> **/}
+    <Title>{data.title}</Title>
+    <Content>{data.content}</Content>
+    <StyledLink to={data.link.url}>{data.link.title}</StyledLink>
+  </StyledSection>
 )
 
 export default Section
+
+const StyledSection = styled.section``
+
+const Title = styled.h2``
+
+const Content = styled.div``
+
+const StyledLink = styled(Link)``

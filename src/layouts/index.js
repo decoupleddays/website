@@ -41,7 +41,7 @@ Layout.propTypes = {
 export default Layout
 
 export const query = graphql`
-  query IndexPageQuery {
+  query IndexLayoutQuery {
     site {
       siteMetadata {
         title
