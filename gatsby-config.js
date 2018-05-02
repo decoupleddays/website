@@ -23,5 +23,12 @@ module.exports = {
         path: `${__dirname}/src/data/sections/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `social_icons`,
+        path: `${__dirname}/src/data/social-icons/`,
+      },
+    },
   ],
 }
