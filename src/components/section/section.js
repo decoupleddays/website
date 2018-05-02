@@ -20,12 +20,12 @@ export default Section
 const StyledSection = styled.section`
   display: flex;
   border-bottom: 1px solid ${colors.veniceBlue};
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 
   img {
     display: block;
-    margin-right: 40px;
+    margin-right: 3rem;
   }
 `
 
@@ -34,7 +34,9 @@ const Title = styled.h2`
   font-size: 2rem;
 `
 
-const Content = styled.div``
+const Content = styled.div`
+  margin-bottom: 3rem;
+`
 
 const RegisterButton = Button.extend`
   margin: 30px 0 0;
