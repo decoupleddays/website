@@ -34,9 +34,7 @@ const Title = styled.h2`
   font-size: 2rem;
 `
 
-const Content = styled.div`
-  margin-bottom: 3rem;
-`
+const Content = styled.div``
 
 const RegisterButton = Button.extend`
   margin: 30px 0 0;
