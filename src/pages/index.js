@@ -6,11 +6,12 @@ import Sponsors from '../components/sponsors/sponsors'
 
 const IndexPage = ({ data }) => {
   const sections = data.allSectionsJson.edges
-  console.log(sections)
 
   return (
     <div>
-      {sections.map(section => <Section data={section.node} />)}
+      {sections.map(section => (
+        <Section data={section.node} key={section.node.id} />
+      ))}
 
       <h3>Our Sponsors</h3>
       <Sponsors level="Diamond" />
@@ -33,6 +34,11 @@ export const query = graphql`
             url
             external
             title
+          }
+          childImageSharp {
+            sizes(maxWidth: 500) {
+              ...GatsbyImageSharpSizes_noBase64
+            }
           }
         }
       }

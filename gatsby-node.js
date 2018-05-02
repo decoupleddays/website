@@ -1,7 +1,31 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
 
- // You can delete this file if you're not using it
+exports.onCreateNode = async ({ node, getNodes, boundActionCreators }) => {
+  const { createParentChildLink } = boundActionCreators
+
+  const type = node.internal.type
+
+  if (type !== 'SectionsJson') {
+    return
+  }
+  // Attach thumbnail's ImageSharp node
+  // Find absolute path of linked path
+  const pathToFile = path
+    .join(__dirname, node.image.url)
+    .split(path.sep)
+    .join('/')
+
+  // Find ID of File node
+  const fileNode = getNodes().find(n => n.absolutePath === pathToFile)
+
+  if (fileNode != null) {
+    // Find ImageSharp node corresponding to the File node
+    const imageSharpNodeId = fileNode.children.find(n =>
+      n.endsWith('>> ImageSharp')
+    )
+    const imageSharpNode = getNodes().find(n => n.id === imageSharpNodeId)
+
+    // Add ImageSharp node as child
+    createParentChildLink({ parent: node, child: imageSharpNode })
+  }
+}
