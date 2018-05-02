@@ -30,7 +30,7 @@ const Layout = ({ children, data }) => (
     >
       {children()}
     </div>
-    <Footer />
+    <Footer icons={data.allSocialIconsJson.edges} />
   </div>
 )
 
@@ -55,6 +55,14 @@ export const query = graphql`
           duotone: { highlight: "#80a7d5", shadow: "#192550" }
         ) {
           ...GatsbyImageSharpSizes_noBase64
+        }
+      }
+    }
+    allSocialIconsJson {
+      edges {
+        node {
+          url
+          icon
         }
       }
     }

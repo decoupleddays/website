@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Footer = ({ siteTitle }) => (
+const Footer = ({ siteTitle, icons }) => (
   <FooterContainer>
     <Masthead>
       <Title>Decoupled Drupal Days</Title>
@@ -15,9 +15,15 @@ const Footer = ({ siteTitle }) => (
     <InfoContainer>
       <Copywrite>© 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED</Copywrite>
       <SocialIconsList>
-        <SocialIcon>Tweeters</SocialIcon>
-        <SocialIcon>Mailto</SocialIcon>
-        <SocialIcon>Subscribe?</SocialIcon>
+        {icons.map(({ node }, i) => (
+          <SocialIcon>
+            <a
+              href={node.url}
+              dangerouslySetInnerHTML={{ __html: node.icon }}
+              key={i}
+            />
+          </SocialIcon>
+        ))}
       </SocialIconsList>
     </InfoContainer>
   </FooterContainer>
