@@ -9,7 +9,9 @@ const IndexPage = ({ data }) => {
 
   return (
     <div>
-      {sections.map(section => <Section data={section.node} />)}
+      {sections.map(section => (
+        <Section data={section.node} key={section.node.id} />
+      ))}
 
       <h3>Our Sponsors</h3>
       <Sponsors level="Diamond" />

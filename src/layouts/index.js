@@ -51,7 +51,7 @@ export const query = graphql`
     bg: file(relativePath: { eq: "header.jpg" }) {
       childImageSharp {
         sizes(
-          maxWidth: 3600
+          maxWidth: 1600
           duotone: { highlight: "#80a7d5", shadow: "#192550" }
         ) {
           ...GatsbyImageSharpSizes_noBase64
