@@ -41,12 +41,22 @@ const Map = styled.div``
 
 const InfoContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
 `
 
 const Copywrite = styled.div``
 
-const SocialIconsList = styled.ul``
+const SocialIconsList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-const SocialIcon = styled.li``
+const SocialIcon = styled.li`
+  padding: 0 10px;
+`
