@@ -6,7 +6,6 @@ import Sponsors from '../components/sponsors/sponsors'
 
 const IndexPage = ({ data }) => {
   const sections = data.allSectionsJson.edges
-  console.log(sections)
 
   return (
     <div>
@@ -33,6 +32,11 @@ export const query = graphql`
             url
             external
             title
+          }
+          childImageSharp {
+            sizes(maxWidth: 500) {
+              ...GatsbyImageSharpSizes_noBase64
+            }
           }
         }
       }
