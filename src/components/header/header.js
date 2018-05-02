@@ -35,7 +35,7 @@ export default Header
 const HeaderContainer = styled.div`
   background-color: transparent;
   position: relative;
-  margin-bottom: 1.45rem;
+  margin-bottom: 4rem;
 `
 
 const HeaderHero = styled.div`
