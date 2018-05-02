@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import Button from '../button/button'
 
-import Link from '../link/link'
+import { colors } from '../../colors'
 
 const Section = ({ data }) => (
   <StyledSection>
@@ -17,12 +18,28 @@ const Section = ({ data }) => (
 
 export default Section
 
-const StyledSection = styled.section``
+const StyledSection = styled.section`
+  display: flex;
+  border-bottom: 1px solid ${colors.veniceBlue};
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 
-const Title = styled.h2``
+  img {
+    display: block;
+    margin-right: 3rem;
+  }
+`
+
+const Title = styled.h2`
+  color: ${colors.veniceBlue};
+  font-size: 2rem;
+`
 
 const Content = styled.div``
 
 const StyledLink = styled(Link)``
 
 const ThumbnailContainer = styled.div``
+const RegisterButton = Button.extend`
+  margin: 30px 0 0;
+`
