@@ -12,11 +12,6 @@ const IndexPage = ({ data }) => {
       {sections.map(section => (
         <Section data={section.node} key={section.node.id} />
       ))}
-
-      <h3>Our Sponsors</h3>
-      <Sponsors level="Diamond" />
-      <Sponsors level="Gold" />
-      <Sponsors level="Silver" />
     </div>
   )
 }
