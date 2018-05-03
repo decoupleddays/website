@@ -45,6 +45,7 @@ export default Footer
 const FooterContainer = styled.footer`
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.5);
   padding-top: 15px;
+  color: ${colors.veniceBlue};
 `
 
 const Masthead = styled.div`
@@ -52,10 +53,10 @@ const Masthead = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${colors.veniceBlue};
 `
 const Logo = styled.img`
   width: 70px;
+  margin-bottom: 10px;
 `
 
 const Title = styled.p`
