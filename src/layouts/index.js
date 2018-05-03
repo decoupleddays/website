@@ -58,11 +58,13 @@ export const query = graphql`
         }
       }
     }
+
     allSocialIconsJson {
       edges {
         node {
           url
           icon
+          id
         }
       }
     }
