@@ -1,5 +1,8 @@
 import React from 'react'
+
 import styled from 'styled-components'
+
+import GoogleMapWrapper from '../google-map/google-map'
 
 const Footer = ({ siteTitle, icons }) => (
   <FooterContainer>
@@ -9,18 +12,23 @@ const Footer = ({ siteTitle, icons }) => (
       <SubTitle>John Jay College of Criminal Justice</SubTitle>
       <SubTitle>524 W 59th St, New York, NY 10019</SubTitle>
     </Masthead>
-    <Map>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.631989835315!2d-73.9892263!3d40.7701182!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xefb0711781c769e!2sJohn+Jay+College+of+Criminal+Justice!5e0!3m2!1sen!2sus!4v1525136243936" />
-    </Map>
+    <GoogleMapWrapper
+      isMarkerShown
+      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp"
+      loadingElement={<div style={{ height: `100%` }} />}
+      containerElement={<div style={{ height: `400px` }} />}
+      mapElement={<div style={{ height: `100%` }} />}
+    />
     <InfoContainer>
       <Copywrite>© 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED</Copywrite>
       <SocialIconsList>
         {icons.map(({ node }, i) => (
-          <SocialIcon>
+          <SocialIcon key={i}>
             <a
               href={node.url}
+              data-social-type={node.id}
+              target="_blank"
               dangerouslySetInnerHTML={{ __html: node.icon }}
-              key={i}
             />
           </SocialIcon>
         ))}
@@ -31,7 +39,9 @@ const Footer = ({ siteTitle, icons }) => (
 
 export default Footer
 
-const FooterContainer = styled.footer``
+const FooterContainer = styled.footer`
+  box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.5);
+`
 
 const Masthead = styled.div`
   display: flex;
@@ -50,6 +60,8 @@ const InfoContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  max-width: 960px;
+  margin: 0 auto;
 `
 
 const Copywrite = styled.div``
@@ -65,4 +77,5 @@ const SocialIconsList = styled.ul`
 
 const SocialIcon = styled.li`
   padding: 0 10px;
+  margin: 0;
 `

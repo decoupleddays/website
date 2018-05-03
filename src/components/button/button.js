@@ -10,5 +10,4 @@ const Button = styled.button`
   color: ${colors.white};
   text-transform: uppercase;
 `
-
 export default Button

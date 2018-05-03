@@ -63,6 +63,7 @@ export const query = graphql`
         node {
           url
           icon
+          id
         }
       }
     }
