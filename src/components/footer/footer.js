@@ -5,40 +5,81 @@ import GoogleMapWrapper from '../google-map/google-map'
 import { colors } from '../../colors'
 
 import logo from '../../../images/logo.svg'
+import MailChimpSubscribeModal from '../mailchimp/mailchimp'
 
-const Footer = ({ siteTitle, icons }) => (
-  <FooterContainer>
-    <Masthead>
-      <Logo src={logo} />
-      <Title>Decoupled Drupal Days</Title>
-      <SubTitle>Aug. 17-19, 2018</SubTitle>
-      <SubTitle>John Jay College of Criminal Justice</SubTitle>
-      <SubTitle>524 W 59th St, New York, NY 10019</SubTitle>
-    </Masthead>
-    <GoogleMapWrapper
-      isMarkerShown
-      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp"
-      loadingElement={<div style={{ height: `100%` }} />}
-      containerElement={<div style={{ height: `400px` }} />}
-      mapElement={<div style={{ height: `100%` }} />}
-    />
-    <InfoContainer>
-      <Copywrite>© 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED</Copywrite>
-      <SocialIconsList>
-        {icons.map(({ node }, i) => (
-          <SocialIcon key={i}>
-            <a
-              href={node.url}
-              data-social-type={node.id}
-              target="_blank"
-              dangerouslySetInnerHTML={{ __html: node.icon }}
-            />
-          </SocialIcon>
-        ))}
-      </SocialIconsList>
-    </InfoContainer>
-  </FooterContainer>
-)
+class Footer extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      modalOpen: false,
+    }
+
+    this.clickIcon = this.clickIcon.bind(this)
+    this.onCloseModal = this.onCloseModal.bind(this)
+  }
+
+  clickIcon(e) {
+    if (e.currentTarget.dataset.socialType !== 'subscribe') return
+    e.preventDefault()
+    this.openModal()
+  }
+
+  openModal() {
+    this.setState({
+      modalOpen: true,
+    })
+  }
+
+  onCloseModal() {
+    this.setState({ modalOpen: false })
+  }
+
+  render() {
+    const { siteTitle, icons } = this.props
+
+    return (
+      <FooterContainer>
+        <Masthead>
+          <Logo src={logo} />
+          <Title>Decoupled Drupal Days</Title>
+          <SubTitle>Aug. 17-19, 2018</SubTitle>
+          <SubTitle>John Jay College of Criminal Justice</SubTitle>
+          <SubTitle>524 W 59th St, New York, NY 10019</SubTitle>
+        </Masthead>
+        <GoogleMapWrapper
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+        <InfoContainer>
+          <Copywrite>
+            © 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED
+          </Copywrite>
+          <SocialIconsList>
+            {icons.map(({ node }, i) => (
+              <SocialIcon key={i}>
+                <a
+                  href={node.url}
+                  data-social-type={node.id}
+                  dangerouslySetInnerHTML={{ __html: node.icon }}
+                  target="_blank"
+                  onClick={this.clickIcon}
+                />
+              </SocialIcon>
+            ))}
+          </SocialIconsList>
+        </InfoContainer>
+        <MailChimpSubscribeModal
+          open={this.state.modalOpen}
+          onClose={this.onCloseModal}
+        />
+      </FooterContainer>
+    )
+  }
+}
 
 export default Footer
 

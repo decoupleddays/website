@@ -9,6 +9,7 @@
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-offline": "^1.0.15",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-styled-components": "^2.0.11",
@@ -17,6 +18,8 @@
     "gatsby-transformer-sharp": "^1.6.24",
     "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
+    "react-mailchimp-subscribe": "^2.0.1",
+    "react-responsive-modal": "^3.0.0",
     "styled-components": "^3.2.6"
   },
   "keywords": [
