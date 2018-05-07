@@ -120,6 +120,14 @@ const InfoContainer = styled.div`
   height: 50px;
   max-width: 960px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    height: auto;
+    padding: 0.75rem;
+    justify-content: center;
+    text-align: center;
+  }
 `
 
 const Copywrite = styled.div``
@@ -131,6 +139,9 @@ const SocialIconsList = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `
 
 const SocialIcon = styled.li`

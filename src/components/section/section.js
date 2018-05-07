@@ -28,6 +28,15 @@ const StyledSection = styled.section`
   border-bottom: 1px solid ${colors.veniceBlue};
   padding-bottom: 1rem;
   margin-bottom: 3rem;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    border-bottom: none;
+  }
 `
 
 const Title = styled.h2`
@@ -40,6 +49,10 @@ const ContentContainer = styled.div`
   width: 65%;
   justify-content: flex-end;
   padding: 15px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const Content = styled.div`
@@ -58,6 +71,10 @@ const StyledLink = styled(Link)`
 const ThumbnailContainer = styled.div`
   width: 35%;
   padding: 15px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const StyledThumbnail = styled(Img)`

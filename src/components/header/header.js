@@ -47,6 +47,7 @@ const HeaderHero = styled.div`
   flex-direction: column;
   color: ${colors.white};
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+  padding: 1rem;
 `
 
 const HeaderTitle = styled.h1`

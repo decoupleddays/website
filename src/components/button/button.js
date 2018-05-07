@@ -9,5 +9,6 @@ const Button = styled.button`
   background: ${colors.veniceBlue};
   color: ${colors.white};
   text-transform: uppercase;
+  cursor: pointer;
 `
 export default Button
