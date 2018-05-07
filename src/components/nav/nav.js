@@ -40,15 +40,19 @@ const RegisterButton = Button.extend`
   margin-left: auto;
 `
 
-const Brand = styled.div`
+export const Brand = styled.div`
   font-weight: bold;
   color: ${colors.veniceBlue};
   display: flex;
   align-items: center;
   height: 50px;
   padding-left: 15px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
-const Logo = styled.img`
+export const Logo = styled.img`
   width: 30px;
 `
