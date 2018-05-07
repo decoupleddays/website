@@ -94,6 +94,8 @@ const Masthead = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: 'League Spartan';
+  margin-bottom: 1.5rem;
 `
 const Logo = styled.img`
   width: 70px;
@@ -103,12 +105,12 @@ const Logo = styled.img`
 const Title = styled.p`
   text-transform: uppercase;
   font-size: 1.25rem;
-  font-weight: bold;
 `
 
 const SubTitle = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.75px;
+  margin-bottom: 0;
 `
 
 const Map = styled.div``

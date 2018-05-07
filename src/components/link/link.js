@@ -15,7 +15,7 @@ const Link = ({ children, to, ...other }) => {
     )
   }
   return (
-    <a href={to} {...other}>
+    <a href={to} target="_blank" {...other}>
       {children}
     </a>
   )

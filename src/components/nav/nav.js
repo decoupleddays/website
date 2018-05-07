@@ -12,8 +12,8 @@ const Nav = () => (
     <NavInner>
       {/** Menu to go here when we have more pages **/}
       <Logo src={logo} />
-      <Brand>DECOUPLED DRUPAL</Brand>
-      <RegisterButton>Register now</RegisterButton>
+      <Brand>DECOUPLED DRUPAL DAYS</Brand>
+      { /** <RegisterButton>Register now</RegisterButton> **/}
     </NavInner>
   </StyledNav>
 )
@@ -38,6 +38,7 @@ const NavInner = styled.div`
 
 const RegisterButton = Button.extend`
   margin-left: auto;
+  font-family: 'Roboto Condensed';
 `
 
 export const Brand = styled.div`

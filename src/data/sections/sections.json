@@ -6,7 +6,7 @@
     },
     "title": "Call for Papers",
     "content":
-      "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. ",
+      "This year we are looking for sessions to fill our 3 tracks. The Drupal track will cover Drupal as a content serive. The JavaScript track will cover modern JavaScript and its use in decoupled Drupal architectures. Finally the Future track will concern experimental approaches and emerging technologies. The deadline for submitting all session submissions is Friday, June 8th at 11:59pm EST ",
     "link": {
       "url": "https://docs.google.com/forms/d/e/1FAIpQLScHe8IJpj8UGEhJkxlsauSkCGtoDgV0xZ8NM0DYE21dng5-IQ/viewform",
       "external": "true",
@@ -20,9 +20,9 @@
     },
     "title": "Early bird Tickets",
     "content":
-      "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+      "There are a limited amount of Early Bird Tickets available right now. Get yours before the price goes up.",
     "link": {
-      "url": "/tickets",
+      "url": "https://decoupleddays.eventbrite.com",
       "title": "Get your tickets"
     }
   }

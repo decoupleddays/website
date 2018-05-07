@@ -36,6 +36,7 @@ const HeaderContainer = styled.div`
   background-color: transparent;
   position: relative;
   margin-bottom: 4rem;
+  font-family: 'League Spartan';
 `
 
 const HeaderHero = styled.div`
