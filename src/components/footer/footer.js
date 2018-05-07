@@ -117,7 +117,7 @@ const InfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 60px;
   max-width: 960px;
   margin: 0 auto;
 

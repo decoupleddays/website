@@ -9,9 +9,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <div>
-      {sections.map(section => (
-        <Section data={section.node} key={section.node.id} />
-      ))}
+      {sections.map((section, i) => <Section data={section.node} key={i} />)}
     </div>
   )
 }
