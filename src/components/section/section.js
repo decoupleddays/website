@@ -1,25 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
-import Link from 'gatsby-link'
+import Link from '../link/link'
 import Button from '../button/button'
 
 import { colors } from '../../colors'
 
-const Section = ({ data }) => (
-  <StyledSection>
-    <ThumbnailContainer>
-      <StyledThumbnail
-        sizes={{ ...data.childImageSharp.sizes, aspectRatio: 4 / 3 }}
-      />
-    </ThumbnailContainer>
-    <ContentContainer>
-      <Title>{data.title}</Title>
-      <Content>{data.content}</Content>
-      <StyledLink to={data.link.url}>{data.link.title}</StyledLink>
-    </ContentContainer>
-  </StyledSection>
-)
+const Section = ({ data }) => {
+  return (
+    <StyledSection>
+      <ThumbnailContainer>
+        <StyledThumbnail
+          sizes={{ ...data.childImageSharp.sizes, aspectRatio: 4 / 3 }}
+        />
+      </ThumbnailContainer>
+      <ContentContainer>
+        <Title>{data.title}</Title>
+        <Content>{data.content}</Content>
+        <StyledLink to={data.link.url}>{data.link.title}</StyledLink>
+      </ContentContainer>
+    </StyledSection>
+  )
+}
 
 export default Section
 
