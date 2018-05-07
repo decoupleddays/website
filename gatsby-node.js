@@ -29,3 +29,15 @@ exports.onCreateNode = async ({ node, getNodes, boundActionCreators }) => {
     createParentChildLink({ parent: node, child: imageSharpNode })
   }
 }
+
+exports.onCreatePage = async ({ page, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
+
+  return new Promise((resolve, reject) => {
+    if (page.path.match(/^\/404/)) {
+      page.layout = '404'
+      createPage(page)
+    }
+    resolve()
+  })
+}

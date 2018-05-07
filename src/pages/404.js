@@ -1,9 +1,18 @@
 import React from 'react'
+import { Logo } from '../components/nav/nav'
+import Link from '../components/link/link'
+
+import logo from '../../images/logo.svg'
 
 const NotFoundPage = () => (
   <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Logo src={logo} />
+    <h1>
+      Oops, maybe a little <i>too</i> decoupled...
+    </h1>
+    <p>
+      Head back <Link to="/">home</Link> and try again.
+    </p>
   </div>
 )
 
