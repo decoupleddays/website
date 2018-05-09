@@ -49,7 +49,7 @@ class Footer extends React.Component {
         </Masthead>
         <GoogleMapWrapper
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDonIHksW-ojse_U1MgieeLIpkbIbm_MGs&v=3.exp"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
