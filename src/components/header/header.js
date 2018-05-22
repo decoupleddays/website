@@ -11,7 +11,7 @@ const Header = ({ siteTitle, backgroundImage }) => (
   <HeaderContainer>
     <Nav />
     <HeaderHero>
-      <HeaderTitle>Decoupled Drupal Days</HeaderTitle>
+      <HeaderTitle>A Conference About The Future Of Drupal</HeaderTitle>
       <HeaderSubTitle>New York City</HeaderSubTitle>
       <HeaderSubTitle>Aug. 17 - 19, 2018</HeaderSubTitle>
       <HeaderSubTitle>John Jay College of Criminal Justice</HeaderSubTitle>
