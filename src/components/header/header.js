@@ -27,6 +27,17 @@ const Header = ({ siteTitle, backgroundImage }) => (
         zIndex: -1,
       }}
     />
+    <HeaderSponsors>
+      <div className="label">Diamond sponsors</div>
+      <div className="sponsors">
+        <div className="">
+          <a href="https://chromatichq.com/">
+            <img src="https://chromatichq.com/themes/chromatic/images/svgs/chromatic-logo.svg" width="200" height="50" alt="Chromatic" />
+          </a>
+        </div>
+      </div>
+    </HeaderSponsors>
+    
   </HeaderContainer>
 )
 
@@ -68,4 +79,17 @@ const HeaderTitle = styled.h1`
 
 const HeaderSubTitle = styled.h2`
   font-size: 1.5rem;
+`
+
+const HeaderSponsors = styled.div`
+  width: 250px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, .5);
+  text-align: center;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-topright: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `
