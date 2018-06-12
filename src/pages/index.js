@@ -6,6 +6,7 @@ import Sponsors from '../components/sponsors/sponsors'
 
 const IndexPage = ({ data }) => {
   const sections = data.allSectionsJson.edges
+  const gold = data.gold.edges
 
   return (
     <div className="main">
@@ -16,6 +17,12 @@ const IndexPage = ({ data }) => {
       </div>
       <div>
         {sections.map((section, i) => <Section data={section.node} key={i} />)}
+      </div>
+      <div>
+        <Sponsors level="Diamond" sponsors={data.diamond.edges} />
+        <Sponsors level="Gold" sponsors={data.gold.edges} />
+        <Sponsors level="Silver" sponsors={data.silver.edges} />
+        <Sponsors level="Bronze" sponsors={data.bronze.edges} />
       </div>
     </div>
   )
@@ -40,6 +47,39 @@ export const query = graphql`
               ...GatsbyImageSharpSizes_noBase64
             }
           }
+        }
+      }
+    }
+
+    bronze:allSponsorsJson(filter:{level: {eq: "Bronze"}}) {
+      edges {
+        node {
+          name
+          link
+        }
+      }
+    }
+    silver:allSponsorsJson(filter:{level: {eq: "Silver"}}) {
+      edges {
+        node {
+          name
+          link
+        }
+      }
+    }
+    gold:allSponsorsJson(filter:{level: {eq: "Gold"}}) {
+      edges {
+        node {
+          name
+          link
+        }
+      }
+    }
+    diamond:allSponsorsJson(filter:{level: {eq: "Diamond"}}) {
+      edges {
+        node {
+          name
+          link
         }
       }
     }
