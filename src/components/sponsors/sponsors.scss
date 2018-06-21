@@ -7,6 +7,7 @@
   .sponsors-list {
     display: flex;
     align-content: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

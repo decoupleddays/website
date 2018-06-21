@@ -18,7 +18,10 @@ const IndexPage = ({ data }) => {
         {sections.map((section, i) => <Section data={section.node} key={i} />)}
       </div>
       <div>
-        <Sponsors level="Gold" sponsors={data.gold.edges} />
+
+        <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
+        <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
+        <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
       </div>
     </div>
   )
@@ -47,16 +50,43 @@ export const query = graphql`
       }
     }
 
-    gold: allSponsorsJson(filter: {level: {eq:"Gold"}}) {
+    diamondSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
       edges {
         node {
           name
           link
-          childrenImageSharp {
+          childImageSharp {
             sizes(maxWidth: 200) {
               src
+            }
+          }
+        }
       }
     }
+
+    goldSponsors: allSponsorsJson(filter: {level: {eq:"Gold"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 200) {
+              src
+            }
+          }
+        }
+      }
+    }
+    silverSponsors: allSponsorsJson(filter: {level: {eq:"Silver"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 150) {
+              src
+            }
+          }
         }
       }
     }

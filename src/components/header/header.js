@@ -8,9 +8,7 @@ import { colors } from '../../colors'
 import Nav from '../nav/nav'
 
 const Header = ({ siteTitle, backgroundImage, sponsors }) => {
-  console.log(sponsors)
   return (
-
   <HeaderContainer>
     <Nav />
     <HeaderHero>
@@ -36,7 +34,7 @@ const Header = ({ siteTitle, backgroundImage, sponsors }) => {
         {sponsors.map(({ node }, i) => (
           <HeaderSponsor key={i}>
               <HeaderThumbnailContainer href={node.link}>
-                <img src={ node.childrenImageSharp[0].sizes.src} />
+                <img src={ node.childImageSharp.sizes.src} />
               </HeaderThumbnailContainer>
 
           </HeaderSponsor>

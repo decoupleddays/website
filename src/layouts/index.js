@@ -75,7 +75,7 @@ export const query = graphql`
         node {
           name
           link
-          childrenImageSharp {
+          childImageSharp {
             sizes(maxWidth: 100) {
               src
             }
