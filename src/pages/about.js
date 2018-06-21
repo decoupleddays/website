@@ -8,7 +8,7 @@ const AboutPage = ({ data }) => {
   return (
     <div className="main">
       <h1>About</h1>
-      <p>In its second year after a successful debut in 2017, <strong>Decoupled Drupal Days</strong> (D3) is a conference for architects, developers, and businesspeople involved in implementing decoupled Drupal architectures. The 2018 edition is scheduled for <strong>August 17–19, 2017</strong> in <strong>New York City</strong>.</p>
+      <p>In its second year after a successful debut in 2017, <strong>Decoupled Drupal Days</strong> (D3) is a conference for architects, developers, and businesspeople involved in implementing decoupled Drupal architectures. The 2018 edition is scheduled for <strong>August 17–19, 2018</strong> in <strong>New York City</strong>.</p>
       <p>Decoupled Drupal is the use of Drupal as a content service for other non-Drupal applications, whether they are in native desktop or mobile, universal JavaScript, set-top boxes, IoT devices, conversational interfaces, or other technologies.</p>
       <h2>Mission</h2>
       <p>The mission of Decoupled Drupal Days, beyond helping attendees engage and connect with people sharing their interests, is threefold:</p>
