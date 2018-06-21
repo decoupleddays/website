@@ -7,7 +7,9 @@ import Img from 'gatsby-image'
 import { colors } from '../../colors'
 import Nav from '../nav/nav'
 
-const Header = ({ siteTitle, backgroundImage, sponsors }) => (
+const Header = ({ siteTitle, backgroundImage, sponsors }) => {
+  console.log(sponsors)
+  return (
 
   <HeaderContainer>
     <Nav />
@@ -32,16 +34,18 @@ const Header = ({ siteTitle, backgroundImage, sponsors }) => (
       <div className="label">Diamond sponsors</div>
       <HeaderSponsors>
         {sponsors.map(({ node }, i) => (
-          <div className="sponsor" key={i}>
-            <a href={node.link}
-              dangerouslySetInnerHTML={{ __html: node.logo }}
-            />
-          </div>
+          <HeaderSponsor key={i}>
+              <HeaderThumbnailContainer href={node.link}>
+                <img src={ node.childrenImageSharp[0].sizes.src} />
+              </HeaderThumbnailContainer>
+
+          </HeaderSponsor>
           ))}
       </HeaderSponsors>
     </HeaderSponsorsContainer>
   </HeaderContainer>
 )
+}
 
 export default Header
 
@@ -99,4 +103,16 @@ const HeaderSponsorsContainer = styled.div`
 const HeaderSponsors = styled.div`
   display: flex;
   justify-content: center;
+`
+
+const HeaderSponsor = styled.div`
+  width: 30%;
+`
+
+const HeaderThumbnailContainer = styled.a`
+  width: 100%;
+  padding: 15px;
+`
+const HeaderThumbnail = styled(Img)`
+  border-radius: 5%;
 `

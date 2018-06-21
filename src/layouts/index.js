@@ -19,7 +19,7 @@ const Layout = ({ children, data }) => (
     <Header
       siteTitle={data.site.siteMetadata.title}
       backgroundImage={data.bg.childImageSharp}
-      sponsors={data.diamond.edges}
+      sponsors={data.headerSponsors.edges}
     />
     <div
       style={{
@@ -70,12 +70,16 @@ export const query = graphql`
       }
     }
 
-    diamond: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
+    headerSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
       edges {
         node {
           name
-          logo
           link
+          childrenImageSharp {
+            sizes(maxWidth: 100) {
+              src
+            }
+          }
         }
       }
     }
