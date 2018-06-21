@@ -90,6 +90,14 @@
     "link": "https://commerceguys.com/"
   },
   {
+    "name": "Mediacurrent",
+    "level": "Silver",
+    "image": {
+      "url": "/images/mc-logo-sponsor.png"
+    },
+    "link": "https://www.mediacurrent.com/"
+  },
+  {
     "name": "Palantir",
     "level": "Silver",
     "image": {
