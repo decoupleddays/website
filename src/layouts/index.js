@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 import Header from '../components/header/header'
+import Sponsors from '../components/sponsors/sponsors'
 import Footer from '../components/footer/footer'
 
 import './index.scss'
@@ -21,16 +23,15 @@ const Layout = ({ children, data }) => (
       backgroundImage={data.bg.childImageSharp}
       sponsors={data.headerSponsors.edges}
     />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
+    <ContentDiv>
       {children()}
-    </div>
+      <div>
+
+        <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
+        <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
+        <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
+      </div>
+    </ContentDiv>
     <Footer icons={data.allSocialIconsJson.edges} />
   </div>
 )
@@ -38,6 +39,13 @@ const Layout = ({ children, data }) => (
 Layout.propTypes = {
   children: PropTypes.func,
 }
+
+const ContentDiv = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0px 1.0875rem 1.45rem\;
+  padding-top: 0;
+`
 
 export default Layout
 
@@ -77,6 +85,47 @@ export const query = graphql`
           link
           childImageSharp {
             sizes(maxWidth: 100) {
+              src
+            }
+          }
+        }
+      }
+    }
+
+    diamondSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 200) {
+              src
+            }
+          }
+        }
+      }
+    }
+
+    goldSponsors: allSponsorsJson(filter: {level: {eq:"Gold"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 200) {
+              src
+            }
+          }
+        }
+      }
+    }
+    silverSponsors: allSponsorsJson(filter: {level: {eq:"Silver"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 150) {
               src
             }
           }

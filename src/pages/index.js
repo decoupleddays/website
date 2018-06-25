@@ -1,8 +1,6 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import Section from '../components/section/section'
-import Sponsors from '../components/sponsors/sponsors'
 
 const IndexPage = ({ data }) => {
   const sections = data.allSectionsJson.edges
@@ -16,12 +14,6 @@ const IndexPage = ({ data }) => {
       </div>
       <div>
         {sections.map((section, i) => <Section data={section.node} key={i} />)}
-      </div>
-      <div>
-
-        <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
-        <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
-        <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
       </div>
     </div>
   )
@@ -44,47 +36,6 @@ export const query = graphql`
           childImageSharp {
             sizes(maxWidth: 500) {
               ...GatsbyImageSharpSizes_noBase64
-            }
-          }
-        }
-      }
-    }
-
-    diamondSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
-      edges {
-        node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 200) {
-              src
-            }
-          }
-        }
-      }
-    }
-
-    goldSponsors: allSponsorsJson(filter: {level: {eq:"Gold"}}) {
-      edges {
-        node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 200) {
-              src
-            }
-          }
-        }
-      }
-    }
-    silverSponsors: allSponsorsJson(filter: {level: {eq:"Silver"}}) {
-      edges {
-        node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 150) {
-              src
             }
           }
         }
