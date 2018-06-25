@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Chromatic",
+    "level": "Diamond",
+    "image": {
+      "url": "/images/chromatic-logo.png"
+    },
+    "link":"https://chromatichq.com/"
+  },
+  {
+    "name": "Aten",
+    "level": "Diamond",
+    "image": {
+      "url": "/images/aten-logo.png"
+    },
+    "link": "https://atendesigngroup.com/"
+  },
+  {
+    "name": "Therefore Interactive",
+    "level": "Diamond",
+    "image": {
+      "url": "/images/therefore-logo.png"
+    },
+    "link": "https://therefore.ca/"
+  },
+  {
+    "name": "DRUD Tech",
+    "level": "Gold",
+    "image": {
+      "url": "/images/ddev-logo.png",
+      "alt": "Drud Tech"
+    },
+    "link": "https://drud.com/"
+  },
+  {
+    "name": "Four Kitchens",
+    "level": "Gold",
+    "image": {
+      "url": "/images/4Kitchens.png"
+    },
+    "link": "https://www.fourkitchens.com/"
+  },
+  {
+    "name": "QED42",
+    "level": "Gold",
+    "image": {
+      "url": "/images/qed42-logo.png",
+      "alt": "QED42"
+    },
+    "link": "https://www.qed42.com/"
+  },
+  {
+    "name": "Srijan",
+    "level": "Gold",
+    "image": {
+      "url": "/images/srijan.png"
+    },
+    "link": "https://www.srijan.net/"
+  },
+  {
+    "name": "IT Trailblazers",
+    "level": "Silver",
+    "image": {
+      "url": "/images/ittblazers.png"
+    },
+    "link": "http://www.ittblazers.com/"
+  },
+  {
+    "name": "Valuebound",
+    "level": "Silver",
+    "image": {
+      "url": "/images/valuebound-logo.png"
+    },
+    "link": "https://valuebound.com/"
+  },
+  {
+    "name": "Taller",
+    "level": "Silver",
+    "image": {
+      "url": "/images/taller.png"
+    },
+    "link": "https://taller.net.br/"
+  },
+  {
+    "name": "Commerce Guys",
+    "level": "Silver",
+    "image": {
+      "url": "/images/commerce-guys.png"
+    },
+    "link": "https://commerceguys.com/"
+  },
+  {
+    "name": "Mediacurrent",
+    "level": "Silver",
+    "image": {
+      "url": "/images/mc-logo-sponsor.png"
+    },
+    "link": "https://www.mediacurrent.com/"
+  },
+  {
+    "name": "Palantir",
+    "level": "Silver",
+    "image": {
+      "url": "/images/palantir-logo.png"
+    },
+    "link": "https://www.palantir.net/"
+  },
+  {
+    "name": "Rootstack",
+    "level": "Silver",
+    "image": {
+      "url": "/images/rootstack-logo.png"
+    },
+    "link": "https://www.rootstack.com/"
+  },
+  {
+    "name": "Johnson & Johnson",
+    "level": "Silver",
+    "image": {
+      "url": "/images/j-j-logo.png"
+    },
+    "link": "https://www.jnj.com/"
+  }
+]

@@ -1,8 +1,6 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import Section from '../components/section/section'
-import Sponsors from '../components/sponsors/sponsors'
 
 const IndexPage = ({ data }) => {
   const sections = data.allSectionsJson.edges
