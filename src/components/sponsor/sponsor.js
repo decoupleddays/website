@@ -3,9 +3,9 @@ import Link from 'gatsby-link'
 
 import './sponsor.scss';
 
-const Sponsor = ({sponsor, level, key}) => {
+const Sponsor = ({sponsor, level}) => {
   return (
-    <div className={`sponsor sponsor--${level.toLowerCase()}`} key={key}>
+    <div className={`sponsor sponsor--${level.toLowerCase()}`}>
       <a href={sponsor.link}>
         <img src={sponsor.childImageSharp.sizes.src} alt={sponsor.name} />
       </a>

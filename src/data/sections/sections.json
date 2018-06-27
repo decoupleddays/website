@@ -1,29 +1,29 @@
 [
   {
     "image": {
-      "url": "/images/papers.jpg",
-      "alt": "alt image"
+        "url": "/images/tickets.jpg",
+        "alt": "Alt pic"
     },
-    "title": "Call for Papers",
+    "title": "Registration is Open!",
     "content":
-      "This year we are looking for sessions to fill our 3 tracks. The Drupal track will cover Drupal as a content service. The JavaScript track will cover modern JavaScript and its use in decoupled Drupal architectures. Finally the Future track will concern experimental approaches and emerging technologies. The deadline for all session submissions is Friday, June 8th at 11:59pm EST ",
+      "Sign up now for this year's Decoupled Drupal Days. Two days of speakers with three tracks of great talks. A great Happy Hour on Saturday and code sprinting on Sunday. Don't miss out!",
     "link": {
-      "url": "https://docs.google.com/forms/d/e/1FAIpQLScHe8IJpj8UGEhJkxlsauSkCGtoDgV0xZ8NM0DYE21dng5-IQ/viewform",
-      "external": "true",
-      "title": "Submit an idea"
+      "url": "https://decoupleddays.eventbrite.com",
+      "title": "Get your tickets"
     }
   },
   {
     "image": {
-        "url": "/images/tickets.jpg",
-        "alt": "Alt pic"
+      "url": "/images/papers.jpg",
+      "alt": "alt image"
     },
-    "title": "Early bird Tickets",
+    "title": "Sponsorship opprotunites still available.",
     "content":
-      "There are a limited amount of Early Bird Tickets available right now. Get yours before the price goes up.",
+      "We're actively looking for sponsors who are interested in supporting Decoupled Drupal Days to distinguish themselves as experts in the decoupled Drupal space, to recruit expertise in the field, or to advocate for open-source technologies. Would Gastby be interested in supporting our conference? Please find attached a prospectus for your convenience.",
     "link": {
-      "url": "https://decoupleddays.eventbrite.com",
-      "title": "Get your tickets"
+      "url": "mailto:decoupleddays@gmail.com",
+      "external": "false",
+      "title": "Contact us"
     }
   }
 ]
