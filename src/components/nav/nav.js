@@ -1,46 +1,44 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link from '../link/link';
 import { TiThMenu, TiTimes } from 'react-icons/lib/ti'
 import styled from 'styled-components'
 
 import { colors } from '../../colors'
+import './nav.scss'
 
 import Button from '../button/button'
 import logo from '../../../images/logo.svg'
 import { NavLink } from 'react-router-dom';
 
-const Menu = ({ handleClick }) => (
-  <NavLinksContainer>
+const Menu = () => (
+  <ul class="nav-menu">
     <li>
       <NavLink
         to="/about"
         activeClassName="selected"
-        onClick={handleClick}
       >about</NavLink>
     </li>
     <li>
       <NavLink
         to="/venue"
         activeClassName="selected"
-        onClick={handleClick}
       >venue</NavLink>
     </li>
     <li>
       <NavLink
         to="/volunteer"
         activeClassName="selected"
-        onClick={handleClick}
       >volunteer</NavLink>
     </li>
     <li>
       <NavLink
         to="/diversity-inclusion"
         activeClassName="selected"
-        onClick={handleClick}
       >diversity and inclusion</NavLink>
     </li>
-  </NavLinksContainer>
+  </ul>
 );
+
 class Nav extends React.Component {
   constructor(props) {
     super(props)
@@ -49,20 +47,13 @@ class Nav extends React.Component {
     }
   }
 
-  handleCLick = () => {
-    console.log(this.state.showMenu);
-    this.setState({
-      showMenu: !this.state.showMenu
-    })
-  }
-
   render() {
     return (
     <StyledNav>
       <NavInner>
         <NavLinks>
-          <Toggle onClick={this.handleClick}>
-            {!this.state.showMenu ? (<TiThMenu  />) : (<TiTimes />)}
+          <Toggle role="button" onClick={() => this.setState({showMenu: !this.state.showMenu})}>
+            {!this.state.showMenu ? (<TiThMenu />) : (<TiTimes />)}
           </Toggle>
           {this.state.showMenu ? (<Menu />) : null}
         </NavLinks>
@@ -81,6 +72,8 @@ export default Nav
 
 const Toggle = styled.div`
   margin-right: 5px;
+  color: #0b5394;
+  cursor: pointer;
 `
 
 const NavLinks = styled.div`

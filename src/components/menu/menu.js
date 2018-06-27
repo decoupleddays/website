@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import Link from '../link/link'
 
 const Menu = () => {
     return (
