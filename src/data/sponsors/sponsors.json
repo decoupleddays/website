@@ -120,5 +120,22 @@
       "url": "/images/j-j-logo.png"
     },
     "link": "https://www.jnj.com/"
+  },
+  {
+    "name": "Adapt A/S",
+    "level": "Bronze",
+    "image": {
+      "url": "/images/adapt-logo.png"
+    },
+    "link": "https://adaptagency.com/"
+  },
+  {
+    "name": "Genero",
+    "level": "Bronze",
+    "image": {
+      "url": "/images/genero-logo.png"
+    },
+    "link": "https://genero.jp/"
   }
+
 ]
