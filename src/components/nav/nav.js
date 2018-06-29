@@ -10,8 +10,9 @@ import Button from '../button/button'
 import logo from '../../../images/logo.svg'
 import { NavLink } from 'react-router-dom';
 
-const Menu = () => (
-  <ul class="nav-menu">
+const Menu = (props) => {
+  return (
+  <ul className={"nav-menu " + (props.show ? "menu-show" : "menu-hide")}>
     <li>
       <NavLink
         to="/about"
@@ -37,7 +38,7 @@ const Menu = () => (
       >diversity and inclusion</NavLink>
     </li>
   </ul>
-);
+)};
 
 class Nav extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class Nav extends React.Component {
           <Toggle role="button" onClick={() => this.setState({showMenu: !this.state.showMenu})}>
             {!this.state.showMenu ? (<TiThMenu />) : (<TiTimes />)}
           </Toggle>
-          {this.state.showMenu ? (<Menu />) : null}
+          <Menu show={this.state.showMenu} />
         </NavLinks>
         <Link to="/">
           <Logo src={logo} />
@@ -70,10 +71,11 @@ class Nav extends React.Component {
 
 export default Nav
 
-const Toggle = styled.div`
+const Toggle = styled.button`
   margin-right: 5px;
   color: #0b5394;
   cursor: pointer;
+  border: none;
 `
 
 const NavLinks = styled.div`
