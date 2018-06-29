@@ -1,14 +1,34 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import Link from '../link/link'
 
-const Menu = () => {
-    return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/404">Page not Found</Link>
-        </nav>
-    );
-}
+import { NavLink } from 'react-router-dom';
+
+const Menu = (props) => (
+    <ul className={"nav-menu " + (props.show ? "menu-show" : "menu-hide")}>
+        <li>
+        <NavLink
+            to="/about"
+            activeClassName="selected"
+        >about</NavLink>
+        </li>
+        <li>
+        <NavLink
+            to="/venue"
+            activeClassName="selected"
+        >venue</NavLink>
+        </li>
+        <li>
+        <NavLink
+            to="/volunteer"
+            activeClassName="selected"
+        >volunteer</NavLink>
+        </li>
+        <li>
+        <NavLink
+            to="/diversity-inclusion"
+            activeClassName="selected"
+        >diversity and inclusion</NavLink>
+        </li>
+    </ul>
+);
 
 export default Menu;
