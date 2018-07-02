@@ -1,24 +1,56 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link from '../link/link';
+import { TiThMenu, TiTimes } from 'react-icons/lib/ti'
 import styled from 'styled-components'
 
 import { colors } from '../../colors'
+import './nav.scss'
+import Menu from '../menu/menu';
 
-import Button from '../button/button'
 import logo from '../../../images/logo.svg'
 
-const Nav = () => (
-  <StyledNav>
-    <NavInner>
-      {/** Menu to go here when we have more pages **/}
-      <Logo src={logo} />
-      <Brand>DECOUPLED DRUPAL DAYS</Brand>
-      { /** <RegisterButton>Register now</RegisterButton> **/}
-    </NavInner>
-  </StyledNav>
-)
+class Nav extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showMenu: false,
+    }
+  }
+
+  render() {
+    return (
+    <StyledNav>
+      <NavInner>
+        <NavLinks>
+          <Toggle role="button" onClick={() => this.setState({showMenu: !this.state.showMenu})}>
+            {!this.state.showMenu ? (<TiThMenu />) : (<TiTimes />)}
+          </Toggle>
+          <Menu show={this.state.showMenu} />
+        </NavLinks>
+        <Link to="/">
+          <Logo src={logo} />
+        </Link>
+        <Brand>DECOUPLED DRUPAL DAYS</Brand>
+        <RegisterButton href="https://decoupleddays.eventbrite.com/" target="_blank">Register now</RegisterButton>
+      </NavInner>
+    </StyledNav>
+    )
+  }
+}
 
 export default Nav
+
+const Toggle = styled.button`
+  margin-right: 5px;
+  color: #0b5394;
+  cursor: pointer;
+  border: none;
+`
+
+const NavLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const StyledNav = styled.div`
   width: 100%;
@@ -36,7 +68,15 @@ const NavInner = styled.div`
   flex-direction: row;
 `
 
-const RegisterButton = Button.extend`
+const RegisterButton = styled.a`
+  border-radius: 3px;
+  padding: 0.25em 1em;
+  margin: 0 1em;
+  background: ${colors.veniceBlue};
+  color: ${colors.white};
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
   margin-left: auto;
   font-family: 'Roboto Condensed';
 `
