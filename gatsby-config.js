@@ -39,5 +39,11 @@ module.exports = {
         path: `${__dirname}/src/data/sponsors/`,
       }
     },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `http://dev-ddd-test.pantheonsite.io`
+      },
+    }
   ],
 }

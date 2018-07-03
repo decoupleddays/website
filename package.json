@@ -13,6 +13,7 @@
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-styled-components": "^2.0.11",
+    "gatsby-source-drupal": "^2.0.41",
     "gatsby-source-filesystem": "^1.5.35",
     "gatsby-transformer-json": "^1.0.17",
     "gatsby-transformer-sharp": "^1.6.24",
