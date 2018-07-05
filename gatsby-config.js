@@ -40,9 +40,9 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-drupal`,
+      resolve: `gatsby-source-drupal-modified`,
       options: {
-        baseUrl: `http://dev-ddd-test.pantheonsite.io`
+        baseUrl: `http://dev-ddd-test.pantheonsite.io/`
       },
     }
   ],
