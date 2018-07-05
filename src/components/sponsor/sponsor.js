@@ -5,7 +5,7 @@ import './sponsor.scss';
 
 const Sponsor = ({sponsor, level}) => {
   return (
-    <div className={`sponsor sponsor--${level.toLowerCase()}`}>
+    <div className={`sponsor sponsor--${level.toLowerCase().replace(/ /g,'-')}`}>
       <a href={sponsor.link}>
         <img src={sponsor.childImageSharp.sizes.src} alt={sponsor.name} />
       </a>

@@ -7,7 +7,7 @@ class Sponsors extends React.Component {
     const level = this.props.level;
     const sponsors = this.props.sponsors
     return (
-      <div className={`sponsors sponsors--${level.toLowerCase()}`}>
+      <div className={`sponsors sponsors--${level.toLowerCase().replace(/ /g,'-')}`}>
         <h3>{level} Sponsors</h3>
         <div className="sponsors-list">
         {
