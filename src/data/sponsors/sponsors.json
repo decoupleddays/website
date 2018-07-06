@@ -41,6 +41,14 @@
     "link": "https://www.fourkitchens.com/"
   },
   {
+    "name": "Pantheon",
+    "level": "Gold",
+    "image": {
+      "url": "/images/pantheon-logo.png"
+    },
+    "link": "https://pantheon.io/"
+  },
+  {
     "name": "QED42",
     "level": "Gold",
     "image": {
@@ -122,6 +130,14 @@
     "link": "https://www.jnj.com/"
   },
   {
+    "name": "Lullabot",
+    "level": "Silver",
+    "image": {
+      "url": "/images/lullabot-logo.png"
+    },
+    "link": "https://www.lullabot.com/"
+  },
+  {
     "name": "Adapt A/S",
     "level": "Bronze",
     "image": {
@@ -136,6 +152,13 @@
       "url": "/images/genero-logo.png"
     },
     "link": "https://genero.jp/"
+  },
+  {
+    "name": "The Weekly Drop",
+    "level": "Media Sponsor",
+    "image": {
+      "url": "/images/twd-vert-logo.png"
+    },
+    "link": "https://www.theweeklydrop.com/"
   }
-
 ]

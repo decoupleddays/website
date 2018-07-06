@@ -57,7 +57,7 @@ class Footer extends React.Component {
         <InfoContainer>
           <Copywrite>
             <MediaCurrentLogo>
-              <svg 
+              <svg
                 height="20"
                 width="30"
                 id="Layer_1"
@@ -89,7 +89,8 @@ class Footer extends React.Component {
               </svg>
               This site was designed and built by Mediacurrent
             </MediaCurrentLogo>
-            © 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED
+            <CopywriteData>© 2018 DECOUPLED DRUPAL DAYS ALL RIGHTS RESERVED<br/>
+            Drupal is a registered trademark of Dries Buytaert</CopywriteData>
           </Copywrite>
           <SocialIconsList>
             {icons.map(({ node }, i) => (
@@ -146,8 +147,6 @@ const SubTitle = styled.p`
   margin-bottom: 0;
 `
 
-const Map = styled.div``
-
 const InfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -166,6 +165,12 @@ const InfoContainer = styled.div`
 `
 
 const Copywrite = styled.div`
+  font-size: .8em;
+  line-height: 1em;
+  padding-top: 20px;
+`
+
+const CopywriteData = styled.p `
   font-size: .8em;
 `
 

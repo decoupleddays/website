@@ -26,11 +26,11 @@ const Layout = ({ children, data }) => (
     <ContentDiv>
       {children()}
       <div>
-
         <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
         <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
         <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
         <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
+        <Sponsors level="Media" sponsors={data.MediaSponsors.edges} />
       </div>
     </ContentDiv>
     <Footer icons={data.allSocialIconsJson.edges} />
@@ -140,6 +140,19 @@ export const query = graphql`
           link
           childImageSharp {
             sizes(maxWidth: 100) {
+              src
+            }
+          }
+        }
+      }
+    }
+    MediaSponsors: allSponsorsJson(filter: {level: {eq:"Media Sponsor"}}) {
+      edges {
+        node {
+          name
+          link
+          childImageSharp {
+            sizes(maxWidth: 150) {
               src
             }
           }
