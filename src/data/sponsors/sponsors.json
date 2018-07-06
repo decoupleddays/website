@@ -138,6 +138,14 @@
     "link": "https://www.lullabot.com/"
   },
   {
+    "name": "Blue State Digital",
+    "level": "Silver",
+    "image": {
+      "url": "/images/bsd-logo.png"
+    },
+    "link": "https://www.bluestatedigital.com/"
+  },
+  {
     "name": "Adapt A/S",
     "level": "Bronze",
     "image": {
