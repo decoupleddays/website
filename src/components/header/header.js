@@ -96,6 +96,9 @@ const HeaderSponsorsContainer = styled.div`
   -moz-border-radius-topright: 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const HeaderSponsors = styled.div`
@@ -105,6 +108,9 @@ const HeaderSponsors = styled.div`
 
 const HeaderSponsor = styled.div`
   width: 30%;
+  @media (max-width: 768px) {
+    width: 35%;
+  }
 `
 
 const HeaderThumbnailContainer = styled.a`
