@@ -7,7 +7,6 @@ const IndexPage = ({ data }) => {
   return (
     <div className="sessions">
       {sessions.map((session, i) => {
-        console.log(session.node);
         const speakers = session.node.relationships.field_speakers;
         return (
           <Session key={i}>
