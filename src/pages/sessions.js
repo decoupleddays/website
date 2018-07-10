@@ -18,6 +18,7 @@ const IndexPage = ({ data }) => {
                 )
               })}
             </SessionSpeakers>
+            <SessionLength>{session.node.field_session_length} minutes</SessionLength>
             <SessionBody
               dangerouslySetInnerHTML={{ __html:session.node.body.processed}}
             />
@@ -31,14 +32,15 @@ const IndexPage = ({ data }) => {
 const Session = styled.div`
   padding-bottom: 5px;
 `
-const SessionTitle = styled.div`
+const SessionTitle = styled.h2`
   font-size: 1.1em;
+  margin-bottom: .25em;
 `
-const SessionSpeakers = styled.div`
-  font-weight: 300;
-`
-const SessionSpeaker = styled.div`
-  padding-bottom: 5px;
+const SessionSpeakers = styled.div``
+const SessionSpeaker = styled.div``
+const SessionLength = styled.div`
+  font-size: .8em;
+  margin-bottom: .5em;
 `
 const SessionBody = styled.div`
   padding-bottom: 5px;
