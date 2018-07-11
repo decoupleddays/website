@@ -13,7 +13,7 @@
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-styled-components": "^2.0.11",
-    "gatsby-source-filesystem": "^1.5.35",
+    "gatsby-source-drupal": "^2.0.41",
     "gatsby-transformer-json": "^1.0.17",
     "gatsby-transformer-sharp": "^1.6.24",
     "react-google-maps": "^9.4.5",
@@ -21,7 +21,12 @@
     "react-icons": "^2.2.7",
     "react-mailchimp-subscribe": "^2.0.1",
     "react-responsive-modal": "^3.0.0",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "axios": "^0.16.1",
+    "babel-runtime": "^6.26.0",
+    "bluebird": "^3.5.0",
+    "gatsby-source-filesystem": "^1.5.38",
+    "lodash": "^4.17.4"
   },
   "keywords": [
     "gatsby"

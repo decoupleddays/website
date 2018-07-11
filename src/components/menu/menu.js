@@ -6,6 +6,12 @@ const Menu = (props) => (
     <ul className={"nav-menu " + (props.show ? "menu-show" : "menu-hide")}>
         <li>
         <NavLink
+            to="/sessions"
+            activeClassName="selected"
+        >sessions</NavLink>
+        </li>
+        <li>
+        <NavLink
             to="/about"
             activeClassName="selected"
         >about</NavLink>
