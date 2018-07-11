@@ -53,7 +53,7 @@ export default IndexPage
 
 export const query = graphql`
   query SessionsPageQuery {
-    allNodeSession {
+    allNodeSession(sort: {fields:[title], order: ASC}) {
       edges {
         node {
           title
