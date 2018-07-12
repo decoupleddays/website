@@ -33,12 +33,11 @@ const Header = ({ siteTitle, backgroundImage, sponsors }) => {
       <HeaderSponsors>
         {sponsors.map(({ node }, i) => (
           <HeaderSponsor key={i}>
-              <HeaderThumbnailContainer href={node.link}>
-                <img src={ node.childImageSharp.sizes.src} />
+              <HeaderThumbnailContainer href={node.field_sponsor_link.uri}>
+                <img src={ node.relationships.field_sponsor_logo.localFile.childImageSharp.sizes.src} alt={node.title} />
               </HeaderThumbnailContainer>
-
           </HeaderSponsor>
-          ))}
+        ))}
       </HeaderSponsors>
     </HeaderSponsorsContainer>
   </HeaderContainer>
