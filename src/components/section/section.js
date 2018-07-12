@@ -7,17 +7,19 @@ import Button from '../button/button'
 import { colors } from '../../colors'
 
 const Section = ({ data }) => {
+  console.log(data.relationships.field_image.localFile);
   return (
     <StyledSection>
       <ThumbnailContainer>
         <StyledThumbnail
-          sizes={{ ...data.childImageSharp.sizes, aspectRatio: 4 / 3 }}
+          sizes={{ ...data.relationships.field_image.localFile.childImageSharp.sizes, aspectRatio: 4 / 3 }}
         />
       </ThumbnailContainer>
       <ContentContainer>
         <Title>{data.title}</Title>
-        <Content>{data.content}</Content>
-        <StyledLink to={data.link.url}>{data.link.title}</StyledLink>
+        <Content
+          dangerouslySetInnerHTML={{ __html:data.body.processed}} />
+        <StyledLink to={data.field_link.uri}>{data.field_link.title}</StyledLink>
       </ContentContainer>
     </StyledSection>
   )

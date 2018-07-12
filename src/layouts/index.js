@@ -79,81 +79,108 @@ export const query = graphql`
       }
     }
 
-    headerSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
+    headerSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"diamond"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 100) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link {uri}
+          relationships {
+            field_sponsor_logo {
+              localFile{childImageSharp{sizes(maxWidth: 100){src}}}
             }
           }
         }
       }
     }
 
-    diamondSponsors: allSponsorsJson(filter: {level: {eq:"Diamond"}}) {
+    diamondSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"diamond"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 250) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link { uri }
+          relationships {
+            field_sponsor_logo {localFile {childImageSharp {sizes(maxWidth: 250) { src }}}
             }
           }
         }
       }
     }
 
-    goldSponsors: allSponsorsJson(filter: {level: {eq:"Gold"}}) {
+    goldSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"gold"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 200) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link { uri }
+          relationships {
+            field_sponsor_logo {
+              localFile {
+                childImageSharp { sizes(maxWidth: 200) { src } }
+              }
             }
           }
         }
       }
     }
-    silverSponsors: allSponsorsJson(filter: {level: {eq:"Silver"}}) {
+    silverSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"silver"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 150) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link { uri }
+          relationships {
+            field_sponsor_logo {
+              localFile {
+                childImageSharp { sizes(maxWidth: 150) { src } }
+              }
             }
           }
         }
       }
     }
-    bronzeSponsors: allSponsorsJson(filter: {level: {eq:"Bronze"}}) {
+    bronzeSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"bronze"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 100) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link { uri }
+          relationships {
+            field_sponsor_logo {
+              localFile {childImageSharp {sizes(maxWidth: 100) {src}}}
             }
           }
         }
       }
     }
-    MediaSponsors: allSponsorsJson(filter: {level: {eq:"Media Sponsor"}}) {
+    MediaSponsors: allNodeSponsors(
+      filter: {field_sponsor_level:{eq:"media"}}
+      sort:{fields:[title] order: ASC}
+    ){
       edges {
         node {
-          name
-          link
-          childImageSharp {
-            sizes(maxWidth: 150) {
-              src
+          title
+          field_sponsor_level
+          field_sponsor_link {uri}
+          relationships {
+            field_sponsor_logo {
+              localFile {childImageSharp {sizes(maxWidth: 150) {src}}}
             }
           }
         }

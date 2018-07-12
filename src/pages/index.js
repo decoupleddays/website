@@ -3,7 +3,7 @@ import React from 'react'
 import Section from '../components/section/section'
 
 const IndexPage = ({ data }) => {
-  const sections = data.allSectionsJson.edges
+  const sections = data.allNodeArticle.edges
 
   return (
     <div className="main">
@@ -23,19 +23,24 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPageQuery {
-    allSectionsJson {
+    allNodeArticle(limit: 2) {
       edges {
         node {
           title
-          content
-          link {
-            url
-            external
+          body { processed }
+          field_link {
             title
+            uri
           }
-          childImageSharp {
-            sizes(maxWidth: 500) {
-              ...GatsbyImageSharpSizes_noBase64
+          relationships {
+            field_image {
+              localFile {
+                childImageSharp {
+                  sizes(maxWidth: 500) {
+                    src
+                  }
+                }
+              }
             }
           }
         }
