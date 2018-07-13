@@ -1,4 +1,5 @@
 import React from 'react';
+import GatsbyLink from 'gatsby-link'
 import styled from 'styled-components';
 
 
@@ -7,10 +8,15 @@ const IndexPage = ({ data }) => {
   return (
     <div className="sessions">
       {sessions.map((session, i) => {
-        const speakers = session.node.relationships.field_speakers;
+        const node = session.node
+        const speakers = node.relationships.field_speakers;
         return (
           <Session key={i}>
-            <SessionTitle>{session.node.title}</SessionTitle>
+            <SessionTitle>
+              <GatsbyLink to={node.path.alias}>
+                {node.title}
+              </GatsbyLink>
+            </SessionTitle>
             <SessionSpeakers>
               {speakers.map((speaker, i) => {
                 return (
@@ -18,9 +24,9 @@ const IndexPage = ({ data }) => {
                 )
               })}
             </SessionSpeakers>
-            <SessionLength>{session.node.field_session_length} minutes</SessionLength>
+            <SessionLength>{node.field_session_length} minutes</SessionLength>
             <SessionBody
-              dangerouslySetInnerHTML={{ __html:session.node.body.processed}}
+              dangerouslySetInnerHTML={{ __html:node.body.processed}}
             />
           </Session>
         )}
@@ -57,6 +63,9 @@ export const query = graphql`
       edges {
         node {
           title
+          path {
+            alias
+          }
           body {
             processed
           }
