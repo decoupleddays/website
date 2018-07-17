@@ -1,0 +1,23 @@
+
+.session--speakers {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px
+}
+.session--speaker {
+  display: flex;
+}
+
+.session--speaker-info {
+  h3 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+  }
+}
+
+.session--speaker-image {
+  margin-right: 5px;
+  img {
+    border-radius: 50px;
+  }
+}
