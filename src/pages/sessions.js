@@ -14,8 +14,8 @@ const SessionsPage = ({ data }) => {
   sessions.sort(function (a, b) {
     if (a.node.time > b.node.time) return 1;
     if (a.node.time < b.node.time) return -1;
-    if (a.node.r.room.sort > b.node.r.room.sort) return 1;
-    if (a.node.r.room.sort < b.node.r.room.sort) return -1;
+    if (a.node.r.room.weight > b.node.r.room.weight) return 1;
+    if (a.node.r.room.weight < b.node.r.room.weight) return -1;
   });
 
   return (
@@ -128,7 +128,7 @@ export const query = graphql`
           r:relationships {
             room: field_room {
               name
-              sort:field_sort_order
+              weight
             }
             speaker:field_speakers {
               title
