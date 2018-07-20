@@ -5,14 +5,30 @@ import Link from '../components/link/link'
 import { notDeepEqual } from 'assert';
 import moment from 'moment'
 
-const IndexPage = ({ data }) => {
-  const sessions = data.allNodeSession.edges
+const SessionsPage = ({ data }) => {
+  const sessions = data.allNodeSession.edges;
+  let dayPrev;
+  let timePrev;
+
+  // Sort sessions by time then by room.
+  sessions.sort(function (a, b) {
+    if (a.node.time > b.node.time) return 1;
+    if (a.node.time < b.node.time) return -1;
+    if (a.node.r.room.sort > b.node.r.room.sort) return 1;
+    if (a.node.r.room.sort < b.node.r.room.sort) return -1;
+  });
+
   return (
     <div className="sessions">
       {sessions.map((session, i) => {
-        const node = session.node
+        const node = session.node;
         const speakers = node.r.speaker;
+        const room = node.r.room.name;
+        const time = moment(node.time).utcOffset(-10).format('h:mm a');
+        const day = moment(node.time).utcOffset(-10).format('dddd, MMMM D');
         let speakerText = '';
+        let output = [];
+
         if (speakers.length) {
           speakerText = speakers.map((speaker, j) => {
             return (
@@ -20,11 +36,17 @@ const IndexPage = ({ data }) => {
             )
           })
         }
-        const room = node.r.room.name
-        const time = moment(node.time).utcOffset(-10).format("HH:mma")
-        return (
-          <Session key={i}>
-            <div>{node.datetime} {time} Room: {room}</div>
+
+        if (day !== dayPrev) {
+          output.push(<Day key={day}>{day}</Day>);
+        }
+
+        if (time !== timePrev || day !== dayPrev) {
+          output.push(<Time key={time}>{time}</Time>);
+        }
+
+        output.push(
+          <Session key={i} className={'session ' + (time !== timePrev ? "first" : '')}>
             <SessionTitle>
               <SessionLink to={node.path.alias}>
                 {node.title}
@@ -33,10 +55,16 @@ const IndexPage = ({ data }) => {
             <SessionSpeakers>
               {speakerText}
             </SessionSpeakers>
+            <SessionRoom>Room: {room}</SessionRoom>
             <SessionLength>{node.field_session_length} minutes</SessionLength>
           </Session>
-        )}
-      )}
+        );
+
+        dayPrev = day;
+        timePrev = time;
+
+        return output;
+      })}
     </div>
   )
 }
@@ -50,7 +78,11 @@ const SessionLink = styled(Link)`
 `
 
 const Session = styled.div`
-  padding-bottom: 5px;
+  padding: 1em 0;
+  border-top: 1px solid #f3f3f3;
+  &.first {
+    border-top: none;
+  }
 `
 const SessionTitle = styled.h2`
   font-size: 1.1em;
@@ -58,18 +90,27 @@ const SessionTitle = styled.h2`
 `
 const SessionSpeakers = styled.div``
 const SessionSpeaker = styled.div``
+const SessionRoom = styled.div`
+  font-size: .8em;
+  font-weight: bold;
+`
 const SessionLength = styled.div`
   font-size: .8em;
-  margin-bottom: .5em;
 `
-const SessionBody = styled.div`
-  padding-bottom: 5px;
-  strong {
-    font-weight: 100 !important;
-  }
+const Day = styled.div`
+  font-size: 2em;
+  text-align: center;
+`
+const Time = styled.div`
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
+  background-color: #f3f3f3;
+  padding: 5px;
+  margin: .5em 0;
 `
 
-export default IndexPage
+export default SessionsPage
 
 export const query = graphql`
   query SessionsPageQuery {
@@ -81,12 +122,13 @@ export const query = graphql`
             alias
           }
           field_session_length
-          datetime:field_time(formatString: "dd")
+          datetime:field_time(formatString: "ddd")
           day:field_time(formatString: "dd")
           time:field_time
           r:relationships {
             room: field_room {
               name
+              sort:field_sort_order
             }
             speaker:field_speakers {
               title
