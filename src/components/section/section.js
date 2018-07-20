@@ -7,7 +7,6 @@ import Button from '../button/button'
 import { colors } from '../../colors'
 
 const Section = ({ data }) => {
-  console.log(data.relationships.field_image.localFile);
   return (
     <StyledSection>
       <ThumbnailContainer>
