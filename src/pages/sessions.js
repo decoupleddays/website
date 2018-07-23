@@ -3,7 +3,8 @@ import GatsbyLink from 'gatsby-link'
 import styled from 'styled-components'
 import Link from '../components/link/link'
 import { notDeepEqual } from 'assert';
-import moment from 'moment'
+import moment from 'moment';
+import 'moment-timezone'
 
 const SessionsPage = ({ data }) => {
   const sessions = data.allNodeSession.edges;
@@ -14,22 +15,28 @@ const SessionsPage = ({ data }) => {
   sessions.sort(function (a, b) {
     if (a.node.time > b.node.time) return 1;
     if (a.node.time < b.node.time) return -1;
-    if (a.node.r.room.weight > b.node.r.room.weight) return 1;
-    if (a.node.r.room.weight < b.node.r.room.weight) return -1;
+    if (a.node.r.room && b.node.r.room) {
+      if (a.node.r.room.weight > b.node.r.room.weight) return 1;
+      if (a.node.r.room.weight < b.node.r.room.weight) return -1;
+    }
   });
 
   return (
     <div className="sessions">
       {sessions.map((session, i) => {
         const node = session.node;
-        const speakers = node.r.speaker;
-        const room = node.r.room.name;
-        const time = moment(node.time).utcOffset(-10).format('h:mm a');
-        const day = moment(node.time).utcOffset(-10).format('dddd, MMMM D');
+        const speakers = node.r.speaker
+        const t = node.time + 'Z'
+        const time = moment.tz(t, 'America/New_York').format('h:mm a');
+        const day = moment.tz(t, 'America/New_York').format('dddd, MMMM D');
         let speakerText = '';
         let output = [];
+        let room = ''
+        if (node.r.room) {
+          room = node.r.room.name
+        }
 
-        if (speakers.length) {
+        if (speakers) {
           speakerText = speakers.map((speaker, j) => {
             return (
               <SessionSpeaker key={j}>{speaker.title}</SessionSpeaker>
@@ -55,8 +62,8 @@ const SessionsPage = ({ data }) => {
             <SessionSpeakers>
               {speakerText}
             </SessionSpeakers>
-            <SessionRoom>Room: {room}</SessionRoom>
-            <SessionLength>{node.field_session_length} minutes</SessionLength>
+            <SessionRoom>{room ? `Room: ${room}` : ''}</SessionRoom>
+            <SessionLength>{node.field_session_length ? `${node.field_session_length} minutes` : ''}</SessionLength>
           </Session>
         );
 
