@@ -28,11 +28,13 @@ const SessionTemplate = ({data}) => {
   return (
     <div className="session">
       <h1 className="session--title">{node.title}</h1>
-      { speakers ? `
-      <h2>Speakers</h2>
-      <div className="session--speakers">
-        ${speakerCode}
-      </div>` : ''}
+      { speakers ?
+      (<div className="session--speakers-container">
+        <h2>Speakers</h2>
+        <div className="session--speakers">
+          {speakerCode}
+        </div>
+      </div>) : ''}
 
       <div>{node.datetime} {time} {room ? `Room: ${room}` : ''}</div>
       <div
