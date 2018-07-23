@@ -1,14 +1,14 @@
 import React from "react"
 import GatsbyLink from 'gatsby-link'
 import moment from 'moment'
-
+import 'moment-timezone'
 import './session.scss'
 
 const SessionTemplate = ({data}) => {
   const node = data.nodeSession
   const speakers = node.r.speakers
-  const room = node.r.room.name
-  const time = moment(node.time).utcOffset(-10).format("HH:mma")
+  const room = (node.r.room) ? node.r.room.name : ''
+  const time = moment.tz(node.time + 'Z', 'America/New_York').format("HH:mma")
   let speakerCode = ''
   if (speakers) {
     speakerCode = speakers.map((speaker, key) => (
@@ -28,15 +28,18 @@ const SessionTemplate = ({data}) => {
   return (
     <div className="session">
       <h1 className="session--title">{node.title}</h1>
-      <h2>Speakers</h2>
-      <div className="session--speakers">
-        { speakerCode }
-      </div>
+      { speakers ?
+      (<div className="session--speakers-container">
+        <h2>Speakers</h2>
+        <div className="session--speakers">
+          {speakerCode}
+        </div>
+      </div>) : ''}
 
-      <div>{node.datetime} {time} Room: {room}</div>
+      <div>{node.datetime} {time} {room ? `Room: ${room}` : ''}</div>
       <div
         className="session-summary"
-        dangerouslySetInnerHTML={{ __html:node.body.processed}}
+        dangerouslySetInnerHTML={{ __html:node.body ? node.body.processed : ''}}
       />
       <GatsbyLink to="/sessions">Back to Sessions</GatsbyLink>
     </div>
