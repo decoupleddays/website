@@ -87,7 +87,7 @@ export const query = graphql`
         node {
           title
           field_sponsor_level
-          field_sponsor_link {uri}
+          link: field_sponsor_link {uri}
           relationships {
             field_sponsor_logo {
               localFile{childImageSharp{sizes(maxWidth: 100){src}}}
@@ -105,7 +105,9 @@ export const query = graphql`
         node {
           title
           field_sponsor_level
-          field_sponsor_link { uri }
+          body { processed }
+          path { alias }
+          link: field_sponsor_link { uri }
           relationships {
             field_sponsor_logo {localFile {childImageSharp {sizes(maxWidth: 250) { src }}}
             }
@@ -121,8 +123,10 @@ export const query = graphql`
       edges {
         node {
           title
+          body { processed }
+          path { alias }
           field_sponsor_level
-          field_sponsor_link { uri }
+          link: field_sponsor_link { uri }
           relationships {
             field_sponsor_logo {
               localFile {
@@ -140,8 +144,10 @@ export const query = graphql`
       edges {
         node {
           title
+          body { processed }
+          path { alias }
           field_sponsor_level
-          field_sponsor_link { uri }
+          link: field_sponsor_link { uri }
           relationships {
             field_sponsor_logo {
               localFile {
@@ -160,7 +166,7 @@ export const query = graphql`
         node {
           title
           field_sponsor_level
-          field_sponsor_link { uri }
+          link: field_sponsor_link { uri }
           relationships {
             field_sponsor_logo {
               localFile {childImageSharp {sizes(maxWidth: 100) {src}}}
@@ -177,7 +183,7 @@ export const query = graphql`
         node {
           title
           field_sponsor_level
-          field_sponsor_link {uri}
+          link: field_sponsor_link {uri}
           relationships {
             field_sponsor_logo {
               localFile {childImageSharp {sizes(maxWidth: 150) {src}}}

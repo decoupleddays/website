@@ -31,13 +31,16 @@ const Header = ({ siteTitle, backgroundImage, sponsors }) => {
     <HeaderSponsorsContainer>
       <div className="label">Diamond sponsors</div>
       <HeaderSponsors>
-        {sponsors.map(({ node }, i) => (
-          <HeaderSponsor key={i}>
-              <HeaderThumbnailContainer href={node.field_sponsor_link.uri}>
-                <img src={ node.relationships.field_sponsor_logo.localFile.childImageSharp.sizes.src} alt={node.title} />
-              </HeaderThumbnailContainer>
-          </HeaderSponsor>
-        ))}
+        {sponsors.map(({ node }, i) => {
+          const uri = node.body ? node.path.alias : node.link.uri
+          return (
+            <HeaderSponsor key={i}>
+                <HeaderThumbnailContainer href={uri}>
+                  <img src={ node.relationships.field_sponsor_logo.localFile.childImageSharp.sizes.src} alt={node.title} />
+                </HeaderThumbnailContainer>
+            </HeaderSponsor>
+          )}
+        )}
       </HeaderSponsors>
     </HeaderSponsorsContainer>
   </HeaderContainer>

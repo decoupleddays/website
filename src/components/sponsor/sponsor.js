@@ -4,9 +4,10 @@ import Link from 'gatsby-link'
 import './sponsor.scss';
 
 const Sponsor = ({sponsor, level}) => {
+  const uri = sponsor.body ? sponsor.path.alias : sponsor.link.uri
   return (
     <div className={`sponsor sponsor--${level.toLowerCase().replace(/ /g,'-')}`}>
-      <a href={sponsor.field_sponsor_link.uri}>
+      <a href={uri}>
         <img src={sponsor.relationships.field_sponsor_logo.localFile.childImageSharp.sizes.src} alt={sponsor.title} />
       </a>
     </div>
