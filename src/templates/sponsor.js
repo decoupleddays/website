@@ -4,7 +4,6 @@ import styled from 'styled-components'
 const SponsorContainer = styled.div`
   display: flex
   align-items: center
-
 `
 const SponsorLogo = styled.div`
   margin-right: 30px

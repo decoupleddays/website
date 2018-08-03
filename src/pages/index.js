@@ -23,7 +23,16 @@ export default IndexPage
 
 export const query = graphql`
   query IndexPageQuery {
-    allNodeArticle(limit: 2) {
+    allNodeArticle(
+      limit: 2
+      filter: {
+        status: { eq: true }
+      }
+      sort:{
+        fields:[changed]
+        order: DESC
+      }
+    ) {
       edges {
         node {
           title
