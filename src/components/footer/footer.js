@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import GoogleMapWrapper from '../google-map/google-map'
 
 import { colors } from '../../colors'
 
@@ -47,13 +46,6 @@ class Footer extends React.Component {
           <SubTitle>John Jay College of Criminal Justice</SubTitle>
           <SubTitle>524 W 59th St, New York, NY 10019</SubTitle>
         </Masthead>
-        <GoogleMapWrapper
-          isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDonIHksW-ojse_U1MgieeLIpkbIbm_MGs&v=3.exp"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
         <InfoContainer>
           <Copywrite>
             <MediaCurrentLogo>
