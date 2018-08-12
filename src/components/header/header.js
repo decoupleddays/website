@@ -59,7 +59,7 @@ const HeaderContainer = styled.div`
 const HeaderHero = styled.div`
   max-width: 960px;
   margin: 0 auto;
-  height: 600px;
+  height: 300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -69,7 +69,7 @@ const HeaderHero = styled.div`
 `
 
 const HeaderTitle = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 1.25px;
 
@@ -81,10 +81,14 @@ const HeaderTitle = styled.h1`
     content: '';
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
   }
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `
 
 const HeaderSubTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: .5rem;
 `
 
 const HeaderSponsorsContainer = styled.div`
@@ -105,13 +109,14 @@ const HeaderSponsorsContainer = styled.div`
 
 const HeaderSponsors = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 `
 
 const HeaderSponsor = styled.div`
-  width: 30%;
+  width: 20%;
   @media (max-width: 768px) {
-    width: 35%;
+    width: 30%;
   }
 `
 
