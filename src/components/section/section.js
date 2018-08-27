@@ -7,6 +7,7 @@ import Button from '../button/button'
 import { colors } from '../../colors'
 
 const Section = ({ data }) => {
+  const link = data.field_link ? <StyledLink to={data.field_link.uri}>{data.field_link.title}</StyledLink> : '';
   return (
     <StyledSection>
       <ThumbnailContainer>
@@ -18,7 +19,7 @@ const Section = ({ data }) => {
         <Title>{data.title}</Title>
         <Content
           dangerouslySetInnerHTML={{ __html:data.body.processed}} />
-        <StyledLink to={data.field_link.uri}>{data.field_link.title}</StyledLink>
+        { link }
       </ContentContainer>
     </StyledSection>
   )
