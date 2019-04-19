@@ -28,16 +28,15 @@ const Layout = (props) => {
             edges {
               node {
                 title
-                field_sponsor_level
                 link: field_sponsor_link {
                   uri
                 }
-                relationships {
-                  field_sponsor_logo {
+                r: relationships {
+                  logo: field_sponsor_logo {
                     localFile {
-                      childImageSharp {
-                        sizes(maxWidth: 100) {
-                          src
+                      cis: childImageSharp {
+                        fluid(maxWidth: 350) {
+                          ...GatsbyImageSharpFluid
                         }
                       }
                     }
@@ -198,10 +197,7 @@ const Layout = (props) => {
           <div>
             <Helmet>
               <title>{data.site.siteMetadata.title}</title>
-              <meta
-                name="description"
-                content="Decoupled Drupal Days"
-              />
+              <meta name="description" content="Decoupled Drupal Days" />
               <meta
                 name="keywords"
                 content="drupal, decoupled, conferences"
@@ -211,11 +207,7 @@ const Layout = (props) => {
                 href="/favicon.ico"
                 type="image/x-icon"
               />
-              <link
-                rel="icon"
-                href="/favicon.ico"
-                type="image/x-icon"
-              />
+              <link rel="icon" href="/favicon.ico" type="image/x-icon" />
             </Helmet>
             <TopBar />
             <Header />
@@ -226,22 +218,10 @@ const Layout = (props) => {
                 level="Diamond"
                 sponsors={data.diamondSponsors.edges}
               />
-              <Sponsors
-                level="Gold"
-                sponsors={data.goldSponsors.edges}
-              />
-              <Sponsors
-                level="Silver"
-                sponsors={data.silverSponsors.edges}
-              />
-              <Sponsors
-                level="Bronze"
-                sponsors={data.bronzeSponsors.edges}
-              />
-              <Sponsors
-                level="Media"
-                sponsors={data.mediaSponsors.edges}
-              />
+              <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
+              <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
+              <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
+              <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
             </section>
             <Footer />
             <FooterCopywrite />

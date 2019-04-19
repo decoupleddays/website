@@ -1,5 +1,7 @@
 import React from 'react'
-import Sponsor from '../Sponsor';
+import PropTypes from 'prop-types'
+
+import Sponsor from '../Sponsor'
 
 import './style.scss'
 
@@ -18,5 +20,7 @@ const Sponsors = (props) => {
     </div>
   )
 }
+
+
 
 export default Sponsors

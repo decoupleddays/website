@@ -7,7 +7,7 @@ import Link from '../Link'
 import './style.scss';
 
 const Section = ({ data }) => {
-  console.log(data)
+
   let image = null;
   if (data.relationships.field_image && data.relationships.field_image.localFile) {
     image = data.relationships.field_image.localFile.childImageSharp.sizes;
