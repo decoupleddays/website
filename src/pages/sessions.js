@@ -1,10 +1,10 @@
 import React from 'react';
-import GatsbyLink from 'gatsby-link'
-import styled from 'styled-components'
-import Link from '../components/link/link'
-import { notDeepEqual } from 'assert';
+import { graphql } from 'gatsby'
 import moment from 'moment';
 import 'moment-timezone'
+
+import Layout from '../components/layout/Layout'
+import Session from '../components/entities/Session'
 
 const SessionsPage = ({ data }) => {
   const sessions = data.allNodeSession.edges;
@@ -19,103 +19,40 @@ const SessionsPage = ({ data }) => {
       if (a.node.r.room.weight > b.node.r.room.weight) return 1;
       if (a.node.r.room.weight < b.node.r.room.weight) return -1;
     }
+    return 0;
   });
 
   return (
-    <div className="sessions">
-      {sessions.map((session, i) => {
-        const node = session.node;
-        const speakers = node.r.speaker
-        const t = node.time + 'Z'
-        const time = moment.tz(t, 'America/New_York').format('h:mm a');
-        const day = moment.tz(t, 'America/New_York').format('dddd, MMMM D');
-        let speakerText = '';
-        let output = [];
-        let room = ''
-        if (node.r.room) {
-          room = node.r.room.name
-        }
+    <Layout>
+      <div className="sessions">
+        {sessions.map((session, i) => {
+          const node = session.node;
+          const t = moment(node.time)
+          const time = t.tz('America/New_York').format('h:mm a');
+          const day = t.tz('America/New_York').format('dddd, MMMM D');
+          let output = [];
+          console.log(session, day);
+          if (day !== dayPrev) {
+            output.push(<div className="sessions-day" key={day}>{day}</div>);
+          }
 
-        if (speakers) {
-          speakerText = speakers.map((speaker, j) => {
-            return (
-              <SessionSpeaker key={j}>{speaker.title}</SessionSpeaker>
-            )
-          })
-        }
+          if (time !== timePrev || day !== dayPrev) {
+            output.push(<div className="sessions--time" key={time}>{time}</div>);
+          }
 
-        if (day !== dayPrev) {
-          output.push(<Day key={day}>{day}</Day>);
-        }
+          output.push(
+            <Session key={i} {...session}/>
+          );
 
-        if (time !== timePrev || day !== dayPrev) {
-          output.push(<Time key={time}>{time}</Time>);
-        }
+          dayPrev = day;
+          timePrev = time;
 
-        output.push(
-          <Session key={i} className={'session ' + (time !== timePrev ? "first" : '')}>
-            <SessionTitle>
-              <SessionLink to={node.path.alias}>
-                {node.title}
-              </SessionLink>
-            </SessionTitle>
-            <SessionSpeakers>
-              {speakerText}
-            </SessionSpeakers>
-            <SessionRoom>{room ? `Room: ${room}` : ''}</SessionRoom>
-            <SessionLength>{node.field_session_length ? `${node.field_session_length} minutes` : ''}</SessionLength>
-          </Session>
-        );
-
-        dayPrev = day;
-        timePrev = time;
-
-        return output;
-      })}
-    </div>
+          return output;
+        })}
+      </div>
+    </Layout>
   )
 }
-
-const SessionLink = styled(Link)`
-  text-decoration: none;
-  color: #0b5394;
-  &:visited {
-    color: #0b5394;
-  }
-`
-
-const Session = styled.div`
-  padding: 1em 0;
-  border-top: 1px solid #f3f3f3;
-  &.first {
-    border-top: none;
-  }
-`
-const SessionTitle = styled.h2`
-  font-size: 1.1em;
-  margin-bottom: .25em;
-`
-const SessionSpeakers = styled.div``
-const SessionSpeaker = styled.div``
-const SessionRoom = styled.div`
-  font-size: .8em;
-  font-weight: bold;
-`
-const SessionLength = styled.div`
-  font-size: .8em;
-`
-const Day = styled.div`
-  font-size: 2em;
-  text-align: center;
-`
-const Time = styled.div`
-  font-size: 1.5em;
-  text-align: center;
-  width: 100%;
-  background-color: #f3f3f3;
-  padding: 5px;
-  margin: .5em 0;
-`
 
 export default SessionsPage
 

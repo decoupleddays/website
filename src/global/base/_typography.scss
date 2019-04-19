@@ -1,0 +1,173 @@
+//////////////////////////////
+// Typography
+// _typography.scss
+//////////////////////////////
+
+body,
+html {
+  font-family: $sans;
+  font-weight: $sans-regular;
+  line-height: 1.5;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+// paragraphs
+p {
+  margin: 0;
+  article & {
+    max-width: $max-width;
+  }
+  + p {
+    margin-top: $space+$space/2;
+  }
+  + h2,
+  + h3,
+  + h4,
+  + h5,
+  + h6 {
+    margin-top: $space+$space/2;
+  }
+  + ul,
+  + ol {
+    margin-top: $space/2;
+  }
+}
+// headings
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $space/3;
+  font-family: $sans;
+  line-height: 1.2;
+
+  article & {
+    max-width: $max-width;
+  }
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+  margin-top: .5em;
+}
+h1,
+%h1 {
+  font-size: 3.4rem;
+
+  font-weight: $sans-bolder;
+  color:$gray-dark;
+  @include breakpoint($large) {
+    font-size: 4rem;
+    max-width: $max-width;
+  }
+}
+h2,
+%h2 {
+  font-size: 2.8rem;
+
+  font-weight: $sans-bold;
+  color:$gray;
+
+  @include breakpoint($large) {
+    font-size: 3.2rem;
+  }
+
+}
+h3,
+%h3 {
+  font-size: 2rem;
+
+  font-weight: $sans-bolder;
+  color:$gray;
+
+  @include breakpoint($large) {
+    font-size: 2.8rem;
+  }
+}
+
+h4,
+%h4 {
+  font-size: 1.6rem;
+
+  font-weight: $sans-bold;
+
+  @include breakpoint($large) {
+    font-size: 2rem;
+  }
+}
+h5 {
+  font-size: 1.4rem;
+  font-weight: $sans-regular;
+
+  @include breakpoint($large) {
+    font-size: 1.6rem;
+  }
+}
+h6 {
+  font-size: 1.4rem;
+
+  font-weight: $sans-regular;
+
+  @include breakpoint($large) {
+    font-size: 1.6rem;
+  }
+}
+
+// emphasis styles
+strong {
+  font-weight: $sans-bold;
+}
+em {
+  font-style: italic;
+}
+
+// form elements
+
+label {
+  font-size: 1.8rem;
+  font-family: $sans;
+}
+input,
+textarea {
+  font-size: 1.8rem;
+  font-family: $sans;
+}
+
+table {
+  font-family: $sans;
+}
+
+// figure
+figcaption {
+  line-height: 1.5;
+  vertical-align: middle;
+  cite {
+    font-size: 1.5rem;
+  }
+  span {
+    font-size: 1.5rem;
+    vertical-align: middle;
+  }
+}
+
+// quotes
+blockquote {
+  font-size: 1.8rem;
+
+  @include breakpoint($large) {
+    font-size: 2.4rem;
+  }
+}
+
+// lists
+ul,
+ol {
+  font-family: $sans;
+}

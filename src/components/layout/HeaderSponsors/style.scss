@@ -1,0 +1,61 @@
+@import 'src/global/utils/init';
+// Header sponsors
+.header--sponsor-wrap {
+  padding: 0;
+}
+
+.header--sponsors {
+  background-color: $blue-muted-lightest;
+  padding: $space;
+  margin-bottom: $space*2;
+
+  h3 {
+    color: $blue-muted;
+  }
+
+  .sponsor--item {
+    flex-basis: 50%;
+
+    @include breakpoint($medium) {
+      flex-basis: 33.333%;
+    }
+
+    @include breakpoint($large) {
+      padding: $space/2;
+    }
+  }
+
+  &:before {
+    display: block;
+    position: absolute;
+    content: "";
+    background-color: $blue-muted-lighter;
+    width: 86.5%;
+    height: 100%;
+    left: 2rem;
+    top: -1rem;
+    z-index: -1;
+
+    @include breakpoint($large) {
+      width: 100%;
+      left: -1rem;
+    }
+  }
+
+  &:after {
+    display: block;
+    position: absolute;
+    content: "";
+    background-color: $blue-muted-light;
+    width: 86.5%;
+    height: 100%;
+    right: 2rem;
+    bottom: -1rem;
+    z-index: -1;
+
+    @include breakpoint($large) {
+      width: 100%;
+      right: -1rem;
+    }
+  }
+}

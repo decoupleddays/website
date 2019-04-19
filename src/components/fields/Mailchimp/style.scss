@@ -1,0 +1,54 @@
+@import 'src/global/utils/colors';
+.custom-modal {
+  border-radius: 5px;
+  padding: 1rem;
+  max-width: 100%;
+}
+
+.mailchimp--form-container {
+  border-radius: 2px;
+  padding: 10px;
+  padding-bottom: 0;
+  .status {
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 2px solid;
+  }
+
+  .status--sending {
+    color: $blue;
+    background-color: $blue-muted;
+  }
+
+  .status--error {
+    border-color: $red;
+    color: $red;
+    background-color: $blue-muted;
+  }
+
+  .status--success {
+    color: $gray;
+    background-color: $blue-muted;
+  }
+}
+.mailchimp--logo-container {
+  text-align: center;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.input--container {
+  display: flex;
+  flex-direction: column;
+}
+.submit-button--container {
+  text-align: right;
+  .button {
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+}

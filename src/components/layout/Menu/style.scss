@@ -1,0 +1,126 @@
+@import 'src/global/utils/init';
+
+.main-menu {
+  width: 100%;
+
+  @include breakpoint($large) {
+    width: auto;
+    margin-top: $space/2;
+  }
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-flow: row wrap;
+    flex: 1 auto;
+  }
+
+  li {
+    flex: 0 auto;
+    width: 100%;
+    list-style-type: none;
+
+    +li {
+      margin-top: $space/2;
+    }
+
+    @include breakpoint($large) {
+      width: auto;
+
+      +li {
+        margin-left: $space;
+        margin-top: 0;
+      }
+    }
+
+    a {
+      flex: 1 auto;
+    }
+  }
+
+  a {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: $sans-regular;
+    color: $black;
+    text-align: center;
+    border-bottom: $border-width solid transparent;
+
+    @include breakpoint($large) {
+      font-size: 1.8rem;
+      font-weight: $sans-bold;
+    }
+
+    &:hover {
+      color: $link-highlight;
+      text-decoration: none;
+    }
+
+    &.active {
+      border-color: $blue;
+    }
+  }
+}
+
+
+// menu-toggle
+.main-menu-toggle {
+  display: flex;
+  flex-flow: row wrap;
+  cursor: pointer;
+  text-decoration: none;
+
+  @include breakpoint($large) {
+    display: none;
+  }
+
+  a {
+    display: block;
+    cursor: pointer;
+  }
+
+  svg {
+    flex: 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+
+  .open,
+  .close {
+    display: flex;
+    flex-flow: column wrap;
+    flex: 1 auto;
+    font-size: 1.6rem;
+    align-items: center;
+
+    @include breakpoint($medium) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      font-size: 2.8rem;
+    }
+  }
+
+  .close {
+    display: none;
+  }
+
+  .open svg {
+    fill: $link;
+  }
+
+  .close svg {
+    fill: $link;
+  }
+
+  &.active {
+    .open {
+      display: none;
+    }
+
+    .close {
+      display: flex;
+      fill: $link-highlight;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@import 'src/global/utils/init';
+
+footer {
+  display: flex;
+  margin-top: $space*2;
+  padding: $space*2 0;
+  background-color: $gray-lightest;
+  color: $gray;
+
+  .container {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    padding: 0 $space;
+
+    @include breakpoint($medium) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+  }
+  .brand {
+    display: flex;
+    flex: 1 auto;
+    @include breakpoint($large) {
+      max-width:40%;
+    }
+  }
+  .info-block {
+    flex: 1 auto;
+    margin-top: $space;
+    p {
+      line-height: 1.5;
+    }
+    @include breakpoint($large) {
+      margin-top: 0;
+      padding: 0 $space;
+      max-width: 40%;
+    }
+  }
+  .social {
+    display: flex;
+    flex: 1 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: $space;
+
+    @include breakpoint($large) {
+      max-width: 20%;
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+
+    li {
+      display: flex;
+      @include breakpoint($medium) {
+        + li {
+          margin-left: $space/2;
+        }
+      }
+    }
+    a {
+      display: block;
+      cursor: pointer;
+      text-decoration: none;
+
+      svg {
+        fill: $link;
+      }
+      &:hover{
+        svg {
+          fill: $link-highlight;
+        }
+      }
+    }
+    svg {
+      flex: 0 auto;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.copyright {
+  display:flex;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: $gray-lighter;
+  padding: $space/2 0;
+  .container {
+    width: 100%;
+  }
+}

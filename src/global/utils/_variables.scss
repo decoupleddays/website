@@ -1,0 +1,99 @@
+//=======================================================
+// Variables
+//=======================================================
+
+$zi-highest: 50;
+$zi-high: 40;
+$zi-medium: 30;
+$zi-low: 20;
+$zi-lowest: 10;
+$zi-ground: 0;
+$zi-below-ground: -1;
+
+//////////////////////////////
+// Variables
+// @_variables.scss
+//////////////////////////////
+
+/////////
+// Type
+
+$sans: 'Open Sans',
+sans-serif;
+
+$sans-regular: 600;
+$sans-bold: 700;
+$sans-bolder: 800;
+
+/////////
+// Colors
+
+// Primary
+
+$blue: #0075BE;
+$blue-dark: #00588E;
+
+$blue-muted: #68899C;
+$blue-muted-light: #8EA5B5;
+$blue-muted-lighter: #B6C4CE;
+$blue-muted-lightest: #D9E0E8;
+
+// Grays and Neutrals
+$gray: #4A4A4A;
+$gray-light: #CCCCCC;
+$gray-lighter: #E0E0E0;
+$gray-lightest: #F1F1F1;
+$gray-mid: #8E8E8E;
+$gray-dark: #333333;
+
+$white: #FFFFFF;
+$black: #000;
+
+
+$link: $blue-dark;
+$link-highlight: $blue;
+
+// Defaults for asseccibility contrast
+$dark-text-default: $black !default;
+$light-text-default: #FFFFFF !default;
+
+/////////
+// Singularity variables
+//
+@include breakpoint-set('to ems', true);
+@include add-grid(16);
+@include add-gutter(1/1);
+
+
+/// Widths and base sizing
+$base-font-size: 62.5%; // setup to work with rems
+$border-width: 6px;
+
+$max-width: 660px;
+$max-width-image-paragraph: 860px;
+
+$teaser-width: 350px;
+$callout-width: 400px;
+
+$grid-width: 1280px;
+
+/////////
+// Spacing
+//
+$space: 30px;
+
+
+/////////
+// Breakpoints
+//
+
+$small:380px;
+$small-medium:560px;
+$medium:768px;
+$medium-large:855px;
+$large:1024px;
+$x-large:1280px;
+
+$small-menu:0px;
+
+$below-medium: max-width 767px;

@@ -1,0 +1,14 @@
+// Body
+//
+// This is the body component. It's an example.
+//
+// Markup: body.twig
+//
+// Style guide: Components.Body
+
+// Import site utilities.
+@import '../../global/utils/init';
+
+.body-text {
+  line-height: 1.625;
+}

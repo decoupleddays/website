@@ -1,0 +1,113 @@
+@import 'src/global/utils/init';
+header {
+  padding: 30px;
+  color: #8E8E8E;
+}
+
+@media (min-width: 64em) {
+  header {
+    overflow: hidden;
+    padding-bottom: 210px;
+    padding-top: 0;
+  }
+}
+
+header .container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0;
+}
+
+@media (min-width: 64em) {
+  header .container {
+    padding: 30px;
+  }
+}
+
+header .main-menu {
+  display: none;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-top: 15px;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+}
+
+header .main-menu.active {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 64em) {
+  header .main-menu {
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.logo-wrap {
+  -ms-flex: 0 1 150px;
+  flex: 0 1 150px;
+}
+
+@media (min-width: 64em) {
+  .logo-wrap {
+    -ms-flex: 0 1 300px;
+    flex: 0 1 300px;
+  }
+}
+
+a.logo {
+  width: 100%;
+}
+
+.header--bg-image {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+@media (min-width: 64em) {
+  .header--bg-image {
+    display: block;
+  }
+}
+
+.header--bg-image img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 0 50%;
+  object-position: 0 50%;
+  width: 100%;
+}
+
+.logo-wrap {
+  display: block;
+}
+
+.logo-wrap .logo {
+  margin: 0;
+  padding: 0;
+  text-indent: -1000px;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: 35.42234%;
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.logo-wrap .logo.dd2019 {
+  background-image: url("img/decoupled-days-logo.svg");
+}

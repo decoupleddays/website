@@ -1,0 +1,9 @@
+@import 'src/global/utils/init';
+
+.heading--link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

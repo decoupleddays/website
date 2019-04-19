@@ -1,16 +1,23 @@
+require("dotenv").config({
+  path: `.env`
+});
+
 module.exports = {
   siteMetadata: {
-    title: 'Decoupled Days 2018',
+    title: 'Decoupled Days 2019',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: ['node_modules', 'src/global'],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-next`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,15 +33,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-drupal-modified`,
+      resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `http://dev-ddd-test.pantheonsite.io/`,
-        apiBase: `jsonapi`,
-        basicAuth: {
-          htaccess_user: '',
-          htaccess_pass: ''
-        }
+        baseUrl: process.env.BASE_URL,
       },
-    }
+    },
+    'gatsby-source-decoupleddays',
   ],
 }
