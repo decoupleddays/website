@@ -9,7 +9,7 @@ const Body = (props) => {
   return(
   <div className={classes}>
     {(props.text) && Parser(props.text)}
-    {!props.text && props.children}
+    {!props.text && Parser(props.children)}
   </div>
 )};
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
+import Parser from 'html-react-parser'
 import classNames from 'classnames'
 
 import Link from '../Link'
@@ -28,10 +29,14 @@ const Section = ({ data }) => {
       )}
       <div className="section__container">
         <h2>{data.title}</h2>
-        <div
-          className="section__content"
-          dangerouslySetInnerHTML={{ __html:data.body.processed}} />
-        {data.field_link && <Link className="section__link" to={data.field_link.uri}>{data.field_link.title}></Link> }
+        <div className="section__content">
+          {Parser(data.body.processed)}
+        </div>
+        {data.field_link && (
+          <Link className="section__link" to={data.field_link.uri}>
+            {data.field_link.title}
+          </Link>
+        )}
       </div>
     </div>
   )

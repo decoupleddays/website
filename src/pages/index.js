@@ -9,33 +9,33 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <div className="main">
-        <h2>
-          Decoupled Drupal Days gathers technologists, marketers and content
-          professionals who build and use Drupal as a Content Service -- for
-          decoupled front ends, content APIs, IoT, and more.
-        </h2>
-        <div className="about">
-          <p>
-            In its second year after a successful debut in 2017, Decoupled
-            Drupal Days (D3) is a conference for architects, developers, and
-            businesspeople involved in implementing decoupled Drupal
-            architectures. The 2018 edition is scheduled for August 17–19,
-            2017 in New York City.
-          </p>
-          <p>
-            Decoupled Drupal is the use of Drupal as a content service for
-            other non-Drupal applications, whether they are in native desktop
-            or mobile, universal JavaScript, set-top boxes, IoT devices,
-            conversational interfaces, or other technologies.
-          </p>
-        </div>
-        <div>
-          {sections.map((section, i) => (
-            <Section data={section.node} key={i} />
-          ))}
-        </div>
-      </div>
+      <section>
+        <article class="typography">
+          <div class="container">
+            <p><em>example home page content</em></p>
+            <h2>The only conference on the future of CMS, headlessCMS, and decoupledCMS.</h2>
+            <h4>July 17–18, 2019 / New York City / John Jay</h4>
+
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed lectus
+            vestibulum mattis ullamcorper velit. Quisque id diam vel quam elementum pulvinar
+            etiam. Et netus et malesuada fames. Aliquam etiam erat velit scelerisque in dictum
+            non consectetur. Neque convallis a cras semper auctor neque vitae tempus. Dolor
+            morbi non arcu risus quis. In metus vulputate eu scelerisque. In nisl nisi scelerisque
+            eu. Et tortor consequat id porta. Egestas pretium aenean pharetra magna ac placerat
+            vestibulum. Donec adipiscing tristique risus nec feugiat in fermentum posuere.
+            Congue nisi vitae suscipit tellus. Ornare suspendisse sed nisi lacus sed viverra tellus.
+            </p>
+            <h4>Thank you to all our sponsors!</h4>
+          </div>
+        </article>
+      </section>
+      <section>
+        {sections.map((section, i) => (
+          <Section data={section.node} key={i} />
+        ))}
+      </section>
     </Layout>
   )
 }

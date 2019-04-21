@@ -21,10 +21,10 @@ const Menu = (props) => (
     </a>
     <nav class="main-menu">
       <ul class="menu">
-        <li><a class="active" href="#">Sessions</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Venue</a></li>
-        <li><a href="#">Volunteer</a></li>
+        {/* <li><Link class="active" href="#">Sessions</Link></li> */}
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/venue">Venue</Link></li>
+        <li><Link to="/volunteer">Volunteer</Link></li>
       </ul>
     </nav>
   </>
