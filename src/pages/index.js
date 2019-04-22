@@ -12,7 +12,6 @@ const IndexPage = ({ data }) => {
       <section>
         <article class="typography">
           <div class="container">
-            <p><em>example home page content</em></p>
             <h2>The only conference on the future of CMS, headlessCMS, and decoupledCMS.</h2>
             <h4>July 17–18, 2019 / New York City / John Jay</h4>
 
