@@ -1,11 +1,10 @@
 import React from 'react'
 
-import logo from '../../../../images/logo.svg'
 import MailChimpSubscribeModal from '../../fields/Mailchimp'
 
 import { FaTwitter, FaEnvelope, FaBullhorn } from 'react-icons/fa'
 
-import './style.scss';
+import './style.scss'
 
 class Footer extends React.Component {
   constructor(props) {
@@ -48,9 +47,13 @@ class Footer extends React.Component {
           </div>
           <div class="info-block">
             <div class="bottom--date">
-                <p><strong>July 17th-18 / New York City</strong>
-                <br/>John Jay College of Criminal Justice<br/>
-                524 W 59th St, New York, NY 10019</p>
+              <p>
+                <strong>July 17th-18 / New York City</strong>
+                <br />
+                John Jay College of Criminal Justice
+                <br />
+                524 W 59th St, New York, NY 10019
+              </p>
             </div>
           </div>
           <ul class="social">

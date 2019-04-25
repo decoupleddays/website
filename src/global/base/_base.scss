@@ -2,6 +2,7 @@
 @import 'typography';
 
 @media (min-width: 64em) {
+
   .wrapper,
   .container {
     margin: 0 auto;
@@ -25,4 +26,56 @@
 
 .centered {
   text-align: center;
+}
+
+a,
+a:link {
+  color: $link;
+  text-decoration: none;
+  transition: all 0.15s;
+
+  &:visited {
+    color: mix(black, $link, 10%);
+  }
+
+  &:hover {
+    color: mix(black, $link, 60%);
+    text-decoration: underline;
+  }
+}
+
+//////////////////////////////
+// button
+// @_button.scss
+//////////////////////////////
+
+input[type=submit],
+a.button,
+a.button:link,
+a.button:visited {
+  font-size: 1.6rem;
+  padding: $space/2 $space*2;
+  border-radius: $border-width;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+  font-weight: 700;
+  text-align: center;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  &.primary {
+    background-color: $blue;
+    color: $white;
+  }
+
+  &.secondary {
+    background-color: $white;
+    color: $blue;
+    border: 1px solid $blue;
+    box-shadow: 0 0 5px (rgba($color: #000000, $alpha: 0.3))
+  }
 }

@@ -15,6 +15,7 @@
     flex-direction: column;
     border-bottom: none;
   }
+
 }
 
 .section__thumbnail-container {
@@ -24,6 +25,7 @@
   @media (max-width: 768px) {
     width: 100%;
   }
+
   img {
     border-radius: 5%;
   }
@@ -49,7 +51,8 @@
   margin-bottom: 1rem;
 }
 
-.section__link {
+a.section__link,
+.section__link:visited {
   border-radius: 3px;
   padding: 0.5em 1em;
   background: $blue;
