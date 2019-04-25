@@ -1,9 +1,12 @@
 @import 'src/global/utils/init';
+
 .top-bar {
   display: block;
   background-color: $blue;
   color: $white;
+  padding: 15px;
 }
+
 .top-bar--inner {
   display: flex;
   flex-flow: column wrap;
@@ -14,10 +17,12 @@
   @include breakpoint($medium) {
     flex-flow: row wrap;
   }
+
   @include breakpoint($x-large) {
     padding: $space/3 0;
   }
 }
+
 .top-bar--date {
   margin-bottom: $space;
   flex: 1 auto;
@@ -26,16 +31,20 @@
     display: block;
     font-size: 1.8rem;
   }
+
   @include breakpoint($medium) {
     margin-bottom: 0;
     flex: 0 auto;
   }
 }
+
 .top-bar--register {
-  flex:1 auto;
+  flex: 1 auto;
+
   @include breakpoint($medium) {
     flex: 0 auto;
   }
+
   a {
     display: block;
   }
