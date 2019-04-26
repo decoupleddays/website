@@ -13,20 +13,12 @@ const IndexPage = ({ data }) => {
         <article class="typography">
           <div class="container">
             <h2>The only conference on the future of CMS, headlessCMS, and decoupledCMS.</h2>
-            <h4>July 17–18, 2019 / New York City / John Jay</h4>
-
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed lectus
-            vestibulum mattis ullamcorper velit. Quisque id diam vel quam elementum pulvinar
-            etiam. Et netus et malesuada fames. Aliquam etiam erat velit scelerisque in dictum
-            non consectetur. Neque convallis a cras semper auctor neque vitae tempus. Dolor
-            morbi non arcu risus quis. In metus vulputate eu scelerisque. In nisl nisi scelerisque
-            eu. Et tortor consequat id porta. Egestas pretium aenean pharetra magna ac placerat
-            vestibulum. Donec adipiscing tristique risus nec feugiat in fermentum posuere.
-            Congue nisi vitae suscipit tellus. Ornare suspendisse sed nisi lacus sed viverra tellus.
+              In its third year after a successful debut in 2017, <strong>Decoupled Day</strong> is a conference for architects, developers, and businesspeople involved in implementing decoupled CMS architectures. The 2019 edition is scheduled for <strong>July 17–18, 2019</strong> in <strong>New York City</strong>.
             </p>
-            <h4>Thank you to all our sponsors!</h4>
+            <p>
+              Decoupled architectures use a CMS (Drupal, WordPress, etc) as a content service for other non-CMS applications, whether they are in native desktop or mobile, universal JavaScript, set-top boxes, IoT devices, conversational interfaces, or other technologies.
+            </p>
           </div>
         </article>
       </section>
