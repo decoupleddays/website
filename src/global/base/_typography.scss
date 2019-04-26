@@ -25,7 +25,7 @@ p {
     max-width: $max-width;
   }
   + p {
-    margin-top: $space+$space/2;
+    margin: $space/2 0;
   }
   + h2,
   + h3,
@@ -41,7 +41,7 @@ p {
 }
 // headings
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 $space/3;
+  margin: $space 0;
   font-family: $sans;
   line-height: 1.2;
 
