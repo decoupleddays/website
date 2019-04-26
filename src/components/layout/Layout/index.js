@@ -11,7 +11,7 @@ import FooterCopywrite from '../FooterCopywrite'
 
 import './style.scss'
 
-const Layout = (props) => {
+const Layout = props => {
   return (
     <StaticQuery
       query={graphql`
@@ -197,10 +197,10 @@ const Layout = (props) => {
           <div>
             <Helmet>
               <title>{data.site.siteMetadata.title}</title>
-              <meta name="description" content="Decoupled Drupal Days" />
+              <meta name="description" content="Decoupled Days" />
               <meta
                 name="keywords"
-                content="drupal, decoupled, conferences"
+                content="decoupled, conferences, javascript, jamstack"
               />
               <link
                 rel="shortcut icon"
@@ -214,10 +214,7 @@ const Layout = (props) => {
             <HeaderSponsors sponsors={data.headerSponsors.edges} />
             <section className="wrapper">{props.children}</section>
             <section className="footer-sponsors wrapper">
-              <Sponsors
-                level="Diamond"
-                sponsors={data.diamondSponsors.edges}
-              />
+              <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
               <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
               <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
               <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
@@ -229,6 +226,7 @@ const Layout = (props) => {
         )
       }}
     />
-  )}
+  )
+}
 
 export default Layout

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Modal from 'react-responsive-modal'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
-import Button from '../../fields/Button';
+import Button from '../../fields/Button'
 
 import { Logo, Brand } from '../../layout/Nav'
 
@@ -11,12 +11,11 @@ import './style.scss'
 
 // // use the render prop and your custom form
 const CustomForm = ({ status, message, onValidated }) => {
-
   let email, name
   name = null
   const submit = () => {
     if (name) {
-      return true;
+      return true
     }
     if (
       email &&
@@ -39,9 +38,16 @@ const CustomForm = ({ status, message, onValidated }) => {
         <Logo src={logo} alt="" />
         <Brand>Decoupled Drupal - Newsletter</Brand>
       </div>
-      {status === 'sending' && <div className="status status--sending">Sending...</div>}
-      {status === 'error' && <div className="status status--error">{message}</div>}
-      {status === 'success' && <div className="status status--success">{message}</div>}
+      <div>Subscribe to our Newsletter</div>
+      {status === 'sending' && (
+        <div className="status status--sending">Sending...</div>
+      )}
+      {status === 'error' && (
+        <div className="status status--error">{message}</div>
+      )}
+      {status === 'success' && (
+        <div className="status status--success">{message}</div>
+      )}
       <div className="input--container">
         <input
           style={{
@@ -76,19 +82,20 @@ const CustomForm = ({ status, message, onValidated }) => {
 const MailChimpSubscribeModal = props => {
   const url =
     '//mc.us16.list-manage.com/subscribe/post?u=8f86f6d23b5155add11d536e5&id=58abd481c4'
-  return(
-  <Modal {...props} classNames={{ modal: 'custom-modal' }} center>
-    <MailchimpSubscribe
-      url={url}
-      render={({ subscribe, status, message }) => (
-        <CustomForm
-          status={status}
-          message={message}
-          onValidated={formData => subscribe(formData)}
-        />
-      )}
-    />
-  </Modal>
-)}
+  return (
+    <Modal {...props} classNames={{ modal: 'custom-modal' }} center>
+      <MailchimpSubscribe
+        url={url}
+        render={({ subscribe, status, message }) => (
+          <CustomForm
+            status={status}
+            message={message}
+            onValidated={formData => subscribe(formData)}
+          />
+        )}
+      />
+    </Modal>
+  )
+}
 
 export default MailChimpSubscribeModal
