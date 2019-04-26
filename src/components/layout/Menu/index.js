@@ -16,24 +16,30 @@ const Menu = props => {
   }
   return (
     <>
-      <a onClick={clickHandle} class={`main-menu-toggle ${active}`}>
-        <span class="open">
+      <button onClick={clickHandle} className={`main-menu-toggle ${active}`}>
+        <span className="open">
           <FaBars />
-          <span class="menu text">Menu</span>
+          <span className="menu text">Menu</span>
         </span>
-        <span class="close">
+        <span className="close">
           <FaTimes />
-          <span class="menu text">Close</span>
+          <span className="menu text">Close</span>
         </span>
-      </a>
-      <nav class={`main-menu ${active}`}>
-        <ul class="menu">
-          {/* <li><Link class="active" href="#">Sessions</Link></li> */}
+      </button>
+      <nav className={`main-menu ${active}`}>
+        <ul className="menu">
+          {/* <li><Link className="active" href="#">Sessions</Link></li> */}
           <li>
             <Link to="/about">About</Link>
           </li>
           <li>
             <Link to="/venue">Venue</Link>
+          </li>
+          <li>
+            <Link to="/diversity-inclusion">Diversity And Inclusion</Link>
+          </li>
+          <li>
+            <Link to="/code-of-conduct">Code of conduct</Link>
           </li>
           <li>
             <Link to="/volunteer">Volunteer</Link>

@@ -1,7 +1,17 @@
 @import 'src/global/utils/init';
+
 header {
   padding: 30px;
   color: #8E8E8E;
+
+  button {
+    background-color: transparent;
+    border: none;
+
+    svg {
+      fill: $link;
+    }
+  }
 }
 
 @media (min-width: 64em) {
