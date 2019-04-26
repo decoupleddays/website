@@ -36,10 +36,10 @@ const Menu = props => {
             <Link to="/venue">Venue</Link>
           </li>
           <li>
-            <Link to="/diversity-inclusion">Diversity And Inclusion</Link>
+            <Link to="/diversity-inclusion">Diversity and Inclusion</Link>
           </li>
           <li>
-            <Link to="/code-of-conduct">Code of conduct</Link>
+            <Link to="/code-of-conduct">Code of Conduct</Link>
           </li>
           <li>
             <Link to="/volunteer">Volunteer</Link>
