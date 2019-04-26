@@ -72,7 +72,7 @@
   text-decoration: none;
   color: $link;
 
-  @include breakpoint($large) {
+  @include breakpoint(70em) {
     display: none;
   }
 
