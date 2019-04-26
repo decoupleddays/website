@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import MailChimpSubscribeModal from '../../fields/Mailchimp'
 
@@ -6,77 +6,59 @@ import { FaTwitter, FaEnvelope, FaBullhorn } from 'react-icons/fa'
 
 import './style.scss'
 
-class Footer extends React.Component {
-  constructor(props) {
-    super(props)
+const Footer = () => {
+  const [open, setOpen] = useState(false)
 
-    this.state = {
-      modalOpen: false,
-    }
-
-    this.clickIcon = this.clickIcon.bind(this)
-    this.onCloseModal = this.onCloseModal.bind(this)
-  }
-
-  clickIcon(e) {
-    if (e.currentTarget.dataset.socialType !== 'subscribe') return
+  const clickIcon = e => {
     e.preventDefault()
-    this.openModal()
+    setOpen(true)
+    console.log(open)
   }
 
-  openModal() {
-    this.setState({
-      modalOpen: true,
-    })
+  const onCloseModal = () => {
+    setOpen(false)
   }
 
-  onCloseModal() {
-    this.setState({ modalOpen: false })
-  }
-
-  render() {
-    const { icons } = this.props
-
-    return (
-      <footer id="footer">
-        <div class="container">
-          <div class="brand">
-            <a class="logo-wrap" href="#top">
-              <h1 class="logo dd2019">Decoupled Days 2019</h1>
-            </a>
-          </div>
-          <div class="info-block">
-            <div class="bottom--date">
-              <p>
-                <strong>July 17th-18 / New York City</strong>
-                <br />
-                John Jay College of Criminal Justice
-                <br />
-                524 W 59th St, New York, NY 10019
-              </p>
-            </div>
-          </div>
-          <ul class="social">
-            <li>
-              <a class="twitter" href="https://twitter.com/decoupleddays">
-                <FaTwitter />
-              </a>
-            </li>
-            <li>
-              <a class="email" href="mailto:decoupleddays@gmail.com">
-                <FaEnvelope />
-              </a>
-            </li>
-            <li>
-              <a class="newsletter" href="#">
-                <FaBullhorn />
-              </a>
-            </li>
-          </ul>
+  return (
+    <footer id="footer">
+      <div className="container">
+        <div className="brand">
+          <a className="logo-wrap" href="#top">
+            <h1 className="logo dd2019">Decoupled Days 2019</h1>
+          </a>
         </div>
-      </footer>
-    )
-  }
+        <div className="info-block">
+          <div className="bottom--date">
+            <p>
+              <strong>July 17th-18 / New York City</strong>
+              <br />
+              John Jay College of Criminal Justice
+              <br />
+              524 W 59th St, New York, NY 10019
+            </p>
+          </div>
+        </div>
+        <ul className="social">
+          <li>
+            <a className="twitter" href="https://twitter.com/decoupleddays">
+              <FaTwitter />
+            </a>
+          </li>
+          <li>
+            <a className="email" href="mailto:decoupleddays@gmail.com">
+              <FaEnvelope />
+            </a>
+          </li>
+          <li>
+            <button onClick={clickIcon} className="newsletter">
+              <FaBullhorn />
+            </button>
+          </li>
+        </ul>
+      </div>
+      <MailChimpSubscribeModal open={open} onClose={onCloseModal} />
+    </footer>
+  )
 }
 
 export default Footer

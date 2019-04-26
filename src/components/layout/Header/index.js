@@ -6,12 +6,12 @@ import './style.scss'
 const Header = () => {
   return (
     <header id="header">
-      <div class="container">
-        <div class="header--bg-image">
-          <img src="/img/images/sliver-image.png" />
+      <div className="container">
+        <div className="header--bg-image">
+          <img src="/img/images/sliver-image.png" alt="NYC view" />
         </div>
-        <a class="logo-wrap" href="/">
-          <h1 id="logo" class="logo dd2019">
+        <a className="logo-wrap" href="/">
+          <h1 id="logo" className="logo dd2019">
             Decoupled Days 2019
           </h1>
         </a>

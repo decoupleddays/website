@@ -18,25 +18,31 @@ footer {
       justify-content: space-between;
     }
   }
+
   .brand {
     display: flex;
     flex: 1 auto;
+
     @include breakpoint($large) {
-      max-width:40%;
+      max-width: 40%;
     }
   }
+
   .info-block {
     flex: 1 auto;
     margin-top: $space;
+
     p {
       line-height: 1.5;
     }
+
     @include breakpoint($large) {
       margin-top: 0;
       padding: 0 $space;
       max-width: 40%;
     }
   }
+
   .social {
     display: flex;
     flex: 1 auto;
@@ -53,13 +59,16 @@ footer {
 
     li {
       display: flex;
+
       @include breakpoint($medium) {
-        + li {
+        +li {
           margin-left: $space/2;
         }
       }
     }
-    a {
+
+    a,
+    button {
       display: block;
       cursor: pointer;
       text-decoration: none;
@@ -67,12 +76,19 @@ footer {
       svg {
         fill: $link;
       }
-      &:hover{
+
+      &:hover {
         svg {
           fill: $link-highlight;
         }
       }
     }
+
+    button {
+      background-color: transparent;
+      border: none;
+    }
+
     svg {
       flex: 0 auto;
       width: 32px;
@@ -82,11 +98,12 @@ footer {
 }
 
 .copyright {
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   width: 100%;
   background-color: $gray-lighter;
   padding: $space/2 0;
+
   .container {
     width: 100%;
   }

@@ -70,6 +70,7 @@
   flex-flow: row wrap;
   cursor: pointer;
   text-decoration: none;
+  color: $link;
 
   @include breakpoint($large) {
     display: none;

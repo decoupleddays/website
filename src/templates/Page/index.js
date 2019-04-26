@@ -10,7 +10,9 @@ const PageTemplate = ({ data }) => {
   const { title, body } = data.nodePage
   return (
     <Layout>
-      <Heading level={1}>{title}</Heading>
+      <Heading classes="container" level={1}>
+        {title}
+      </Heading>
       <Body classes="container">{body.processed}</Body>
     </Layout>
   )
