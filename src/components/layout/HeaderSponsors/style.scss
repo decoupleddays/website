@@ -2,6 +2,12 @@
 // Header sponsors
 .header--sponsor-wrap {
   padding: 0;
+
+  @include breakpoint($large) {
+    .container {
+      padding: 0;
+    }
+  }
 }
 
 .header--sponsors {
@@ -27,40 +33,6 @@
 
     @include breakpoint($large) {
       padding: $space/2;
-    }
-  }
-
-  &:before {
-    display: block;
-    position: absolute;
-    content: "";
-    background-color: $blue-muted-lighter;
-    width: 86.5%;
-    height: 100%;
-    left: 2rem;
-    top: -1rem;
-    z-index: -1;
-
-    @include breakpoint($large) {
-      width: 100%;
-      left: -1rem;
-    }
-  }
-
-  &:after {
-    display: block;
-    position: absolute;
-    content: "";
-    background-color: $blue-muted-light;
-    width: 86.5%;
-    height: 100%;
-    right: 2rem;
-    bottom: -1rem;
-    z-index: -1;
-
-    @include breakpoint($large) {
-      width: 100%;
-      right: -1rem;
     }
   }
 }

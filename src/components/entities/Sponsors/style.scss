@@ -46,30 +46,6 @@
     h3 {
       color: $white;
     }
-
-    &:before {
-      display: block;
-      position: absolute;
-      content: "";
-      background-color: $blue-muted-light;
-      width: 100%;
-      height: 100%;
-      left: -1rem;
-      top: -1rem;
-      z-index: -1;
-    }
-
-    &:after {
-      display: block;
-      position: absolute;
-      content: "";
-      background-color: $blue-muted-lighter;
-      width: 100%;
-      height: 100%;
-      right: -1rem;
-      bottom: -1rem;
-      z-index: -1;
-    }
   }
 
   &.gold {
@@ -141,7 +117,21 @@
 .header--sponsors {
   background-color: $blue-muted-lightest;
   padding: $space;
-  margin-bottom: $space*2;
+  margin: 0 0 $space*2;
+
+  -webkit-box-shadow:
+    -8px -8px 0 0 $blue-muted-lighter,
+    8px 8px 0 0 $blue-muted-light;
+  -moz-box-shadow:
+    -8px -8px 0 0 $blue-muted-lighter,
+    8px 8px 0 0 $blue-muted-light;
+  box-shadow:
+    -8px -8px 0 0 $blue-muted-lighter,
+    8px 8px 0 0 $blue-muted-light;
+
+  @include breakpoint($large) {
+    margin: 8px 8px $space*2;
+  }
 
   h3 {
     color: $blue-muted;
@@ -158,38 +148,47 @@
       padding: $space/2;
     }
   }
+}
 
-  &:before {
-    display: block;
-    position: absolute;
-    content: "";
-    background-color: $blue-muted-lighter;
-    width: 86.5%;
-    height: 100%;
-    left: 2rem;
-    top: -1rem;
-    z-index: -1;
+.footer-sponsors {
+  margin: 0 45px;
 
-    @include breakpoint($large) {
-      width: 100%;
-      left: -1rem;
+  .sponsors {
+    h3 {
+      background-color: lighten($blue-muted-lightest, 5);
+      padding: $space;
+      margin: $space*2 0 $space 0;
+
+      @include breakpoint($large) {
+        margin: $space*2 8px $space 8px;
+      }
     }
   }
+  .sponsors--diamond {
+      h3 {
+        background-color: $blue-muted;
+        color: $white;
+        padding: $space;
 
-  &:after {
-    display: block;
-    position: absolute;
-    content: "";
-    background-color: $blue-muted-light;
-    width: 86.5%;
-    height: 100%;
-    right: 2rem;
-    bottom: -1rem;
-    z-index: -1;
-
-    @include breakpoint($large) {
-      width: 100%;
-      right: -1rem;
+        -webkit-box-shadow:
+          8px 8px 0 0 $blue-muted-lighter,
+          -8px -8px 0 0 $blue-muted-light;
+        -moz-box-shadow:
+          8px 8px 0 0 $blue-muted-lighter,
+          -8px -8px 0 0 $blue-muted-light;
+        box-shadow:
+          8px 8px 0 0 $blue-muted-lighter,
+          -8px -8px 0 0 $blue-muted-light;
+      }
+  }
+  .sponsors--gold {
+    h3 {
+      background-color: $blue-muted-lighter;
+    }
+  }
+  .sponsors--silver {
+    h3 {
+      background-color: $blue-muted-lightest;
     }
   }
 }
