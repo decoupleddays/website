@@ -3,10 +3,18 @@
 
 @media (min-width: 64em) {
 
+  .wrapper > .container {
+    max-width: 960px;
+  }
+
   .wrapper,
   .container {
     margin: 0 auto;
     max-width: 1280px;
+
+    & h1 {
+      margin-bottom: $space;
+    }
   }
 }
 
