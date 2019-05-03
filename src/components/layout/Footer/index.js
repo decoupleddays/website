@@ -30,7 +30,7 @@ const Footer = () => {
         <div className="info-block">
           <div className="bottom--date">
             <p>
-              <strong>July 17th-18 / New York City</strong>
+              <strong>July 17-18th / New York City</strong>
               <br />
               John Jay College of Criminal Justice
               <br />
