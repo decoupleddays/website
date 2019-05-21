@@ -12,10 +12,10 @@ const TopBar = () => (
       </div>
       <div className="top-bar--register">
         <a
-          href="https://drive.google.com/open?id=1YXI1pf5yO8XtWD-PJmhPCjAYOOPW-h3f7Q3gP2IGFyU"
+          href="https://www.eventbrite.com/e/decoupled-days-2019-registration-61699231061"
           className="button secondary"
         >
-          Submit a Session!
+          Attend!
         </a>
       </div>
     </div>
