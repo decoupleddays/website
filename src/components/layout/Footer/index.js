@@ -12,7 +12,6 @@ const Footer = () => {
   const clickIcon = e => {
     e.preventDefault()
     setOpen(true)
-    console.log(open)
   }
 
   const onCloseModal = () => {

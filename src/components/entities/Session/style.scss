@@ -1,33 +1,45 @@
-.session--link {
-  text-decoration: none;
-  color: #0b5394;
-  &:visited {
+.sessions {
+
+  .session--link {
+    text-decoration: none;
     color: #0b5394;
-  }
-}
-.session {
-  padding: 1em 0;
-  border-top: 1px solid #f3f3f3;
 
-  &.first {
-    border-top: none;
+    &:visited {
+      color: #0b5394;
+    }
   }
-}
-.session--title {
-  font-size: 1.1em;
-  margin-bottom: .25em;
-}
-.session--speakers {
-  font-size: 1.1em;
-}
-.session--speaker {
-  font-size: 1.1em;
-}
 
-.session--room {
-  font-size: .8em;
-  font-weight: bold;
-}
-.session--length {
-  font-size: .8em;
+  .session {
+    padding: 0 0 1em;
+    border-top: 1px solid #f3f3f3;
+
+    &.first {
+      border-top: none;
+    }
+  }
+
+  .session--title {
+    font-size: 2rem;
+    margin: .25em 0;
+    max-width: inherit;
+  }
+
+  .session--speakers {
+    justify-content: left;
+    margin-bottom: 10px;
+  }
+
+  .session--speaker {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+
+  .session--room {
+    font-size: .8rem;
+    font-weight: bold;
+  }
+
+  .session--length {
+    font-size: .8rem;
+  }
 }

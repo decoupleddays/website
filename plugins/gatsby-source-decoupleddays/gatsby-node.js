@@ -2,9 +2,9 @@ const path = require('path')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
-  const PageTemplate = path.resolve('src/templates/Page/index.js');
-  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js');
-  // const SessionTemplate = path.resolve('src/templates/Session/index.js');
+  const PageTemplate = path.resolve('src/templates/Page/index.js')
+  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js')
+  const SessionTemplate = path.resolve('src/templates/Session/index.js')
   return new Promise((resolve, reject) => {
     resolve(
       graphql(`
@@ -20,13 +20,19 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
           allNodeSponsors(
-            filter: {
-              body: {processed: {ne: null}}
-            }
-            sort: {
-              fields: [field_sponsor_level], order: ASC
-            }
+            filter: { body: { processed: { ne: null } } }
+            sort: { fields: [field_sponsor_level], order: ASC }
           ) {
+            edges {
+              node {
+                nid: drupal_internal__nid
+                path {
+                  alias
+                }
+              }
+            }
+          }
+          allNodeSession {
             edges {
               node {
                 nid: drupal_internal__nid
@@ -51,7 +57,7 @@ exports.createPages = ({ actions, graphql }) => {
           })
         })
 
-        /* result.data.allNodeSession.edges.forEach(({ node }) => {
+        result.data.allNodeSession.edges.forEach(({ node }) => {
           createPage({
             path: node.path.alias,
             component: SessionTemplate,
@@ -59,7 +65,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug: node.nid,
             },
           })
-        }) */
+        })
 
         result.data.allNodeSponsors.edges.forEach(({ node }) => {
           createPage({

@@ -12,7 +12,6 @@ const Menu = props => {
     if (active === 'active') {
       setActive('')
     } else setActive('active')
-    console.log(active)
   }
   return (
     <>
@@ -28,7 +27,9 @@ const Menu = props => {
       </button>
       <nav className={`main-menu ${active}`}>
         <ul className="menu">
-          {/* <li><Link className="active" href="#">Sessions</Link></li> */}
+          <li>
+            <Link to="/sessions">Sessions</Link>
+          </li>
           <li>
             <Link to="/about">About</Link>
           </li>
