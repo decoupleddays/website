@@ -56,15 +56,17 @@ export const query = graphql`
       r: relationships {
         speakers: field_speakers {
           title
-          relationships {
+          r: relationships {
             field_company {
               title
             }
             field_photo {
               localFile {
                 childImageSharp {
-                  sizes(maxWidth: 100) {
+                  fixed(width: 100, height: 100) {
                     src
+                    srcSet
+                    aspectRatio
                   }
                 }
               }

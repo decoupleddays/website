@@ -21,6 +21,12 @@
 
 .session--speaker {
   display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.session--speaker-image {
+  min-width: 100px;
 }
 
 .session--speaker-info {
