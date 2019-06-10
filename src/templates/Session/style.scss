@@ -39,7 +39,7 @@
 }
 
 .session--date-time {
-  display: none;
+  display: block;
 }
 
 .session--speaker-image {
@@ -54,4 +54,17 @@
   display: flex;
   justify-content: center;
   margin-bottom: .5rem;
+}
+
+.sessions--day-nav {
+  display: flex;
+
+}
+
+.sessions--day-list {
+  display: none;
+
+  &.active {
+    display: block;
+  }
 }

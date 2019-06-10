@@ -11,10 +11,10 @@ import './style.scss'
 
 const SessionTemplate = ({ data }) => {
   const node = data.nodeSession
-  const speakers = node.r.speakers
+  const { room, speakers } = node.r
   const time = moment(node.time)
     .tz('America/New_York')
-    .format('HH:mma')
+    .format('MMM Mo HH:mma')
 
   return (
     <Layout>
@@ -29,9 +29,9 @@ const SessionTemplate = ({ data }) => {
           </div>
         )}
 
-        <div className="session--date-time">
-          {node.datetime} {time}
-        </div>
+        <div className="session--date-time">{time}</div>
+        {room && <div className="session--room">{room.name}</div>}
+
         <div
           className="session-summary"
           dangerouslySetInnerHTML={{
@@ -54,6 +54,9 @@ export const query = graphql`
       day: field_time(formatString: "dd")
       time: field_time
       r: relationships {
+        room: field_room {
+          name
+        }
         speakers: field_speakers {
           title
           r: relationships {
