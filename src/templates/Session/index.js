@@ -14,7 +14,7 @@ const SessionTemplate = ({ data }) => {
   const { room, speakers } = node.r
   const time = moment(node.time)
     .tz('America/New_York')
-    .format('MMM Mo HH:mma')
+    .format('MMM DD HH:mma')
 
   return (
     <Layout>
