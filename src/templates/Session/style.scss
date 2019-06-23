@@ -49,22 +49,3 @@
     border-radius: 50px;
   }
 }
-
-.sessions--sort {
-  display: flex;
-  justify-content: center;
-  margin-bottom: .5rem;
-}
-
-.sessions--day-nav {
-  display: flex;
-
-}
-
-.sessions--day-list {
-  display: none;
-
-  &.active {
-    display: block;
-  }
-}

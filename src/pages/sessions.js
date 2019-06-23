@@ -9,15 +9,17 @@ const SessionsPage = ({ data }) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)
   const [day, setDay] = useState('17')
+  const [sort, setSort] = useState('all')
 
   const filterSession = e => {
     const value = e.currentTarget.value
     let out = allSessions
-    if (value != 'all') {
+    if (value !== 'all') {
       out = allSessions.filter(({ node }) => {
         return node.track === value
       })
     }
+    setSort(value)
     setSessions(out)
   }
 
@@ -28,39 +30,53 @@ const SessionsPage = ({ data }) => {
   return (
     <Layout>
       <div className="sessions--sort">
-        <button className="button" value="all" onClick={filterSession}>
+        <button
+          className={`button${sort === 'all' ? ' active' : ''}`}
+          value="all"
+          onClick={filterSession}
+        >
           All
         </button>
         <button
-          className="button"
+          className={`button${
+            sort === 'session-track-buisiness' ? ' active' : ''
+          }`}
           value="session-track-buisiness"
           onClick={filterSession}
         >
           Business/CXO
         </button>
         <button
-          className="button"
+          className={`button${
+            sort === 'session-track-drupal' ? ' active' : ''
+          }`}
           value="session-track-drupal"
           onClick={filterSession}
         >
           Decoupled Drupal
         </button>
         <button
-          className="button"
+          className={`button${
+            sort === 'session-track-headless' ? ' active' : ''
+          }`}
           value="session-track-headless"
           onClick={filterSession}
         >
           Headless CMS
         </button>
         <button
-          className="button"
+          className={`button${
+            sort === 'session-track-javascript' ? ' active' : ''
+          }`}
           value="session-track-javascript"
           onClick={filterSession}
         >
           JavaScript and JAMstack
         </button>
         <button
-          className="button"
+          className={`button${
+            sort === 'session-track-people' ? ' active' : ''
+          }`}
           value="session-track-people"
           onClick={filterSession}
         >
