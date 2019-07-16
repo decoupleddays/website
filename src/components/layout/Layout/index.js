@@ -28,8 +28,14 @@ const Layout = props => {
             edges {
               node {
                 title
+                path {
+                  alias
+                }
                 link: field_sponsor_link {
                   uri
+                }
+                body {
+                  processed
                 }
                 r: relationships {
                   logo: field_sponsor_logo {

@@ -9,12 +9,15 @@ const HeaderSponsors = props => {
           <h3>Diamond Sponsors</h3>
           <div className="sponsor--grid diamond">
             {props.sponsors.map(({ node }, key) => {
+              const uri = node.body ? node.path.alias : node.link.uri
               return (
                 <div className="sponsor--item" key={key}>
-                  <img
-                    src={node.r.logo.localFile.cis.fluid.src}
-                    alt="sponsor logo"
-                  />
+                  <a href={uri}>
+                    <img
+                      src={node.r.logo.localFile.cis.fluid.src}
+                      alt="sponsor logo"
+                    />
+                  </a>
                 </div>
               )
             })}
