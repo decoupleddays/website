@@ -6,16 +6,16 @@ For an overview of the project structure please refer to the [Gatsby documentati
 
 ## Install
 
-Make sure you are using the right version of NPM. Note, may need to install NVM.
+Make sure you are using the right version of NPM. Note, may need to install NVM. If you get an error you may need to do an `nvm install`
 
 ```sh
 nvm use
 ```
 
-Make sure that you have the Gatsby CLI program installed:
+Install the required packages:
 
 ```sh
-npm install --global gatsby-cli
+npm install
 ```
 
 Then you can run it by:
