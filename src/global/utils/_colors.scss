@@ -2,10 +2,17 @@
 $blue: #0075BE;
 $blue-dark: #00588E;
 //Secondary Colors
+//$blue-muted: #68899C;
+//$blue-muted-light: #8EA5B5;
+//$blue-muted-lighter: #B6C4CE;
+//$blue-muted-lightest: #D9E0E8;
+//Secondary Colors
 $blue-muted: #68899C;
-$blue-muted-light: #8EA5B5;
-$blue-muted-lighter: #B6C4CE;
-$blue-muted-lightest: #D9E0E8;
+$orange: #ffc000;
+$secondary: $orange;
+$secondary-light: lighten($secondary, 15%);
+$secondary-lighter: lighten($secondary, 25%);
+$secondary-lightest: lighten($secondary, 47%);
 
 // Grays and Neutrals
 $gray: #4A4A4A;
@@ -18,5 +25,4 @@ $gray-dark: #333333;
 $white: #FFFFFF;
 $black: #000;
 $red: #a51b00;
-$orange: orange;
 $orange-muted: darken($orange, 20%);

@@ -219,12 +219,14 @@ const Layout = props => {
             <Header />
             <HeaderSponsors sponsors={data.headerSponsors.edges} />
             <section className="wrapper">{props.children}</section>
-            <section className="footer-sponsors wrapper">
-              <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
-              <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
-              <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
-              <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
-              <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
+            <section className="footer-sponsors">
+              <div className="wrapper">
+                <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
+                <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
+                <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
+                <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
+                <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
+              </div>
             </section>
             <Footer />
             <FooterCopywrite />

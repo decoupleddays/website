@@ -2,7 +2,7 @@
 
 footer {
   display: flex;
-  margin-top: $space*2;
+  border-top: $space/2 solid $blue-dark;
   padding: $space*2 0;
   background-color: $gray-lightest;
   color: $gray;

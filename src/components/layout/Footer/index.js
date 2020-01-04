@@ -39,17 +39,17 @@ const Footer = () => {
         </div>
         <ul className="social">
           <li>
-            <a className="twitter" href="https://twitter.com/decoupleddays">
+            <a className="twitter" href="https://twitter.com/decoupleddays" title="Twitter">
               <FaTwitter />
             </a>
           </li>
           <li>
-            <a className="email" href="mailto:decoupleddays@gmail.com">
+            <a className="email" href="mailto:decoupleddays@gmail.com" title="Email">
               <FaEnvelope />
             </a>
           </li>
           <li>
-            <button onClick={clickIcon} className="newsletter">
+            <button onClick={clickIcon} className="newsletter" title="Subscribe to Newsletter">
               <FaBullhorn />
             </button>
           </li>

@@ -15,13 +15,23 @@
 }
 
 .header--sponsors {
-  background-color: $blue-muted-lightest;
+  background-color: $secondary-lightest;
   padding: $space;
-  margin-bottom: $space*2;
+  margin: 0 0 $space*2;
+
+  -webkit-box-shadow:
+    -8px -8px 0 0 $secondary-lighter,
+    8px 8px 0 0 $secondary-light;
+  -moz-box-shadow:
+    -8px -8px 0 0 $secondary-lighter,
+    8px 8px 0 0 $secondary-light;
+  box-shadow:
+    -8px -8px 0 0 $secondary-lighter,
+    8px 8px 0 0 $secondary-light;
 
   .h3 {
     @extend %h3;
-    color: $blue-muted;
+    color: $secondary;
     margin: 0 auto;
   }
 
@@ -44,7 +54,7 @@
       }
 
       @include breakpoint($large) {
-        //padding: $space/2;
+        padding: $space/2;
       }
     }
   }
