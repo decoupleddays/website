@@ -7,20 +7,28 @@ body,
 html {
   font-family: $sans;
   font-weight: $sans-regular;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.58;
+  letter-spacing: -0.004em;
+  color: $dark-text;
+
+  @include breakpoint($large) {
+    font-size: 21px;
+  }
 }
 
 html {
-  font-size: 62.5%;
+  //font-size: 62.5%;
 }
 
 body {
-  font-size: 1.6rem;
+  //font-size: 1.6rem;
 }
 
 // paragraphs
 p {
   margin: 0;
+
   article & {
     max-width: $max-width;
   }
@@ -45,10 +53,11 @@ p {
   }
 }
 // headings
-h1, h2, h3, h4, h5, h6 {
+h1, %h1, h2, %h2, h3, %h3, h4, %h4, h5, %h5, h6, %h6 {
   margin: $space 0;
   font-family: $sans;
   line-height: 1.2;
+  font-weight: $sans-bold;
 
   article & {
     max-width: $max-width;
@@ -64,65 +73,30 @@ h5 + h6 {
 }
 h1,
 %h1 {
-  font-size: 3.4rem;
-
-  font-weight: $sans-bolder;
-  color:$gray-dark;
-  @include breakpoint($large) {
-    font-size: 4rem;
-    max-width: $max-width;
-  }
+  font-size: 2.4rem;
 }
 h2,
 %h2 {
-  font-size: 2.8rem;
-
-  font-weight: $sans-bold;
-  color:$gray;
-
-  @include breakpoint($large) {
-    font-size: 3.2rem;
-  }
-
+  font-size: 1.8rem;
 }
 h3,
 %h3 {
-  font-size: 2rem;
-
-  font-weight: $sans-bolder;
-  color:$gray;
-
-  @include breakpoint($large) {
-    font-size: 2.8rem;
-  }
+  font-size: 1.5rem;
 }
 
 h4,
 %h4 {
-  font-size: 1.6rem;
-
-  font-weight: $sans-bold;
-
-  @include breakpoint($large) {
-    font-size: 2rem;
-  }
+  font-size: 1.3rem;
 }
 h5 {
-  font-size: 1.4rem;
-  font-weight: $sans-regular;
+  font-size: 1.1rem;
 
   @include breakpoint($large) {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 }
 h6 {
-  font-size: 1.4rem;
-
-  font-weight: $sans-regular;
-
-  @include breakpoint($large) {
-    font-size: 1.6rem;
-  }
+  font-size: 1rem;
 }
 
 // emphasis styles
@@ -175,4 +149,8 @@ blockquote {
 ul,
 ol {
   font-family: $sans;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
 }

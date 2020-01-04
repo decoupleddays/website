@@ -21,20 +21,20 @@ const Footer = () => {
   return (
     <footer id="footer">
       <div className="container">
-        <div className="brand">
-          <a className="logo-wrap" href="#top">
-            <h1 className="logo dd2019">Decoupled Days 2019</h1>
+        <div className="brand-and-info">
+          <a className="brand logo-bg" href="#top">
+            <span className="logo-alt-text">Decoupled Days 2019</span>
           </a>
-        </div>
-        <div className="info-block">
-          <div className="bottom--date">
-            <p>
-              <strong>July 17-18th / New York City</strong>
-              <br />
-              John Jay College of Criminal Justice
-              <br />
-              524 W 59th St, New York, NY 10019
-            </p>
+          <div className="info-block">
+            <div className="bottom--date">
+              <p>
+                <strong>July 17-18th / New York City</strong>
+                <br />
+                John Jay College of Criminal Justice
+                <br />
+                524 W 59th St, New York, NY 10019
+              </p>
+            </div>
           </div>
         </div>
         <ul className="social">

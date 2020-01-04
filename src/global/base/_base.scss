@@ -43,12 +43,12 @@ a:link {
   transition: all 0.15s;
 
   &:visited {
-    color: mix(black, $link, 10%);
-  }
+       color: mix(black, $link, 10%);
+     }
 
   &:hover {
     color: mix(black, $link, 60%);
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

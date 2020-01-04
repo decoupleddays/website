@@ -12,9 +12,9 @@ const Header = () => {
       <div className="container">
 
         <a className="logo-wrap" href="/">
-          <h1 id="logo" className="logo dd2019">
+          <div id="logo" className="logo-position logo-bg">
             Decoupled Days 2019
-          </h1>
+          </div>
         </a>
         <Menu />
       </div>

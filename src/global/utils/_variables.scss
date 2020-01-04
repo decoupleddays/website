@@ -18,10 +18,9 @@ $zi-below-ground: -1;
 /////////
 // Type
 
-$sans: 'Open Sans',
-sans-serif;
+$sans: 'Open Sans', sans-serif;
 
-$sans-regular: 600;
+$sans-regular: normal;
 $sans-bold: 700;
 $sans-bolder: 800;
 
@@ -57,6 +56,8 @@ $link-highlight: $blue;
 $dark-text-default: $black !default;
 $light-text-default: #FFFFFF !default;
 
+$dark-text: lighten($dark-text-default, 10%);
+
 /////////
 // Singularity variables
 //
@@ -67,7 +68,7 @@ $light-text-default: #FFFFFF !default;
 
 /// Widths and base sizing
 $base-font-size: 62.5%; // setup to work with rems
-$border-width: 6px;
+$border-width: 4px;
 
 $max-width: 660px;
 $max-width-image-paragraph: 860px;

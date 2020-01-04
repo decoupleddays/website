@@ -5,7 +5,7 @@ import Parser from 'html-react-parser'
 import './style.scss';
 
 const Body = (props) => {
-  const classes = props.classes || 'body-text';
+  const classes = props.classes + ' body-text';
   return(
   <div className={classes}>
     {(props.text) && Parser(props.text)}

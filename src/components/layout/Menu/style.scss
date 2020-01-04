@@ -21,17 +21,8 @@
     width: 100%;
     list-style-type: none;
 
-    +li {
-      margin-top: $space/2;
-    }
-
     @include breakpoint($large) {
       width: auto;
-
-      +li {
-        margin-left: $space;
-        margin-top: 0;
-      }
     }
 
     a {
@@ -41,24 +32,45 @@
 
   a {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: $sans-regular;
-    color: $black;
+    line-height: 2;
     text-align: center;
     border-bottom: $border-width solid transparent;
 
     @include breakpoint($large) {
-      font-size: 1.8rem;
+      font-size: 0.9rem;
+      padding: 0 6px;
+      margin: 0 2px;
+    }
+
+    @include breakpoint($x-large) {
+      font-size: 1rem;
       font-weight: $sans-bold;
     }
 
     &:hover {
       color: $link-highlight;
-      text-decoration: none;
+      border-bottom-color: $gray-light;
     }
 
     &.active {
       border-color: $blue;
+    }
+  }
+
+  li {
+    &:first-of-type {
+      a {
+        padding-left: 0;
+        margin-left: 0;
+      }
+    }
+    &:last-of-type {
+      a {
+        padding-right: 0;
+        margin-right: 0;
+      }
     }
   }
 }
@@ -72,7 +84,7 @@
   text-decoration: none;
   color: $link;
 
-  @include breakpoint(70em) {
+  @include breakpoint($large) {
     display: none;
   }
 
@@ -92,13 +104,18 @@
     display: flex;
     flex-flow: column wrap;
     flex: 1 auto;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     align-items: center;
 
     @include breakpoint($medium) {
       flex-flow: row wrap;
       justify-content: space-between;
-      font-size: 2.8rem;
+      font-size: 1.6rem;
+    }
+
+    .text {
+      display: inline-block;
+      padding-left: 6px;
     }
   }
 
