@@ -35,13 +35,6 @@
     margin-bottom: 10px;
   }
 
-  hr.session--details-divider {
-    max-width: 180px;
-    margin: 0 auto 0 0;
-    border: none;
-    border-bottom: 1px solid $gray;
-  }
-
   .session--speaker {
     @extend %h4;
 
@@ -61,11 +54,6 @@
     padding: 4px 0;
   }
 
-  .session--room {
-    font-size: .8rem;
-    font-weight: bold;
-  }
-
   .session--time-details {}
 
   .session--time-date {
@@ -73,18 +61,27 @@
   }
 
   .session--date {
-    display: inline-block;
     margin-right: .5rem;
   }
 
   .session--time {
-    display: inline-block;
     margin-right: .75rem;
     font-weight: bold;
   }
 
   .session--time-length {
-    display: inline-block;
     font-size: .8rem;
   }
+}
+
+hr.session--details-divider {
+  max-width: 180px;
+  margin: 0 auto 0 0;
+  border: none;
+  border-bottom: 1px solid $gray;
+}
+
+.session--details-label {
+  font-size: .8rem;
+  font-weight: bold;
 }

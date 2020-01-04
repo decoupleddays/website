@@ -10,9 +10,12 @@ const Session = ({ node }) => {
   const monthday = moment(node.time)
       .tz('America/New_York')
       .format('MMMM DD');
+
   const time = moment(node.time)
     .tz('America/New_York')
     .format('h:mma');
+
+  const { room } = node.r;
 
   const tracks = {
     'session-track-buisiness': 'Business/CXO',
@@ -20,9 +23,8 @@ const Session = ({ node }) => {
     'session-track-headless': 'Headless CMS',
     'session-track-javascript': 'JavaScript and JAMstack',
     'session-track-people': 'People and Community',
-  }
+  };
 
-  const room = null
   return (
     <div className="session">
       <h2 className="session--title">
@@ -46,14 +48,19 @@ const Session = ({ node }) => {
       {node.track && <div className="session--track">{tracks[node.track]}</div>}
       <div className="session--time-details">
         <span className="session--time-date">
-          <span className="session--date">{monthday}</span>
-          <span className="session--time">@{time}</span>
+          <span className="session--details-label">When:</span> {monthday} @{time}
         </span>
         <span className="session--time-length">
-          {node.field_session_length && <span>({node.field_session_length} minutes)</span>}
+          {node.field_session_length && <span>&nbsp;({node.field_session_length} minutes)</span>}
         </span>
       </div>
-      <div className="session--room">{room ? `Room: ${room}` : ''}</div>
+      {room ?
+        <div className="session--room">
+          <span className="session--details-label">Where:</span> {room.name}
+        </div>
+        :
+        ''
+      }
     </div>
   )
 }
