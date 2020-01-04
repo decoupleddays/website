@@ -25,14 +25,16 @@
 
 .top-bar--date {
   margin-bottom: $space;
+  text-align: center;
   flex: 1 auto;
 
   strong {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
   @include breakpoint($medium) {
+    text-align: left;
     margin-bottom: 0;
     flex: 0 auto;
   }
