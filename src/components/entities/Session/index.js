@@ -7,9 +7,12 @@ import Link from '../../fields/Link'
 import './style.scss'
 
 const Session = ({ node }) => {
+  const monthday = moment(node.time)
+      .tz('America/New_York')
+      .format('MMMM DD');
   const time = moment(node.time)
     .tz('America/New_York')
-    .format('MMMM DD h:mma')
+    .format('h:mma');
 
   const tracks = {
     'session-track-buisiness': 'Business/CXO',
@@ -27,9 +30,9 @@ const Session = ({ node }) => {
           {node.title}
         </Link>
       </h2>
-      {node.r.speaker && (
+      {node.r.speakers && (
         <div className="session--speakers">
-          {node.r.speaker.map(speaker => (
+          {node.r.speakers.map(speaker => (
             <div
               className="session--speaker"
               key={`session-speaker-${speaker.nid}`}
@@ -39,12 +42,18 @@ const Session = ({ node }) => {
           ))}
         </div>
       )}
-      <div className="session--time">{time}</div>
-      <div className="session--room">{room ? `Room: ${room}` : ''}</div>
-      <div className="session--length">
-        {node.field_session_length && `${node.field_session_length} minutes`}
-      </div>
+      {node.r.speakers.length ? <hr className="session--details-divider"/> : ''}
       {node.track && <div className="session--track">{tracks[node.track]}</div>}
+      <div className="session--time-details">
+        <span className="session--time-date">
+          <span className="session--date">{monthday}</span>
+          <span className="session--time">@{time}</span>
+        </span>
+        <span className="session--time-length">
+          {node.field_session_length && <span>({node.field_session_length} minutes)</span>}
+        </span>
+      </div>
+      <div className="session--room">{room ? `Room: ${room}` : ''}</div>
     </div>
   )
 }
