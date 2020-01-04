@@ -6,7 +6,7 @@
   padding: 0;
 
   @include breakpoint($large) {
-    margin-top: -160px;
+    margin-top: -201px;
 
     .container {
       padding: 0 120px;
@@ -15,8 +15,8 @@
 }
 
 .header--sponsors {
-  background-color: $secondary-lightest;
-  padding: $space;
+  background-color: rgba(255, 251, 240, 0.88);
+  padding: 22px;
   margin: 0 0 $space*2;
 
   -webkit-box-shadow:
@@ -33,6 +33,7 @@
     @extend %h3;
     color: $secondary;
     margin: 0 auto;
+    -webkit-text-stroke: 1px darken($secondary, 15%);
   }
 
   .sponsor--grid {
@@ -50,7 +51,7 @@
       }
 
       @include breakpoint($small-medium) {
-        flex-basis: 24%;
+        flex-basis: 20%;
       }
 
       @include breakpoint($large) {
