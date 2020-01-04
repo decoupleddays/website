@@ -24,7 +24,7 @@ const SessionTemplate = ({ data }) => {
 
   return (
     <Layout>
-      <div className="session session-page">
+      <div className="session session-page container">
         <h1 className="session--title">{node.title}</h1>
         {speakers && (
           <div className="session--speakers-container">

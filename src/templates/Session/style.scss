@@ -5,14 +5,12 @@
 // Individual Session page
 //
 .session-page {
-  padding: 0 16px;
-
-  @include breakpoint($large) {
-    padding: 0 60px;
-  }
-
   hr.session--details-divider {
     margin: 1.5rem 0;
+  }
+
+  iframe {
+    margin-top: $space * 2;
   }
 }
 
