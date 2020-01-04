@@ -6,7 +6,7 @@ const HeaderSponsors = props => {
     <div className="header--sponsor-wrap">
       <div className="container">
         <div className="header--sponsors centered">
-          <h3>Diamond Sponsors</h3>
+          <div className="h3">Diamond Sponsors</div>
           <div className="sponsor--grid diamond">
             {props.sponsors.map(({ node }, key) => {
               const uri = node.body ? node.path.alias : node.link.uri
