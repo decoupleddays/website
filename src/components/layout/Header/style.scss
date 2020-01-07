@@ -1,7 +1,7 @@
 @import 'src/global/utils/init';
 
 header {
-  color: #8E8E8E;
+  color: #8e8e8e;
   position: relative;
 
   button {
@@ -14,7 +14,8 @@ header {
   }
 
   @include breakpoint($large) {
-    background: transparent url("/img/images/sliver-image.png") center center no-repeat;
+    background: transparent url('/img/images/sliver-image.png') center center
+      no-repeat;
     background-size: cover;
     overflow: hidden;
     padding-bottom: 240px;
@@ -99,7 +100,7 @@ a.logo {
 }
 
 .logo-bg {
-  background-image: url("img/decoupled-days-logo.svg");
+  background-image: url('img/decoupled-days-logo--no-year.svg');
   background-size: contain;
   background-position: left center;
   background-repeat: no-repeat;

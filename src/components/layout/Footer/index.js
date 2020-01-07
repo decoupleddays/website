@@ -28,7 +28,7 @@ const Footer = () => {
           <div className="info-block">
             <div className="bottom--date">
               <p>
-                <strong>July 17-18th / New York City</strong>
+                <strong>July 22nd - 23rd / New York City</strong>
                 <br />
                 John Jay College of Criminal Justice
                 <br />
@@ -39,17 +39,29 @@ const Footer = () => {
         </div>
         <ul className="social">
           <li>
-            <a className="twitter" href="https://twitter.com/decoupleddays" title="Twitter">
+            <a
+              className="twitter"
+              href="https://twitter.com/decoupleddays"
+              title="Twitter"
+            >
               <FaTwitter />
             </a>
           </li>
           <li>
-            <a className="email" href="mailto:decoupleddays@gmail.com" title="Email">
+            <a
+              className="email"
+              href="mailto:decoupleddays@gmail.com"
+              title="Email"
+            >
               <FaEnvelope />
             </a>
           </li>
           <li>
-            <button onClick={clickIcon} className="newsletter" title="Subscribe to Newsletter">
+            <button
+              onClick={clickIcon}
+              className="newsletter"
+              title="Subscribe to Newsletter"
+            >
               <FaBullhorn />
             </button>
           </li>

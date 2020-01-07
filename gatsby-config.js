@@ -1,6 +1,6 @@
-require("dotenv").config({
-  path: `.env`
-});
+require('dotenv').config({
+  path: `.env`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -38,6 +38,13 @@ module.exports = {
         baseUrl: process.env.BASE_URL,
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: 'white',
+      },
+    },
+    'gatsby-plugin-offline',
     'gatsby-source-decoupleddays',
   ],
 }

@@ -16,11 +16,11 @@ const IndexPage = ({ data }) => {
           decoupledCMS.
         </h2>
         <p>
-          In its third year after a successful debut in 2017,{' '}
+          In its forth year after a successful debut in 2017,{' '}
           <strong>Decoupled Days</strong> is a conference for architects,
           developers, and businesspeople involved in implementing decoupled CMS
-          architectures. The 2019 edition is scheduled for{' '}
-          <strong>July 17–18, 2019</strong> in <strong>New York City</strong>.
+          architectures. The 2020 edition is scheduled for{' '}
+          <strong>July 22 - 23, 2020</strong> in <strong>New York City</strong>.
         </p>
         <p>
           Decoupled architectures use a CMS (Drupal, WordPress, etc) as a
