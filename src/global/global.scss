@@ -23,16 +23,34 @@ padding: 5px;
 margin: .5em 0;
 `
  */
+.sessions {
+  padding: 0 16px;
+}
 
 .sessions--sort {
-  .button {
+  margin: 16px;
+  padding-bottom: 16px;
 
-    color: $blue-muted-lighter;
+  @include breakpoint($large) {
+    //display: flex;
+    //justify-content: center;
+  }
+
+  .button {
+    margin: 0 6px 12px;
+    padding: 3px 12px;
+    color: $blue-dark;
     border: 1px solid $blue;
+    border-radius: 20px;
     background: none;
+    text-transform: unset;
 
     &:focus {
       outline: none;
+    }
+
+    &:hover {
+      border-color: $secondary;
     }
 
     &.active {
@@ -40,10 +58,10 @@ margin: .5em 0;
       background: $blue;
     }
   }
+}
 
-  display: flex;
-  justify-content: center;
-  margin-bottom: .5rem;
+.sessions--sort-label {
+  font-weight: $font-weight-bold;
 }
 
 .sessions--day-list {
@@ -63,22 +81,27 @@ margin: .5em 0;
   margin-top: 1rem;
 
   .button {
-    color: $blue-muted-lighter;
-    border: none;
+    color: $gray;
     background: none;
-    border-radius: 0;
     margin: 0;
+    border-top: 3px solid $gray-light;
+    border-left: 1px solid $gray-light;
+    border-right: 1px solid $gray-light;
+    border-bottom: none;
+    border-color: $gray-light;
+    border-radius: 0;
+
+    &:hover {
+      border-color: $secondary;
+    }
 
     &:focus {
       outline: none;
     }
 
-
     &.active {
       color: $blue;
-      border: 1px solid $blue;
-      border-top: 3px solid $blue;
-      border-bottom: none;
+      border-color: $blue;
     }
   }
 }

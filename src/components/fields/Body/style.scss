@@ -10,5 +10,17 @@
 @import '../../global/utils/init';
 
 .body-text {
-  line-height: 1.625;
+
+  a {
+    border-bottom: 2px solid $orange;
+
+    &:visited {
+      border-bottom-color: $orange-muted;
+    }
+
+    &:hover {
+      text-decoration: none;
+      border-bottom-color: $orange;
+    }
+  }
 }

@@ -2,7 +2,7 @@
 
 footer {
   display: flex;
-  margin-top: $space*2;
+  border-top: $space/2 solid $blue-dark;
   padding: $space*2 0;
   background-color: $gray-lightest;
   color: $gray;
@@ -13,33 +13,46 @@ footer {
     width: 100%;
     padding: 0 $space;
 
-    @include breakpoint($medium) {
+    @include breakpoint($large) {
       flex-flow: row wrap;
       justify-content: space-between;
     }
   }
 
-  .brand {
-    display: flex;
-    flex: 1 auto;
+  .brand-and-info {
+    display: block;
 
-    @include breakpoint($large) {
-      max-width: 40%;
-    }
-  }
-
-  .info-block {
-    flex: 1 auto;
-    margin-top: $space;
-
-    p {
-      line-height: 1.5;
+    @include breakpoint($small-medium) {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
     }
 
     @include breakpoint($large) {
-      margin-top: 0;
-      padding: 0 $space;
-      max-width: 40%;
+      flex: 2;
+    }
+
+    .brand {
+      display: block;
+      min-height: 60px;
+      max-height: 86px;
+      background-position: center center;
+      margin-bottom: $space * 2;
+
+      @include breakpoint($small-medium) {
+        flex: 1;
+        background-position: left center;
+        margin-bottom: unset;
+      }
+    }
+
+    .info-block {
+      text-align: center;
+
+      @include breakpoint($small-medium) {
+        flex: 1;
+        text-align: left;
+      }
     }
   }
 
@@ -49,7 +62,9 @@ footer {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-    margin-top: $space;
+    margin: ($space * 2) auto 0;
+    min-width: 300px;
+    max-width: 400px;
 
     @include breakpoint($large) {
       max-width: 20%;

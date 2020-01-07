@@ -30,6 +30,7 @@ const SessionsPage = ({ data }) => {
   return (
     <Layout>
       <div className="sessions--sort">
+        <span className="sessions--sort-label">Show: </span>
         <button
           className={`button${sort === 'all' ? ' active' : ''}`}
           value="all"
@@ -153,7 +154,7 @@ export const query = graphql`
               name
               tid: drupal_internal__tid
             }
-            speaker: field_speakers {
+            speakers: field_speakers {
               nid: drupal_internal__nid
               title
               relationships {

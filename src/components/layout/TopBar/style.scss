@@ -4,48 +4,51 @@
   display: block;
   background-color: $blue;
   color: $white;
-  padding: 15px;
 }
 
 .top-bar--inner {
-  display: flex;
-  flex-flow: column wrap;
   justify-content: space-between;
-  padding: $space/2;
-  width: 100%;
 
-  @include breakpoint($medium) {
-    flex-flow: row wrap;
+  @include breakpoint($small-medium) {
+    display: flex;
   }
 
-  @include breakpoint($x-large) {
-    padding: $space/3 0;
+  &.container {
+    padding: 15px 30px;
+
+    @include breakpoint($large) {
+      padding: 10px 40px;
+    }
   }
 }
 
 .top-bar--date {
-  margin-bottom: $space;
-  flex: 1 auto;
+  margin-bottom: 15px;
+  text-align: center;
+  flex-basis: 66%;
+  font-size: 0.8rem;
 
   strong {
     display: block;
-    font-size: 1.8rem;
+    font-size: 0.9rem;
   }
 
-  @include breakpoint($medium) {
+  @include breakpoint($small-medium) {
+    text-align: left;
     margin-bottom: 0;
-    flex: 0 auto;
   }
 }
 
 .top-bar--register {
-  flex: 1 auto;
-
-  @include breakpoint($medium) {
-    flex: 0 auto;
-  }
-
-  a {
+  a.button:link {
     display: block;
+    max-width: 300px;
+    padding: 8px 30px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+
+    @include breakpoint($large) {
+      font-size: 1.1rem;
+    }
   }
 }

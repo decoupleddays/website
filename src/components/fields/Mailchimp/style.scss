@@ -18,18 +18,18 @@
 
   .status--sending {
     color: $blue;
-    background-color: $blue-muted;
+    background-color: $secondary;
   }
 
   .status--error {
     border-color: $red;
     color: $red;
-    background-color: $blue-muted;
+    background-color: $secondary;
   }
 
   .status--success {
     color: $gray;
-    background-color: $blue-muted;
+    background-color: $secondary;
   }
 }
 .mailchimp--logo-container {

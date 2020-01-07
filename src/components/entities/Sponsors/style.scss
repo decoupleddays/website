@@ -1,5 +1,4 @@
 .sponsors {
-  margin-top: 25px;
   text-align: center;
 
   .sponsors-list {
@@ -41,7 +40,7 @@
   }
 
   &.diamond {
-    background-color: $blue-muted;
+    background-color: $secondary;
 
     h3 {
       color: $white;
@@ -49,15 +48,15 @@
   }
 
   &.gold {
-    background-color: $blue-muted-light;
+    background-color: $secondary-light;
   }
 
   &.silver {
-    background-color: $blue-muted-lighter;
+    background-color: $secondary-lighter;
   }
 
   &.bronze {
-    background-color: $blue-muted-lightest;
+    background-color: $secondary-lightest;
   }
 }
 
@@ -73,7 +72,7 @@
   }
 
   .diamond & {
-    flex-basis: 33.333%; // change if more than 3 diamond-level sponsors.
+    flex-basis: 49%; // change if more than 3 diamond-level sponsors.
 
     @include breakpoint($large) {
       img {
@@ -109,86 +108,48 @@
   }
 }
 
-// Header sponsors
-.header--sponsor-wrap {
-  padding: 0;
-}
-
-.header--sponsors {
-  background-color: $blue-muted-lightest;
-  padding: $space;
-  margin: 0 0 $space*2;
-
-  -webkit-box-shadow:
-    -8px -8px 0 0 $blue-muted-lighter,
-    8px 8px 0 0 $blue-muted-light;
-  -moz-box-shadow:
-    -8px -8px 0 0 $blue-muted-lighter,
-    8px 8px 0 0 $blue-muted-light;
-  box-shadow:
-    -8px -8px 0 0 $blue-muted-lighter,
-    8px 8px 0 0 $blue-muted-light;
-
-  @include breakpoint($large) {
-    margin: 8px 8px $space*2;
-  }
-
-  h3 {
-    color: $blue-muted;
-  }
-
-  .sponsor--item {
-    flex-basis: 50%;
-
-    @include breakpoint($medium) {
-      flex-basis: 33.333%;
-    }
-
-    @include breakpoint($large) {
-      padding: $space/2;
-    }
-  }
-}
-
 .footer-sponsors {
-  margin: 0 45px;
+  background-color: lighten($gray-lightest, 1%);
+  margin-top: $space*3;
+  border-bottom: $space/2 solid $blue;
+
+  .wrapper {
+    @include breakpoint($medium) {
+      padding: 0 30px;
+    }
+    @include breakpoint($large) {
+      padding: 0 120px;
+    }
+  }
 
   .sponsors {
     h3 {
-      background-color: lighten($blue-muted-lightest, 5);
+      background-color: lighten($gray, 10%);
+      color: $gray-lightest;
       padding: $space;
-      margin: $space*2 0 $space 0;
-
-      @include breakpoint($large) {
-        margin: $space*2 8px $space 8px;
-      }
+      margin: 0;
     }
   }
+
+  .sponsors-list {
+    padding: $space;
+  }
+
   .sponsors--diamond {
       h3 {
-        background-color: $blue-muted;
+        background-color: $secondary;
         color: $white;
         padding: $space;
 
         -webkit-box-shadow:
-          8px 8px 0 0 $blue-muted-lighter,
-          -8px -8px 0 0 $blue-muted-light;
+          8px 8px 0 0 $secondary-lighter,
+          -8px -8px 0 0 $secondary-light;
         -moz-box-shadow:
-          8px 8px 0 0 $blue-muted-lighter,
-          -8px -8px 0 0 $blue-muted-light;
+          8px 8px 0 0 $secondary-lighter,
+          -8px -8px 0 0 $secondary-light;
         box-shadow:
-          8px 8px 0 0 $blue-muted-lighter,
-          -8px -8px 0 0 $blue-muted-light;
+          8px 8px 0 0 $secondary-lighter,
+          -8px -8px 0 0 $secondary-light;
       }
-  }
-  .sponsors--gold {
-    h3 {
-      background-color: $blue-muted-lighter;
-    }
-  }
-  .sponsors--silver {
-    h3 {
-      background-color: $blue-muted-lightest;
-    }
   }
 }

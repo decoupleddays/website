@@ -1,7 +1,7 @@
 .sponsor {
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  margin: 15px;
 
   a {
     margin: 0 auto;
@@ -9,37 +9,5 @@
 
   img {
     max-width: 80%;
-  }
-}
-
-.sponsor--diamond {
-  width: 30%;
-
-  @media (max-width: 768px) {
-    width: 50%;
-  }
-}
-
-.sponsor--gold {
-  width: 25%;
-
-  @media (max-width: 768px) {
-    width: 40%;
-  }
-}
-
-.sponsor--silver {
-  width: 20%;
-
-  @media (max-width: 768px) {
-    width: 30%;
-  }
-}
-
-.sponsor--bronze {
-  width: 15%;
-
-  @media (max-width: 768px) {
-    width: 20%;
   }
 }

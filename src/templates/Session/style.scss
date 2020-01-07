@@ -1,3 +1,19 @@
+@import 'src/global/utils/init';
+@import 'src/global/base/base';
+
+//
+// Individual Session page
+//
+.session-page {
+  hr.session--details-divider {
+    margin: 1.5rem 0;
+  }
+
+  iframe {
+    margin-top: $space * 2;
+  }
+}
+
 .session--title {
   max-width: inherit;
 }
@@ -38,14 +54,31 @@
   }
 }
 
-.session--date-time {
-  display: block;
-}
-
 .session--speaker-image {
   margin-right: 5px;
 
   img {
     border-radius: 50px;
   }
+}
+
+.session--time-date {
+  display: block;
+}
+
+.session--date {
+  display: inline-block;
+  margin-right: .5rem;
+}
+
+.session--time {
+  display: inline-block;
+  margin-right: .75rem;
+  font-weight: bold;
+}
+
+.session--summary {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 4px solid $gray-lightest;
 }

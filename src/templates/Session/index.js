@@ -10,35 +10,42 @@ import Link from '../../components/fields/Link'
 import './style.scss'
 
 const SessionTemplate = ({ data }) => {
-  const node = data.nodeSession
-  const { room, speakers } = node.r
+  const node = data.nodeSession;
+
+  const { room, speakers } = node.r;
+
+  const monthday = moment(node.time)
+      .tz('America/New_York')
+      .format('MMMM DD');
+
   const time = moment(node.time)
-    .tz('America/New_York')
-    .format('MMM DD HH:mma')
+      .tz('America/New_York')
+      .format('h:mma');
 
   return (
     <Layout>
-      <div className="session">
+      <div className="session session-page container">
         <h1 className="session--title">{node.title}</h1>
         {speakers && (
           <div className="session--speakers-container">
-            <div className="session--speakers-title">Speakers:</div>
             {speakers.map((speaker, key) => (
               <Speaker key={key} {...speaker} />
             ))}
           </div>
         )}
 
-        <div className="session--date-time">{time}</div>
-        {room && <div className="session--room">{room.name}</div>}
-
+        <div className="session--time-date">
+          <span className="session--details-label">When:</span> {monthday} @{time}
+        </div>
+        {room && <div className="session--room"><span className="session--details-label">Where:</span> {room.name}</div>}
+        <hr className="session--details-divider"/>
         <div
-          className="session-summary"
+          className="session--summary"
           dangerouslySetInnerHTML={{
             __html: node.body ? node.body.processed : '',
           }}
         />
-        <Link to="/sessions">Back to Sessions</Link>
+        <Link to="/sessions">&larr; Back to Sessions</Link>
       </div>
     </Layout>
   )

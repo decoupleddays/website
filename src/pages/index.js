@@ -10,6 +10,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div className="container">
+        <h1>Decoupled Days</h1>
         <h2>
           The only conference on the future of CMS, headlessCMS, and
           decoupledCMS.

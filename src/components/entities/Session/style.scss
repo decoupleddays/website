@@ -1,3 +1,8 @@
+@import 'src/global/utils/init';
+@import 'src/global/base/base';
+//
+// Session item on the list of Sessions page
+//
 .sessions {
 
   .session--link {
@@ -10,7 +15,7 @@
   }
 
   .session {
-    padding: 0 0 1em;
+    padding: 0 0 2em;
     border-top: 1px solid #f3f3f3;
 
     &.first {
@@ -25,21 +30,58 @@
   }
 
   .session--speakers {
+    display: flex;
     justify-content: left;
     margin-bottom: 10px;
   }
 
   .session--speaker {
-    font-size: 1.1rem;
-    margin-right: 1rem;
+    @extend %h4;
+
+    display: block;
+    margin: 0 1rem 0 0;
+
+    &:after {
+      content: ", ";
+    }
+
+    &:last-of-type:after {
+      content: "";
+    }
   }
 
-  .session--room {
-    font-size: .8rem;
+  .session--track {
+    padding: 4px 0;
+  }
+
+  .session--time-details {}
+
+  .session--time-date {
+    display: inline-block;
+  }
+
+  .session--date {
+    margin-right: .5rem;
+  }
+
+  .session--time {
+    margin-right: .75rem;
     font-weight: bold;
   }
 
-  .session--length {
+  .session--time-length {
     font-size: .8rem;
   }
+}
+
+hr.session--details-divider {
+  max-width: 180px;
+  margin: 0 auto 0 0;
+  border: none;
+  border-bottom: 1px solid $gray;
+}
+
+.session--details-label {
+  font-size: .8rem;
+  font-weight: bold;
 }
