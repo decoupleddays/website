@@ -22,7 +22,12 @@ const Layout = props => {
             }
           }
           headerSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "diamond" } }
+            filter: {
+              field_sponsor_level: { eq: "diamond" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -53,7 +58,12 @@ const Layout = props => {
           }
 
           diamondSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "diamond" } }
+            filter: {
+              field_sponsor_level: { eq: "diamond" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -85,7 +95,12 @@ const Layout = props => {
           }
 
           goldSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "gold" } }
+            filter: {
+              field_sponsor_level: { eq: "gold" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -116,7 +131,12 @@ const Layout = props => {
             }
           }
           silverSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "silver" } }
+            filter: {
+              field_sponsor_level: { eq: "silver" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -147,7 +167,12 @@ const Layout = props => {
             }
           }
           bronzeSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "bronze" } }
+            filter: {
+              field_sponsor_level: { eq: "bronze" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -172,7 +197,12 @@ const Layout = props => {
             }
           }
           mediaSponsors: allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "media" } }
+            filter: {
+              field_sponsor_level: { eq: "media" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
             sort: { fields: [title], order: ASC }
           ) {
             edges {
@@ -217,15 +247,36 @@ const Layout = props => {
             </Helmet>
             <TopBar />
             <Header />
-            <HeaderSponsors sponsors={data.headerSponsors.edges} />
+            {data.headerSponsors.edges.length > 0 && (
+              <HeaderSponsors sponsors={data.headerSponsors.edges.length} />
+            )}
             <section className="wrapper">{props.children}</section>
             <section className="footer-sponsors">
               <div className="wrapper">
-                <Sponsors level="Diamond" sponsors={data.diamondSponsors.edges} />
-                <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
-                <Sponsors level="Silver" sponsors={data.silverSponsors.edges} />
-                <Sponsors level="Bronze" sponsors={data.bronzeSponsors.edges} />
-                <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
+                {data.diamondSponsors.edges.length > 0 && (
+                  <Sponsors
+                    level="Diamond"
+                    sponsors={data.diamondSponsors.edges}
+                  />
+                )}
+                {data.goldSponsors.edges.length > 0 && (
+                  <Sponsors level="Gold" sponsors={data.goldSponsors.edges} />
+                )}
+                {data.silverSponsors.edges.length > 0 && (
+                  <Sponsors
+                    level="Silver"
+                    sponsors={data.silverSponsors.edges}
+                  />
+                )}
+                {data.bronzeSponsors.edges.length > 0 && (
+                  <Sponsors
+                    level="Bronze"
+                    sponsors={data.bronzeSponsors.edges}
+                  />
+                )}
+                {data.mediaSponsors.edges.length > 0 && (
+                  <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
+                )}
               </div>
             </section>
             <Footer />
