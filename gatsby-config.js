@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Decoupled Days 2019',
+    title: 'Decoupled Days 2020',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
