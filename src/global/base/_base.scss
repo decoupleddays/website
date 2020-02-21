@@ -86,4 +86,12 @@ a.button:visited {
     border: 1px solid $blue;
     box-shadow: 0 0 5px (rgba($color: #000000, $alpha: 0.3))
   }
+
+  &.info {
+    background-color: $orange;
+    color: $white;
+    text-shadow: 0 0 2px $gray;
+    border: 1px solid $white;
+    box-shadow: 0 0 5px (rgba($color: #000000, $alpha: 0.3))
+  }
 }

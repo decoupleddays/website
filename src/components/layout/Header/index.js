@@ -10,7 +10,7 @@ const Header = () => {
         <div className="container">
           <a className="logo-wrap" href="/">
             <div id="logo" className="logo-position logo-bg">
-              Decoupled Days 2019
+              Decoupled Days 2020
             </div>
           </a>
           <Menu />

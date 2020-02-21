@@ -23,7 +23,7 @@ const Footer = () => {
       <div className="container">
         <div className="brand-and-info">
           <a className="brand logo-bg" href="#top">
-            <span className="logo-alt-text">Decoupled Days 2019</span>
+            <span className="logo-alt-text">Decoupled Days 2020</span>
           </a>
           <div className="info-block">
             <div className="bottom--date">

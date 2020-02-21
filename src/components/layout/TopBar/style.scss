@@ -7,10 +7,9 @@
 }
 
 .top-bar--inner {
-  justify-content: space-between;
-
-  @include breakpoint($small-medium) {
+  @include breakpoint($medium) {
     display: flex;
+    justify-content: space-between;
   }
 
   &.container {
@@ -33,13 +32,22 @@
     font-size: 0.9rem;
   }
 
-  @include breakpoint($small-medium) {
+  @include breakpoint($medium) {
     text-align: left;
     margin-bottom: 0;
+    flex-basis: 50%;
   }
 }
 
 .top-bar--register {
+  flex-basis: 50%;
+
+  @include breakpoint($small-medium) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   a.button:link {
     display: block;
     max-width: 300px;
@@ -47,8 +55,22 @@
     margin: 0 auto;
     font-size: 0.9rem;
 
+    @include breakpoint($medium) {
+      padding: 8px 12px;
+      margin: unset;
+    }
+
     @include breakpoint($large) {
       font-size: 1.1rem;
+    }
+  }
+
+  a.button + a.button {
+    margin-top: 12px;
+
+    @include breakpoint($small-medium) {
+      margin-top: 0;
+      margin-left: 12px;
     }
   }
 }
