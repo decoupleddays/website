@@ -248,7 +248,7 @@ const Layout = props => {
             <TopBar />
             <Header />
             {data.headerSponsors.edges.length > 0 && (
-              <HeaderSponsors sponsors={data.headerSponsors.edges.length} />
+              <HeaderSponsors sponsors={data.headerSponsors.edges} />
             )}
             <section className="wrapper">{props.children}</section>
             <section className="footer-sponsors">

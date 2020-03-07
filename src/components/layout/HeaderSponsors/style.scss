@@ -37,7 +37,7 @@
   }
 
   .sponsor--grid {
-    justify-content: space-between;
+    justify-content: center;
 
     @include breakpoint($medium) {
       flex-wrap: nowrap;
