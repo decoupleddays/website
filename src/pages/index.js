@@ -42,8 +42,7 @@ export default IndexPage
 export const query = graphql`
   query IndexPageQuery {
     allNodeArticle(
-      limit: 2
-      filter: { status: { eq: true } }
+      filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2020"}}}}, status: {eq: true}}
       sort: { fields: [changed], order: DESC }
     ) {
       edges {

@@ -33,7 +33,7 @@ const Section = ({ data }) => {
           {Parser(data.body.processed)}
         </div>
         {data.field_link && (
-          <Link className="section__link" to={data.field_link.uri}>
+          <Link className="section__link" to={data.field_link.uri.replace(/^internal:/, '')}>
             {data.field_link.title}
           </Link>
         )}

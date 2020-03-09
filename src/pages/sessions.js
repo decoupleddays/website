@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import moment from 'moment'
+// import moment from 'moment'
+
+// @todo: put day filter back on on when schedule is done.
+//   * Uncomment lines 3, 14, 29 - 31 and 99 - 136.
+//   * Comment out lines 91 - 97.
 
 import Layout from '../components/layout/Layout'
 import Session from '../components/entities/Session'
@@ -8,7 +12,7 @@ import Session from '../components/entities/Session'
 const SessionsPage = ({ data }) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)
-  const [day, setDay] = useState('17')
+  // const [day, setDay] = useState('22')
   const [sort, setSort] = useState('all')
 
   const filterSession = e => {
@@ -23,9 +27,9 @@ const SessionsPage = ({ data }) => {
     setSessions(out)
   }
 
-  const switchDay = e => {
+  /* const switchDay = e => {
     setDay(e.currentTarget.value)
-  }
+  } */
 
   return (
     <Layout>
@@ -49,12 +53,12 @@ const SessionsPage = ({ data }) => {
         </button>
         <button
           className={`button${
-            sort === 'session-track-drupal' ? ' active' : ''
+            sort === 'session-track-cms' ? ' active' : ''
           }`}
-          value="session-track-drupal"
+          value="session-track-cms"
           onClick={filterSession}
         >
-          Decoupled Drupal
+          Traditional CMS
         </button>
         <button
           className={`button${
@@ -85,27 +89,35 @@ const SessionsPage = ({ data }) => {
         </button>
       </div>
       <div className="sessions">
+        <div className={`sessions--day-list active`}>
+          <h3>Accepted Sessions</h3>
+          {sessions
+            .map(session => (
+              <Session key={`session-${session.node.nid}`} {...session} />
+          ))}
+        </div>
+        {/*
         <div className="sessions--day-nav">
           <button
-            value={17}
+            value={22}
             onClick={switchDay}
-            className={`button ${day === '17' && 'active'}`}
+            className={`button ${day === '22' && 'active'}`}
           >
-            July 17th
+            July 22nd
           </button>
           <button
-            value={18}
+            value={23}
             onClick={switchDay}
-            className={`button ${day === '18' && 'active'}`}
+            className={`button ${day === '23' && 'active'}`}
           >
-            July 18th
+            July 23rd
           </button>
         </div>
         <div className={`sessions--day-list ${day === '17' && 'active'}`}>
-          <h3>July 17th</h3>
+          <h3>July 22nd</h3>
           {sessions
             .filter(session => {
-              return moment(session.node.time).format('DD') === '17'
+              return moment(session.node.time).format('DD') === '22'
             })
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
@@ -113,15 +125,15 @@ const SessionsPage = ({ data }) => {
         </div>
 
         <div className={`sessions--day-list ${day === '18' && 'active'}`}>
-          <h3>July 18th</h3>
+          <h3>July 23rd</h3>
           {sessions
             .filter(session => {
-              return moment(session.node.time).format('DD') === '18'
+              return moment(session.node.time).format('DD') === '23'
             })
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
             ))}
-        </div>
+            </div>*/}
       </div>
     </Layout>
   )
@@ -132,8 +144,9 @@ export default SessionsPage
 export const query = graphql`
   query SessionsPageQuery {
     allNodeSession(
+      filter: {status: {eq: true}, relationships: {field_tags: {elemMatch: {name: {eq: "2020"}}}}}
       sort: {
-        fields: [field_time, relationships___field_room___weight]
+        fields: [field_time, relationships___field_room___weight, title]
         order: ASC
       }
     ) {

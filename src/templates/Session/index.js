@@ -34,9 +34,9 @@ const SessionTemplate = ({ data }) => {
           </div>
         )}
 
-        <div className="session--time-date">
+        {node.time && (<div className="session--time-date">
           <span className="session--details-label">When:</span> {monthday} @{time}
-        </div>
+        </div>)}
         {room && <div className="session--room"><span className="session--details-label">Where:</span> {room.name}</div>}
         <hr className="session--details-divider"/>
         <div
