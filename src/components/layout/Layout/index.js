@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
 import TopBar from '../TopBar'
 import Header from '../Header'
