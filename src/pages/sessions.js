@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-// import moment from 'moment'
+import moment from 'moment'
 
 // @todo: put day filter back on on when schedule is done.
 //   * Uncomment lines 3, 14, 29 - 31 and 99 - 136.
@@ -12,7 +12,7 @@ import Session from '../components/entities/Session'
 const SessionsPage = ({ data }) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)
-  // const [day, setDay] = useState('22')
+  const [day, setDay] = useState('22')
   const [sort, setSort] = useState('all')
 
   const filterSession = e => {
@@ -27,9 +27,9 @@ const SessionsPage = ({ data }) => {
     setSessions(out)
   }
 
-  /* const switchDay = e => {
+  const switchDay = e => {
     setDay(e.currentTarget.value)
-  } */
+  }
 
   return (
     <Layout>
@@ -89,14 +89,13 @@ const SessionsPage = ({ data }) => {
         </button>
       </div>
       <div className="sessions">
-        <div className={`sessions--day-list active`}>
+       {/* <div className={`sessions--day-list active`}>
           <h3>Accepted Sessions</h3>
           {sessions
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
           ))}
-        </div>
-        {/*
+            </div>*/}
         <div className="sessions--day-nav">
           <button
             value={22}
@@ -113,7 +112,7 @@ const SessionsPage = ({ data }) => {
             July 23rd
           </button>
         </div>
-        <div className={`sessions--day-list ${day === '17' && 'active'}`}>
+        <div className={`sessions--day-list ${day === '22' && 'active'}`}>
           <h3>July 22nd</h3>
           {sessions
             .filter(session => {
@@ -124,7 +123,7 @@ const SessionsPage = ({ data }) => {
             ))}
         </div>
 
-        <div className={`sessions--day-list ${day === '18' && 'active'}`}>
+        <div className={`sessions--day-list ${day === '23' && 'active'}`}>
           <h3>July 23rd</h3>
           {sessions
             .filter(session => {
@@ -133,7 +132,7 @@ const SessionsPage = ({ data }) => {
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
             ))}
-            </div>*/}
+            </div>
       </div>
     </Layout>
   )
