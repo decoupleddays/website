@@ -28,7 +28,7 @@ const Section = ({ data }) => {
         </div>
       )}
       <div className="section__container">
-        <h2>{data.title}</h2>
+        <h2 className="section__header">{data.title}</h2>
         <div className="section__content">
           {Parser(data.body.processed)}
         </div>
