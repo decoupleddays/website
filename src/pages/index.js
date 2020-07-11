@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => {
           <strong>Decoupled Days</strong> is a conference for architects,
           developers, and businesspeople involved in implementing decoupled CMS
           architectures. The 2020 edition is scheduled for{' '}
-          <strong>July 22 - 23, 2020</strong> in <strong>New York City</strong>.
+          <strong>July 22 - 23, 2020</strong>.
         </p>
         <p>
           Decoupled architectures use a CMS (Drupal, WordPress, etc) as a

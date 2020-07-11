@@ -28,11 +28,7 @@ const Footer = () => {
           <div className="info-block">
             <div className="bottom--date">
               <p>
-                <strong>July 22nd - 23rd / New York City</strong>
-                <br />
-                John Jay College of Criminal Justice
-                <br />
-                524 W 59th St, New York, NY 10019
+                <strong>July 22nd - 23rd</strong>
               </p>
             </div>
           </div>
