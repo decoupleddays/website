@@ -27,9 +27,8 @@ const Footer = () => {
           </a>
           <div className="info-block">
             <div className="bottom--date">
-              <p>
-                <strong>July 22nd - 23rd</strong>
-              </p>
+              <strong>July 22nd - 23rd</strong><br/>
+              Virtual Event!
             </div>
           </div>
         </div>
