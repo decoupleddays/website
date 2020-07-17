@@ -226,6 +226,36 @@ const Layout = props => {
               }
             }
           }
+          inKindSponsors: allNodeSponsors(
+            filter: {
+              field_sponsor_level: { eq: "in-kind" }
+              relationships: {
+                field_tags: { elemMatch: { name: { eq: "2020" } } }
+              }
+            }
+            sort: { fields: [title], order: ASC }
+          ) {
+            edges {
+              node {
+                title
+                field_sponsor_level
+                link: field_sponsor_link {
+                  uri
+                }
+                relationships {
+                  field_sponsor_logo {
+                    localFile {
+                      childImageSharp {
+                        sizes(maxWidth: 150) {
+                          src
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       `}
       render={data => {
@@ -276,6 +306,9 @@ const Layout = props => {
                 )}
                 {data.mediaSponsors.edges.length > 0 && (
                   <Sponsors level="Media" sponsors={data.mediaSponsors.edges} />
+                )}
+                {data.inKindSponsors.edges.length > 0 && (
+                  <Sponsors level="In Kind" sponsors={data.inKindSponsors.edges} />
                 )}
               </div>
             </section>
