@@ -54,13 +54,13 @@ const Session = ({ node }) => {
           {node.field_session_length && <span>&nbsp;({node.field_session_length} minutes)</span>}
         </span>
       </div>
-      {room ?
+      {/**room ?
         <div className="session--room">
           <span className="session--details-label">Where:</span> {room.name}
         </div>
         :
         ''
-      }
+      */}
     </div>
   )
 }
