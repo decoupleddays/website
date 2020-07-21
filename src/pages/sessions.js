@@ -112,6 +112,7 @@ const SessionsPage = ({ data }) => {
             July 23rd
           </button>
         </div>
+        <div>All times ET (UTC - 4)</div>
         <div className={`sessions--day-list ${day === '22' && 'active'}`}>
           <h3>July 22nd</h3>
           {sessions

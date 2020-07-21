@@ -1,5 +1,7 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {
+  graphql
+} from 'gatsby'
 import moment from 'moment'
 import 'moment-timezone'
 
@@ -15,12 +17,12 @@ const SessionTemplate = ({ data }) => {
   const { room, speakers } = node.r;
 
   const monthday = moment(node.time)
-      .tz('America/New_York')
-      .format('MMMM DD');
+    .tz('America/New_York')
+    .format('MMMM DD');
 
   const time = moment(node.time)
-      .tz('America/New_York')
-      .format('h:mma');
+    .tz('America/New_York')
+    .format('h:mma');
 
   return (
     <Layout>
@@ -33,17 +35,24 @@ const SessionTemplate = ({ data }) => {
             ))}
           </div>
         )}
-
-        {node.time && (<div className="session--time-date">
-          <span className="session--details-label">When:</span> {monthday} @{time}
-        </div>)}
-        {room && <div className="session--room"><span className="session--details-label">Where:</span> {room.name}</div>}
-        <hr className="session--details-divider"/>
-        <div
-          className="session--summary"
-          dangerouslySetInnerHTML={{
-            __html: node.body ? node.body.processed : '',
-          }}
+        {node.time && (
+          <div className = "session--time-date">
+            <span className = "session--details-label">When: </span> {monthday} @{time}ET
+          </div>
+        )}
+        {node.hopin && (
+          <div classname = "session-room">
+            <a href = {node.hopin.uri} target = "_blank" > Hopin Room </a>
+          </div>
+        )}
+        {room && !node.hopin && (
+          <div className = "session--room">
+            <span className = "session--details-label" > Where: </span> {room.name}
+          </div>
+        )}
+        <hr className = "session--details-divider" />
+        <div className = "session--summary"
+          dangerouslySetInnerHTML = {{__html: node.body ? node.body.processed : '',}}
         />
         <Link to="/sessions">&larr; Back to Sessions</Link>
       </div>
@@ -60,6 +69,9 @@ export const query = graphql`
       datetime: field_time(formatString: "dd")
       day: field_time(formatString: "dd")
       time: field_time
+      hopin: field_hopin_room {
+        uri
+      }
       r: relationships {
         room: field_room {
           name

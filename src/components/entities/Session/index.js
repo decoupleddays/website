@@ -48,7 +48,7 @@ const Session = ({ node }) => {
       {node.track && <div className="session--track">{tracks[node.track]}</div>}
       <div className="session--time-details">
         {node.day && node.time && (<span className="session--time-date">
-          <span className="session--details-label">When:</span> {monthday} @{time}
+          <span className="session--details-label">When:</span> {monthday} @{time} ET
         </span>)}
         <span className="session--time-length">
           {node.field_session_length && <span>&nbsp;({node.field_session_length} minutes)</span>}
