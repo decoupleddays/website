@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import {Helmet} from 'react-helmet'
 import moment from 'moment'
 
 // @todo: put day filter back on on when schedule is done.
@@ -33,6 +34,7 @@ const SessionsPage = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet><title>Sessions | Decoupled Days 2020</title></Helmet>
       <div className="sessions--sort">
         <span className="sessions--sort-label">Show: </span>
         <button

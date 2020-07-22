@@ -1,7 +1,6 @@
 import React from 'react'
-import {
-  graphql
-} from 'gatsby'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import moment from 'moment'
 import 'moment-timezone'
 
@@ -26,6 +25,9 @@ const SessionTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title> { node.title } | Decoupled Days 2020 </title>
+      </Helmet>
       <div className="session session-page container">
         <h1 className="session--title">{node.title}</h1>
         {speakers && (
@@ -42,7 +44,7 @@ const SessionTemplate = ({ data }) => {
         )}
         {node.hopin && (
           <div classname = "session-room">
-            <a href = {node.hopin.uri} target = "_blank" > Hopin Room </a>
+            <a href = {node.hopin.uri} target = "_blank" rel="noreferrer"> Hopin Room </a>
           </div>
         )}
         {room && !node.hopin && (

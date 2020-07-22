@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import {Helmet} from 'react-helmet'
 
 import Layout from '../../components/layout/Layout'
 
@@ -10,6 +11,9 @@ const PageTemplate = ({ data }) => {
   const { title, body } = data.nodePage
   return (
     <Layout>
+      <Helmet>
+        <title>{title} | Decoupled Days 2020</title>
+      </Helmet>
       <Heading classes="container" level={1}>
         {title}
       </Heading>

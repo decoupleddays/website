@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from 'gatsby';
+import {Helmet} from 'react-helmet'
 
 import Layout from '../../components/layout/Layout'
 
@@ -9,6 +10,8 @@ const SponsorTemplate = ({ data }) => {
   const node = data.nodeSponsors
   return (
     <Layout>
+      <Helmet><title>{node.title} | Decoupled Days 2020</title></Helmet>
+
       <div className="sponsor--page container">
         <div className="sponsor--logo">
           <img src={node.r.logo.localFile.childImageSharp.sizes.src} alt={node.title} />
