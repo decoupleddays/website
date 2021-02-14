@@ -4,14 +4,19 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Decoupled Days 2020',
+    title: 'Decoupled Days 2021',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: ['node_modules', 'src/global'],
+        sassOptions: {
+          includePaths: ['node_modules', 'src/global']
+        },
+        postCssPlugins: [
+          require("tailwindcss")
+        ],
       },
     },
     `gatsby-transformer-sharp`,
@@ -35,7 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: process.env.BASE_URL,
+        baseUrl: 'https://dev-ddd-test.pantheonsite.io/',
+        // @todo: add filter[tags.name][value] = "2021" for each content type.
       },
     },
     {

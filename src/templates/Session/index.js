@@ -8,8 +8,6 @@ import Layout from '../../components/layout/Layout'
 import Speaker from '../../components/fields/Speaker'
 import Link from '../../components/fields/Link'
 
-import './style.scss'
-
 const SessionTemplate = ({ data }) => {
   const node = data.nodeSession;
 

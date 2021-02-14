@@ -4,13 +4,11 @@ import {Helmet} from 'react-helmet'
 
 import Layout from '../../components/layout/Layout'
 
-import './style.scss';
-
 const SponsorTemplate = ({ data }) => {
   const node = data.nodeSponsors
   return (
     <Layout>
-      <Helmet><title>{node.title} | Decoupled Days 2020</title></Helmet>
+      <Helmet><title>{node.title} | Decoupled Days 2021</title></Helmet>
 
       <div className="sponsor--page container">
         <div className="sponsor--logo">

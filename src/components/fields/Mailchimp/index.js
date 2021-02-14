@@ -7,7 +7,6 @@ import Button from '../../fields/Button'
 import { Logo, Brand } from '../../layout/Nav'
 
 import logo from '../../../../images/logo.svg'
-import './style.scss'
 
 // // use the render prop and your custom form
 const CustomForm = ({ status, message, onValidated }) => {

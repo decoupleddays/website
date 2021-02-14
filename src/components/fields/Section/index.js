@@ -5,14 +5,13 @@ import classNames from 'classnames'
 
 import Link from '../Link'
 
-import './style.scss';
-
 const Section = ({ data }) => {
 
   let image = null;
   if (data.relationships.field_image && data.relationships.field_image.localFile) {
-    image = data.relationships.field_image.localFile.childImageSharp.sizes;
+    image = data.relationships.field_image.localFile.childImageSharp.fixed;
   }
+  console.log(image);
   const classes = classNames(
     'section',
     {'with-image': image}
@@ -22,6 +21,7 @@ const Section = ({ data }) => {
     <div className={classes}>
       { image && (
         <div className="section__thumbnail-container">
+          <img src={image.src} />
           <Img
             sizes={{ ...image, aspectRatio: 4 / 3 }}
           />

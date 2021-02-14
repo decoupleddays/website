@@ -1,11 +1,10 @@
-@import 'src/global/utils/colors';
 
 .button {
   border-radius: 3px;
   padding: 0.25em 1em;
   margin: 0 1em;
-  background: $blue;
-  color: $white;
   text-transform: uppercase;
   cursor: pointer;
+
+  @apply background-blue text-white;
 }

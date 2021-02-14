@@ -1,6 +1,4 @@
 import React from 'react'
-
-import './style.scss'
 const HeaderSponsors = props => {
   return (
     <div className="header--sponsor-wrap">

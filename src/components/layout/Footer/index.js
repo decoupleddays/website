@@ -3,9 +3,7 @@ import React, { useState } from 'react'
 import MailChimpSubscribeModal from '../../fields/Mailchimp'
 
 import { FaTwitter, FaEnvelope, FaBullhorn } from 'react-icons/fa'
-
 import './style.scss'
-
 const Footer = () => {
   const [open, setOpen] = useState(false)
 
@@ -23,11 +21,11 @@ const Footer = () => {
       <div className="container">
         <div className="brand-and-info">
           <a className="brand logo-bg" href="#top">
-            <span className="logo-alt-text">Decoupled Days 2020</span>
+            <span className="logo-alt-text">Decoupled Days 2021</span>
           </a>
           <div className="info-block">
             <div className="bottom--date">
-              <strong>July 22nd - 23rd</strong><br/>
+              <strong>July 14th - 15th</strong><br/>
               Virtual Event!
             </div>
           </div>

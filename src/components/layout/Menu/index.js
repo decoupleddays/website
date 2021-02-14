@@ -3,7 +3,6 @@ import { FaTimes, FaBars } from 'react-icons/fa'
 
 import Link from '../../fields/Link'
 import './style.scss'
-
 const Menu = props => {
   const [active, setActive] = useState('')
 
@@ -27,11 +26,14 @@ const Menu = props => {
       </button>
       <nav className={`main-menu ${active}`}>
         <ul className="menu">
-          {<li>
+          {/* <li>
             <Link to="/sessions">Sessions</Link>
-          </li>}
+          </li> */}
           <li>
             <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/program">Program</Link>
           </li>
           <li>
             <Link to="/venue">Venue</Link>

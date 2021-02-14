@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import './style.scss'
-
 const Heading = props => {
   const level = props.level || '2'
   const Element = `h${level}`

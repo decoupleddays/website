@@ -2,8 +2,6 @@ import React from 'react'
 
 import Sponsor from '../Sponsor'
 
-import './style.scss'
-
 const Sponsors = props => {
   const level = props.level
   const sponsors = props.sponsors

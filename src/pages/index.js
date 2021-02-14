@@ -59,10 +59,8 @@ export const query = graphql`
             field_image {
               localFile {
                 childImageSharp {
-                  sizes(maxWidth: 500) {
-                    src
-                    srcSet
-                    sizes
+                  fixed(width: 500) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }

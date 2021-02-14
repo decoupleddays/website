@@ -2,7 +2,6 @@ import React from 'react'
 
 import Menu from '../Menu'
 import './style.scss'
-
 const Header = () => {
   return (
     <header id="header">
@@ -10,7 +9,7 @@ const Header = () => {
         <div className="container">
           <a className="logo-wrap" href="/">
             <div id="logo" className="logo-position logo-bg">
-              Decoupled Days 2020
+              Decoupled Days 2021
             </div>
           </a>
           <Menu />

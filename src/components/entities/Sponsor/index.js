@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './style.scss';
-
 const Sponsor = ({sponsor, level}) => {
   const uri = sponsor.body ? sponsor.path.alias : sponsor.link.uri
   return (

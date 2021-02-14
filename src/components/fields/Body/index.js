@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Parser from 'html-react-parser'
 
-import './style.scss';
-
 const Body = (props) => {
   const classes = props.classes + ' body-text';
   return(

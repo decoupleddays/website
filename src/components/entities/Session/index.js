@@ -4,7 +4,6 @@ import 'moment-timezone'
 
 import Link from '../../fields/Link'
 
-import './style.scss'
 
 const Session = ({ node }) => {
   const monthday = moment(node.time)
