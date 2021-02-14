@@ -11,7 +11,6 @@ const Section = ({ data }) => {
   if (data.relationships.field_image && data.relationships.field_image.localFile) {
     image = data.relationships.field_image.localFile.childImageSharp.fixed;
   }
-  console.log(image);
   const classes = classNames(
     'section',
     {'with-image': image}
