@@ -20,7 +20,6 @@ const Section = ({ data }) => {
     <div className={classes}>
       { image && (
         <div className="section__thumbnail-container">
-          <img src={image.src} />
           <Img
             sizes={{ ...image, aspectRatio: 4 / 3 }}
           />
