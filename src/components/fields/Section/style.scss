@@ -1,30 +1,14 @@
-@import 'src/global/utils/colors';
 
 .section {
-  display: flex;
-
-  border-bottom: 1px solid $blue;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  @apply flex flex-col border-0 border-b-0 border-blue pb-1 mb-3 md:flex-row md:border-b;
 
   &:last-of-type {
-    border-bottom: none;
+    @apply border-b-0;
   }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    border-bottom: none;
-  }
-
 }
 
 .section__thumbnail-container {
-  width: 35%;
-  padding: 15px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  @apply w-full p-4 md:w-4/12;
 
   img {
     border-radius: 5%;
@@ -43,10 +27,10 @@
 }
 
 .section__header {
-  color: $blue;
   font-size: 2rem;
   margin-top: 0;
   margin-bottom: 0.5rem;
+  @apply text-blue;
 
 }
 
@@ -59,10 +43,8 @@ a.section__link:link,
 .section__link:visited {
   border-radius: 3px;
   padding: 0.5em 1em;
-  background: $blue;
-  color: white;
-  text-transform: uppercase;
   text-decoration: none;
+  @apply bg-blue text-white uppercase;
 }
 
 .section__register-buton {

@@ -16,17 +16,10 @@ const IndexPage = ({ data }) => {
           decoupledCMS.
         </h2>
         <p>
-          In its forth year after a successful debut in 2017,{' '}
-          <strong>Decoupled Days</strong> is a conference for architects,
-          developers, and businesspeople involved in implementing decoupled CMS
-          architectures. The 2020 edition is scheduled for{' '}
-          <strong>July 22 - 23, 2020</strong>.
+          In its fifth year after a successful debut in 2017, <b>Decoupled Days</b> is a conference for architects, developers, and businesspeople involved in implementing headless CMS architectures. The 2021 edition is scheduled for <b>July 14–15, 2021</b> on the virtual conference platform <b>Hopin</b>.
         </p>
         <p>
-          Decoupled architectures use a CMS (Drupal, WordPress, etc) as a
-          content service for other non-CMS applications, whether they are in
-          native desktop or mobile, universal JavaScript, set-top boxes, IoT
-          devices, conversational interfaces, or other technologies.
+          Headless or decoupled CMS is the use of a content management system as a content service for other non-CMS applications, whether they are in native desktop or mobile, universal JavaScript, set-top boxes, IoT devices, conversational interfaces, or other technologies.
         </p>
 
         {sections.map((section, i) => (
@@ -42,7 +35,7 @@ export default IndexPage
 export const query = graphql`
   query IndexPageQuery {
     allNodeArticle(
-      filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2020"}}}}, status: {eq: true}}
+      filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}, status: {eq: true}}
       sort: { fields: [changed], order: DESC }
     ) {
       edges {

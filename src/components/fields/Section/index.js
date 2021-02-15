@@ -4,6 +4,7 @@ import Parser from 'html-react-parser'
 import classNames from 'classnames'
 
 import Link from '../Link'
+import './style.scss';
 
 const Section = ({ data }) => {
 
