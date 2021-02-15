@@ -1,6 +1,6 @@
 
 .section {
-  @apply flex flex-col border-0 border-b-0 border-blue pb-1 mb-3 md:flex-row md:border-b;
+  @apply flex flex-col border-0 border-b-0 border-blue pb-4 mb-4 md:flex-row md:border-b;
 
   &:last-of-type {
     @apply border-b-0;
@@ -16,37 +16,20 @@
 }
 
 .section__container {
-  width: 65%;
-  justify-content: flex-end;
-  padding: 15px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-
+  @apply p-3 justify-end w-full;
 }
 
 .section__header {
-  font-size: 2rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  @apply text-blue;
+  @apply text-blue mb-2 mt-0 text-3xl;
 
 }
 
 .section__content {
-  margin-bottom: 1rem;
+  @apply mb-4;
 }
 
 a.section__link,
 a.section__link:link,
 .section__link:visited {
-  border-radius: 3px;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  @apply bg-blue text-white uppercase;
-}
-
-.section__register-buton {
-  margin: 30px 0 0;
+  @apply no-underline py-2 px-4 rounded bg-blue text-white uppercase hover:bg-orange hover:text-blue hover:border-blue;
 }
