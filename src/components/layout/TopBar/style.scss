@@ -2,15 +2,11 @@
 
 .top-bar {
   display: block;
-  background-color: $blue;
-  color: $white;
+  @apply bg-blue text-white;
 }
 
 .top-bar--inner {
-  @include breakpoint($medium) {
-    display: flex;
-    justify-content: space-between;
-  }
+  @apply flex justify-between;
 
   &.container {
     padding: 15px 30px;

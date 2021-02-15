@@ -1,42 +1,17 @@
 @import 'src/global/utils/init';
 @import 'src/global/base/base';
 
-// Header sponsors
-.header--sponsor-wrap {
-  padding: 0;
-
-  @include breakpoint($large) {
-    margin-top: -201px;
-
-    .container {
-      padding: 0 120px;
-    }
-  }
-}
-
 .header--sponsors {
-  background-color: rgba(255, 251, 240, 0.88);
-  padding: 22px;
-  margin: 0 0 $space*2;
-
-  -webkit-box-shadow:
-    -8px -8px 0 0 $secondary-lighter,
-    8px 8px 0 0 $secondary-light;
-  -moz-box-shadow:
-    -8px -8px 0 0 $secondary-lighter,
-    8px 8px 0 0 $secondary-light;
-  box-shadow:
-    -8px -8px 0 0 $secondary-lighter,
-    8px 8px 0 0 $secondary-light;
+  @apply bg-blue-muted container mx-auto shadow-inner p-8 m-0 mb-8;
 
   .h3 {
     @extend %h3;
-    color: $secondary;
-    margin: 0 auto;
     -webkit-text-stroke: 1px darken($secondary, 15%);
+    @apply text-secondary centered mx-auto;
   }
 
   .sponsor--grid {
+    @apply flex;
     justify-content: center;
 
     @include breakpoint($medium) {
