@@ -8,9 +8,7 @@ const Header = () => {
       <div className="header-inner">
         <div className="container">
           <a className="logo-wrap" href="/">
-            <div id="logo" className="logo-position logo-bg">
-              Decoupled Days 2021
-            </div>
+            <img src="/img/DD2021-Logo-2A.png" alt="Decoupled Days Logo" />
           </a>
           <Menu />
         </div>

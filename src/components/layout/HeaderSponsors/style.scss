@@ -11,15 +11,16 @@
   }
 
   .sponsor--grid {
-    @apply flex;
-    justify-content: center;
+    @apply flex flex-col justify-around items-center;
 
     @include breakpoint($medium) {
       flex-wrap: nowrap;
+      @apply flex-row;
     }
 
     .sponsor--item {
       flex-basis: 49%;
+      @apply my-2;
 
       img {
         max-width: 100%;
