@@ -5,6 +5,10 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: 'Decoupled Days 2021',
+    description: "The only conference on the future of CMS, headlessCMS, and decoupledCMS.",
+    url: "https://2021.decoupleddays.com",
+    image: "/img/DD2021-Logo-2A.png",
+    twitterUsername: "@decoupleddays"
   },
   plugins: [
     'gatsby-plugin-react-helmet',

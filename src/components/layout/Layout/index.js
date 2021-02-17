@@ -2,6 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
+import SEO from '../seo';
 import TopBar from '../TopBar'
 import Header from '../Header'
 import HeaderSponsors from '../HeaderSponsors'
@@ -54,6 +55,7 @@ const Layout = props => {
 
   return (
     <>
+      <SEO />
       <Helmet>
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content="Decoupled Days" />
