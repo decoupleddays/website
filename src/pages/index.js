@@ -52,7 +52,7 @@ export const query = graphql`
             field_image {
               localFile {
                 childImageSharp {
-                  fixed(width: 500) {
+                  fixed(width: 250) {
                     ...GatsbyImageSharpFixed
                   }
                 }

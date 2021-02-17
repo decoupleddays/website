@@ -22,7 +22,7 @@ const Section = ({ data }) => {
       { image && (
         <div className="section__thumbnail-container">
           <Img
-            sizes={{ ...image, aspectRatio: 4 / 3 }}
+            fixed={{ ...image, aspectRatio: 4 / 3 }}
           />
         </div>
       )}
