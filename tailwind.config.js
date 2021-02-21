@@ -14,8 +14,8 @@ module.exports = {
       },
       diamond: {
         DEFAULT: '#b9f2ff',
-        light: '#b9f2ff',
-        lighter: '#b9f2ff',
+        light: '#d2f7ff',
+        lighter: '#ecfbff',
         dark: '#00abd2'
       },
       silver: {

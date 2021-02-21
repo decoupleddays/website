@@ -2,29 +2,20 @@
 @import 'src/global/base/base';
 
 .header--sponsors {
-  @apply bg-diamond-light container mx-auto shadow-inner p-8 m-0 mb-8;
+  @apply bg-gradient-to-r from-diamond-dark via-diamond-light to-diamond-dark container mx-auto shadow-inner p-8 m-0 mb-8;
 
   h3 {
-    @apply text-diamond-dark centered mx-auto my-0 pt-2;
+    @apply text-diamond-dark centered mx-auto my-0 pt-2 mb-4;
   }
 
   .sponsor--grid {
-    @apply flex flex-col md:flex-row md:flex-nowrap justify-around items-center;
+    @apply flex flex-col md:flex-row md:flex-nowrap justify-center items-center;
 
     .sponsor--item {
-      flex-basis: 49%;
-      @apply my-2;
+      @apply mx-8;
 
       img {
-        max-width: 100%;
-      }
-
-      @include breakpoint($small-medium) {
-        flex-basis: 20%;
-      }
-
-      @include breakpoint($large) {
-        padding: $space/2;
+        max-width: 175px;
       }
     }
   }

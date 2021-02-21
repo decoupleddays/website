@@ -45,7 +45,7 @@ const Menu = props => {
             <Link to="/code-of-conduct">Code of Conduct</Link>
           </li>
           <li>
-            <Link to="/volunteer">Volunteer</Link>
+            <Link to="/become-volunteer">Volunteer</Link>
           </li>
         </ul>
       </nav>
