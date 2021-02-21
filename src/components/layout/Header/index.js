@@ -8,7 +8,7 @@ const Header = () => {
       <div className="header-inner">
         <div className="container">
           <a className="logo-wrap" href="/">
-            <img src="/img/DD2021-Logo-2A.png" alt="Decoupled Days Logo" />
+            <img src="/img/DD2021-Logo-2A.svg" alt="Decoupled Days Logo" />
           </a>
           <Menu />
         </div>

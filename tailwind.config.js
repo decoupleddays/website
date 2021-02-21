@@ -12,11 +12,22 @@ module.exports = {
         DEFAULT: '#ffc000',
         muted: '#997300'
       },
+      diamond: {
+        DEFAULT: '#b9f2ff',
+        light: '#b9f2ff',
+        lighter: '#b9f2ff',
+        dark: '#00abd2'
+      },
+      silver: {
+        DEFAULT: '#c0c0c0',
+        light: '#d9d9d9',
+        dark: '#a6a6a6'
+      },
       secondary: {
         DEFAULT: '#ffc000',
         light: '#ffd34d',
-        lighter: 'ffe080',
-        lightest: 'fff9e5'
+        lighter: '#ffe080',
+        lightest: '#fff9e5'
       },
 
       // Grays and Neutrals
@@ -33,7 +44,12 @@ module.exports = {
       black: '#000',
       red: '#a51b00',
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        diamond: '8px 8px 0 0 #b9f2ff, -8px -8px 0 0 #b9f2ff',
+        'diamond-light': '8px 8px 0 0 #fff9e5, -8px -8px 0 0 #fff9e5'
+      }
+    },
   },
   variants: {
     extend: {},

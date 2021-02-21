@@ -2,21 +2,14 @@
 @import 'src/global/base/base';
 
 .header--sponsors {
-  @apply bg-blue-muted container mx-auto shadow-inner p-8 m-0 mb-8;
+  @apply bg-diamond-light container mx-auto shadow-inner p-8 m-0 mb-8;
 
-  .h3 {
-    @extend %h3;
-    -webkit-text-stroke: 1px darken($secondary, 15%);
-    @apply text-secondary centered mx-auto;
+  h3 {
+    @apply text-diamond-dark centered mx-auto my-0 pt-2;
   }
 
   .sponsor--grid {
-    @apply flex flex-col justify-around items-center;
-
-    @include breakpoint($medium) {
-      flex-wrap: nowrap;
-      @apply flex-row;
-    }
+    @apply flex flex-col md:flex-row md:flex-nowrap justify-around items-center;
 
     .sponsor--item {
       flex-basis: 49%;

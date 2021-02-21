@@ -3,7 +3,7 @@ import './style.scss';
 const HeaderSponsors = props => {
   return (
     <div className="header--sponsors">
-      <div className="h3 header--sponsors__title">Diamond Sponsors</div>
+      <h3>Diamond Sponsors</h3>
       <div className="sponsor--grid diamond">
         {props.sponsors.map((node, key) => {
           const uri = node.body ? node.path.alias : node.link.uri

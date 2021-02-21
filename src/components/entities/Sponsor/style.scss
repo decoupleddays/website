@@ -7,7 +7,9 @@
     margin: 0 auto;
   }
 
-  img {
-    max-width: 80%;
+  &--diamond {
+    img {
+      max-width: 200px;
+    }
   }
 }

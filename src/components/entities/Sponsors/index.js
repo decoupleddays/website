@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import Sponsor from '../Sponsor'
+import Sponsor from '../Sponsor';
+import './style.scss';
 
 const Sponsors = props => {
-  const level = props.level
+  const level = props.level;
   const sponsors = props.sponsors
   return (
     <div
@@ -11,11 +12,11 @@ const Sponsors = props => {
     >
       <h3>{level} Sponsors</h3>
       <div className="sponsors-list">
-        {sponsors.map((sponsor, index) => {
+        { sponsors.map((sponsor, index) => {
           return (
-            <Sponsor sponsor={sponsor.node} level={level} key={index + 1} />
+            <Sponsor sponsor={sponsor} level={level} key={index + 1} />
           )
-        })}
+        }) }
       </div>
     </div>
   )
