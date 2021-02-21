@@ -1,14 +1,16 @@
+// Colors should be defined in the tailwind.config.js file.
+
 //Primary Colors
 $blue: #0075BE;
 $blue-dark: #00588E;
-//Secondary Colors
-//$blue-muted: #68899C;
-//$blue-muted-light: #8EA5B5;
-//$blue-muted-lighter: #B6C4CE;
-//$blue-muted-lightest: #D9E0E8;
+
 //Secondary Colors
 $blue-muted: #68899C;
+$blue-muted-light: #8EA5B5;
+$blue-muted-lighter: #B6C4CE;
+$blue-muted-lightest: #D9E0E8;
 $orange: #ffc000;
+$orange-muted: darken($orange, 20%);
 $secondary: $orange;
 $secondary-light: lighten($secondary, 15%);
 $secondary-lighter: lighten($secondary, 25%);
@@ -22,7 +24,13 @@ $gray-lightest: #F1F1F1;
 $gray-mid: #8E8E8E;
 $gray-dark: #333333;
 
-$white: #FFFFFF;
-$black: #000;
+$link: $blue-dark;
+$link-highlight: $blue;
+
+// Defaults for asseccibility contrast
+$dark-text-default: #000 !default;
+$light-text-default: #FFFFFF !default;
+
+$dark-text: lighten($dark-text-default, 10%);
+
 $red: #a51b00;
-$orange-muted: darken($orange, 20%);

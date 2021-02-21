@@ -10,6 +10,8 @@ import moment from 'moment'
 import Layout from '../components/layout/Layout'
 import Session from '../components/entities/Session'
 
+import './style.scss';
+
 const SessionsPage = ({ data }) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)

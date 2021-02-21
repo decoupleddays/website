@@ -11,22 +11,8 @@
 @import 'utils/init';
 
 // Base
-//
-// Plain html element styling. Shouldn't require
-// any classes.
-// ========================================
 @import 'base/base';
 
-/* ` const Day=styled.div` font-size: 2em;
-text-align: center;
-` const Time=styled.div` font-size: 1.5em;
-text-align: center;
-width: 100%;
-background-color: #f3f3f3;
-padding: 5px;
-margin: .5em 0;
-`
- */
 .sessions {
   padding: 0 16px;
 }
