@@ -11,7 +11,10 @@
 @import 'utils/init';
 
 // Base
-@import 'base/base';
+@layer base {
+  @import 'base/base';
+}
+
 
 .sessions {
   padding: 0 16px;
@@ -51,7 +54,7 @@
 }
 
 .sessions--sort-label {
-  font-weight: $font-weight-bold;
+  @apply font-bold;
 }
 
 .sessions--day-list {
