@@ -17,14 +17,6 @@ html {
   }
 }
 
-html {
-  //font-size: 62.5%;
-}
-
-body {
-  //font-size: 1.6rem;
-}
-
 // paragraphs
 p {
   margin: 0;
@@ -148,9 +140,9 @@ blockquote {
 // lists
 ul,
 ol {
-  font-family: $sans;
+  @apply list-disc pl-8 mb-2;
+}
 
-  li {
-    margin-bottom: 0.5rem;
-  }
+li {
+  @apply m-0;
 }
