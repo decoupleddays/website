@@ -8,7 +8,7 @@ const Sponsors = props => {
   const sponsors = props.sponsors
   return (
     <div
-      className={`sponsors sponsors--${level.toLowerCase().replace(/ /g, '-')}`}
+      className={`sponsors sponsors--${level.toLowerCase().replace(/\//g, '').replace(/ /g, '-')}`}
     >
       <h3>{level} Sponsors</h3>
       <div className="sponsors-list">

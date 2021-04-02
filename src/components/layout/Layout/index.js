@@ -16,7 +16,8 @@ const Layout = props => {
     diamondSponsors,
     goldSponsors,
     silverSponsors,
-    bronzeSponsors
+    bronzeSponsors,
+    inkindSponsors
   } = useStaticQuery(
     graphql`
       query {
@@ -67,6 +68,16 @@ const Layout = props => {
         }
         bronzeSponsors:allNodeSponsors(filter: {
           field_sponsor_level: {eq: "bronze"},
+          relationships: {
+            field_tags: {elemMatch: {name: {eq: "2021"}}}
+          }
+        }) {
+          nodes {
+            ...sponsorFragment
+          }
+        }
+        inkindSponsors:allNodeSponsors(filter: {
+          field_sponsor_level: {eq: "in-kind"},
           relationships: {
             field_tags: {elemMatch: {name: {eq: "2021"}}}
           }
@@ -127,6 +138,12 @@ const Layout = props => {
             <Sponsors
               level="Bronze"
               sponsors={bronzeSponsors.nodes}
+            />
+           )}
+          {inkindSponsors.nodes.length > 0 && (
+            <Sponsors
+              level="In Kind / Media"
+              sponsors={inkindSponsors.nodes}
             />
            )}
         </div>
