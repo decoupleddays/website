@@ -19,6 +19,26 @@ exports.createPages = ({ actions, graphql }) => {
               }
             }
           }
+          allNodeSponsors {
+            edges {
+              node {
+                nid: drupal_internal__nid
+                path {
+                  alias
+                }
+              }
+            }
+          }
+          allNodeSession {
+            edges {
+              node {
+                nid: drupal_internal__nid
+                path {
+                  alias
+                }
+              }
+            }
+          }
         }
       `).then(result => {
         if (result.errors) {
@@ -34,7 +54,7 @@ exports.createPages = ({ actions, graphql }) => {
           })
         })
 
-        {/** result.data.allNodeSession.edges.forEach(({ node }) => {
+        { result.data.allNodeSession.edges.forEach(({ node }) => {
           createPage({
             path: node.path.alias,
             component: SessionTemplate,
@@ -42,9 +62,9 @@ exports.createPages = ({ actions, graphql }) => {
               slug: node.nid,
             },
           })
-        })*/}
+        })}
 
-        {/* result.data.allNodeSponsors.edges.forEach(({ node }) => {
+        { result.data.allNodeSponsors.edges.forEach(({ node }) => {
           createPage({
             path: node.path.alias,
             component: SponsorTemplate,
@@ -52,7 +72,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug: node.nid,
             },
           })
-        }) */}
+        })}
       })
     )
   })

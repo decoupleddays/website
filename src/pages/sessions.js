@@ -10,12 +10,12 @@ import moment from 'moment'
 import Layout from '../components/layout/Layout'
 import Session from '../components/entities/Session'
 
-import './style.scss';
+// import './style.scss';
 
 const SessionsPage = ({ data }) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)
-  const [day, setDay] = useState('22')
+  const [day, setDay] = useState('14')
   const [sort, setSort] = useState('all')
 
   const filterSession = e => {
@@ -93,46 +93,39 @@ const SessionsPage = ({ data }) => {
         </button>
       </div>
       <div className="sessions">
-       {/* <div className={`sessions--day-list active`}>
-          <h3>Accepted Sessions</h3>
-          {sessions
-            .map(session => (
-              <Session key={`session-${session.node.nid}`} {...session} />
-          ))}
-            </div>*/}
         <div className="sessions--day-nav">
           <button
-            value={22}
+            value={14}
             onClick={switchDay}
-            className={`button ${day === '22' && 'active'}`}
+            className={`button ${day === '14' && 'active'}`}
           >
-            July 22nd
+            July 14th
           </button>
           <button
-            value={23}
+            value={15}
             onClick={switchDay}
-            className={`button ${day === '23' && 'active'}`}
+            className={`button ${day === '15' && 'active'}`}
           >
-            July 23rd
+            July 15th
           </button>
         </div>
         <div>All times ET (UTC - 4)</div>
-        <div className={`sessions--day-list ${day === '22' && 'active'}`}>
-          <h3>July 22nd</h3>
+        <div className={`sessions--day-list ${day === '14' && 'active'}`}>
+          <h3>July 14th</h3>
           {sessions
             .filter(session => {
-              return moment(session.node.time).format('DD') === '22'
+              return moment(session.node.time).format('DD') === '14'
             })
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
             ))}
         </div>
 
-        <div className={`sessions--day-list ${day === '23' && 'active'}`}>
-          <h3>July 23rd</h3>
+        <div className={`sessions--day-list ${day === '15' && 'active'}`}>
+          <h3>July 15th</h3>
           {sessions
             .filter(session => {
-              return moment(session.node.time).format('DD') === '23'
+              return moment(session.node.time).format('DD') === '15'
             })
             .map(session => (
               <Session key={`session-${session.node.nid}`} {...session} />
@@ -148,7 +141,7 @@ export default SessionsPage
 export const query = graphql`
   query SessionsPageQuery {
     allNodeSession(
-      filter: {status: {eq: true}, relationships: {field_tags: {elemMatch: {name: {eq: "2020"}}}}}
+      filter: {status: {eq: true}, relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}}
       sort: {
         fields: [field_time, relationships___field_room___weight, title]
         order: ASC
