@@ -19,7 +19,7 @@ exports.createPages = ({ actions, graphql }) => {
               }
             }
           }
-          allNodeSponsors {
+          allNodeSponsors(filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}}) {
             edges {
               node {
                 nid: drupal_internal__nid
@@ -65,6 +65,7 @@ exports.createPages = ({ actions, graphql }) => {
         })}
 
         { result.data.allNodeSponsors.edges.forEach(({ node }) => {
+          node.body &&
           createPage({
             path: node.path.alias,
             component: SponsorTemplate,
