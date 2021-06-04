@@ -8,6 +8,8 @@ import Layout from '../../components/layout/Layout'
 import Speaker from '../../components/fields/Speaker'
 import Link from '../../components/fields/Link'
 
+import './style.scss';
+
 const SessionTemplate = ({ data }) => {
   const node = data.nodeSession;
 
@@ -26,7 +28,7 @@ const SessionTemplate = ({ data }) => {
       <Helmet>
         <title> { node.title } | Decoupled Days 2020 </title>
       </Helmet>
-      <div className="session session-page container">
+      <div className="container session session-page">
         <h1 className="session--title">{node.title}</h1>
         {speakers && (
           <div className="session--speakers-container">

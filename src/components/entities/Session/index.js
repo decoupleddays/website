@@ -4,6 +4,7 @@ import 'moment-timezone'
 
 import Link from '../../fields/Link'
 
+import './style.scss';
 
 const Session = ({ node }) => {
   const monthday = moment(node.time)
@@ -14,12 +15,13 @@ const Session = ({ node }) => {
     .tz('America/New_York')
     .format('h:mma');
 
-  const { room } = node.r;
+  // const { room } = node.r;
 
   const tracks = {
     'session-track-buisiness': 'Business/CXO',
     'session-track-drupal': 'Decoupled Drupal',
     'session-track-headless': 'Headless CMS',
+    'session-track-cms': 'Traditional CMS',
     'session-track-javascript': 'JavaScript and JAMstack',
     'session-track-people': 'People and Community',
   };

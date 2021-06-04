@@ -2,21 +2,19 @@ import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 import moment from 'moment'
-
-// @todo: put day filter back on on when schedule is done.
-//   * Uncomment lines 3, 14, 29 - 31 and 99 - 136.
-//   * Comment out lines 91 - 97.
+// import queryString from 'query-string';
 
 import Layout from '../components/layout/Layout'
 import Session from '../components/entities/Session'
 
-// import './style.scss';
-
-const SessionsPage = ({ data }) => {
+const SessionsPage = ({data, location}) => {
   const allSessions = data.allNodeSession.edges
   const [sessions, setSessions] = useState(allSessions)
-  const [day, setDay] = useState('14')
-  const [sort, setSort] = useState('all')
+
+  //const q = queryString.parse(location.search);
+  //const date = q.date === '15' ? q.date : '14';
+  const [day, setDay] = useState('14');
+  const [sort, setSort] = useState('all');
 
   const filterSession = e => {
     const value = e.currentTarget.value
@@ -37,7 +35,7 @@ const SessionsPage = ({ data }) => {
   return (
     <Layout>
       <Helmet><title>Sessions | Decoupled Days 2020</title></Helmet>
-      <div className="sessions--sort">
+      <div className="container mx-auto sessions--sort">
         <span className="sessions--sort-label">Show: </span>
         <button
           className={`button${sort === 'all' ? ' active' : ''}`}
@@ -92,25 +90,25 @@ const SessionsPage = ({ data }) => {
           People and Community
         </button>
       </div>
-      <div className="sessions">
-        <div className="sessions--day-nav">
+      <div className="container mx-auto sessions">
+        <div className="border-b-2 sessions--day-nav border-blue ">
           <button
             value={14}
             onClick={switchDay}
-            className={`button ${day === '14' && 'active'}`}
+            className={`button${day === '14' ? ' active' : ''}`}
           >
             July 14th
           </button>
           <button
             value={15}
             onClick={switchDay}
-            className={`button ${day === '15' && 'active'}`}
+            className={`button${day === '15' ? ' active' : ''}`}
           >
             July 15th
           </button>
         </div>
         <div>All times ET (UTC - 4)</div>
-        <div className={`sessions--day-list ${day === '14' && 'active'}`}>
+        <div className={`sessions--day-list ${day === '14' ? 'active' : ''}`}>
           <h3>July 14th</h3>
           {sessions
             .filter(session => {
@@ -121,7 +119,7 @@ const SessionsPage = ({ data }) => {
             ))}
         </div>
 
-        <div className={`sessions--day-list ${day === '15' && 'active'}`}>
+        <div className={`sessions--day-list ${day === '15' ? 'active' : ''}`}>
           <h3>July 15th</h3>
           {sessions
             .filter(session => {

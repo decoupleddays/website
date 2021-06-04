@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../fields/Button';
 import './style.scss'
 
 const TopBar = () => (
@@ -17,12 +18,12 @@ const TopBar = () => (
         >
           Submit a Session
         </a>**/}
-        {/** <a
-          href="https://www.eventbrite.com/e/decoupled-days-2020-registration-88407670723"
-          className="button info"
+        <Button
+          to="https://hopin.com/events/decoupled-days-2021"
+          classes="secondary"
         >
-          Get Tickets
-        </a>*/}
+          Register for Free
+        </Button>
       </div>
     </div>
   </div>

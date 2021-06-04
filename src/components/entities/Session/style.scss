@@ -3,7 +3,6 @@
 //
 // Session item on the list of Sessions page
 //
-.sessions {
 
   .session--link {
     text-decoration: none;
@@ -72,13 +71,12 @@
   .session--time-length {
     font-size: .8rem;
   }
-}
 
 hr.session--details-divider {
   max-width: 180px;
   margin: 0 auto 0 0;
   border: none;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .session--details-label {

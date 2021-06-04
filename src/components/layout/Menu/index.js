@@ -26,9 +26,9 @@ const Menu = props => {
       </button>
       <nav className={`main-menu ${active}`}>
         <ul className="menu">
-          {/* <li>
+          <li>
             <Link to="/sessions">Sessions</Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/about">About</Link>
           </li>
