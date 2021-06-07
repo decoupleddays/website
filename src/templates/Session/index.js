@@ -49,7 +49,7 @@ const SessionTemplate = ({ data }) => {
         )}
         {room && !node.hopin && (
           <div className = "session--room">
-            <span className = "session--details-label" > Where: </span> {room.name}
+            <span className = "session--details-label" > Room: </span> {room.name}
           </div>
         )}
         <hr className = "session--details-divider" />
