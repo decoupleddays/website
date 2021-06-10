@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../fields/Button';
+import { Link } from 'gatsby';
 import './style.scss'
 
 const TopBar = () => (
@@ -18,12 +18,12 @@ const TopBar = () => (
         >
           Submit a Session
         </a>**/}
-        <Button
+        <Link
           to="https://hopin.com/events/decoupled-days-2021"
-          classes="secondary"
+          className="button secondary"
         >
           Register for Free
-        </Button>
+        </Link>
       </div>
     </div>
   </div>
