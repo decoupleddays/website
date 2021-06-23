@@ -33,9 +33,6 @@ const Menu = props => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/program">Program</Link>
-          </li>
-          <li>
             <Link to="/venue">Venue</Link>
           </li>
           <li>
