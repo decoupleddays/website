@@ -78,6 +78,21 @@ export const query = graphql`
         room: field_room {
           name
         }
+        sponsor: field_sponsor {
+          relationships {
+            field_sponsor_logo {
+              localFile {
+                childImageSharp {
+                  fixed(width: 100) {
+                    srcSet
+                    src
+                  }
+                }
+              }
+            }
+          }
+          title
+        }
         speakers: field_speakers {
           title
           r: relationships {

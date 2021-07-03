@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import 'moment-timezone'
+import Img from "gatsby-image"
 
 import Link from '../../fields/Link'
 
@@ -55,6 +56,13 @@ const Session = ({ node }) => {
           {node.field_session_length && <span>&nbsp;({node.field_session_length} minutes)</span>}
         </span>
       </div>
+        {node.r.sponsor && (
+          <div className="session--sponsor">
+            <h3>Brought to you by:</h3>
+            <img src={node.r.sponsor.r.logo.localFile.cis.f.src} alt={node.r.sponsor.title} />
+          </div>
+        )}
+
       {/**room ?
         <div className="session--room">
           <span className="session--details-label">Where:</span> {room.name}

@@ -162,6 +162,20 @@ export const query = graphql`
               name
               tid: drupal_internal__tid
             }
+            sponsor: field_sponsor {
+              r: relationships {
+                logo: field_sponsor_logo {
+                  localFile {
+                    cis: childImageSharp {
+                      f: fixed(width: 100) {
+                        ...GatsbyImageSharpFixed_noBase64
+                      }
+                    }
+                  }
+                }
+              }
+              title
+            }
             speakers: field_speakers {
               nid: drupal_internal__nid
               title

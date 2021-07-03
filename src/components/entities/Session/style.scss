@@ -83,3 +83,13 @@ hr.session--details-divider {
   font-size: .8rem;
   font-weight: bold;
 }
+
+.session--sponsor {
+  display: flex;
+  align-items: center;
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+    margin-right: 1rem;
+  }
+}
