@@ -23,6 +23,9 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 nid: drupal_internal__nid
+                body {
+                  value
+                }
                 path {
                   alias
                 }
