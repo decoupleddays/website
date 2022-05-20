@@ -2,7 +2,7 @@
 
 footer {
   display: flex;
-  border-top: $space/2 solid $blue-dark;
+  border-top: $space*.5 solid $blue-dark;
   padding: $space*2 0;
   background-color: $gray-lightest;
   color: $gray;
@@ -77,7 +77,7 @@ footer {
 
       @include breakpoint($medium) {
         +li {
-          margin-left: $space/2;
+          margin-left: $space*.5;
         }
       }
     }
@@ -117,7 +117,7 @@ footer {
   justify-content: flex-start;
   width: 100%;
   background-color: $gray-lighter;
-  padding: $space/2 0;
+  padding: $space*.5 0;
 
   .container {
     width: 100%;

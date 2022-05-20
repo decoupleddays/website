@@ -23,6 +23,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
@@ -44,7 +45,8 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: 'https://dev-ddd-test.pantheonsite.io/',
+        skipFileDownloads: true,
+        baseUrl: 'https://dev-decoupled-days-cms.pantheonsite.io/',
         // @todo: add filter[tags.name][value] = "2021" for each content type.
       },
     },

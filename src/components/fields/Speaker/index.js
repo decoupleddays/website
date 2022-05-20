@@ -6,7 +6,6 @@ const Speaker = speaker => {
       {speaker.r.field_photo && (
         <div className="session--speaker-image">
           <img
-            src={speaker.r.field_photo.localFile.childImageSharp.fixed.src}
             alt={speaker.title}
           />
         </div>
@@ -19,7 +18,7 @@ const Speaker = speaker => {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Speaker

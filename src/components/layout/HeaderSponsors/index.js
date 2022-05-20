@@ -10,11 +10,7 @@ const HeaderSponsors = props => {
           return (
             <div className="sponsor--item" key={key}>
               <a href={uri}>
-                <img
-                  src={node.r.logo.localFile.cis.fluid.src}
-                  alt={node.title}
-                  className="sponsor--logo"
-                />
+
               </a>
             </div>
           )

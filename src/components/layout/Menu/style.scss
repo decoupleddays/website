@@ -5,7 +5,7 @@
 
   @include breakpoint($large) {
     width: auto;
-    margin-top: $space/2;
+    margin-top: $space * .5;
   }
 
   ul {

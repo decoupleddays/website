@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby';
 import './style.scss'
 
 const TopBar = () => (
@@ -18,12 +17,14 @@ const TopBar = () => (
         >
           Submit a Session
         </a>**/}
-        <Link
-          to="https://hopin.com/events/decoupled-days-2021"
+        <a
           className="button secondary"
+          href="https://forms.gle/yNyD9a5R834AAbYp9"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Register for Free
-        </Link>
+          Call for Papers Now Open
+        </a>
       </div>
     </div>
   </div>

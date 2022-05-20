@@ -19,16 +19,16 @@ p {
   + h4,
   + h5,
   + h6 {
-    margin: $space 0 $space/2;
+    margin: $space 0 $space*.5;
   }
   + h4,
   + h5,
   + h6 {
-    margin: $space/2 0 $space/4;
+    margin: $space * .5 0 $space * .25;
   }
   + ul,
   + ol {
-    margin-top: $space/2;
+    margin-top: $space * .5;
   }
 }
 // headings

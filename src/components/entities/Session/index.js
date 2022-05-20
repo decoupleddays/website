@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import 'moment-timezone'
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import Link from '../../fields/Link'
 
@@ -59,7 +59,6 @@ const Session = ({ node }) => {
         {node.r.sponsor && (
           <div className="session--sponsor">
             <h3>Brought to you by:</h3>
-            <img src={node.r.sponsor.r.logo.localFile.cis.f.src} alt={node.r.sponsor.title} />
           </div>
         )}
 

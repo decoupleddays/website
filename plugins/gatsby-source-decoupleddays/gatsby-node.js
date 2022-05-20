@@ -1,83 +1,81 @@
-const path = require('path')
+const path = require('path');
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
-  const PageTemplate = path.resolve('src/templates/Page/index.js')
-  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js')
-  const SessionTemplate = path.resolve('src/templates/Session/index.js')
-  return new Promise((resolve, reject) => {
-    resolve(
-      graphql(`
-        {
-          allNodePage {
-            edges {
-              node {
-                nid: drupal_internal__nid
-                path {
-                  alias
-                }
-              }
-            }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
+  // Query for markdown nodes to use in creating pages.
+  const result = await graphql(
+    `{
+      allNodePage(
+        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
+      ){
+        nodes {
+          path {
+            alias
           }
-          allNodeSponsors(filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}}) {
-            edges {
-              node {
-                nid: drupal_internal__nid
-                body {
-                  value
-                }
-                path {
-                  alias
-                }
-              }
-            }
-          }
-          allNodeSession {
-            edges {
-              node {
-                nid: drupal_internal__nid
-                path {
-                  alias
-                }
-              }
-            }
-          }
+          nid:drupal_internal__nid
         }
-      `).then(result => {
-        if (result.errors) {
-          reject(result.errors)
+      }
+      allNodeSession(
+        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
+      ){
+        nodes {
+          path {
+            alias
+          }
+          nid:drupal_internal__nid
         }
-        result.data.allNodePage.edges.forEach(({ node }) => {
-          createPage({
-            path: node.path.alias,
-            component: PageTemplate,
-            context: {
-              slug: node.nid,
-            },
-          })
-        })
+      }
+      allNodeSponsors(
+        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
+      ){
+        nodes {
+          path {
+            alias
+          }
+          nid:drupal_internal__nid
+        }
+      }
+    }`
+  );
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
 
-        { result.data.allNodeSession.edges.forEach(({ node }) => {
-          createPage({
-            path: node.path.alias,
-            component: SessionTemplate,
-            context: {
-              slug: node.nid,
-            },
-          })
-        })}
-
-        { result.data.allNodeSponsors.edges.forEach(({ node }) => {
-          node.body &&
-          createPage({
-            path: node.path.alias,
-            component: SponsorTemplate,
-            context: {
-              slug: node.nid,
-            },
-          })
-        })}
-      })
-    )
+  const PageTemplate = path.resolve('src/templates/Page/index.js');
+  result.data.allNodePage.nodes.forEach(( node ) => {
+    console.log()
+    createPage({
+      path: node.path.alias,
+      component: PageTemplate,
+      context: {
+        slug: node.nid,
+      },
+    })
   })
+
+  const SessionTemplate = path.resolve('src/templates/Session/index.js')
+  result.data.allNodeSession.nodes.forEach((node) => {
+    createPage({
+      path: node.path.alias,
+      component: SessionTemplate,
+      context: {
+        slug: node.nid,
+      },
+    })
+  })
+
+  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js')
+  result.data.allNodeSponsors.nodes.forEach((node) => {
+    createPage({
+      path: node.path.alias,
+      component: SponsorTemplate,
+      context: {
+        slug: node.nid,
+      },
+    })
+  })
+
 }
