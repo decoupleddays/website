@@ -1,32 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import MailChimpSubscribeModal from '../../fields/Mailchimp'
 
-import { FaTwitter, FaEnvelope, FaBullhorn } from 'react-icons/fa'
+import { FaTwitter, FaEnvelope } from 'react-icons/fa'
 import './style.scss'
 const Footer = () => {
-  const [open, setOpen] = useState(false)
-
-  const clickIcon = e => {
-    e.preventDefault()
-    setOpen(true)
-  }
-
-  const onCloseModal = () => {
-    setOpen(false)
-  }
 
   return (
     <footer id="footer">
       <div className="container">
         <div className="brand-and-info">
           <a className="brand logo-bg" href="#top">
-            <span className="logo-alt-text">Decoupled Days 2021</span>
+            <span className="logo-alt-text">Decoupled Days 2022</span>
           </a>
           <div className="info-block">
             <div className="bottom--date">
-              <strong>July 14th - 15th</strong><br/>
-              Virtual Event!
+            <strong>August 17th - 18th</strong><br />New York City
             </div>
           </div>
         </div>
@@ -49,18 +37,8 @@ const Footer = () => {
               <FaEnvelope />
             </a>
           </li>
-          <li>
-            <button
-              onClick={clickIcon}
-              className="newsletter"
-              title="Subscribe to Newsletter"
-            >
-              <FaBullhorn />
-            </button>
-          </li>
         </ul>
       </div>
-      <MailChimpSubscribeModal open={open} onClose={onCloseModal} />
     </footer>
   )
 }

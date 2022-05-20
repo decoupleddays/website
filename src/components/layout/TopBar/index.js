@@ -6,8 +6,8 @@ const TopBar = () => (
     <div className="container top-bar--inner">
       <div className="top-bar--date">
         <p>
-          <strong>July 14th - 15th</strong>
-          Virtual Event!
+          <strong>August 17th - 18th</strong>
+          New York City
         </p>
       </div>
       <div className="top-bar--register">
