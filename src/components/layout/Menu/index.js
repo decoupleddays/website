@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
-import { FaTimes, FaBars } from 'react-icons/fa'
+import React, { useState } from 'react';
+import { FaTimes, FaBars } from 'react-icons/fa';
 
-import Link from '../../fields/Link'
-import './style.scss'
-const Menu = props => {
-  const [active, setActive] = useState('')
+import Link from '../../fields/Link';
 
-  const clickHandle = e => {
-    e.preventDefault()
+const Menu = (props) => {
+  const [active, setActive] = useState('');
+
+  const clickHandle = (e) => {
+    e.preventDefault();
     if (active === 'active') {
-      setActive('')
-    } else setActive('active')
-  }
+      setActive('');
+    } else setActive('active');
+  };
   return (
     <>
-      <button onClick={clickHandle} className={`main-menu-toggle ${active}`}>
+      <button
+        onClick={clickHandle}
+        className={`main-menu-toggle ${active}`}
+        type="button"
+      >
         <span className="open">
           <FaBars />
           <span className="menu text">Menu</span>
@@ -26,7 +30,7 @@ const Menu = props => {
       </button>
       <nav className={`main-menu ${active}`}>
         <ul className="menu">
-{/*           <li>
+          {/*           <li>
             <Link to="/sessions">Sessions</Link>
           </li> */}
           <li>
@@ -47,7 +51,7 @@ const Menu = props => {
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

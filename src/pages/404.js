@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Link from '../components/fields/Link';
 import Layout from '../components/layout/Layout';
 
@@ -11,6 +11,6 @@ const NotFoundPage = () => (
       Head back <Link to="/">home</Link> and try again.
     </p>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

@@ -1,0 +1,16 @@
+@layer components {
+  .panels {
+    width: calc(30px + 63px);
+    height: calc(30px + 81px);
+  }
+
+  .panels.lg {
+    width: calc(60px + 63px);
+    height: calc(60px + 81px);
+  }
+
+  .panels.lg svg {
+    width: 80%;
+    height: 80%;
+  }
+}

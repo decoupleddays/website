@@ -1,0 +1,22 @@
+body {
+  background-color: #99dfff;
+  background-image: radial-gradient(
+      at 24% 83%,
+      hsla(97, 0%, 100%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 70% 78%, hsla(230, 100%, 86%, 1) 0px, transparent 50%),
+    radial-gradient(at 44% 13%, hsla(321, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 70% 17%, hsla(32, 0%, 100%, 1) 0px, transparent 50%),
+    radial-gradient(at 91% 6%, hsla(196, 80%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 32% 48%, hsla(308, 100%, 90%, 1) 0px, transparent 50%),
+    radial-gradient(at 14% 0%, hsla(230, 100%, 86%, 1) 0px, transparent 50%);
+}
+
+.hero__headline {
+  background: linear-gradient(180deg, #083d84 0%, #752083 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}

@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  @apply min-h-screen;
+}
+
+@import "../components/logo/logo.scss";
+@import "../components/siteLayout/siteLayout.scss";
+@import "../components/menuPrimary/menuPrimary.scss";
+@import "../components/homeHero/homeHero.scss";

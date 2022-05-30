@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const Speaker = speaker => {
+const Speaker = (speaker) => {
+  const f = 1;
   return (
     <div className="session--speaker">
       {speaker.r.field_photo && (
         <div className="session--speaker-image">
-          <img
-            alt={speaker.title}
-          />
+          <img alt={speaker.title} />
         </div>
       )}
 
@@ -19,6 +18,6 @@ const Speaker = speaker => {
       </div>
     </div>
   );
-}
+};
 
-export default Speaker
+export default Speaker;

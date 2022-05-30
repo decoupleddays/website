@@ -1,17 +1,20 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './style.scss';
-
 const Button = (props) => {
-  const classes = classNames([
-    'button',
-    props.classes
-  ])
+  const { classes, children } = props;
+  const classIndex = classNames(['button', classes]);
   return (
-  <button className={classes}>
-    {props.children}
-  </button>
-)};
+    <button className={classIndex} type="button">
+      {children}
+    </button>
+  );
+};
 
-export default Button
+Button.propTypes = {
+  classes: PropTypes.string,
+  children: PropTypes.node,
+};
+
+export default Button;

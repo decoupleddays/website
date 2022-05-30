@@ -1,16 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import {Helmet} from 'react-helmet'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-import Layout from '../../components/layout/Layout'
+import Layout from '../../components/layout/Layout';
+import SiteLayout from '../../components/siteLayout';
 
-import Body from '../../components/fields/Body'
-import Heading from '../../components/fields/Heading'
+import Body from '../../components/fields/Body';
+import Heading from '../../components/fields/Heading';
 
 const PageTemplate = ({ data }) => {
-  const { title, body } = data.nodePage
+  const { title, body } = data.nodePage;
   return (
-    <Layout>
+    <SiteLayout>
       <Helmet>
         <title>{title} | Decoupled Days 2020</title>
       </Helmet>
@@ -18,11 +20,15 @@ const PageTemplate = ({ data }) => {
         {title}
       </Heading>
       <Body classes="container">{body.processed}</Body>
-    </Layout>
-  )
-}
+    </SiteLayout>
+  );
+};
 
-export default PageTemplate
+PageTemplate.propTypes = {
+  data: PropTypes.node,
+};
+
+export default PageTemplate;
 
 export const query = graphql`
   query PageTemplate($slug: Int!) {
@@ -33,4 +39,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

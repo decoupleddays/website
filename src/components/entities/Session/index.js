@@ -1,20 +1,16 @@
-import React from 'react'
-import moment from 'moment'
-import 'moment-timezone'
-import { GatsbyImage } from "gatsby-plugin-image";
+import React from 'react';
+import moment from 'moment';
+import 'moment-timezone';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
-import Link from '../../fields/Link'
+import Link from '../../fields/Link';
 
-import './style.scss';
+
 
 const Session = ({ node }) => {
-  const monthday = moment(node.time)
-      .tz('America/New_York')
-      .format('MMMM DD');
+  const monthday = moment(node.time).tz('America/New_York').format('MMMM DD');
 
-  const time = moment(node.time)
-    .tz('America/New_York')
-    .format('h:mma');
+  const time = moment(node.time).tz('America/New_York').format('h:mma');
 
   // const { room } = node.r;
 
@@ -36,7 +32,7 @@ const Session = ({ node }) => {
       </h2>
       {node.r.speakers && (
         <div className="session--speakers">
-          {node.r.speakers.map(speaker => (
+          {node.r.speakers.map((speaker) => (
             <div
               className="session--speaker"
               key={`session-speaker-${speaker.nid}`}
@@ -46,23 +42,32 @@ const Session = ({ node }) => {
           ))}
         </div>
       )}
-      {node.r.speakers.length ? <hr className="session--details-divider"/> : ''}
+      {node.r.speakers.length ? (
+        <hr className="session--details-divider" />
+      ) : (
+        ''
+      )}
       {node.track && <div className="session--track">{tracks[node.track]}</div>}
       <div className="session--time-details">
-        {node.day && node.time && (<span className="session--time-date">
-          <span className="session--details-label">When:</span> {monthday} @{time} ET
-        </span>)}
+        {node.day && node.time && (
+          <span className="session--time-date">
+            <span className="session--details-label">When:</span> {monthday} @
+            {time} ET
+          </span>
+        )}
         <span className="session--time-length">
-          {node.field_session_length && <span>&nbsp;({node.field_session_length} minutes)</span>}
+          {node.field_session_length && (
+            <span>&nbsp;({node.field_session_length} minutes)</span>
+          )}
         </span>
       </div>
-        {node.r.sponsor && (
-          <div className="session--sponsor">
-            <h3>Brought to you by:</h3>
-          </div>
-        )}
+      {node.r.sponsor && (
+        <div className="session--sponsor">
+          <h3>Brought to you by:</h3>
+        </div>
+      )}
 
-      {/**room ?
+      {/** room ?
         <div className="session--room">
           <span className="session--details-label">Where:</span> {room.name}
         </div>
@@ -70,7 +75,7 @@ const Session = ({ node }) => {
         ''
       */}
     </div>
-  )
-}
+  );
+};
 
-export default Session
+export default Session;

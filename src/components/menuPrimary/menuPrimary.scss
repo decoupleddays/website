@@ -1,0 +1,23 @@
+@layer components {
+  .nav-primary-link::after {
+    @apply absolute -bottom-3 left-0;
+    @apply w-full h-1;
+    @apply bg-purple-500;
+    @apply origin-bottom-right;
+    content: "";
+    transform: scaleX(0);
+    transition: transform 0.25s ease-out;
+  }
+
+  .nav-primary-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .nav-primary-link--active::before {
+    @apply absolute -bottom-3 left-0;
+    @apply w-full h-1;
+    @apply bg-neutral-900 opacity-20;
+    content: "";
+  }
+}
