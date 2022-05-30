@@ -1,8 +1,4 @@
-# Decoupled Days Gatsby
-
-The default Gatsby starter.
-
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+# Decoupled Days
 
 ## Install
 
@@ -27,3 +23,13 @@ npm run develop
 ## Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/decoupled-days/website)
+
+## Notes
+
+### Styling
+
+We use [TailwindCSS](https://tailwindcss.com/).
+
+### Linting
+
+We use Wes Bos' [No-Sweat™ Eslint and Prettier Setup](https://github.com/wesbos/eslint-config-wesbos)

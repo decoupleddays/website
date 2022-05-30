@@ -1,14 +1,15 @@
 require('dotenv').config({
   path: `.env`,
-})
+});
 
 module.exports = {
   siteMetadata: {
     title: 'Decoupled Days 2022',
-    description: "The only conference on the future of CMS, headlessCMS, and decoupledCMS.",
-    url: "https://2022.decoupleddays.com",
-    image: "/img/DD2022-Logo.png",
-    twitterUsername: "@decoupleddays"
+    description:
+      'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
+    url: 'https://2022.decoupleddays.com',
+    image: '/img/DD2022-Logo.png',
+    twitterUsername: '@decoupleddays',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -16,11 +17,9 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         sassOptions: {
-          includePaths: ['node_modules', 'src/global']
+          includePaths: ['node_modules', 'src/global'],
         },
-        postCssPlugins: [
-          require("tailwindcss")
-        ],
+        postCssPlugins: [require('tailwindcss')],
       },
     },
     `gatsby-plugin-image`,
@@ -47,7 +46,6 @@ module.exports = {
       options: {
         skipFileDownloads: true,
         baseUrl: 'https://dev-decoupled-days-cms.pantheonsite.io/',
-        // @todo: add filter[tags.name][value] = "2021" for each content type.
       },
     },
     {
@@ -58,5 +56,16 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-source-decoupleddays',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'ggn8hxq',
+        },
+        google: {
+          families: ['Inter:100,200,300,400,500,600,700,800,900'],
+        },
+      },
+    },
   ],
-}
+};
