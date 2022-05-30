@@ -120,6 +120,25 @@ module.exports = {
         panelFront: 'panelFront 2s ease-in-out alternate infinite',
         panelBack: 'panelBack 2s ease-in-out alternate infinite',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            lineHeight: 1.375,
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                color: theme('colors.purple.400'),
+              },
+              textDecoration: 'none',
+            },
+          },
+        },
+        xl: {
+          css: {
+            lineHeight: 1.5,
+          },
+        },
+      }),
     },
   },
   variants: {

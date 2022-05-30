@@ -13,9 +13,7 @@ const HomeCFP = ({ data }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
       }}
-    >
-      Left
-    </div>
+    />
     <div className="bg-purple-500 p-14">
       <div className="prose lg:prose-lg z-10 text-white mx-auto">
         <h2 className="lg:text-5xl font-parityDisplay font-black leading-none text-white mb-2 lg:mb-6">
@@ -37,13 +35,13 @@ const HomeCFP = ({ data }) => (
           <li>People and Community</li>
           <li>Business/CXO</li>
         </ul>
-        <a
-          className="inline-block font-bold uppercase leading-tight px-6 py-3 transition-all border-2 border-solid border-white/50 text-white no-underline mt-4 hover:bg-purple-700 hover:border-purple-700/100"
-          href="https://forms.gle/yNyD9a5R834AAbYp9"
-        >
-          Submit your paper <FontAwesomeIcon icon={faRightLong} />
-        </a>
       </div>
+      <a
+        className="inline-block font-bold uppercase leading-tight px-6 py-3 transition-all border-2 border-solid border-white/50 text-white no-underline mt-4 hover:bg-purple-900 hover:border-purple-900/100"
+        href="https://forms.gle/yNyD9a5R834AAbYp9"
+      >
+        Submit your paper <FontAwesomeIcon icon={faRightLong} />
+      </a>
     </div>
   </div>
 );
