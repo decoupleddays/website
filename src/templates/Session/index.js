@@ -64,63 +64,46 @@ const SessionTemplate = ({ data }) => {
 
 export default SessionTemplate
 
-export const query = graphql`
-  query SessionTemplate($slug: Int!) {
-    nodeSession(drupal_internal__nid: { eq: $slug }) {
-      title
-      datetime: field_time(formatString: "dd")
-      day: field_time(formatString: "dd")
-      time: field_time
-      hopin: field_hopin_room {
-        uri
+export const query = graphql`query SessionTemplate($slug: Int!) {
+  nodeSession(drupal_internal__nid: {eq: $slug}) {
+    title
+    datetime: field_time(formatString: "dd")
+    day: field_time(formatString: "dd")
+    time: field_time
+    r: relationships {
+      room: field_room {
+        name
       }
-      r: relationships {
-        room: field_room {
-          name
-        }
-        sponsor: field_sponsor {
-          relationships {
-            field_sponsor_logo {
-              localFile {
-                childImageSharp {
-                  fixed(width: 100) {
-                    srcSet
-                    src
-                  }
-                }
-              }
-            }
+      sponsor: field_sponsor {
+        relationships {
+          field_sponsor_logo {
+            url
+            gatsbyImage(width: 10)
           }
-          title
         }
-        speakers: field_speakers {
-          title
-          r: relationships {
-            field_company {
-              title
-            }
-            field_photo {
-              localFile {
-                childImageSharp {
-                  fixed(width: 100, height: 100) {
-                    src
-                    srcSet
-                    aspectRatio
-                  }
-                }
-              }
-            }
+        title
+      }
+      speakers: field_speakers {
+        title
+        r: relationships {
+          field_company {
+            title
+          }
+          field_photo {
+            url
+            gatsbyImage(width: 10)
           }
         }
       }
-      field_session_length
-      body {
-        processed
-      }
-      path {
-        alias
-      }
-      field_time
     }
+    field_session_length
+    body {
+      processed
+    }
+    path {
+      alias
+    }
+    field_time
   }
+}
 `

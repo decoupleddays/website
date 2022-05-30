@@ -10,9 +10,9 @@ const SponsorTemplate = ({ data }) => {
     <Layout>
       <Helmet><title>{node.title} | Decoupled Days 2021</title></Helmet>
 
-      <div className="sponsor--page container">
+      <div className="container sponsor--page">
         <div className="sponsor--logo">
-          <img src={node.r.logo.localFile.childImageSharp.sizes.src} alt={node.title} />
+
           <p>is a proud {node.level} sponsor!</p>
         </div>
         <div className="sponsor--content">
@@ -40,11 +40,6 @@ export const query = graphql`
       }
       link:field_sponsor_link {uri}
       level:field_sponsor_level
-      r:relationships {
-        logo:field_sponsor_logo {
-          localFile{childImageSharp{sizes(maxWidth: 250){src}}}
-        }
-      }
     }
   }
 `

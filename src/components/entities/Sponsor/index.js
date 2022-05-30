@@ -6,7 +6,6 @@ const Sponsor = ({sponsor, level}) => {
   return (
     <div className={`sponsor sponsor--${level.toLowerCase().replace(/ /g,'-')}`}>
       <a href={uri}>
-        <img src={sponsor.r.logo.localFile.cis.fluid.src} alt={sponsor.title} />
       </a>
     </div>
   )

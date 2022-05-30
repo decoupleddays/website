@@ -136,53 +136,43 @@ const SessionsPage = ({data, location}) => {
 
 export default SessionsPage
 
-export const query = graphql`
-  query SessionsPageQuery {
-    allNodeSession(
-      filter: {status: {eq: true}, relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}}
-      sort: {
-        fields: [field_time, relationships___field_room___weight, title]
-        order: ASC
-      }
-    ) {
-      edges {
-        node {
-          nid: drupal_internal__nid
-          title
-          path {
-            alias
+export const query = graphql`query SessionsPageQuery {
+  allNodeSession(
+    filter: {status: {eq: true}, relationships: {field_tags: {elemMatch: {name: {eq: "2021"}}}}}
+    sort: {fields: [field_time, relationships___field_room___weight, title], order: ASC}
+  ) {
+    edges {
+      node {
+        nid: drupal_internal__nid
+        title
+        path {
+          alias
+        }
+        field_session_length
+        datetime: field_time(formatString: "h:mm:a")
+        day: field_time(formatString: "d")
+        time: field_time
+        track: field_track
+        r: relationships {
+          room: field_room {
+            name
+            tid: drupal_internal__tid
           }
-          field_session_length
-          datetime: field_time(formatString: "h:mm:a")
-          day: field_time(formatString: "d")
-          time: field_time
-          track: field_session_track
-          r: relationships {
-            room: field_room {
-              name
-              tid: drupal_internal__tid
-            }
-            sponsor: field_sponsor {
-              r: relationships {
-                logo: field_sponsor_logo {
-                  localFile {
-                    cis: childImageSharp {
-                      f: fixed(width: 100) {
-                        ...GatsbyImageSharpFixed_noBase64
-                      }
-                    }
-                  }
-                }
+          sponsor: field_sponsor {
+            r: relationships {
+              logo: field_sponsor_logo {
+                url
+                gatsbyImage(width: 10)
               }
-              title
             }
-            speakers: field_speakers {
-              nid: drupal_internal__nid
-              title
-              relationships {
-                field_company {
-                  title
-                }
+            title
+          }
+          speakers: field_speakers {
+            nid: drupal_internal__nid
+            title
+            relationships {
+              field_company {
+                title
               }
             }
           }
@@ -190,4 +180,5 @@ export const query = graphql`
       }
     }
   }
+}
 `

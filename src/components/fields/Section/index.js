@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Parser from 'html-react-parser'
 import classNames from 'classnames'
 
@@ -8,10 +8,10 @@ import './style.scss';
 
 const Section = ({ data }) => {
 
-  let image = null;
-  if (data.relationships.field_image && data.relationships.field_image.localFile) {
-    image = data.relationships.field_image.localFile.childImageSharp.fixed;
-  }
+  let image = getImage(data.relationships.field_image);
+  console.log(image);
+
+
   const classes = classNames(
     'section',
     {'with-image': image}
@@ -21,9 +21,7 @@ const Section = ({ data }) => {
     <div className={classes}>
       { image && (
         <div className="section__thumbnail-container">
-          <Img
-            fixed={{ ...image, aspectRatio: 4 / 3 }}
-          />
+          <GatsbyImage image={image} alt={data.field_image.alt} />
         </div>
       )}
       <div className="section__container">
@@ -38,7 +36,7 @@ const Section = ({ data }) => {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Section

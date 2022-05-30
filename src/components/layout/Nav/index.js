@@ -35,11 +35,11 @@ const Nav = props => {
         <Brand />
         <a
           className="nav--register-button"
-          href="https://decoupleddays.eventbrite.com/"
+          href="https://forms.gle/yNyD9a5R834AAbYp9"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Register now
+          Call for Papers Now Open
         </a>
       </div>
     </div>
