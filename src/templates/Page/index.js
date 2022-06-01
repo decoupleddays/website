@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-
+import MetaTitle from '../../components/meta/title';
 import SiteLayout from '../../components/siteLayout';
-
 import Body from '../../components/fields/Body';
 
 const PageTemplate = ({ data }) => {
   const { title, body } = data.nodePage;
   return (
     <SiteLayout>
-      <Helmet>
-        <title>{title} | Decoupled Days 2020</title>
-      </Helmet>
+      <MetaTitle title={title} />
       <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         <h1>{title}</h1>
         <Body classes="container">{body.processed}</Body>

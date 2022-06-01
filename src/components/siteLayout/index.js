@@ -4,10 +4,7 @@ import SiteHeader from '../siteHeader';
 import SiteFooter from '../siteFooter';
 
 const SiteLayout = ({ children }) => (
-  <div
-    className="siteLayout grid min-h-screen grid-cols-[1fr-auto-1fr];
-  "
-  >
+  <div className="siteLayout grid min-h-screen grid-cols-[1fr-auto-1fr]">
     <SiteHeader />
     <main className="prose lg:prose-xl mx-auto px-4 pt-10">{children}</main>
     <SiteFooter />

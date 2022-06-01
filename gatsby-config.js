@@ -19,6 +19,7 @@ module.exports = {
         sassOptions: {
           includePaths: ['node_modules', 'src/global'],
         },
+        // eslint-disable-next-line global-require
         postCssPlugins: [require('tailwindcss')],
       },
     },
