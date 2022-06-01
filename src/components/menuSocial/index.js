@@ -9,9 +9,10 @@ import { faEnvelope } from '@fortawesome/pro-regular-svg-icons';
 const linkStyle = classNames(
   'nav-primary-link',
   'relative transition-all inline-block',
-  'text-xl font-paritySans font-bold leading-extra-tight tracking-tight',
+  'font-paritySans font-bold leading-extra-tight tracking-tight',
   'text-blue-400',
-  'hover:text-purple-500'
+  'hover:text-purple-500',
+  'lg:text-xl'
 );
 
 const MenuSocial = ({ className }) => (

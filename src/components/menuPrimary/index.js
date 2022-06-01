@@ -24,7 +24,7 @@ const linkStyle = classNames(
 );
 
 const activeLinkStyle = classNames(
-  'text-neutral-900 opacity-80 nav-primary-link--active'
+  '!text-neutral-900 nav-primary-link--active'
 );
 
 const MenuPrimary = ({ className }) => (

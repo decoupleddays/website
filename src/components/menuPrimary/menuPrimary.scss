@@ -1,23 +1,24 @@
 @layer components {
-  .nav-primary-link::after {
-    @apply absolute -bottom-3 left-0;
-    @apply w-full h-1;
-    @apply bg-purple-500;
-    @apply origin-bottom-right;
-    content: "";
-    transform: scaleX(0);
-    transition: transform 0.25s ease-out;
+  .nav-primary-link {
+    @apply relative no-underline bg-no-repeat pb-0.5;
+
+    background-image: linear-gradient(
+      theme("colors.purple.500"),
+      theme("colors.purple.500")
+    );
+    background-size: 0 2px;
+    background-position: 0% 100%;
+    transition: background-size 0.15s linear;
+
+    &:hover {
+      background-size: 100% 2px;
+    }
   }
 
-  .nav-primary-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-
-  .nav-primary-link--active::before {
-    @apply absolute -bottom-3 left-0;
-    @apply w-full h-1;
-    @apply bg-neutral-900 opacity-20;
-    content: "";
+  .nav-primary-link--active {
+    background-image: linear-gradient(
+      theme("colors.neutral.900"),
+      theme("colors.neutral.900")
+    );
   }
 }
