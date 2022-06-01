@@ -4,6 +4,8 @@
 
 body {
   @apply min-h-screen;
+
+  font-display: swap;
 }
 
 @import "../components/logo/logo.scss";
