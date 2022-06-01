@@ -10,12 +10,12 @@ const Logo = ({ size, className }) => {
 
   const nameStyle = classNames(
     'font-bold font-parityDisplay uppercase leading-extra-tight md:leading-extra-tight text-blue-500',
-    { 'text-2xl md:text-4xl': !size, 'text-5xl': size === 'lg' }
+    { 'text-2xl md:text-4xl': !size, 'text-2xl md:text-5xl': size === 'lg' }
   );
 
   const dateStyle = classNames('font-black uppercase text-neutral-900', {
     'text-xs md:text-base': !size,
-    'text-2xl': size === 'lg',
+    'text-xs md:text-2xl': size === 'lg',
   });
 
   const panelStyle = classNames(

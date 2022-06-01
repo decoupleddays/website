@@ -1,4 +1,7 @@
 @layer components {
+  .nav-primary {
+    width: calc(100vw - theme("padding.5"));
+  }
   .nav-primary-link {
     @apply relative no-underline bg-no-repeat pb-1;
 

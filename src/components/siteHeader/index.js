@@ -5,7 +5,8 @@ import Logo from '../logo';
 import MenuPrimary from '../menuPrimary';
 
 const siteHeaderWrapperStyle = classNames(
-  'flex flex-col items-center',
+  'flex flex-col items-start',
+  'md:items-center md:flex-row',
   'lg:pb-5 lg:px-5 mx-auto',
   'lg:flex-row lg:items-center lg:gap-7 lg:max-w-screen-xl'
 );

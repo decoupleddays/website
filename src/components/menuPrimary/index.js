@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import MenuSocial from '../menuSocial';
 
 const navStyle = classNames(
-  'w-screen overflow-x-auto overflow-y-hidden md:w-auto'
+  'overflow-x-auto overflow-y-hidden nav-primary pb-3 w-screen md:w-auto'
 );
 
 const menuULStyle = classNames(

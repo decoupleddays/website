@@ -5,16 +5,16 @@ import { faRightLong } from '@fortawesome/pro-regular-svg-icons';
 import bkgImg from '../../assets/images/teemu-paananen-bzdhc5b3Bxs-unsplash-BW.jpg';
 
 const HomeCFP = ({ data }) => (
-  <div className="grid grid-cols-2 w-screen mt-10">
+  <div className="md:grid md:grid-cols-[1fr_2fr] lg:grid-cols-2 w-screen mt-5 md:mt-10">
     <div
-      className="before:mix-blend-color before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-800 before:to-purple-800 relative after:bg-blue-500 after:absolute after:inset-0 after:mix-blend-luminosity after:opacity-80"
+      className="hidden md:block before:mix-blend-color before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-800 before:to-purple-800 relative after:bg-blue-500 after:absolute after:inset-0 after:mix-blend-luminosity after:opacity-80"
       style={{
         backgroundImage: `url(${bkgImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
       }}
     />
-    <div className="bg-purple-500 p-14">
+    <div className="bg-purple-500 px-5 py-9 lg:p-14">
       <div className="prose lg:prose-lg z-10 text-white mx-auto max-w-none">
         <h2 className="lg:text-5xl font-parityDisplay font-black leading-none text-white mb-2 lg:mb-6">
           Call for Papers is Open!
