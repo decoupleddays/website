@@ -9,12 +9,12 @@ const Logo = ({ size, className }) => {
   );
 
   const nameStyle = classNames(
-    'font-bold font-parityDisplay uppercase wordmark leading-extra-tight text-blue-500',
-    { 'text-4xl': !size, 'text-5xl': size === 'lg' }
+    'font-bold font-parityDisplay uppercase leading-extra-tight md:leading-extra-tight text-blue-500',
+    { 'text-2xl md:text-4xl': !size, 'text-5xl': size === 'lg' }
   );
 
   const dateStyle = classNames('font-black uppercase text-neutral-900', {
-    'text-base': !size,
+    'text-xs md:text-base': !size,
     'text-2xl': size === 'lg',
   });
 
@@ -30,7 +30,7 @@ const Logo = ({ size, className }) => {
     <div className={wrapperStyle}>
       <div
         className={classNames(
-          'panels items-center relative text-blue-400',
+          'panels items-center relative text-blue-400 -top-2',
           size
         )}
       >

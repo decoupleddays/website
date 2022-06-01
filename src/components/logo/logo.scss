@@ -1,16 +1,36 @@
 @layer components {
   .panels {
-    width: calc(30px + 63px);
-    height: calc(30px + 81px);
+    width: calc(0px + 63px);
+    height: calc(0px + 81px - 10px);
+
+    @media (min-width: theme("screens.md")) {
+      width: calc(30px + 63px);
+      height: calc(30px + 81px);
+    }
   }
 
-  .panels.lg {
-    width: calc(60px + 63px);
-    height: calc(60px + 81px);
+  .panels svg {
+    width: 70%;
+    height: 70%;
+
+    @media (min-width: theme("screens.md")) {
+      width: 80%;
+      height: 80%;
+    }
   }
 
-  .panels.lg svg {
-    width: 80%;
-    height: 80%;
-  }
+  // .panels.lg {
+  //   width: calc(60px + 63px);
+  //   height: calc(60px + 81px);
+  // }
+
+  // .panels.lg svg {
+  //   width: 60%;
+  //   height: 60%;
+
+  //   @media (min-width: theme("screens.lg")) {
+  //     width: 80%;
+  //     height: 80%;
+  //   }
+  // }
 }

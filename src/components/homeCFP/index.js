@@ -15,7 +15,7 @@ const HomeCFP = ({ data }) => (
       }}
     />
     <div className="bg-purple-500 p-14">
-      <div className="prose lg:prose-lg z-10 text-white mx-auto">
+      <div className="prose lg:prose-lg z-10 text-white mx-auto max-w-none">
         <h2 className="lg:text-5xl font-parityDisplay font-black leading-none text-white mb-2 lg:mb-6">
           Call for Papers is Open!
         </h2>

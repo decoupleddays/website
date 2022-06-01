@@ -4,12 +4,23 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import MenuSocial from '../menuSocial';
 
+const navStyle = classNames(
+  'w-screen overflow-x-auto overflow-y-hidden md:w-auto'
+);
+
+const menuULStyle = classNames(
+  'leading-extra-tight',
+  'flex flex-row gap-4 items-center',
+  'lg:gap-8'
+);
+
 const linkStyle = classNames(
   'nav-primary-link',
   'relative transition-all inline-block',
-  'text-xl font-paritySans font-bold leading-extra-tight tracking-tight',
+  'font-paritySans font-bold leading-extra-tight tracking-tight',
   'text-blue-400',
-  'hover:text-purple-500'
+  'hover:text-purple-500',
+  'lg:text-xl'
 );
 
 const activeLinkStyle = classNames(
@@ -17,8 +28,8 @@ const activeLinkStyle = classNames(
 );
 
 const MenuPrimary = ({ className }) => (
-  <nav className={className}>
-    <ul className="flex flex-row gap-8 items-end leading-extra-tight">
+  <nav className={classNames(navStyle, className)}>
+    <ul className={menuULStyle}>
       <li>
         <Link
           to="/about"
@@ -43,7 +54,7 @@ const MenuPrimary = ({ className }) => (
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
-          Diversity &amp; Inclusion
+          Diversity <span className="whitespace-nowrap">&amp; Inclusion</span>
         </Link>
       </li>
       <li>
@@ -52,7 +63,7 @@ const MenuPrimary = ({ className }) => (
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
-          Code of Conduct
+          <span className="whitespace-nowrap">Code of</span> Conduct
         </Link>
       </li>
       <li>
@@ -64,7 +75,7 @@ const MenuPrimary = ({ className }) => (
           Volunteer
         </Link>
       </li>
-      <li>
+      <li className="pr-4">
         <MenuSocial />
       </li>
     </ul>
