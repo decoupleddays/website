@@ -20,7 +20,7 @@ const linkStyle = classNames(
   'font-paritySans font-bold leading-extra-tight tracking-tight',
   'text-blue-400',
   'hover:text-purple-500',
-  'lg:text-xl'
+  'lg:text-xl lg:leading-extra-tight'
 );
 
 const activeLinkStyle = classNames(

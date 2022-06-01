@@ -9,7 +9,7 @@ const SiteLayout = ({ children }) => (
   "
   >
     <SiteHeader />
-    <main className="prose lg:prose-xl mx-auto px-4 pt-20">{children}</main>
+    <main className="prose lg:prose-xl mx-auto px-4 pt-10">{children}</main>
     <SiteFooter />
   </div>
 );
