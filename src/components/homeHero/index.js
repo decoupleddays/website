@@ -15,7 +15,13 @@ const HomeHero = () => (
         The only conference on the future of CMS, headlessCMS, and decoupledCMS.
       </h1>
 
-      <Button className="inline-block md:mx-auto">Call for Papers</Button>
+      <Button
+        isURLExternal
+        url="https://docs.google.com/forms/d/e/1FAIpQLSfX0kI6q_86yXNO0tAl7NSBZnnjcqM5FuBOoSuQc6J8HvSuuA/viewform"
+        className="inline-block md:mx-auto"
+      >
+        Call for Papers
+      </Button>
 
       <p className="mt-11 text-2xl max-w-3xl mx-auto">
         In its sixth year after a successful debut in 2017,{' '}

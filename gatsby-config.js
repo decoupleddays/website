@@ -2,14 +2,22 @@ require('dotenv').config({
   path: `.env`,
 });
 
+const metaData = {
+  title: 'Decoupled Days 2022',
+  description:
+    'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
+  url: 'https://2022.decoupleddays.com',
+  image: '/img/DD2022-Logo.png',
+  twitterUsername: '@decoupleddays',
+};
+
 module.exports = {
   siteMetadata: {
-    title: 'Decoupled Days 2022',
-    description:
-      'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
-    url: 'https://2022.decoupleddays.com',
-    image: '/img/DD2022-Logo.png',
-    twitterUsername: '@decoupleddays',
+    title: metaData.title,
+    description: metaData.description,
+    url: metaData.url,
+    image: metaData.image,
+    twitterUsername: metaData.twitterUsername,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -35,13 +43,7 @@ module.exports = {
         path: `${__dirname}/images/`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `social_icons`,
-        path: `${__dirname}/src/data/social-icons/`,
-      },
-    },
+
     {
       resolve: `gatsby-source-drupal`,
       options: {
@@ -66,6 +68,18 @@ module.exports = {
         google: {
           families: ['Inter:100,200,300,400,500,600,700,800,900'],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: metaData.title,
+        short_name: metaData.title,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#124088`,
+        display: `standalone`,
+        icon: `src/assets/favicon.svg`,
       },
     },
   ],
