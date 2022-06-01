@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from '../components/fields/Link';
 import SiteLayout from '../components/siteLayout';
-import MetaTitle from '../components/meta/title';
 import SEO from '../components/meta/seo';
 
 const NotFoundPage = () => (
