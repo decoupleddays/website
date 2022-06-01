@@ -5,8 +5,8 @@ import badge from '../../assets/images/4k-badge.svg';
 
 const SiteFooter = () => (
   <footer className="bg-neutral-50 mix-blend-multiply">
-    <div className="pb-14 pt-10 px-5 max-w-screen-xl mx-auto text-neutral-700">
-      <Link to="/">
+    <div className="pb-14 pt-10 px-7 max-w-screen-xl mx-auto text-neutral-700">
+      <Link to="/" className="-left-4 relative">
         <Logo />
       </Link>
       <p className="text-sm mt-9">
