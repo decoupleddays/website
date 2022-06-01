@@ -71,7 +71,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.twitterUsername,
         },
         {
           name: `twitter:title`,
@@ -80,10 +80,6 @@ const SEO = ({ description, lang, meta, title }) => {
         {
           name: `twitter:description`,
           content: metaDescription,
-        },
-        {
-          name: `google-site-verification`,
-          content: 'fkxWdQkn4y7etqjqyiEBJf4LxTiQlJ7LYK0qv4Fkz1I',
         },
       ].concat(meta)}
     />
