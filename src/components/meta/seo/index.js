@@ -59,11 +59,11 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.sharingImage,
+          content: site.siteMetadata.image,
         },
         {
           property: `twitter:image`,
-          content: site.siteMetadata.sharingImage,
+          content: site.siteMetadata.image,
         },
         {
           name: `twitter:card`,
