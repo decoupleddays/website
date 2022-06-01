@@ -1,6 +1,6 @@
 @layer components {
   .nav-primary-link {
-    @apply relative no-underline bg-no-repeat pb-0.5;
+    @apply relative no-underline bg-no-repeat pb-1;
 
     background-image: linear-gradient(
       theme("colors.purple.500"),
