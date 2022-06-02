@@ -50,7 +50,7 @@ const MenuPrimary = ({ className }) => (
       </li>
       <li>
         <Link
-          to="/diversity-inclusion"
+          to="/diversity-equity-inclusion"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
@@ -59,7 +59,7 @@ const MenuPrimary = ({ className }) => (
       </li>
       <li>
         <Link
-          to="/code-of-conduct"
+          to="/code-conduct"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
@@ -68,7 +68,7 @@ const MenuPrimary = ({ className }) => (
       </li>
       <li>
         <Link
-          to="/become-volunteer"
+          to="/volunteer"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >

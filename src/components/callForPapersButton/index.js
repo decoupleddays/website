@@ -35,7 +35,7 @@ const Button = ({ children, className, isURLExternal, url }) => (
     <FontAwesomeIcon icon={faHourglass} className="text-purple-40 mr-2" />
     {children}
     <span className="block text-xs opacity-75">
-      Due June 1 <FontAwesomeIcon icon={faRightLong} />
+      Due July 1 <FontAwesomeIcon icon={faRightLong} />
     </span>
   </ButtonLink>
 );
