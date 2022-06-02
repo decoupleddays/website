@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
-} from 'react-google-maps'
+} from 'react-google-maps';
 
 const GoogleMapWrapper = withScriptjs(
-  withGoogleMap(props => (
+  withGoogleMap((props) => (
     <GoogleMap
       defaultZoom={17}
       defaultCenter={{ lat: 40.770393, lng: -73.988499 }}
@@ -17,6 +17,6 @@ const GoogleMapWrapper = withScriptjs(
       )}
     </GoogleMap>
   ))
-)
+);
 
-export default GoogleMapWrapper
+export default GoogleMapWrapper;

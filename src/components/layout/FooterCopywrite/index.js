@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const FooterCopywrite = () => (
   <div className="copyright">
@@ -6,6 +6,6 @@ const FooterCopywrite = () => (
       <p>© 2022 Decoupled Days. All rights reserved.</p>
     </div>
   </div>
-)
+);
 
-export default FooterCopywrite
+export default FooterCopywrite;

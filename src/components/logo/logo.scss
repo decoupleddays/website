@@ -1,0 +1,21 @@
+@layer components {
+  .panels {
+    width: calc(0px + 63px);
+    height: calc(0px + 81px - 10px);
+
+    @media (min-width: theme("screens.md")) {
+      width: calc(30px + 63px);
+      height: calc(30px + 81px);
+    }
+  }
+
+  .panels svg {
+    width: 70%;
+    height: 70%;
+
+    @media (min-width: theme("screens.md")) {
+      width: 80%;
+      height: 80%;
+    }
+  }
+}

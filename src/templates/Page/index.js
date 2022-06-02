@@ -1,28 +1,28 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import {Helmet} from 'react-helmet'
-
-import Layout from '../../components/layout/Layout'
-
-import Body from '../../components/fields/Body'
-import Heading from '../../components/fields/Heading'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import SEO from '../../components/meta/seo';
+import SiteLayout from '../../components/siteLayout';
+import Body from '../../components/fields/Body';
 
 const PageTemplate = ({ data }) => {
-  const { title, body } = data.nodePage
+  const { title, body } = data.nodePage;
   return (
-    <Layout>
-      <Helmet>
-        <title>{title} | Decoupled Days 2020</title>
-      </Helmet>
-      <Heading classes="container" level={1}>
-        {title}
-      </Heading>
-      <Body classes="container">{body.processed}</Body>
-    </Layout>
-  )
-}
+    <SiteLayout>
+      <SEO title={title} />
+      <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+        <h1>{title}</h1>
+        <Body classes="container">{body.processed}</Body>
+      </article>
+    </SiteLayout>
+  );
+};
 
-export default PageTemplate
+PageTemplate.propTypes = {
+  data: PropTypes.node,
+};
+
+export default PageTemplate;
 
 export const query = graphql`
   query PageTemplate($slug: Int!) {
@@ -33,4 +33,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
