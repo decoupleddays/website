@@ -1,5 +1,4 @@
-import React from 'react'
-import './style.scss'
+import React from 'react';
 
 const TopBar = () => (
   <div className="top-bar">
@@ -11,12 +10,12 @@ const TopBar = () => (
         </p>
       </div>
       <div className="top-bar--register">
-        {/**<a
+        {/** <a
           href="https://docs.google.com/forms/d/e/1FAIpQLScxop0OcspNwZFuHzlktUNoQ5Kqdmwugv79FhMiNo4zZBvfAQ/viewform"
           className="button secondary"
         >
           Submit a Session
-        </a>**/}
+        </a>* */}
         <a
           className="button secondary"
           href="https://forms.gle/yNyD9a5R834AAbYp9"
@@ -28,6 +27,6 @@ const TopBar = () => (
       </div>
     </div>
   </div>
-)
+);
 
-export default TopBar
+export default TopBar;

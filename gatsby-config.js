@@ -1,14 +1,23 @@
 require('dotenv').config({
   path: `.env`,
-})
+});
+
+const metaData = {
+  title: 'Decoupled Days 2022',
+  description:
+    'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
+  url: 'https://2022.decoupleddays.com',
+  image: '/sharing-image.png',
+  twitterUsername: '@decoupleddays',
+};
 
 module.exports = {
   siteMetadata: {
-    title: 'Decoupled Days 2022',
-    description: "The only conference on the future of CMS, headlessCMS, and decoupledCMS.",
-    url: "https://2022.decoupleddays.com",
-    image: "/img/DD2022-Logo.png",
-    twitterUsername: "@decoupleddays"
+    title: metaData.title,
+    description: metaData.description,
+    url: metaData.url,
+    image: metaData.image,
+    twitterUsername: metaData.twitterUsername,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -16,11 +25,10 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         sassOptions: {
-          includePaths: ['node_modules', 'src/global']
+          includePaths: ['node_modules', 'src/global'],
         },
-        postCssPlugins: [
-          require("tailwindcss")
-        ],
+        // eslint-disable-next-line global-require
+        postCssPlugins: [require('tailwindcss')],
       },
     },
     `gatsby-plugin-image`,
@@ -35,19 +43,12 @@ module.exports = {
         path: `${__dirname}/images/`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `social_icons`,
-        path: `${__dirname}/src/data/social-icons/`,
-      },
-    },
+
     {
       resolve: `gatsby-source-drupal`,
       options: {
         skipFileDownloads: true,
         baseUrl: 'https://dev-decoupled-days-cms.pantheonsite.io/',
-        // @todo: add filter[tags.name][value] = "2021" for each content type.
       },
     },
     {
@@ -58,5 +59,28 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-source-decoupleddays',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'ggn8hxq',
+        },
+        google: {
+          families: ['Inter:100,200,300,400,500,600,700,800,900'],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: metaData.title,
+        short_name: metaData.title,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#124088`,
+        display: `standalone`,
+        icon: `src/assets/favicon.svg`,
+      },
+    },
   ],
-}
+};

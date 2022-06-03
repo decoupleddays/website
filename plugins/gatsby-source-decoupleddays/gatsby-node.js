@@ -5,58 +5,72 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Query for markdown nodes to use in creating pages.
   const result = await graphql(
-    `{
-      allNodePage(
-        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
-      ){
-        nodes {
-          path {
-            alias
+    `
+      {
+        allNodePage(
+          filter: {
+            relationships: {
+              field_tags: { elemMatch: { name: { eq: "2022" } } }
+            }
           }
-          nid:drupal_internal__nid
+        ) {
+          nodes {
+            path {
+              alias
+            }
+            nid: drupal_internal__nid
+          }
+        }
+        allNodeSession(
+          filter: {
+            relationships: {
+              field_tags: { elemMatch: { name: { eq: "2022" } } }
+            }
+          }
+        ) {
+          nodes {
+            path {
+              alias
+            }
+            nid: drupal_internal__nid
+          }
+        }
+        allNodeSponsors(
+          filter: {
+            relationships: {
+              field_tags: { elemMatch: { name: { eq: "2022" } } }
+            }
+          }
+        ) {
+          nodes {
+            path {
+              alias
+            }
+            nid: drupal_internal__nid
+          }
         }
       }
-      allNodeSession(
-        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
-      ){
-        nodes {
-          path {
-            alias
-          }
-          nid:drupal_internal__nid
-        }
-      }
-      allNodeSponsors(
-        filter: {relationships: {field_tags: {elemMatch: {name: {eq: "2022"}}}}}
-      ){
-        nodes {
-          path {
-            alias
-          }
-          nid:drupal_internal__nid
-        }
-      }
-    }`
+    `
   );
   // Handle errors
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
   }
 
   const PageTemplate = path.resolve('src/templates/Page/index.js');
-  result.data.allNodePage.nodes.forEach(( node ) => {
-    console.log()
+  result.data.allNodePage.nodes.forEach((node) => {
+    console.log();
     createPage({
       path: node.path.alias,
       component: PageTemplate,
       context: {
         slug: node.nid,
       },
-    })
-  })
+    });
+  });
 
-  const SessionTemplate = path.resolve('src/templates/Session/index.js')
+  const SessionTemplate = path.resolve('src/templates/Session/index.js');
   result.data.allNodeSession.nodes.forEach((node) => {
     createPage({
       path: node.path.alias,
@@ -64,10 +78,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         slug: node.nid,
       },
-    })
-  })
+    });
+  });
 
-  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js')
+  const SponsorTemplate = path.resolve('src/templates/Sponsor/index.js');
   result.data.allNodeSponsors.nodes.forEach((node) => {
     createPage({
       path: node.path.alias,
@@ -75,7 +89,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         slug: node.nid,
       },
-    })
-  })
-
-}
+    });
+  });
+};

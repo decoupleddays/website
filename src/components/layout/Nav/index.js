@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import Link from '../../fields/Link'
-import { TiThMenu, TiTimes } from 'react-icons/ti'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { TiThMenu, TiTimes } from 'react-icons/ti';
+import Link from '../../fields/Link';
 
-import './style.scss'
-import Menu from '../Menu'
+import Menu from '../Menu';
 
-import logo from '../../../../images/logo.svg'
+import logo from '../../../../images/logo.svg';
 
 export const Logo = () => (
   <Link to="/">
     <img className="nav--logo" alt="" src={logo} />
   </Link>
-)
+);
 
-export const Brand = () => <div className="nav--brand">DECOUPLED DAYS</div>
+export const Brand = () => <div className="nav--brand">DECOUPLED DAYS</div>;
 
-const Nav = props => {
+const Nav = (props) => {
   // Add hook for showMenu;
-  const [showMenu, setShowMenu] = useState(0)
+  const [showMenu, setShowMenu] = useState(0);
 
   return (
     <div className="nav">
@@ -26,6 +26,7 @@ const Nav = props => {
           <button
             className="nav--toggle"
             onClick={() => setShowMenu(!showMenu)}
+            type="button"
           >
             {!showMenu ? <TiThMenu /> : <TiTimes />}
           </button>
@@ -43,7 +44,11 @@ const Nav = props => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+Nav.propTypes = {
+  props: PropTypes.node,
+};
+
+export default Nav;
