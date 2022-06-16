@@ -82,5 +82,15 @@ module.exports = {
         icon: `src/assets/favicon.svg`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-3ZSD64D9XM'],
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
+      },
+    },
   ],
 };
