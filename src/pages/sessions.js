@@ -15,7 +15,10 @@ const SessionCard = () => (
         JavaScript and JAMstack <span className="text-neutral-600">•</span>{' '}
         Intermediate
       </span>
-      <a href="/" className="!leading-tight font-paritySans font-bold ">
+      <a
+        href="/singleSession"
+        className="!leading-tight font-paritySans font-bold "
+      >
         Frontend &amp; Figma Magic: Building a connected UI Kit for Emulsify
       </a>
     </h3>
