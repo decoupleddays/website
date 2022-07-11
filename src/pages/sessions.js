@@ -1,150 +1,65 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import moment from 'moment';
-// import queryString from 'query-string';
+import SiteLayout from '../components/siteLayout';
+import SEO from '../components/meta/seo';
 
-import Layout from '../components/layout/Layout';
-import Session from '../components/entities/Session';
+const SessionCard = () => (
+  <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
+    <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
+      1:00pm – 1:50pm
+    </div>
 
-const SessionsPage = ({ data, location }) => {
-  const allSessions = data.allNodeSession.edges;
-  const [sessions, setSessions] = useState(allSessions);
+    <h3 className="!m-0 !p-0 order-1 md:order-2 !leading-none !mb-3">
+      <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
+        JavaScript and JAMstack <span className="text-neutral-600">•</span>{' '}
+        Intermediate
+      </span>
+      <a href="/" className="!leading-tight font-paritySans font-bold ">
+        Frontend &amp; Figma Magic: Building a connected UI Kit for Emulsify
+      </a>
+    </h3>
 
-  // const q = queryString.parse(location.search);
-  // const date = q.date === '15' ? q.date : '14';
-  const [day, setDay] = useState('14');
-  const [sort, setSort] = useState('all');
+    <div className="flex ml-5 order-3 md:order-3 mt-3 md:mt-0">
+      <img
+        className="w-[60px] md:w-[100px] rounded-full !m-0 !-ml-5 drop-shadow-lg block z-50 border-4 border-solid border-white"
+        src="https://www.fourkitchens.com/wp-content/uploads/2020/03/Brian.jpg"
+        alt=""
+      />
+      <img
+        className="w-[60px] md:w-[100px] rounded-full !m-0 !-ml-5 drop-shadow-lg block z-40 border-4 border-solid border-white"
+        src="https://www.fourkitchens.com/wp-content/uploads/2020/03/dean-600x600.jpg"
+        alt=""
+      />
+    </div>
+  </div>
+);
 
-  const filterSession = (e) => {
-    const { value } = e.currentTarget;
-    let out = allSessions;
-    if (value !== 'all') {
-      out = allSessions.filter(({ node }) => node.track === value);
-    }
-    setSort(value);
-    setSessions(out);
-  };
+const SessionsPage = () => (
+  <SiteLayout>
+    <SEO title="Sessions" />
+    <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <h1>Sessions</h1>
+      <h2>August 17, 2022</h2>
+      <ul className="!m-0 !p-0">
+        <li className="!m-0 !p-0 list-none !mb-14">
+          <SessionCard />
+        </li>
+        <li className="!m-0 !p-0 list-none !mb-14">
+          <SessionCard />
+        </li>
+        <li className="!m-0 !p-0 list-none !mb-14">
+          <SessionCard />
+        </li>
+        <li className="!m-0 !p-0 list-none !mb-14">
+          <SessionCard />
+        </li>
+      </ul>
+    </article>
+  </SiteLayout>
+);
 
-  const switchDay = (e) => {
-    setDay(e.currentTarget.value);
-  };
-
-  return (
-    <Layout>
-      <Helmet>
-        <title>Sessions | Decoupled Days 2020</title>
-      </Helmet>
-      <div className="container mx-auto sessions--sort">
-        <span className="sessions--sort-label">Show: </span>
-        <button
-          className={`button${sort === 'all' ? ' active' : ''}`}
-          value="all"
-          onClick={filterSession}
-          type="button"
-        >
-          All
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-buisiness' ? ' active' : ''
-          }`}
-          value="session-track-buisiness"
-          onClick={filterSession}
-          type="button"
-        >
-          Business/CXO
-        </button>
-        <button
-          className={`button${sort === 'session-track-cms' ? ' active' : ''}`}
-          value="session-track-cms"
-          onClick={filterSession}
-          type="button"
-        >
-          Traditional CMS
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-headless' ? ' active' : ''
-          }`}
-          value="session-track-headless"
-          onClick={filterSession}
-          type="button"
-        >
-          Headless CMS
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-javascript' ? ' active' : ''
-          }`}
-          value="session-track-javascript"
-          onClick={filterSession}
-          type="button"
-        >
-          JavaScript and JAMstack
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-people' ? ' active' : ''
-          }`}
-          value="session-track-people"
-          onClick={filterSession}
-          type="button"
-        >
-          People and Community
-        </button>
-      </div>
-      <div className="container mx-auto sessions">
-        <div className="border-b-2 sessions--day-nav border-blue ">
-          <button
-            value={14}
-            onClick={switchDay}
-            className={`button${day === '14' ? ' active' : ''}`}
-            type="button"
-          >
-            July 14th
-          </button>
-          <button
-            value={15}
-            onClick={switchDay}
-            className={`button${day === '15' ? ' active' : ''}`}
-            type="button"
-          >
-            July 15th
-          </button>
-        </div>
-        <div>All times ET (UTC - 4)</div>
-        <div className={`sessions--day-list ${day === '14' ? 'active' : ''}`}>
-          <h3>July 14th</h3>
-          {sessions
-            .filter(
-              (session) => moment(session.node.time).format('DD') === '14'
-            )
-            .map((session) => (
-              <Session key={`session-${session.node.nid}`} {...session} />
-            ))}
-        </div>
-
-        <div className={`sessions--day-list ${day === '15' ? 'active' : ''}`}>
-          <h3>July 15th</h3>
-          {sessions
-            .filter(
-              (session) => moment(session.node.time).format('DD') === '15'
-            )
-            .map((session) => (
-              <Session key={`session-${session.node.nid}`} {...session} />
-            ))}
-        </div>
-      </div>
-    </Layout>
-  );
-};
-
-SessionsPage.propTypes = {
-  data: PropTypes.node,
-  location: PropTypes.string,
-};
+SessionsPage.propTypes = {};
 
 export default SessionsPage;
 
@@ -153,7 +68,7 @@ export const query = graphql`
     allNodeSession(
       filter: {
         status: { eq: true }
-        relationships: { field_tags: { elemMatch: { name: { eq: "2021" } } } }
+        relationships: { field_tags: { elemMatch: { name: { eq: "2022" } } } }
       }
       sort: {
         fields: [field_time, relationships___field_room___weight, title]
