@@ -1,8 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightLong } from '@fortawesome/pro-regular-svg-icons';
 
-const Logo = ({ size, className }) => {
+const GetTickets = () => {
+  const button = classNames(
+    'inline-block',
+    'text-xs md:text-sm',
+    'bg-purple-500 text-white',
+    'font-bold uppercase leading-tight',
+    'px-3 py-1 mt-2',
+    'transition-all',
+    'hover:bg-purple-700'
+  );
+
+  return (
+    <p>
+      <a
+        className={button}
+        href="https://www.eventbrite.com/e/decoupled-days-2022-registration-372881086367"
+      >
+        Get Your Ticket <FontAwesomeIcon icon={faRightLong} />
+      </a>
+    </p>
+  );
+};
+
+const Logo = ({ size, className, hideTickets }) => {
   const wrapperStyle = classNames(
     'inline-flex flex-row flex-nowrap gap-2 items-center text-left',
     className
@@ -65,6 +90,12 @@ const Logo = ({ size, className }) => {
           Days <span className="text-blue-800">2022</span>
         </h1>
         <p className={dateStyle}>August 17-18, NYC</p>
+        {(() => {
+          if (hideTickets === true) {
+            return '';
+          }
+          return <GetTickets />;
+        })()}
       </div>
     </div>
   );
@@ -73,6 +104,7 @@ const Logo = ({ size, className }) => {
 Logo.propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
+  hideTickets: PropTypes.bool,
 };
 
 export default Logo;
