@@ -6,7 +6,7 @@ import MenuPrimary from '../menuPrimary';
 const HomeHero = () => (
   <div className="pb-14 pt-5 md:pt-10 md:max-w-screen-xl mx-auto flex flex-col gap-5 hero">
     <div className="flex flex-col items-start md:items-center mx-auto w-full gap-2 md:gap-6">
-      <Logo size="lg" className="md:order-2" />
+      <Logo size="lg" className="md:order-2" hideTickets />
       <MenuPrimary className="px-4 md:order-1" />
     </div>
 
@@ -17,10 +17,10 @@ const HomeHero = () => (
 
       <Button
         isURLExternal
-        url="https://docs.google.com/forms/d/e/1FAIpQLSfX0kI6q_86yXNO0tAl7NSBZnnjcqM5FuBOoSuQc6J8HvSuuA/viewform"
+        url="https://www.eventbrite.com/e/decoupled-days-2022-registration-372881086367"
         className="inline-block md:mx-auto"
       >
-        Call for Papers
+        Get Your Ticket
       </Button>
 
       <p className="mt-11 text-2xl max-w-3xl mx-auto">
