@@ -10,18 +10,23 @@ const SessionCard = () => (
       1:00pm – 1:50pm
     </div>
 
-    <h3 className="!m-0 !p-0 order-1 md:order-2 !leading-none !mb-3">
-      <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
-        JavaScript and JAMstack <span className="text-neutral-600">•</span>{' '}
-        Intermediate
-      </span>
-      <a
-        href="/singleSession"
-        className="!leading-tight font-paritySans font-bold "
-      >
-        Frontend &amp; Figma Magic: Building a connected UI Kit for Emulsify
-      </a>
-    </h3>
+    <div className="order-1 md:order-2">
+      <h3 className="!m-0 !p-0 !leading-none !mb-3">
+        <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
+          JavaScript and JAMstack <span className="text-neutral-600">•</span>{' '}
+          Intermediate
+        </span>
+        <a
+          href="/singleSession"
+          className="!leading-tight font-paritySans font-bold "
+        >
+          Frontend &amp; Figma Magic: Building a connected UI Kit for Emulsify
+        </a>
+      </h3>
+      <p className="font-paritySans block font-bold !mb-2 !md:mb-0">
+        Speakers: Brian Lewis, Randy Oest
+      </p>
+    </div>
 
     <div className="flex ml-5 order-3 md:order-3 mt-3 md:mt-0">
       <img
