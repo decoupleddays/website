@@ -58,7 +58,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    'gatsby-source-decoupleddays',
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
