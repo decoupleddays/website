@@ -1,14 +1,15 @@
 import * as React from 'react';
-
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const SponsorsDiamond = () => (
-  <div className="mt-2 md:mt-0">
+const SponsorsDiamond = ({ className }) => (
+  <div className={classNames(className, 'mt-2 md:mt-0')}>
     <h3 className="text-center font-bold uppercase text-neutral-500 leading-none pb-2">
       Diamond Sponsors
     </h3>
-    <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-solid border-neutral-200">
-      <div className="flex gap-8 justify-center">
+    <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-solid border-neutral-200 flex flex-row flex-wrap gap-x-8 gap-y-2 justify-center">
+      <div className="">
         <StaticQuery
           query={graphql`
             query MyQuery {
@@ -54,5 +55,9 @@ const SponsorsDiamond = () => (
     </div>
   </div>
 );
+
+SponsorsDiamond.propTypes = {
+  className: PropTypes.string,
+};
 
 export default SponsorsDiamond;

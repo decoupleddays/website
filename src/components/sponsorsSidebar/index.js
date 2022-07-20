@@ -37,7 +37,7 @@ const SponsorsSidebar = ({ className }) => (
             <h3 className="text-center font-bold uppercase text-neutral-500 leading-none pb-2">
               Golds Sponsors
             </h3>
-            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-col gap-4 justify-center items-center">
+            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-row md:flex-col flex-wrap gap-4 justify-center items-center">
               {Object.entries(data.allNodeSponsors.edges)
                 .filter(
                   (sponsor) => sponsor[1].node.field_sponsor_level === 'gold'
@@ -66,7 +66,7 @@ const SponsorsSidebar = ({ className }) => (
             <h3 className="text-center font-bold uppercase text-neutral-500 leading-none pb-2">
               Silver Sponsors
             </h3>
-            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-col gap-4 justify-center items-center">
+            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-row md:flex-col flex-wrap gap-4 justify-center items-center">
               {Object.entries(data.allNodeSponsors.edges)
                 .filter(
                   (sponsor) => sponsor[1].node.field_sponsor_level === 'silver'
@@ -95,7 +95,7 @@ const SponsorsSidebar = ({ className }) => (
             <h3 className="text-center font-bold uppercase text-neutral-500 leading-none pb-2">
               Bronze Sponsors
             </h3>
-            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-col gap-4 justify-center items-center">
+            <div className="max-w-7xl mx-auto mb-2 py-4 px-4 sm:px-6 lg:px-8 flex flex-row md:flex-col flex-wrap gap-4 justify-center items-center">
               {Object.entries(data.allNodeSponsors.edges)
                 .filter(
                   (sponsor) => sponsor[1].node.field_sponsor_level === 'bronze'
