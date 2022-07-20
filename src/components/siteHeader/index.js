@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import Logo from '../logo';
 import MenuPrimary from '../menuPrimary';
+import SponsorsDiamond from '../sponsorsDiamond';
 
 const siteHeaderWrapperStyle = classNames(
   'flex flex-col items-start',
@@ -19,6 +20,7 @@ const SiteHeader = () => (
       </Link>
       <MenuPrimary className="px-4 mt-3 md:mt-0" />
     </div>
+    <SponsorsDiamond />
   </header>
 );
 
