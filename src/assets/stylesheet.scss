@@ -26,3 +26,40 @@ body {
     background-size: 0 2px, 100% 2px;
   }
 }
+
+.speaker-list {
+  @apply grid gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.speaker {
+  position: relative;
+  overflow: hidden;
+}
+
+.speaker > * {
+  position: relative;
+  z-index: 2;
+}
+
+.speaker::after {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  left: -2rem;
+  width: 130%;
+  height: 130%;
+  background-color: #3858a3;
+  background-image: linear-gradient(
+    329deg,
+    #3858a3 0%,
+    #620670 62%,
+    #adc1ff 100%
+  );
+  transition: all 0.15s;
+}
+
+.speaker:hover::after {
+  top: 0rem;
+  left: 0rem;
+}
