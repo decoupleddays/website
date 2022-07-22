@@ -3,6 +3,7 @@ import Logo from '../logo';
 import Button from '../callForPapersButton';
 import MenuPrimary from '../menuPrimary';
 import SponsorsDiamond from '../sponsorsDiamond';
+import SponsorsSidebar from '../sponsorsSidebar';
 
 const HomeHero = () => (
   <div className="pb-14 pt-5 md:pt-10 md:max-w-screen-xl mx-auto flex flex-col gap-5 hero">
@@ -40,6 +41,7 @@ const HomeHero = () => (
         devices, conversational interfaces, or other technologies.
       </p>
     </div>
+    <SponsorsSidebar className="order-4 mt-8" homepage />
   </div>
 );
 
