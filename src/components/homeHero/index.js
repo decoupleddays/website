@@ -2,12 +2,14 @@ import React from 'react';
 import Logo from '../logo';
 import Button from '../callForPapersButton';
 import MenuPrimary from '../menuPrimary';
+import SponsorsDiamond from '../sponsorsDiamond';
 
 const HomeHero = () => (
   <div className="pb-14 pt-5 md:pt-10 md:max-w-screen-xl mx-auto flex flex-col gap-5 hero">
     <div className="flex flex-col items-start md:items-center mx-auto w-full gap-2 md:gap-6">
       <Logo size="lg" className="md:order-2" hideTickets />
       <MenuPrimary className="px-4 md:order-1" />
+      <SponsorsDiamond className="order-3" />
     </div>
 
     <div className="mx-auto flex flex-col gap-5 md:gap-10 items-start px-5 md:px-12 lg:px-5">
