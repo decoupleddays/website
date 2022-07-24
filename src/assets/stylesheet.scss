@@ -12,7 +12,7 @@ body {
 @import "../components/menuPrimary/menuPrimary.scss";
 @import "../components/homeHero/homeHero.scss";
 
-.prose a {
+.prose a:not(.remove-link-style) {
   @apply relative no-underline bg-no-repeat pb-0.5;
 
   background-image: linear-gradient(#c1c5e1, #c1c5e1),
