@@ -89,4 +89,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
+
+  const SessionTemplate = path.resolve('src/templates/Session/index.js');
+  result.data.allNodeSession.nodes.forEach((node) => {
+    console.log();
+    createPage({
+      path: node.path.alias,
+      component: SessionTemplate,
+      context: {
+        slug: node.nid,
+      },
+    });
+  });
 };
