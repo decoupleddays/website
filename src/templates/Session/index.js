@@ -12,7 +12,7 @@ const SessionTemplate = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title={title} />
-      <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         <h1>{title}</h1>
         <h2>
           {speakers.length > 0 && speakers.length > 1
@@ -36,7 +36,7 @@ const SessionTemplate = ({ data }) => {
 };
 
 SessionTemplate.propTypes = {
-  data: PropTypes.node,
+  data: PropTypes.object,
 };
 
 export default SessionTemplate;

@@ -14,7 +14,7 @@ const SpeakerTemplate = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title={title} />
-      <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         {imageURL && (
           <img
             className="w-[300px] rounded-full float-right ml-4"
@@ -30,7 +30,7 @@ const SpeakerTemplate = ({ data }) => {
 };
 
 SpeakerTemplate.propTypes = {
-  data: PropTypes.node,
+  data: PropTypes.object,
 };
 
 export default SpeakerTemplate;

@@ -18,7 +18,7 @@ const SessionCard = ({
       {day} <br /> {datetime} <br /> {lenght && { lenght }}
     </div>
 
-    <div className="order-1 md:order-2 mr-4">
+    <div className="order-1 mr-4 md:order-2">
       <h3 className="!m-0 !p-0 !leading-none !mb-3">
         <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
           {track}
@@ -35,21 +35,22 @@ const SessionCard = ({
       </p>
       <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
         {speakers &&
-          speakers.map((person) => (
-            <span className="block">{person.title}</span>
+          speakers.map((person, k) => (
+            <span className="block" key={`title_${k}`}>{person.title}</span>
           ))}
       </p>
     </div>
 
-    <div className="flex ml-auto order-3 md:order-3 mt-3 md:mt-0">
+    <div className="flex order-3 mt-3 ml-auto md:order-3 md:mt-0">
       {speakers &&
-        speakers.map((person) => {
+        speakers.map((person, k) => {
           if (person.relationships.field_photo) {
             return (
               <img
                 className="w-[60px] md:w-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
                 src={person.relationships.field_photo.url}
                 alt={person.title}
+                key={`image_${k}`}
               />
             );
           }
@@ -64,13 +65,13 @@ const SessionsPage = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title="Sessions" />
-      <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         <h1>Sessions</h1>
         <ul className="!m-0 !p-0">
           {sessions.map((value) => {
             const session = value.node;
             return (
-              <li className="!m-0 !p-0 list-none !mb-14">
+              <li className="!m-0 !p-0 list-none !mb-14" key={session.nid}>
                 <SessionCard
                   title={session.title}
                   url={session.path.alias}
@@ -90,7 +91,7 @@ const SessionsPage = ({ data }) => {
 };
 
 SessionsPage.propTypes = {
-  data: PropTypes.node,
+  data: PropTypes.object,
 };
 
 SessionCard.propTypes = {
