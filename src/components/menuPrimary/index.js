@@ -32,7 +32,7 @@ const MenuPrimary = ({ className }) => (
     <ul className={menuULStyle}>
       <li>
         <Link
-          to="/accepted-sessions"
+          to="/sessions"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
