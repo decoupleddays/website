@@ -23,7 +23,10 @@ const SpeakerTemplate = ({ data }) => {
           />
         )}
         <h1>{title}</h1>
-        {body.processed && <Body classes="container">{body.processed}</Body>}
+        {body && body.processed && (
+          <Body classes="container">{body.processed}</Body>
+        )}
+        {!body && <Body classes="container">No details.</Body>}
       </article>
     </SiteLayout>
   );
