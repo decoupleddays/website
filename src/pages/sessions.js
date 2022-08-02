@@ -14,9 +14,11 @@ const SessionCard = ({
   speakers,
 }) => (
   <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
-    <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
-      {day} <br /> {datetime} <br /> {lenght && { lenght }}
-    </div>
+    {day && (
+      <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
+        {day} <br /> {datetime} <br /> {lenght && { lenght }}
+      </div>
+    )}
 
     <div className="order-1 mr-4 md:order-2">
       <h3 className="!m-0 !p-0 !leading-none !mb-3">
@@ -36,18 +38,20 @@ const SessionCard = ({
       <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
         {speakers &&
           speakers.map((person, k) => (
-            <span className="block" key={`title_${k}`}>{person.title}</span>
+            <span className="block" key={`title_${k}`}>
+              {person.title}
+            </span>
           ))}
       </p>
     </div>
 
-    <div className="flex order-3 mt-3 ml-auto md:order-3 md:mt-0">
+    <div className="order-3 mt-3 ml-auto md:order-3 md:mt-0 min-w-max hidden md:flex">
       {speakers &&
         speakers.map((person, k) => {
           if (person.relationships.field_photo) {
             return (
               <img
-                className="w-[60px] md:w-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
+                className="object-cover w-[60px] md:w-[100px] h-[60px] md:h-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
                 src={person.relationships.field_photo.url}
                 alt={person.title}
                 key={`image_${k}`}
