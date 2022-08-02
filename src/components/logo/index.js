@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightLong } from '@fortawesome/pro-regular-svg-icons';
@@ -59,6 +60,7 @@ const Logo = ({ size, className, hideTickets }) => {
           size
         )}
       >
+        <Link to="/">
         <svg
           width="63"
           height="81"
@@ -83,13 +85,16 @@ const Logo = ({ size, className, hideTickets }) => {
             d="M0 0C20.8818 2.37277 41.7636 4.74555 62.6454 7.11832C62.6454 28.6428 62.6454 50.1672 62.6454 71.6917C41.7636 74.7147 20.8818 77.7395 0 80.766C0 53.8422 0 26.9203 0 0Z"
           />
         </svg>
+        </Link>
       </div>
       <div>
+        <Link to="/">
         <h1 className={nameStyle}>
           Decoupled <br />
           Days <span className="text-blue-800">2022</span>
         </h1>
         <p className={dateStyle}>August 17-18, NYC</p>
+        </Link>
         {(() => {
           if (hideTickets === true) {
             return '';

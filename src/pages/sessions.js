@@ -1,149 +1,107 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import moment from 'moment';
-// import queryString from 'query-string';
+import { graphql, Link } from 'gatsby';
+import SiteLayout from '../components/siteLayout';
+import SEO from '../components/meta/seo';
 
-import Layout from '../components/layout/Layout';
-import Session from '../components/entities/Session';
+const SessionCard = ({
+  title,
+  url,
+  track,
+  day,
+  datetime,
+  lenght,
+  speakers,
+}) => (
+  <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
+    <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
+      {day} <br /> {datetime} <br /> {lenght && { lenght }}
+    </div>
 
-const SessionsPage = ({ data, location }) => {
-  const allSessions = data.allNodeSession.edges;
-  const [sessions, setSessions] = useState(allSessions);
+    <div className="order-1 mr-4 md:order-2">
+      <h3 className="!m-0 !p-0 !leading-none !mb-3">
+        <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
+          {track}
+        </span>
+        <Link to={url} className="!leading-tight font-paritySans font-bold ">
+          {title}
+        </Link>
+      </h3>
 
-  // const q = queryString.parse(location.search);
-  // const date = q.date === '15' ? q.date : '14';
-  const [day, setDay] = useState('14');
-  const [sort, setSort] = useState('all');
+      <p className="font-paritySans block font-bold text-base !mb-0 !md:mb-0">
+        {speakers.length > 0 && speakers.length > 1
+          ? 'Speakers: '
+          : 'Speaker: '}
+      </p>
+      <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
+        {speakers &&
+          speakers.map((person, k) => (
+            <span className="block" key={`title_${k}`}>{person.title}</span>
+          ))}
+      </p>
+    </div>
 
-  const filterSession = (e) => {
-    const { value } = e.currentTarget;
-    let out = allSessions;
-    if (value !== 'all') {
-      out = allSessions.filter(({ node }) => node.track === value);
-    }
-    setSort(value);
-    setSessions(out);
-  };
+    <div className="flex order-3 mt-3 ml-auto md:order-3 md:mt-0">
+      {speakers &&
+        speakers.map((person, k) => {
+          if (person.relationships.field_photo) {
+            return (
+              <img
+                className="w-[60px] md:w-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
+                src={person.relationships.field_photo.url}
+                alt={person.title}
+                key={`image_${k}`}
+              />
+            );
+          }
+          return null;
+        })}
+    </div>
+  </div>
+);
 
-  const switchDay = (e) => {
-    setDay(e.currentTarget.value);
-  };
-
+const SessionsPage = ({ data }) => {
+  const sessions = data.allNodeSession.edges;
   return (
-    <Layout>
-      <Helmet>
-        <title>Sessions | Decoupled Days 2020</title>
-      </Helmet>
-      <div className="container mx-auto sessions--sort">
-        <span className="sessions--sort-label">Show: </span>
-        <button
-          className={`button${sort === 'all' ? ' active' : ''}`}
-          value="all"
-          onClick={filterSession}
-          type="button"
-        >
-          All
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-buisiness' ? ' active' : ''
-          }`}
-          value="session-track-buisiness"
-          onClick={filterSession}
-          type="button"
-        >
-          Business/CXO
-        </button>
-        <button
-          className={`button${sort === 'session-track-cms' ? ' active' : ''}`}
-          value="session-track-cms"
-          onClick={filterSession}
-          type="button"
-        >
-          Traditional CMS
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-headless' ? ' active' : ''
-          }`}
-          value="session-track-headless"
-          onClick={filterSession}
-          type="button"
-        >
-          Headless CMS
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-javascript' ? ' active' : ''
-          }`}
-          value="session-track-javascript"
-          onClick={filterSession}
-          type="button"
-        >
-          JavaScript and JAMstack
-        </button>
-        <button
-          className={`button${
-            sort === 'session-track-people' ? ' active' : ''
-          }`}
-          value="session-track-people"
-          onClick={filterSession}
-          type="button"
-        >
-          People and Community
-        </button>
-      </div>
-      <div className="container mx-auto sessions">
-        <div className="border-b-2 sessions--day-nav border-blue ">
-          <button
-            value={14}
-            onClick={switchDay}
-            className={`button${day === '14' ? ' active' : ''}`}
-            type="button"
-          >
-            July 14th
-          </button>
-          <button
-            value={15}
-            onClick={switchDay}
-            className={`button${day === '15' ? ' active' : ''}`}
-            type="button"
-          >
-            July 15th
-          </button>
-        </div>
-        <div>All times ET (UTC - 4)</div>
-        <div className={`sessions--day-list ${day === '14' ? 'active' : ''}`}>
-          <h3>July 14th</h3>
-          {sessions
-            .filter(
-              (session) => moment(session.node.time).format('DD') === '14'
-            )
-            .map((session) => (
-              <Session key={`session-${session.node.nid}`} {...session} />
-            ))}
-        </div>
-
-        <div className={`sessions--day-list ${day === '15' ? 'active' : ''}`}>
-          <h3>July 15th</h3>
-          {sessions
-            .filter(
-              (session) => moment(session.node.time).format('DD') === '15'
-            )
-            .map((session) => (
-              <Session key={`session-${session.node.nid}`} {...session} />
-            ))}
-        </div>
-      </div>
-    </Layout>
+    <SiteLayout>
+      <SEO title="Sessions" />
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+        <h1>Sessions</h1>
+        <ul className="!m-0 !p-0">
+          {sessions.map((value) => {
+            const session = value.node;
+            return (
+              <li className="!m-0 !p-0 list-none !mb-14" key={session.nid}>
+                <SessionCard
+                  title={session.title}
+                  url={session.path.alias}
+                  track={session.track}
+                  day={session.day}
+                  datetime={session.datetime}
+                  length={session.field_session_length}
+                  speakers={session.r.speakers}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </article>
+    </SiteLayout>
   );
 };
 
 SessionsPage.propTypes = {
-  data: PropTypes.node,
-  location: PropTypes.string,
+  data: PropTypes.object,
+};
+
+SessionCard.propTypes = {
+  title: PropTypes.string,
+  url: PropTypes.string,
+  track: PropTypes.string,
+  day: PropTypes.string,
+  datetime: PropTypes.string,
+  lenght: PropTypes.string,
+  speakers: PropTypes.array,
 };
 
 export default SessionsPage;
@@ -153,7 +111,7 @@ export const query = graphql`
     allNodeSession(
       filter: {
         status: { eq: true }
-        relationships: { field_tags: { elemMatch: { name: { eq: "2021" } } } }
+        relationships: { field_tags: { elemMatch: { name: { eq: "2022" } } } }
       }
       sort: {
         fields: [field_time, relationships___field_room___weight, title]
@@ -168,8 +126,8 @@ export const query = graphql`
             alias
           }
           field_session_length
-          datetime: field_time(formatString: "h:mm:a")
-          day: field_time(formatString: "d")
+          datetime: field_time(formatString: "h:mm a")
+          day: field_time(formatString: "MMM DD")
           time: field_time
           track: field_track
           r: relationships {
@@ -192,6 +150,9 @@ export const query = graphql`
               relationships {
                 field_company {
                   title
+                }
+                field_photo {
+                  url
                 }
               }
             }

@@ -21,7 +21,7 @@ const SponsorsSidebar = ({ className, homepage }) => (
         query MyQuerySponsorSidebar {
           allNodeSponsors(
             filter: {
-              field_sponsor_level: { in: ["gold", "silver", "bronze"] }
+              field_sponsor_level: { in: ["gold", "silver", "bronze" ,"media"]},
             }
             sort: { fields: title }
           ) {
@@ -47,31 +47,30 @@ const SponsorsSidebar = ({ className, homepage }) => (
         <div>
           {data.allNodeSponsors.edges.length > 0 && (
             <section className="flex flex-col gap-8">
-              {Object.entries(data.allNodeSponsors.edges).filter(
-                (sponsor) => sponsor[1].node.field_sponsor_level === 'gold'
-              ).length > 0 && (
+              {data.allNodeSponsors.edges
+                .filter(sponsor => sponsor.node.field_sponsor_level === 'gold')
+                .length > 0
+              && (
                 <section>
                   <h3 className={headerStyles}>Gold Sponsors</h3>
                   <div className={sponosorListStyles(homepage)}>
-                    {Object.entries(data.allNodeSponsors.edges)
-                      .filter(
-                        (sponsor) =>
-                          sponsor[1].node.field_sponsor_level === 'gold'
+                    { data.allNodeSponsors.edges.filter(sponsor =>
+                        sponsor.node.field_sponsor_level === 'gold'
                       )
                       .map((sponsor) => (
-                        <div>
+                        <div key={sponsor.node.id}>
                           <a
-                            href={sponsor[1].node.field_sponsor_link.uri}
+                            href={sponsor.node.field_sponsor_link.uri}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
                               className="h-12"
                               src={
-                                sponsor[1].node.relationships.field_sponsor_logo
+                                sponsor.node.relationships.field_sponsor_logo
                                   .url
                               }
-                              alt={sponsor[1].node.title}
+                              alt={sponsor.node.title}
                             />
                           </a>
                         </div>
@@ -80,31 +79,32 @@ const SponsorsSidebar = ({ className, homepage }) => (
                 </section>
               )}
 
-              {Object.entries(data.allNodeSponsors.edges).filter(
-                (sponsor) => sponsor[1].node.field_sponsor_level === 'silver'
-              ).length > 0 && (
+              {data.allNodeSponsors.edges
+                .filter(sponsor => sponsor.node.field_sponsor_level === 'silver')
+                .length > 0
+              && (
                 <section>
                   <h3 className={headerStyles}>Silver Sponsors</h3>
                   <div className={sponosorListStyles(homepage)}>
                     {Object.entries(data.allNodeSponsors.edges)
                       .filter(
                         (sponsor) =>
-                          sponsor[1].node.field_sponsor_level === 'silver'
+                          sponsor.node.field_sponsor_level === 'silver'
                       )
                       .map((sponsor) => (
-                        <div>
+                        <div key={sponsor.node.id}>
                           <a
-                            href={sponsor[1].node.field_sponsor_link.uri}
+                            href={sponsor.node.field_sponsor_link.uri}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
-                              className="h-12"
+                              className="h-6"
                               src={
-                                sponsor[1].node.relationships.field_sponsor_logo
+                                sponsor.node.relationships.field_sponsor_logo
                                   .url
                               }
-                              alt={sponsor[1].node.title}
+                              alt={sponsor.node.title}
                             />
                           </a>
                         </div>
@@ -113,9 +113,10 @@ const SponsorsSidebar = ({ className, homepage }) => (
                 </section>
               )}
 
-              {Object.entries(data.allNodeSponsors.edges).filter(
-                (sponsor) => sponsor[1].node.field_sponsor_level === 'bronze'
-              ).length > 0 && (
+              {data.allNodeSponsors.edges
+                .filter(sponsor => sponsor.node.field_sponsor_level === 'bronze')
+                .length > 0
+              && (
                 <section>
                   <h3 className={headerStyles}>Bronze Sponsors</h3>
                   <div className={sponosorListStyles(homepage)}>
@@ -125,19 +126,48 @@ const SponsorsSidebar = ({ className, homepage }) => (
                           sponsor[1].node.field_sponsor_level === 'bronze'
                       )
                       .map((sponsor) => (
-                        <div>
+                        <div key={sponsor.node.id}>
                           <a
-                            href={sponsor[1].node.field_sponsor_link.uri}
+                            href={sponsor.node.field_sponsor_link.uri}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <img
                               className="h-12"
                               src={
-                                sponsor[1].node.relationships.field_sponsor_logo
+                                sponsor.node.relationships.field_sponsor_logo
                                   .url
                               }
-                              alt={sponsor[1].node.title}
+                              alt={sponsor.node.title}
+                            />
+                          </a>
+                        </div>
+                      ))}
+                  </div>
+                </section>
+              )}
+              {data.allNodeSponsors.edges
+                .filter(sponsor => sponsor.node.field_sponsor_level === 'media')
+                .length > 0
+              && (
+                <section>
+                  <h3 className={headerStyles}>Media Sponsors</h3>
+                  <div className={sponosorListStyles(homepage)}>
+                    {data.allNodeSponsors.edges
+                      .filter(sponsor =>sponsor.node.field_sponsor_level === 'media')
+                      .map((sponsor) => (
+                        <div key={sponsor.node.id}>
+                          <a
+                            href={sponsor.node.field_sponsor_link.uri}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img
+                              className="h-6"
+                              src={
+                                sponsor.node.relationships.field_sponsor_logo.url
+                              }
+                              alt={sponsor.node.title}
                             />
                           </a>
                         </div>

@@ -10,7 +10,7 @@ const PageTemplate = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title={title} />
-      <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         <h1>{title}</h1>
         <Body classes="container">{body.processed}</Body>
       </article>
@@ -19,7 +19,7 @@ const PageTemplate = ({ data }) => {
 };
 
 PageTemplate.propTypes = {
-  data: PropTypes.node,
+  data: PropTypes.object,
 };
 
 export default PageTemplate;

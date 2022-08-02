@@ -33,28 +33,30 @@ const SponsorsDiamond = ({ className }) => (
         <div>
           {data.allNodeSponsors.edges.length > 0 && (
             <div>
-              <h3 className="text-center font-bold uppercase text-neutral-500 leading-none pb-2">
+              <h3 className="pb-2 font-bold leading-none text-center uppercase text-neutral-500">
                 Diamond Sponsors
               </h3>
-              <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-solid border-neutral-200 flex flex-row flex-wrap gap-x-8 gap-y-2 justify-center">
-                <div className="">
-                  <a
-                    href={
-                      data.allNodeSponsors.edges[0].node.field_sponsor_link.uri
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      className="h-12"
-                      src={
-                        data.allNodeSponsors.edges[0].node.relationships
-                          .field_sponsor_logo.url
+              <div className="flex flex-row flex-wrap justify-center px-4 py-4 mx-auto border-t border-solid max-w-7xl sm:px-6 lg:px-8 border-neutral-200 gap-x-8 gap-y-2">
+                { data.allNodeSponsors.edges.map(s => (
+                  <div key={s.node.id}>
+                    <a
+                      href={
+                        s.node.field_sponsor_link.uri
                       }
-                      alt={data.allNodeSponsors.edges[0].node.title}
-                    />
-                  </a>
-                </div>
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className="h-12"
+                        src={
+                          s.node.relationships
+                            .field_sponsor_logo.url
+                        }
+                        alt={s.node.title}
+                      />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
           )}
