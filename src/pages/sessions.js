@@ -3,20 +3,26 @@ import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import SiteLayout from '../components/siteLayout';
 import SEO from '../components/meta/seo';
+import moment from 'moment'
+import 'moment-timezone'
 
 const SessionCard = ({
   title,
   url,
   track,
   day,
-  datetime,
+  field_time,
   lenght,
   speakers,
-}) => (
+}) => {
+  const time = field_time && moment(field_time)
+    .tz('America/New_York')
+    .format('h:mma');
+  return(
   <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
     {day && (
       <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
-        {day} <br /> {datetime} <br /> {lenght && { lenght }}
+        {day} <br /> {time} <br /> {lenght && { lenght }}
       </div>
     )}
 
@@ -45,7 +51,7 @@ const SessionCard = ({
       </p>
     </div>
 
-    <div className="order-3 mt-3 ml-auto md:order-3 md:mt-0 min-w-max hidden md:flex">
+    <div className="order-3 hidden mt-3 ml-auto md:order-3 md:mt-0 min-w-max md:flex">
       {speakers &&
         speakers.map((person, k) => {
           if (person.relationships.field_photo) {
@@ -62,7 +68,7 @@ const SessionCard = ({
         })}
     </div>
   </div>
-);
+)};
 
 const SessionsPage = ({ data }) => {
   const sessions = data.allNodeSession.edges;
@@ -81,6 +87,7 @@ const SessionsPage = ({ data }) => {
                   url={session.path.alias}
                   track={session.track}
                   day={session.day}
+                  field_time={session.field_time}
                   datetime={session.datetime}
                   length={session.field_session_length}
                   speakers={session.r.speakers}
@@ -104,6 +111,7 @@ SessionCard.propTypes = {
   track: PropTypes.string,
   day: PropTypes.string,
   datetime: PropTypes.string,
+  field_time: PropTypes.string,
   lenght: PropTypes.string,
   speakers: PropTypes.array,
 };
@@ -133,6 +141,7 @@ export const query = graphql`
           datetime: field_time(formatString: "h:mm a")
           day: field_time(formatString: "MMM DD")
           time: field_time
+          field_time
           track: field_track
           r: relationships {
             room: field_room {
