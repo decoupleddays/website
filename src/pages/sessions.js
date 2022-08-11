@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
+import moment from 'moment';
 import SiteLayout from '../components/siteLayout';
 import SEO from '../components/meta/seo';
-import moment from 'moment'
-import 'moment-timezone'
+import 'moment-timezone';
 
 const SessionCard = ({
   title,
@@ -15,61 +15,61 @@ const SessionCard = ({
   lenght,
   speakers,
   room,
-}) => (
-  const time = field_time && moment(field_time)
-    .tz('America/New_York')
-    .format('h:mma');
-  return(
-  <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
-    {day && (
-      <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
-        {day} <br /> {time} <br /> {lenght && { lenght }}
+}) => {
+  const time =
+    field_time && moment(field_time).tz('America/New_York').format('h:mma');
+  return (
+    <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
+      {day && (
+        <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">
+          {day} <br /> {time} <br /> {lenght && { lenght }}
+        </div>
+      )}
+
+      <div className="order-1 mr-4 md:order-2">
+        <h3 className="!m-0 !p-0 !leading-none !mb-3">
+          <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
+            {track} {room && <span>• {room} Room</span>}
+          </span>
+          <Link to={url} className="!leading-tight font-paritySans font-bold ">
+            {title}
+          </Link>
+        </h3>
+
+        <p className="font-paritySans block font-bold text-base !mb-0 !md:mb-0">
+          {speakers.length > 0 && speakers.length > 1
+            ? 'Speakers: '
+            : 'Speaker: '}
+        </p>
+        <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
+          {speakers &&
+            speakers.map((person, k) => (
+              <span className="block" key={`title_${k}`}>
+                {person.title}
+              </span>
+            ))}
+        </p>
       </div>
-    )}
 
-    <div className="order-1 mr-4 md:order-2">
-      <h3 className="!m-0 !p-0 !leading-none !mb-3">
-        <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
-          {track} {room && <span>• {room} Room</span>}
-        </span>
-        <Link to={url} className="!leading-tight font-paritySans font-bold ">
-          {title}
-        </Link>
-      </h3>
-
-      <p className="font-paritySans block font-bold text-base !mb-0 !md:mb-0">
-        {speakers.length > 0 && speakers.length > 1
-          ? 'Speakers: '
-          : 'Speaker: '}
-      </p>
-      <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
+      <div className="order-3 hidden mt-3 ml-auto md:order-3 md:mt-0 min-w-max md:flex">
         {speakers &&
-          speakers.map((person, k) => (
-            <span className="block" key={`title_${k}`}>
-              {person.title}
-            </span>
-          ))}
-      </p>
+          speakers.map((person, k) => {
+            if (person.relationships.field_photo) {
+              return (
+                <img
+                  className="object-cover w-[60px] md:w-[100px] h-[60px] md:h-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
+                  src={person.relationships.field_photo.url}
+                  alt={person.title}
+                  key={`image_${k}`}
+                />
+              );
+            }
+            return null;
+          })}
+      </div>
     </div>
-
-    <div className="order-3 hidden mt-3 ml-auto md:order-3 md:mt-0 min-w-max md:flex">
-      {speakers &&
-        speakers.map((person, k) => {
-          if (person.relationships.field_photo) {
-            return (
-              <img
-                className="object-cover w-[60px] md:w-[100px] h-[60px] md:h-[100px] rounded-full !m-0 drop-shadow-lg block z-50 border-4 border-solid border-white"
-                src={person.relationships.field_photo.url}
-                alt={person.title}
-                key={`image_${k}`}
-              />
-            );
-          }
-          return null;
-        })}
-    </div>
-  </div>
-)};
+  );
+};
 
 const SessionsPage = ({ data }) => {
   const sessions = data.allNodeSession.edges;
