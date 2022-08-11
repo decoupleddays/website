@@ -29,7 +29,7 @@ const SessionCard = ({
       <div className="order-1 mr-4 md:order-2">
         <h3 className="!m-0 !p-0 !leading-none !mb-3">
           <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
-            {track} {room && <span>• {room} Room</span>}
+            {track} {room && <span>• {room.name} Room</span>}
           </span>
           <Link to={url} className="!leading-tight font-paritySans font-bold ">
             {title}
@@ -93,7 +93,7 @@ const SessionsPage = ({ data }) => {
                   datetime={session.datetime}
                   length={session.field_session_length}
                   speakers={session.r.speakers}
-                  room={session.r.room.name}
+                  room={session.r.room}
                 />
               </li>
             );
