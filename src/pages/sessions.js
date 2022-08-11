@@ -109,6 +109,7 @@ SessionCard.propTypes = {
   datetime: PropTypes.string,
   lenght: PropTypes.string,
   speakers: PropTypes.array,
+  room: PropTypes.array,
 };
 
 export default SessionsPage;
