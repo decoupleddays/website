@@ -8,12 +8,14 @@ import Body from '../../components/fields/Body';
 const SessionTemplate = ({ data }) => {
   const { title, body } = data.nodeSession;
   const speakers = data.nodeSession.relationships.field_speakers;
+  const { room } = data.nodeSession.relationships;
 
   return (
     <SiteLayout>
       <SEO title={title} />
       <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
         <h1>{title}</h1>
+        {room && <h2>{room.name} Room</h2>}
         <h2>
           {speakers.length > 0 && speakers.length > 1
             ? 'Speakers: '
@@ -29,7 +31,7 @@ const SessionTemplate = ({ data }) => {
               </>
             ))}
         </h2>
-        {body.processed && <Body classes="container">{body.processed}</Body>}
+        {body && <Body classes="container">{body.processed}</Body>}
       </article>
     </SiteLayout>
   );
@@ -59,6 +61,9 @@ export const query = graphql`
               url
             }
           }
+        }
+        room: field_room {
+          name
         }
       }
     }
