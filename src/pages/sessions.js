@@ -12,6 +12,7 @@ const SessionCard = ({
   datetime,
   lenght,
   speakers,
+  room,
 }) => (
   <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
     {day && (
@@ -23,7 +24,7 @@ const SessionCard = ({
     <div className="order-1 mr-4 md:order-2">
       <h3 className="!m-0 !p-0 !leading-none !mb-3">
         <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
-          {track}
+          {track} {room && <span>• {room} Room</span>}
         </span>
         <Link to={url} className="!leading-tight font-paritySans font-bold ">
           {title}
@@ -74,6 +75,7 @@ const SessionsPage = ({ data }) => {
         <ul className="!m-0 !p-0">
           {sessions.map((value) => {
             const session = value.node;
+            console.log(session);
             return (
               <li className="!m-0 !p-0 list-none !mb-14" key={session.nid}>
                 <SessionCard
@@ -84,6 +86,7 @@ const SessionsPage = ({ data }) => {
                   datetime={session.datetime}
                   length={session.field_session_length}
                   speakers={session.r.speakers}
+                  room={session.r.room.name}
                 />
               </li>
             );
