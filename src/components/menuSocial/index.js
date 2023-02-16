@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/pro-regular-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 const linkStyle = classNames(
   'nav-primary-link',

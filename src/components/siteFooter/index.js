@@ -7,7 +7,7 @@ const SiteFooter = () => (
     <div className="max-w-screen-xl pt-10 mx-auto pb-14 px-7 text-neutral-700">
       <Logo className="relative -left-4" />
       <p className="text-sm mt-9">
-        © 2022 Decoupled Days. All rights reserved.
+        © 2023 Decoupled Days. All rights reserved.
       </p>
       <p className="flex flex-row items-center gap-2 text-sm mt-9 ">
         Designed with 💚 by

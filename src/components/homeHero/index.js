@@ -27,11 +27,11 @@ const HomeHero = () => (
       </Button>
 
       <p className="mt-11 text-2xl max-w-3xl mx-auto">
-        In its sixth year after a successful debut in 2017,{' '}
+        In its seventh year after a successful debut in 2017,{' '}
         <strong>Decoupled Days</strong> is a conference for architects,
         developers, and businesspeople involved in implementing headless CMS
-        architectures. The 2022 edition is scheduled for <strong>August</strong>{' '}
-        in person in New York City!
+        architectures. The 2023 edition is scheduled for <strong>August</strong>{' '}
+        in person in Albequerque!
       </p>
 
       <p className="mt-0 text-xl max-w-3xl mx-auto">

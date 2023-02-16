@@ -8,6 +8,11 @@
     "url": "https://github.com/decoupleddays/decoupled-dev-days.git"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.6.4",
     "@tailwindcss/typography": "^0.5.2",
     "@types/googlemaps": "^3.39.6",
@@ -18,6 +23,7 @@
     "breakpoint-sass": "^2.7.1",
     "classnames": "^2.3.1",
     "dotenv": "^16.0.1",
+    "font-awesome": "^4.7.0",
     "gatsby": "5.6.0",
     "gatsby-link": "^5.6.0",
     "gatsby-plugin-google-gtag": "^5.6.0",
@@ -29,6 +35,8 @@
     "gatsby-plugin-sass": "^6.6.0",
     "gatsby-plugin-sharp": "^5.6.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-react-router-scroll": "^6.6.0",
+    "gatsby-script": "^2.6.0",
     "gatsby-source-drupal": "^6.6.0",
     "gatsby-source-filesystem": "^5.6.0",
     "gatsby-transformer-json": "^5.6.0",

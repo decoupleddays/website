@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHourglass, faRightLong } from '@fortawesome/pro-regular-svg-icons';
+import { faHourglass, faRightLong } from '@fortawesome/free-regular-svg-icons';
 
 const buttonStyle = classNames(
   'inline-block',

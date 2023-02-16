@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeftLong } from '@fortawesome/pro-regular-svg-icons';
+import { faLeftLong } from '@fortawesome/free-regular-svg-icons';
 import SiteLayout from '../components/siteLayout';
 import SEO from '../components/meta/seo';
 

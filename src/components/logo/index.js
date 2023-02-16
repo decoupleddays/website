@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightLong } from '@fortawesome/pro-regular-svg-icons';
+import { faRightLong } from '@fortawesome/free-regular-svg-icons';
 
 const GetTickets = () => {
   const button = classNames(
@@ -91,7 +91,7 @@ const Logo = ({ size, className, hideTickets }) => {
         <Link to="/">
         <h1 className={nameStyle}>
           Decoupled <br />
-          Days <span className="text-blue-800">2022</span>
+          Days <span className="text-blue-800">2023</span>
         </h1>
         <p className={dateStyle}>August 17-18, NYC</p>
         </Link>
