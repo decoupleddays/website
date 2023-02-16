@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GatsbyLink from 'gatsby-link';
+import {Link as GatsbyLink} from 'gatsby-link';
 
 const Link = ({ children, to, ...other }) => {
   // Tailor the following test to your environment.
