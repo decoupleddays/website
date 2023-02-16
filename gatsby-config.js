@@ -59,12 +59,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/`, `/about/`],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         typekit: {
@@ -85,6 +79,12 @@ module.exports = {
         theme_color: `#124088`,
         display: `standalone`,
         icon: `src/assets/favicon.svg`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`, `/about/`],
       },
     },
     {

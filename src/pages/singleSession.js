@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeftLong } from '@fortawesome/free-regular-svg-icons';
+import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import SiteLayout from '../components/siteLayout';
 import SEO from '../components/meta/seo';
 
@@ -12,7 +12,7 @@ const SessionPage = () => (
     <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400 pb-28">
       <p>
         <Link to="/sessions" className="uppercase font-bold text-sm">
-          <FontAwesomeIcon icon={faLeftLong} /> All Sessions
+        <FontAwesomeIcon icon={faLeftLong} /> All Sessions
         </Link>
       </p>
       <h1 className="!mb-2">

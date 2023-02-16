@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightLong } from '@fortawesome/free-regular-svg-icons';
+import { faRightLong } from '@fortawesome/free-solid-svg-icons';
 import bkgImg from '../../assets/images/teemu-paananen-bzdhc5b3Bxs-unsplash-BW.jpg';
 
 const HomeCFP = ({ data }) => (
