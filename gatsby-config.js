@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -57,7 +58,12 @@ module.exports = {
         color: 'white',
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/`, `/about/`],
+      },
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
