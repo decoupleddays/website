@@ -68,7 +68,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const PageTemplate = path.resolve('src/templates/Page/index.js');
   result.data.allNodePage.nodes.forEach((node) => {
-    console.log();
     createPage({
       path: node.path.alias,
       component: PageTemplate,
@@ -80,7 +79,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const SpeakerTemplate = path.resolve('src/templates/Speaker/index.js');
   result.data.allNodeSpeaker.nodes.forEach((node) => {
-    console.log();
     createPage({
       path: node.path.alias,
       component: SpeakerTemplate,
@@ -92,7 +90,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const SessionTemplate = path.resolve('src/templates/Session/index.js');
   result.data.allNodeSession.nodes.forEach((node) => {
-    console.log();
     createPage({
       path: node.path.alias,
       component: SessionTemplate,

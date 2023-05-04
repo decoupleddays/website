@@ -8,7 +8,6 @@ import Link from '../Link';
 
 const Section = ({ data }) => {
   const image = getImage(data.relationships.field_image);
-  console.log(image);
 
   const classes = classNames('section', { 'with-image': image });
 

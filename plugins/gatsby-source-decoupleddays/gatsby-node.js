@@ -60,7 +60,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const PageTemplate = path.resolve('src/templates/Page/index.js');
   result.data.allNodePage.nodes.forEach((node) => {
-    console.log();
     createPage({
       path: node.path.alias,
       component: PageTemplate,
