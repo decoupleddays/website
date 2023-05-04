@@ -16,6 +16,14 @@ const HomeHero = () => (
         The only conference on the future of CMS, headlessCMS, and decoupledCMS.
       </h1>
 
+      <Button
+        isURLExternal
+        url="https://t.co/AnT5ttcLff"
+        className="inline-block md:mx-auto"
+      >
+        Submit your session
+      </Button>
+
       <p className="max-w-3xl mx-auto text-2xl mt-11">
         In its seventh year after a successful debut in 2017,{' '}
         <strong>Decoupled Days</strong> is a conference for architects,
@@ -31,7 +39,6 @@ const HomeHero = () => (
         devices, conversational interfaces, or other technologies.
       </p>
     </div>
-    <SponsorsSidebar className="order-4 mt-8" homepage />
   </div>
 );
 

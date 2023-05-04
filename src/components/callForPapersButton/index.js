@@ -17,7 +17,7 @@ const buttonStyle = classNames(
 const ButtonLink = ({ children, url, className, isURLExternal }) => {
   if (isURLExternal) {
     return (
-      <a href={url} className={classNames(className, buttonStyle)}>
+      <a target="_blank" href={url} className={classNames(className, buttonStyle)}>
         {children}
       </a>
     );
