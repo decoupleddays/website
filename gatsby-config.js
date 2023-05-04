@@ -7,7 +7,7 @@ const metaData = {
   description:
     'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
   url: 'https://2023.decoupleddays.com',
-  image: '/sharing-image.png',
+  image: '/img/DD2023-Logo-Web.png',
   twitterUsername: '@decoupleddays',
 };
 
