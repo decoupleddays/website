@@ -95,12 +95,6 @@ const Logo = ({ size, className, hideTickets }) => {
         </h1>
         <p className={dateStyle}>August 17-18, ABQ</p>
         </Link>
-        {(() => {
-          if (hideTickets === true) {
-            return '';
-          }
-          return <GetTickets />;
-        })()}
       </div>
     </div>
   );
