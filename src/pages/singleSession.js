@@ -9,9 +9,9 @@ import SEO from '../components/meta/seo';
 const SessionPage = () => (
   <SiteLayout>
     <SEO title="Session" />
-    <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400 pb-28">
+    <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400 pb-28">
       <p>
-        <Link to="/sessions" className="uppercase font-bold text-sm">
+        <Link to="/sessions" className="text-sm font-bold uppercase">
           <FontAwesomeIcon icon={faLeftLong} /> All Sessions
         </Link>
       </p>
@@ -23,7 +23,7 @@ const SessionPage = () => (
         Frontend &amp; Figma Magic: Building a connected UI Kit for Emulsify
       </h1>
       <h2 className="!font-paritySans !text-2xl !leading-none !text-neutral-900 !mt-3 !mb-10">
-        1:00 – 1:50pm <br /> August 17, 2022
+        1:00 – 1:50pm <br /> August 17, 2023
       </h2>
       <h3 className="!mb-0">Speakers</h3>
       <ul className="flex flex-row items-center gap-5 !p-0 !m-0 !mb-20">
@@ -65,7 +65,7 @@ export default SessionPage;
 //     allNodeSession(
 //       filter: {
 //         status: { eq: true }
-//         relationships: { field_tags: { elemMatch: { name: { eq: "2022" } } } }
+//         relationships: { field_tags: { elemMatch: { name: { eq: "2023" } } } }
 //       }
 //       sort: {
 //         fields: [field_time, relationships___field_room___weight, title]

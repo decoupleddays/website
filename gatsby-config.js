@@ -3,10 +3,10 @@ require('dotenv').config({
 });
 
 const metaData = {
-  title: 'Decoupled Days 2022',
+  title: 'Decoupled Days 2023',
   description:
     'The only conference on the future of CMS, headlessCMS, and decoupledCMS.',
-  url: 'https://2022.decoupleddays.com',
+  url: 'https://2023.decoupleddays.com',
   image: '/sharing-image.png',
   twitterUsername: '@decoupleddays',
 };

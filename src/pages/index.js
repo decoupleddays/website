@@ -5,7 +5,7 @@ import SiteFooter from '../components/siteFooter';
 import SEO from '../components/meta/seo';
 
 const IndexPage = ({ data }) => (
-  <div>
+  <div className="index">
     <SEO title="Home" />
     <HomeHero />
     <SiteFooter />

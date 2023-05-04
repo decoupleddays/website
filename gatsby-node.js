@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allNodePage(
           filter: {
             relationships: {
-              field_tags: { elemMatch: { name: { eq: "2022" } } }
+              field_tags: { elemMatch: { name: { eq: "2023" } } }
             }
           }
         ) {
@@ -24,7 +24,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allNodeSession(
           filter: {
             relationships: {
-              field_tags: { elemMatch: { name: { eq: "2022" } } }
+              field_tags: { elemMatch: { name: { eq: "2023" } } }
             }
           }
         ) {
@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allNodeSponsors(
           filter: {
             relationships: {
-              field_tags: { elemMatch: { name: { eq: "2022" } } }
+              field_tags: { elemMatch: { name: { eq: "2023" } } }
             }
           }
         ) {

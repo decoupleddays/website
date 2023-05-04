@@ -7,7 +7,7 @@ import SEO from '../components/meta/seo';
 const Speakers = ({ data }) => (
   <SiteLayout>
     <SEO title="Speakers" />
-    <article className="text-neutral-900 prose lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+    <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
       <h1>Speakers</h1>
       <ul className="!m-0 !p-0 speaker-list">
         {Object.entries(data.allNodeSpeaker.edges).map((person) => (
@@ -45,7 +45,7 @@ export default Speakers;
 
 export const query = graphql`
   query MyQuerySpeaker {
-    allNodeSpeaker(sort: { fields: title }) {
+    allNodeSpeaker(sort: {title: ASC}) {
       edges {
         node {
           title

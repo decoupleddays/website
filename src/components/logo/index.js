@@ -91,9 +91,9 @@ const Logo = ({ size, className, hideTickets }) => {
         <Link to="/">
         <h1 className={nameStyle}>
           Decoupled <br />
-          Days <span className="text-blue-800">2022</span>
+          Days <span className="text-blue-800">2023</span>
         </h1>
-        <p className={dateStyle}>August 17-18, NYC</p>
+        <p className={dateStyle}>August 17-18, ABQ</p>
         </Link>
         {(() => {
           if (hideTickets === true) {

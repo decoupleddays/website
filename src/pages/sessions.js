@@ -123,7 +123,7 @@ export const query = graphql`
     allNodeSession(
       filter: {
         status: { eq: true }
-        relationships: { field_tags: { elemMatch: { name: { eq: "2022" } } } }
+        relationships: { field_tags: { elemMatch: { name: { eq: "2023" } } } }
       }
       sort: {
         fields: [field_time, relationships___field_room___weight, title]
