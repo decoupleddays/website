@@ -11,7 +11,7 @@ const Footer = () => (
         </a>
         <div className="info-block">
           <div className="bottom--date">
-            <strong>August 17th - 18th</strong>
+            <strong>August 16th - 17th</strong>
             <br />
             New York City
           </div>

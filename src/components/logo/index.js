@@ -93,7 +93,7 @@ const Logo = ({ size, className, hideTickets }) => {
           Decoupled <br />
           Days <span className="text-blue-800">2023</span>
         </h1>
-        <p className={dateStyle}>August 17-18, ABQ</p>
+        <p className={dateStyle}>August 16-17th, ABQ</p>
         </Link>
       </div>
     </div>

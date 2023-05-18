@@ -5,7 +5,7 @@ const TopBar = () => (
     <div className="container top-bar--inner">
       <div className="top-bar--date">
         <p>
-          <strong>August 17th - 18th</strong>
+          <strong>August 16th - 17th</strong>
           New York City
         </p>
       </div>
