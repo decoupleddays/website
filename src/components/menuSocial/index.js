@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -10,14 +9,14 @@ const linkStyle = classNames(
   'nav-primary-link',
   'relative transition-all inline-block',
   'font-paritySans font-bold leading-extra-tight tracking-tight',
-  'text-blue-400',
-  'hover:text-purple-500',
+  'text-orange',
+  'hover:text-orange-muted',
   'lg:text-xl'
 );
 
 const MenuSocial = ({ className }) => (
   <nav className={className}>
-    <ul className="flex flex-row gap-2 items-end leading-extra-tight">
+    <ul className="flex flex-row items-end gap-2 leading-extra-tight">
       <li>
         <a href="https://twitter.com/decoupleddays" className={linkStyle}>
           <FontAwesomeIcon icon={faTwitter} />
