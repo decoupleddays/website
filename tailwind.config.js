@@ -59,7 +59,8 @@ module.exports = {
         900: '#3a004b',
       },
       orange: {
-        DEFAULT: '#ffc000',
+        DEFAULT: '#e15c3e',
+        light: '#d99268',
         muted: '#997300',
       },
       diamond: {

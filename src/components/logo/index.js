@@ -35,7 +35,7 @@ const Logo = ({ size, className, hideTickets }) => {
   );
 
   const nameStyle = classNames(
-    'font-bold font-parityDisplay uppercase leading-extra-tight md:leading-extra-tight text-blue-500',
+    'logo__name font-bold font-parityDisplay uppercase leading-extra-tight md:leading-extra-tight text-orange',
     { 'text-2xl md:text-4xl': !size, 'text-2xl md:text-5xl': size === 'lg' }
   );
 
@@ -56,7 +56,7 @@ const Logo = ({ size, className, hideTickets }) => {
     <div className={wrapperStyle}>
       <div
         className={classNames(
-          'panels items-center relative text-blue-400 -top-2',
+          'panels text-orange items-center relative -top-2',
           size
         )}
       >
@@ -91,7 +91,7 @@ const Logo = ({ size, className, hideTickets }) => {
         <Link to="/">
         <h1 className={nameStyle}>
           Decoupled <br />
-          Days <span className="text-blue-800">2023</span>
+          Days <span className="text-orange-light">2023</span>
         </h1>
         <p className={dateStyle}>August 16-17th, ABQ</p>
         </Link>

@@ -7,11 +7,11 @@ import { faHourglass, faRightLong } from '@fortawesome/pro-regular-svg-icons';
 
 const buttonStyle = classNames(
   'inline-block',
-  'bg-purple-500 text-white',
+  'bg-orange text-white',
   'font-bold uppercase leading-tight',
   'px-6 py-3',
   'transition-all',
-  'hover:bg-purple-700'
+  'hover:bg-orange-muted'
 );
 
 const ButtonLink = ({ children, url, className, isURLExternal }) => {
