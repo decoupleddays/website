@@ -125,10 +125,11 @@ export const query = graphql`
         status: { eq: true }
         relationships: { field_tags: { elemMatch: { name: { eq: "2023" } } } }
       }
-      sort: {
-        fields: [field_time, relationships___field_room___weight, title]
-        order: ASC
-      }
+      sort: [
+        {field_time: ASC},
+        {relationships: {field_room: {weight: ASC}}},
+        {title: ASC}
+      ]
     ) {
       edges {
         node {

@@ -9,6 +9,7 @@ const HomeHero = () => (
   <div className="flex flex-col gap-5 pt-5 mx-auto pb-14 md:pt-10 md:max-w-screen-xl hero">
     <div className="flex flex-col items-start w-full gap-2 mx-auto md:items-center md:gap-6">
       <Logo size="lg" className="md:order-2" hideTickets />
+      <MenuPrimary className="px-4 md:order-1" />
     </div>
 
     <div className="flex flex-col items-start gap-5 px-5 mx-auto md:gap-10 md:px-12 lg:px-5">

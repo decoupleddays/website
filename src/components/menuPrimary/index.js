@@ -18,26 +18,26 @@ const linkStyle = classNames(
   'nav-primary-link',
   'relative transition-all inline-block',
   'font-paritySans font-bold leading-extra-tight tracking-tight',
-  'text-blue-400',
-  'hover:text-purple-500',
+  'text-orange',
+  'hover:text-orange-light',
   'lg:text-xl lg:leading-extra-tight'
 );
 
 const activeLinkStyle = classNames(
-  '!text-neutral-900 nav-primary-link--active'
+  '!text-orange-muted nav-primary-link--active'
 );
 
 const MenuPrimary = ({ className }) => (
   <nav className={classNames(navStyle, className)}>
     <ul className={menuULStyle}>
       <li>
-        <Link
+        { /*<Link
           to="/sessions"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
           Sessions
-        </Link>
+        </Link> */}
       </li>
       <li>
         <Link
@@ -48,7 +48,7 @@ const MenuPrimary = ({ className }) => (
           About
         </Link>
       </li>
-      <li>
+      {/*<li>
         <Link
           to="/venue"
           className={linkStyle}
@@ -65,7 +65,7 @@ const MenuPrimary = ({ className }) => (
         >
           Diversity <span className="whitespace-nowrap">&amp; Inclusion</span>
         </Link>
-      </li>
+      </li>*/}
       <li>
         <Link
           to="/code-conduct"

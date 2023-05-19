@@ -10,7 +10,7 @@ const SponsorsDiamond = ({ className }) => (
         query MyQuery {
           allNodeSponsors(
             filter: { field_sponsor_level: { eq: "diamond" } }
-            sort: { fields: title }
+            sort: { title: ASC }
           ) {
             edges {
               node {

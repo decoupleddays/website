@@ -21,9 +21,12 @@ const SponsorsSidebar = ({ className, homepage }) => (
         query MyQuerySponsorSidebar {
           allNodeSponsors(
             filter: {
-              field_sponsor_level: { in: ["gold", "silver", "bronze", "media"] }
+              field_sponsor_level: { in: ["gold", "silver", "bronze", "media"] },
+              relationships: {
+                field_tags: {elemMatch: {name: {eq: "2023"}}}
+              }
             }
-            sort: { fields: title }
+            sort: {title: ASC }
           ) {
             edges {
               node {
