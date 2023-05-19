@@ -18,10 +18,10 @@ const HomeHero = () => (
 
       <Button
         isURLExternal
-        url="https://t.co/AnT5ttcLff"
+        url="https://tinyurl.com/decoupled-days-2023-room-block"
         className="inline-block md:mx-auto"
       >
-        Submit your session
+        Book Your Room
       </Button>
 
       <p className="max-w-3xl mx-auto text-2xl mt-11">
