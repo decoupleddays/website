@@ -1,6 +1,6 @@
 input[type="submit"],
 .button {
-  @apply cursor-pointer bg-blue-500 text-white rounded uppercase py-2 px-4 mx-4 my-0 hover:bg-orange;
+  @apply cursor-pointer bg-orange text-white rounded uppercase py-2 px-4 mx-4 my-0 hover:bg-orange;
 
   &.secondary {
     @apply bg-orange border-orange-muted border-2 text-blue-dark hover:bg-blue-dark hover:text-white;

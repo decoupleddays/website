@@ -48,7 +48,7 @@ const MenuPrimary = ({ className }) => (
           About
         </Link>
       </li>
-      {/*<li>
+      <li>
         <Link
           to="/venue"
           className={linkStyle}
@@ -65,7 +65,7 @@ const MenuPrimary = ({ className }) => (
         >
           Diversity <span className="whitespace-nowrap">&amp; Inclusion</span>
         </Link>
-      </li>*/}
+      </li>
       <li>
         <Link
           to="/code-conduct"
