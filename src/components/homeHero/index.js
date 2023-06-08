@@ -25,6 +25,8 @@ const HomeHero = () => (
         Book Your Room
       </Button>
 
+      <Button isURLExternal url="https://www.eventbrite.com/e/decoupled-days-2023-tickets-638797349067" className="inline-block md:mx-auto">Get your tickets!</Button>
+
       <p className="max-w-3xl mx-auto text-2xl mt-11">
         In its seventh year after a successful debut in 2017,{' '}
         <strong>Decoupled Days</strong> is a conference for architects,
