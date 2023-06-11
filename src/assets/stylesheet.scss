@@ -15,8 +15,14 @@ body {
 .prose a:not(.remove-link-style) {
   @apply relative no-underline bg-no-repeat pb-0.5;
 
-  background-image: linear-gradient(#c1c5e1, #c1c5e1),
-    linear-gradient(#6f197d, #6f197d);
+  background-image: linear-gradient(
+    theme("colors.orange.DEFAULT"),
+    theme("colors.orange.DEFAULT")
+  ),
+    linear-gradient(
+      theme("colors.orange.light"),
+      theme("colors.orange.light")
+    );
   background-size: 100% 2px, 0 2px;
   background-position: 100% 100%, 0 100%;
   transition: background-size 0.15s linear;

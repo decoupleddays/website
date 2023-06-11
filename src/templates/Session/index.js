@@ -12,7 +12,7 @@ const SessionTemplate = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title={title} />
-      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-orange-muted marker:text-neutral-400">
         <h1>{title}</h1>
         <h2>
           {speakers.length > 0 && speakers.length > 1
@@ -22,7 +22,7 @@ const SessionTemplate = ({ data }) => {
           {speakers &&
             speakers.map((person) => (
               <>
-                <Link className="inline-block" to={person.path.alias}>
+                <Link className="inline-block text-orange" to={person.path.alias}>
                   {person.title}
                 </Link>
                 <br />

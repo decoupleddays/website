@@ -6,8 +6,8 @@
     @apply relative no-underline bg-no-repeat pb-1;
 
     background-image: linear-gradient(
-      theme("colors.blue.10"),
-      theme("colors.blue.10")
+      theme("colors.orange.light"),
+      theme("colors.orange.muted")
     );
     background-size: 0 2px;
     background-position: 0% 100%;
@@ -20,8 +20,8 @@
 
   .nav-primary-link--active {
     background-image: linear-gradient(
-      theme("colors.neutral.900"),
-      theme("colors.neutral.900")
+      theme("colors.orange.muted"),
+      theme("colors.orange.light")
     );
   }
 }

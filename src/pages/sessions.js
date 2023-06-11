@@ -31,7 +31,7 @@ const SessionCard = ({
         <span className="text-sm font-paritySans block !leading-[.9] mb-3 md:mb-1 text-neutral-900">
           {track}
         </span>
-        <Link to={url} className="!leading-tight font-paritySans font-bold ">
+        <Link to={url} className="!leading-tight text-orange font-paritySans font-bold ">
           {title}
         </Link>
       </h3>
@@ -75,7 +75,7 @@ const SessionsPage = ({ data }) => {
   return (
     <SiteLayout>
       <SEO title="Sessions" />
-      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-blue-700 marker:text-neutral-400">
+      <article className="prose text-neutral-900 lg:prose-xl prose-h1:font-parityDisplay prose-headings:font-parityDisplay prose-headings:text-orange-muted marker:text-neutral-400">
         <h1>Sessions</h1>
         <ul className="!m-0 !p-0">
           {sessions.map((value) => {

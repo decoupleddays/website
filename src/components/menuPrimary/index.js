@@ -31,13 +31,13 @@ const MenuPrimary = ({ className }) => (
   <nav className={classNames(navStyle, className)}>
     <ul className={menuULStyle}>
       <li>
-        { /*<Link
+        <Link
           to="/sessions"
           className={linkStyle}
           activeClassName={activeLinkStyle}
         >
           Sessions
-        </Link> */}
+        </Link>
       </li>
       <li>
         <Link

@@ -126,9 +126,9 @@ module.exports = {
           css: {
             lineHeight: 1.375,
             a: {
-              color: theme('colors.blue.400'),
+              color: theme('colors.orange'),
               '&:hover': {
-                color: theme('colors.purple.400'),
+                color: theme('colors.orange.light'),
               },
               textDecoration: 'none',
             },
