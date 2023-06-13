@@ -9,7 +9,10 @@ const SponsorsDiamond = ({ className }) => (
       query={graphql`
         query MyQuery {
           allNodeSponsors(
-            filter: { field_sponsor_level: { eq: "diamond" } }
+            filter: {
+              field_sponsor_level: { eq: "diamond" },
+              relationships: {field_tags: {elemMatch: {name: {eq: "2023"}}}}
+            }
             sort: { title: ASC }
           ) {
             edges {
