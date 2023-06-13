@@ -82,7 +82,7 @@ const SponsorsSidebar = ({ className, homepage }) => (
                 </section>
               )}
 
-              {/* {data.allNodeSponsors.edges.filter(
+              {data.allNodeSponsors.edges.filter(
                 (sponsor) => sponsor.node.field_sponsor_level === 'silver'
               ).length > 0 && (
                 <section>
@@ -113,7 +113,7 @@ const SponsorsSidebar = ({ className, homepage }) => (
                       ))}
                   </div>
                 </section>
-              )} */}
+              )}
 
               {data.allNodeSponsors.edges.filter(
                 (sponsor) => sponsor.node.field_sponsor_level === 'bronze'
