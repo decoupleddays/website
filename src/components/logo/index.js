@@ -96,7 +96,7 @@ const Logo = ({ size, className, hideTickets }) => {
         </h1>
         <p className={dateStyle}>August 16-17th, ABQ</p>
         </Link>
-        <p className="text-orange-muted">Presented by <img className="inline-block h-8" src="img/hygraph-logo.png" /></p>
+        <p className="text-orange-muted">Presented by <img className="inline-block h-8" src="/img/hygraph-logo.png" /></p>
         <GetTickets />
 
       </div>
