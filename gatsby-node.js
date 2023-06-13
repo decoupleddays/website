@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             nid: drupal_internal__nid
           }
         }
-        allNodeSpeaker(sort: { fields: title }) {
+        allNodeSpeaker(sort: { title: ASC }) {
           nodes {
             nid: drupal_internal__nid
             path {

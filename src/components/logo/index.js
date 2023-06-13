@@ -9,20 +9,21 @@ const GetTickets = () => {
   const button = classNames(
     'inline-block',
     'text-xs md:text-sm',
-    'bg-purple-500 text-white',
+    'bg-orange text-white',
     'font-bold uppercase leading-tight',
     'px-3 py-1 mt-2',
     'transition-all',
-    'hover:bg-purple-700'
+    'hover:bg-orange-light'
   );
+
+  const random_boolean = Math.random() < 0.5;
+  const link = random_boolean ? "https://www.eventbrite.com/e/decoupled-days-2023-tickets-638797349067" : "https://tinyurl.com/decoupled-days-2023-room-block";
+  const title = random_boolean ? "Get Your Tickets" : "Book a Room";
 
   return (
     <p>
-      <a
-        className={button}
-        href="https://www.eventbrite.com/e/decoupled-days-2022-registration-372881086367"
-      >
-        Get Your Ticket <FontAwesomeIcon icon={faRightLong} />
+      <a className={button} href={link} >
+        {title} <FontAwesomeIcon icon={faRightLong} />
       </a>
     </p>
   );
@@ -95,6 +96,9 @@ const Logo = ({ size, className, hideTickets }) => {
         </h1>
         <p className={dateStyle}>August 16-17th, ABQ</p>
         </Link>
+        <p className="text-orange-muted">Presented by <img className="inline-block h-8" src="img/hygraph-logo.png" /></p>
+        <GetTickets />
+
       </div>
     </div>
   );
