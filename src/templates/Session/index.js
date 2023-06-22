@@ -13,7 +13,6 @@ const SessionTemplate = ({ data }) => {
   const time = field_time && moment(field_time)
     .tz('America/Denver')
     .format('MMM Do h:mma z');
-  console.log(time);
 
   return (
     <SiteLayout>
