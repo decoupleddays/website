@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import classNames from 'classnames';
 
 const headerStyles = classNames(
@@ -14,179 +14,154 @@ const sponosorListStyles = (homepage) =>
     { 'md:flex-col gap-4': !homepage }
   );
 
-const SponsorsSidebar = ({ className, homepage }) => (
-  <div className={className}>
-    <StaticQuery
-      query={graphql`
-        query MyQuerySponsorSidebar {
-          allNodeSponsors(
-            filter: {
-              field_sponsor_level: { in: ["gold", "silver", "bronze", "media"] },
-              relationships: {
-                field_tags: {elemMatch: {name: {eq: "2023"}}}
-              }
-            }
-            sort: {title: ASC }
-          ) {
-            edges {
-              node {
-                title
-                field_sponsor_link {
-                  uri
-                }
-                relationships {
-                  field_sponsor_logo {
-                    url
-                  }
-                }
-                id
-                field_sponsor_level
-              }
-            }
+const SponsorsSidebar = ({ className, homepage }) => {
+
+  const data = useStaticQuery(graphql`
+    query SponsorSidebar {
+      allNodeSponsors(
+        filter: {
+          field_sponsor_level: { in: ["gold", "silver", "bronze", "media"] },
+          relationships: {
+            field_tags: {elemMatch: {name: {eq: "2023"}}}
           }
         }
-      `}
-      render={(data) => (
-        <div>
-          {data.allNodeSponsors.edges.length > 0 && (
-            <section className="flex flex-col gap-8">
-              {data.allNodeSponsors.edges.filter(
-                (sponsor) => sponsor.node.field_sponsor_level === 'gold'
-              ).length > 0 && (
-                <section>
-                  <h3 className={headerStyles}>Gold Sponsors</h3>
-                  <div className={sponosorListStyles(homepage)}>
-                    {data.allNodeSponsors.edges
-                      .filter(
-                        (sponsor) => sponsor.node.field_sponsor_level === 'gold'
-                      )
-                      .map((sponsor) => (
-                        <div key={sponsor.node.id}>
-                          <a
-                            href={sponsor.node.field_sponsor_link.uri}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <img
-                              className="h-12"
-                              src={
-                                sponsor.node.relationships.field_sponsor_logo
-                                  .url
-                              }
-                              alt={sponsor.node.title}
-                            />
-                          </a>
-                        </div>
-                      ))}
-                  </div>
-                </section>
-              )}
+        sort: {title: ASC }
+      ) {
+        nodes {
+            title
+            field_sponsor_link {
+              uri
+            }
+            relationships {
+              field_sponsor_logo {
+                url
+              }
+            }
+            id
+            field_sponsor_level
+          }
+        }
+      }
+    `);
 
-              {data.allNodeSponsors.edges.filter(
-                (sponsor) => sponsor.node.field_sponsor_level === 'silver'
-              ).length > 0 && (
-                <section>
-                  <h3 className={headerStyles}>Silver Sponsors</h3>
-                  <div className={sponosorListStyles(homepage)}>
-                    {Object.entries(data.allNodeSponsors.edges)
-                      .filter(
-                        (sponsor) =>
-                          sponsor.node.field_sponsor_level === 'silver'
-                      )
-                      .map((sponsor) => (
-                        <div key={sponsor.node.id}>
-                          <a
-                            href={sponsor.node.field_sponsor_link.uri}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <img
-                              className="h-6"
-                              src={
-                                sponsor.node.relationships.field_sponsor_logo
-                                  .url
-                              }
-                              alt={sponsor.node.title}
-                            />
-                          </a>
-                        </div>
-                      ))}
-                  </div>
-                </section>
-              )}
+  const gold = data.allNodeSponsors.nodes.filter(sponsor => sponsor.field_sponsor_level === 'gold');
+  const silver = data.allNodeSponsors.nodes.filter(sponsor => sponsor.field_sponsor_level === 'silver');
+  const bronze = data.allNodeSponsors.nodes.filter(sponsor => sponsor.field_sponsor_level === 'bronze');
+  const media = data.allNodeSponsors.nodes.filter(sponsor => sponsor.field_sponsor_level === 'media');
 
-              {data.allNodeSponsors.edges.filter(
-                (sponsor) => sponsor.node.field_sponsor_level === 'bronze'
-              ).length > 0 && (
-                <section>
-                  <h3 className={headerStyles}>Bronze Sponsors</h3>
-                  <div className={sponosorListStyles(homepage)}>
-                    {Object.entries(data.allNodeSponsors.edges)
-                      .filter(
-                        (sponsor) =>
-                          sponsor[1].node.field_sponsor_level === 'bronze'
-                      )
-                      .map((sponsor) => (
-                        <div>
-                          <a
-                            href={sponsor[1].node.field_sponsor_link.uri}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <img
-                              className="h-auto max-w-[170px]"
-                              src={
-                                sponsor[1].node.relationships.field_sponsor_logo
-                                  .url
-                              }
-                              alt={sponsor[1].node.title}
-                            />
-                          </a>
-                        </div>
-                      ))}
+  return(
+  <div className={className}>
+    <div>
+      {data.allNodeSponsors.nodes.length > 0 && (
+        <section className="flex flex-col gap-8">
+          {gold.length > 0 && (
+            <section className="gold-spopnsors">
+              <h3 className={headerStyles}>Gold Sponsors</h3>
+              <div className={sponosorListStyles(homepage)}>
+                {gold.map((sponsor) => (
+                  <div key={sponsor.id}>
+                    <a
+                      href={sponsor.field_sponsor_link.uri}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className="h-12"
+                        src={
+                          sponsor.relationships.field_sponsor_logo
+                            .url
+                        }
+                        alt={sponsor.title}
+                      />
+                    </a>
                   </div>
-                </section>
-              )}
-
-              {data.allNodeSponsors.edges.filter(
-                (sponsor) => sponsor.node.field_sponsor_level === 'media'
-              ).length > 0 && (
-                <section>
-                  <h3 className={headerStyles}>Media Sponsors</h3>
-                  <div className={sponosorListStyles(homepage)}>
-                    {data.allNodeSponsors.edges
-                      .filter(
-                        (sponsor) =>
-                          sponsor.node.field_sponsor_level === 'media'
-                      )
-                      .map((sponsor) => (
-                        <div key={sponsor.node.id}>
-                          <a
-                            href={sponsor.node.field_sponsor_link.uri}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <img
-                              className="h-6"
-                              src={
-                                sponsor.node.relationships.field_sponsor_logo
-                                  .url
-                              }
-                              alt={sponsor.node.title}
-                            />
-                          </a>
-                        </div>
-                      ))}
-                  </div>
-                </section>
-              )}
+                ))}
+              </div>
             </section>
           )}
-        </div>
+
+          {silver.length > 0 && (
+            <section className="silver-sponsors">
+              <h3 className={headerStyles}>Silver Sponsors</h3>
+              <div className={sponosorListStyles(homepage)}>
+                {silver.map((sponsor) => (
+                    <div key={sponsor.id}>
+                      <a
+                        href={sponsor.field_sponsor_link.uri}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          className="h-6"
+                          src={
+                            sponsor.relationships.field_sponsor_logo
+                              .url
+                          }
+                          alt={sponsor.title}
+                        />
+                      </a>
+                    </div>
+                  ))}
+              </div>
+            </section>
+          )}
+
+          {bronze.length > 0 && (
+            <section>
+              <h3 className={headerStyles}>Bronze Sponsors</h3>
+              <div className={sponosorListStyles(homepage)}>
+                { bronze.map((sponsor) => (
+                    <div key={sponsor.id}>
+                      <a
+                        href={sponsor.field_sponsor_link.uri}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          className="h-auto max-w-[170px]"
+                          src={
+                            sponsor.relationships.field_sponsor_logo
+                              .url
+                          }
+                          alt={sponsor.title}
+                        />
+                      </a>
+                    </div>
+                  ))
+                }
+              </div>
+            </section>
+          )}
+
+          {media.length > 0 && (
+            <section>
+              <h3 className={headerStyles}>Community Sponsors</h3>
+              <div className={sponosorListStyles(homepage)}>
+                {media.map((sponsor) => (
+                    <div key={sponsor.id}>
+                      <a
+                        href={sponsor.field_sponsor_link.uri}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          className="h-6"
+                          src={
+                            sponsor.relationships.field_sponsor_logo.url
+                          }
+                          alt={sponsor.title}
+                        />
+                      </a>
+                    </div>
+                  ))}
+              </div>
+            </section>
+          )}
+        </section>
       )}
-    />
+    </div>
   </div>
-);
+)};
 
 SponsorsSidebar.propTypes = {
   className: PropTypes.string,

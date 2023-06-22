@@ -4,10 +4,16 @@ import { graphql, Link } from 'gatsby';
 import SEO from '../../components/meta/seo';
 import SiteLayout from '../../components/siteLayout';
 import Body from '../../components/fields/Body';
+import moment from 'moment'
+import 'moment-timezone'
 
 const SessionTemplate = ({ data }) => {
-  const { title, body } = data.nodeSession;
+  const { title, body, field_time, field_session_length } = data.nodeSession;
   const speakers = data.nodeSession.relationships.field_speakers;
+  const time = field_time && moment(field_time)
+    .tz('America/Denver')
+    .format('MMM Do h:mma z');
+  console.log(time);
 
   return (
     <SiteLayout>
@@ -20,15 +26,16 @@ const SessionTemplate = ({ data }) => {
             : 'Speaker: '}
           <br />
           {speakers &&
-            speakers.map((person) => (
+            speakers.map((person, key) => (
               <>
-                <Link className="inline-block text-orange" to={person.path.alias}>
+                <Link key={key} className="inline-block text-orange" to={person.path.alias}>
                   {person.title}
                 </Link>
                 <br />
               </>
             ))}
         </h2>
+        <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">{time} ({field_session_length} min)</div>
         {body.processed && <Body classes="container">{body.processed}</Body>}
       </article>
     </SiteLayout>
@@ -48,6 +55,8 @@ export const query = graphql`
       body {
         processed
       }
+      field_session_length
+      field_time
       relationships {
         field_speakers {
           title

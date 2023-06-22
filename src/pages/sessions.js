@@ -16,7 +16,7 @@ const SessionCard = ({
   speakers,
 }) => {
   const time = field_time && moment(field_time)
-    .tz('America/New_York')
+    .tz('America/Denver')
     .format('h:mma');
   return(
   <div className="flex flex-col md:flex-row md:items-center md:gap-4 ">
@@ -138,8 +138,7 @@ export const query = graphql`
           path {
             alias
           }
-          field_session_length
-          datetime: field_time(formatString: "h:mm a")
+          lenght: field_session_length
           day: field_time(formatString: "MMM DD")
           time: field_time
           field_time
