@@ -17,6 +17,7 @@ const SiteHeader = () => (
       <Logo />
       <MenuPrimary className="px-4 mt-3 md:mt-0" />
     </div>
+    <SponsorsDiamond />
   </header>
 );
 
