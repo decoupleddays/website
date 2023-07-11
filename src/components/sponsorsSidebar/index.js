@@ -92,7 +92,7 @@ const SponsorsSidebar = ({ className, homepage }) => {
                         rel="noreferrer"
                       >
                         <img
-                          className="h-6"
+                          className="h-10"
                           src={
                             sponsor.relationships.field_sponsor_logo
                               .url
@@ -118,7 +118,7 @@ const SponsorsSidebar = ({ className, homepage }) => {
                         rel="noreferrer"
                       >
                         <img
-                          className="h-auto max-w-[170px]"
+                          className="h-8"
                           src={
                             sponsor.relationships.field_sponsor_logo
                               .url
