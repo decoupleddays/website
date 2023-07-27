@@ -35,7 +35,7 @@ const SessionTemplate = ({ data }) => {
             ))}
         </h2>
         <div className="text-lg md:text-base font-bold !leading-none font-paritySans block order-2 md:order-1">{time} ({field_session_length} min)</div>
-        {body.processed && <Body classes="container">{body.processed}</Body>}
+        {body && body.processed && <Body classes="container">{body.processed}</Body>}
       </article>
     </SiteLayout>
   );

@@ -29,7 +29,6 @@ const SponsorsDiamond = ({ className }) => {
       }
     }
   `);
-  console.log(data);
 
   return (
   <div className={classNames(className, 'mt-2 md:mt-0')}>
@@ -41,7 +40,6 @@ const SponsorsDiamond = ({ className }) => {
           </h3>
           <div className="flex flex-row flex-wrap justify-center px-4 py-4 mx-auto border-t border-solid max-w-7xl sm:px-6 lg:px-8 border-neutral-200 gap-x-8 gap-y-2">
             { data.allNodeSponsors.nodes.map(s => {
-              console.log(s);
               return(
               <div key={s.id}>
                 {s.field_sponsor_link.uri &&
