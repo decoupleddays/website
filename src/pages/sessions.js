@@ -36,19 +36,23 @@ const SessionCard = ({
         </Link>
       </h3>
 
-      <p className="font-paritySans block font-bold text-base !mb-0 !md:mb-0">
-        {speakers.length > 0 && speakers.length > 1
-          ? 'Speakers: '
-          : 'Speaker: '}
-      </p>
-      <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
-        {speakers &&
-          speakers.map((person, k) => (
-            <span className="block" key={`title_${k}`}>
-              {person.title}
-            </span>
-          ))}
-      </p>
+      { (speakers.length > 0) && (
+        <div>
+          <p className="font-paritySans block font-bold text-base !mb-0 !md:mb-0">
+            {speakers.length > 0 && speakers.length > 1
+              ? 'Speakers: '
+              : 'Speaker: '}
+          </p>
+          <p className="font-paritySans block font-bold !mt-0 !mb-2 !md:mb-0">
+            {speakers &&
+              speakers.map((person, k) => (
+                <span className="block" key={`title_${k}`}>
+                  {person.title}
+                </span>
+              ))}
+          </p>
+        </div>
+      )}
     </div>
 
     <div className="order-3 hidden mt-3 ml-auto md:order-3 md:mt-0 min-w-max md:flex">
