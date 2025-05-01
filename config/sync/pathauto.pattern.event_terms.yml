@@ -1,0 +1,24 @@
+uuid: f4791d06-8cd1-4ce1-a8e3-f9bc3e80b0dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: VlIlf_zFpYAQAzcKaEIO7UU4QLmn815MdYkjMYznihg
+id: event_terms
+label: 'Event Terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/events/[term:name]'
+selection_criteria:
+  52d9b0dd-7c2c-4f97-bd2e-4ca8476dc83a:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 52d9b0dd-7c2c-4f97-bd2e-4ca8476dc83a
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      event: event
+selection_logic: and
+weight: -5
+relationships: {  }

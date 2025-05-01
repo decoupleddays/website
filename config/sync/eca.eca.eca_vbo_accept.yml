@@ -1,0 +1,71 @@
+uuid: 88f97a6e-5ba5-4d62-b395-d9b735c17361
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.session_acceptance
+  module:
+    - eca_user
+    - eca_vbo
+    - eca_workflow
+    - views_bulk_operations
+_core:
+  default_config_hash: _HbE4fSYxcPE6ojGFT1oTaKLHn1STDLXXoIx7fY692w
+id: eca_vbo_accept
+modeller: bpmn_io
+label: 'Accept Sessions'
+version: ''
+weight: 0
+events:
+  Event_1kvnrp2:
+    plugin: 'vbo:execute'
+    label: VBO
+    configuration:
+      operation_name: 'Accept sessions'
+      view_id: ''
+      display_id: ''
+    successors:
+      -
+        id: Activity_033mscy
+        condition: ''
+  Event_1ckpggk:
+    plugin: 'vbo:custom_access'
+    label: 'VBO Access'
+    configuration:
+      operation_name: 'Accept sessions'
+      view_id: ''
+      display_id: ''
+    successors:
+      -
+        id: Activity_0fk23mc
+        condition: Flow_0k0yuj1
+      -
+        id: Activity_0fk23mc
+        condition: Flow_15qt9j3
+conditions:
+  Flow_0k0yuj1:
+    plugin: eca_current_user_role
+    configuration:
+      negate: false
+      role: administrator
+  Flow_15qt9j3:
+    plugin: eca_current_user_role
+    configuration:
+      negate: false
+      role: session_moderator
+gateways: {  }
+actions:
+  Activity_033mscy:
+    plugin: 'eca_workflow_transition:session_acceptance'
+    label: 'Accept Sessions'
+    configuration:
+      new_state: accepted
+      revision_log: ''
+      object: ''
+    successors: {  }
+  Activity_0fk23mc:
+    plugin: eca_vbo_set_custom_access
+    label: 'yes'
+    configuration:
+      access_granted: true
+    successors: {  }

@@ -1,0 +1,31 @@
+uuid: 13c78dbd-d709-4a0e-a589-5a719e2fd151
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.storage.field_level
+    - storage.storage_type.sponsorship
+    - taxonomy.vocabulary.sponsor_level
+_core:
+  default_config_hash: oeb_r7sqnv6l39a7xyv6k-1RSv2-fcWaqzo_FqQa-dc
+id: storage.sponsorship.field_level
+field_name: field_level
+entity_type: storage
+bundle: sponsorship
+label: Level
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sponsor_level: sponsor_level
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

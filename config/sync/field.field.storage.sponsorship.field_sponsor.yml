@@ -1,0 +1,31 @@
+uuid: 423d8db3-75ae-470b-9731-5571b662b74c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.storage.field_sponsor
+    - node.type.sponsor
+    - storage.storage_type.sponsorship
+_core:
+  default_config_hash: 9Fw8jFM0o7Um5MkwAiY3CoIeCK9X-2IcNyxe2j4OasQ
+id: storage.sponsorship.field_sponsor
+field_name: field_sponsor
+entity_type: storage
+bundle: sponsorship
+label: Sponsor
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      sponsor: sponsor
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

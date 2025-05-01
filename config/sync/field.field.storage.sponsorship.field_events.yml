@@ -1,0 +1,31 @@
+uuid: 4619436b-bc4d-4b67-a4fb-6572ac8ee6ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.storage.field_events
+    - storage.storage_type.sponsorship
+    - taxonomy.vocabulary.event
+_core:
+  default_config_hash: TZsDLwph2PlLJGhVjLqCXWO5xP70ZQG-3YXNZPeyR5o
+id: storage.sponsorship.field_events
+field_name: field_events
+entity_type: storage
+bundle: sponsorship
+label: Events
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

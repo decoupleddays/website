@@ -1,0 +1,31 @@
+uuid: 8ad83460-fe39-46d5-b276-0609b174d90b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_r
+    - node.type.bof
+    - taxonomy.vocabulary.room
+_core:
+  default_config_hash: UJGQuMV6M4JYf4_Zi47rAjf3naGwWkQDiFV9S53S67k
+id: node.bof.field_r
+field_name: field_r
+entity_type: node
+bundle: bof
+label: Room
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      room: room
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: room
+field_type: entity_reference

@@ -1,0 +1,54 @@
+uuid: 63f04ca2-c2a8-437c-aad6-14816cede524
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bof
+    - node.type.session
+    - taxonomy.vocabulary.room
+    - taxonomy.vocabulary.time_slot
+    - workflows.workflow.session_acceptance
+  module:
+    - config_pages
+    - content_moderation
+    - field_permissions
+    - node
+    - system
+    - taxonomy
+    - toolbar
+_core:
+  default_config_hash: 4QkHyXo1STxBIIMeGpUjMolV6br4XMLKRW9cMvziOjQ
+id: session_moderator
+label: 'Session moderator'
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access site in maintenance mode'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'create terms in room'
+  - 'create terms in time_slot'
+  - 'delete terms in room'
+  - 'edit any bof content'
+  - 'edit any session content'
+  - 'edit event_details config page entity'
+  - 'edit field_is_non_session'
+  - 'edit field_is_training'
+  - 'edit field_r'
+  - 'edit field_social_media_card'
+  - 'edit field_time_slot'
+  - 'edit terms in room'
+  - 'edit terms in time_slot'
+  - 'use session_acceptance transition accept_session'
+  - 'use session_acceptance transition reject_session'
+  - 'view any unpublished content'
+  - 'view bof revisions'
+  - 'view event_details config page entity'
+  - 'view field_social_media_card'
+  - 'view latest version'
+  - 'view session revisions'
+  - 'view the administration theme'
+  - 'view user email addresses'

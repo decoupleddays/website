@@ -1,0 +1,22 @@
+uuid: 3f0cb0d6-fbec-4423-ad95-74a6d35e343c
+langcode: en
+status: true
+dependencies:
+  module:
+    - event_platform_details
+  theme:
+    - olivero
+_core:
+  default_config_hash: RmZMNYUbvgpSNj0_mmsrIkckb62I9lsbwbek0tVDdtg
+id: copyright
+theme: olivero
+region: footer_bottom
+weight: 0
+provider: null
+plugin: event_platform_details_copyright
+settings:
+  id: event_platform_details_copyright
+  label: Copyright
+  label_display: '0'
+  provider: event_platform_details
+visibility: {  }

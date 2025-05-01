@@ -1,0 +1,24 @@
+uuid: 8ef09060-fa72-4d8d-935c-db3a3d24f44e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: EZd6FXglHoA2HQxl19-VeFKreu8rmy93bJAUyh4uCoY
+id: bofs
+label: BOFs
+type: 'canonical_entities:node'
+pattern: '/events/[node:field_event:entity:name]/bofs/[node:title]'
+selection_criteria:
+  2eb8d2d1-5b1b-4f7a-b205-7d851bd63309:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 2eb8d2d1-5b1b-4f7a-b205-7d851bd63309
+    context_mapping:
+      node: node
+    bundles:
+      bof: bof
+selection_logic: and
+weight: -5
+relationships: {  }

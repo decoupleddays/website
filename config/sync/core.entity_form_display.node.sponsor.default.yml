@@ -1,0 +1,66 @@
+uuid: 28fb404f-b3f5-4b84-a5c8-938cdcac6af9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.sponsor.body
+    - field.field.node.sponsor.field_sponsor_level
+    - field.field.node.sponsor.field_sponsor_logo
+    - field.field.node.sponsor.field_website_address
+    - image.style.thumbnail
+    - node.type.sponsor
+  module:
+    - image
+    - link
+    - text
+_core:
+  default_config_hash: PPT42c71WtfIgQIn9AwcGLxWweeov3EcMq3_heRiuLM
+id: node.sponsor.default
+targetEntityType: node
+bundle: sponsor
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      summary_rows: 2
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_sponsor_logo:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_website_address:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_sponsor_level: true
+  moderation_state: true
+  path: true
+  promote: true
+  revision_log: true
+  status: true
+  sticky: true
+  uid: true

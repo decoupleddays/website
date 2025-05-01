@@ -1,0 +1,24 @@
+uuid: 260ef28b-a375-4e4f-940c-9b35a36a4a5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: t1ZJn2y8aMVslzJoV0Y7N7tJaOVsdsLjVa1krfyKBtg
+id: job_listing
+label: 'Job Listing'
+type: 'canonical_entities:node'
+pattern: '/job/[node:field_company]/[node:title]'
+selection_criteria:
+  4f1c929b-179c-47a9-8a98-ec8dd49af33e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 4f1c929b-179c-47a9-8a98-ec8dd49af33e
+    context_mapping:
+      node: node
+    bundles:
+      job_listing: job_listing
+selection_logic: and
+weight: -5
+relationships: {  }

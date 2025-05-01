@@ -1,0 +1,26 @@
+uuid: 9752c066-40df-4ca1-aa7f-75a77bc917d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - filter.format.basic_html
+    - node.type.bof
+  module:
+    - text
+_core:
+  default_config_hash: zfjokqdUcjXCf9stdAciiTBhE1a8XyeN8hwkLjl6epU
+id: node.bof.field_description
+field_name: field_description
+entity_type: node
+bundle: bof
+label: Description
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

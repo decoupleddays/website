@@ -1,0 +1,73 @@
+uuid: 66ac63bd-b232-42cd-9dfd-84945f6f467b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.session
+  module:
+    - eca_base
+    - eca_content
+_core:
+  default_config_hash: jzR0h55It4RJWuue0BKDL7C01aIusy8AtA684_6fDHU
+id: process_session_submitted
+modeller: bpmn_io
+label: 'Send email on session creation'
+version: ''
+weight: 0
+events:
+  Event_1rasplz:
+    plugin: 'content_entity:insert'
+    label: 'Create session'
+    configuration:
+      type: 'node session'
+    successors:
+      -
+        id: Activity_19fq9j3
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_0nm31kg:
+    plugin: action_send_email_action
+    label: 'Send email to author'
+    configuration:
+      recipient: '[node:author:mail]'
+      subject: 'Session "[node:title]" submitted to [eventName] [eventYear]'
+      message: |-
+        Hello,
+
+        On behalf of our team, THANK YOU for submitting your "[node:title]" session to [eventName] [eventYear]. We are beyond grateful and appreciative.
+
+        Your session is viewable at [node:url] and you may edit it at [node:edit-url].
+
+        Important: Please be sure to fill out all fields (including photo, bio, etc) in your user profile at [current-user:edit-url].
+
+        A speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+
+        Thanks again,
+
+        The [eventName] planning team
+      replace_tokens: true
+    successors: {  }
+  Activity_19fq9j3:
+    plugin: eca_token_set_value
+    label: 'set eventName'
+    configuration:
+      token_name: eventName
+      token_value: '[config_page:event_details:field_event_name]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_01uxs47
+        condition: ''
+  Activity_01uxs47:
+    plugin: eca_token_set_value
+    label: 'set eventYear'
+    configuration:
+      token_name: eventYear
+      token_value: '[config_page:event_details:field_event_year]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_0nm31kg
+        condition: ''

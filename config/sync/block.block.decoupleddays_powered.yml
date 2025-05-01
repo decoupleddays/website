@@ -1,0 +1,22 @@
+uuid: bbc9689d-56a5-43e9-aa0a-0467009fbae7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: decoupleddays_powered
+theme: decoupleddays
+region: footer_bottom
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

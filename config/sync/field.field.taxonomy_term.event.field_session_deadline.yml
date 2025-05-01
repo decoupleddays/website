@@ -1,0 +1,23 @@
+uuid: db784438-0cc8-46a2-9bde-bce4a1d0163c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_session_deadline
+    - taxonomy.vocabulary.event
+  module:
+    - datetime
+_core:
+  default_config_hash: weaCp1l0Ux_R8zHkIXQTpebtUwKNutBXx2nCstCZeP4
+id: taxonomy_term.event.field_session_deadline
+field_name: field_session_deadline
+entity_type: taxonomy_term
+bundle: event
+label: 'Session Deadline'
+description: 'The last day to submit sessions for this event'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

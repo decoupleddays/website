@@ -1,0 +1,49 @@
+uuid: 0a87b3f2-f2c4-4191-96ae-ebf758de838f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.action.user_add_role_action.speaker
+  module:
+    - eca_content
+    - eca_user
+_core:
+  default_config_hash: _lnRVkHxrdrXBZ81Xg0g-rHryeOSFuVY4PcKI6jtE2I
+id: process_register_speaker
+modeller: bpmn_io
+label: 'Apply speaker roles to new accounts'
+version: ''
+weight: 0
+events:
+  Event_0vxgplk:
+    plugin: 'content_entity:insert'
+    label: 'Create user'
+    configuration:
+      type: 'user _all'
+    successors:
+      -
+        id: Activity_1q8odga
+        condition: Flow_0n757dt
+conditions:
+  Flow_0n757dt:
+    plugin: eca_current_user_role
+    configuration:
+      role: administrator
+      negate: true
+gateways: {  }
+actions:
+  Activity_1q8odga:
+    plugin: eca_switch_account
+    label: 'switch to root'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_1vj7gze
+        condition: ''
+  Activity_1vj7gze:
+    plugin: 'eca_preconfigured_action:user_add_role_action.speaker'
+    label: 'Add speaker role'
+    configuration:
+      object: entity
+    successors: {  }

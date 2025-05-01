@@ -1,0 +1,50 @@
+uuid: 79e8a1f7-607f-437c-8108-3c77689dc2a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bof.field_description
+    - field.field.node.bof.field_event
+    - field.field.node.bof.field_r
+    - field.field.node.bof.field_short_description
+    - field.field.node.bof.field_time_slot
+    - node.type.bof
+  module:
+    - user
+_core:
+  default_config_hash: WQYoNVM2KREGl-_2I52f3yr3AFm1w9TGOTW96jrGteE
+id: node.bof.teaser
+targetEntityType: node
+bundle: bof
+mode: teaser
+content:
+  field_r:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_short_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  flag_my_schedule:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_description: true
+  field_event: true
+  field_time_slot: true

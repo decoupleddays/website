@@ -1,0 +1,31 @@
+uuid: 101c07c2-5e6c-4a4c-8840-5f9dc764cb1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event
+    - node.type.bof
+    - taxonomy.vocabulary.event
+_core:
+  default_config_hash: JCXcPbCJh2Kxtm_lIbKgFtIo_-9opryVRJ1nGk5Bhh0
+id: node.bof.field_event
+field_name: field_event
+entity_type: node
+bundle: bof
+label: Event
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

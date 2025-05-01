@@ -1,0 +1,31 @@
+uuid: b40ff4e6-6414-40ea-97f9-c16b54799495
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.schedule-tabs
+  module:
+    - system
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: WtF3jowPBtPW6RCo9ZsT3sWpWnwCNj-Du0bscXotj6g
+id: decoupleddays_scheduletabs
+theme: decoupleddays
+region: content_above
+weight: -4
+provider: null
+plugin: 'system_menu_block:schedule-tabs'
+settings:
+  id: 'system_menu_block:schedule-tabs'
+  label: 'Schedule Tabs'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/schedule\r\n/schedule/*"

@@ -1,0 +1,24 @@
+uuid: bba04346-b821-40bc-bf70-a95871dfae0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: wMM0kTy2XClCOolrJrN12wfhLKbTQoew9RMqvhp6hgI
+id: sessions
+label: Sessions
+type: 'canonical_entities:node'
+pattern: '/events/[node:field_event:entity:name]/sessions/[node:title]'
+selection_criteria:
+  70efd00a-d598-452a-aacc-d4f61458cee5:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 70efd00a-d598-452a-aacc-d4f61458cee5
+    context_mapping:
+      node: node
+    bundles:
+      session: session
+selection_logic: and
+weight: -5
+relationships: {  }

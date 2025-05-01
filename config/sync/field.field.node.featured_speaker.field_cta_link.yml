@@ -1,0 +1,25 @@
+uuid: deb3f531-3e8f-4d41-a82e-a33783a1be73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cta_link
+    - node.type.featured_speaker
+  module:
+    - link
+_core:
+  default_config_hash: J0LEMDwieiaOmliP0pH061sogbbZCoxRNpCr8kJBOVQ
+id: node.featured_speaker.field_cta_link
+field_name: field_cta_link
+entity_type: node
+bundle: featured_speaker
+label: Link
+description: 'Link to session description or speaker'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

@@ -1,0 +1,25 @@
+uuid: df4a218a-ff8d-4063-9f78-cabb9240b81d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.storage.config_pages.field_homepage_media_cta
+  module:
+    - link
+_core:
+  default_config_hash: JkqwtkqYp1VNP2EIPoIdwecitdP91_XEJyTwlBRrzXs
+id: config_pages.event_details.field_homepage_media_cta
+field_name: field_homepage_media_cta
+entity_type: config_pages
+bundle: event_details
+label: 'Homepage Media CTA'
+description: 'Appears in front of the video or image on the homepage. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

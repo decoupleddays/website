@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: dvqpI6vm8R1tlH_h2LAaNdnWBOCYG8dViA2eDclWRbo
+status: 1
+pattern: '[term:field_when:value-custom:D g:ia] to [term:field_when:end_value-custom:g:ia (n/j/y)]'
+escape: false
+preserve_titles: false
+dependencies:
+  config:
+    - taxonomy.vocabulary.time_slot
+save: 1
+chunk: '50'

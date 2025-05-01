@@ -1,0 +1,24 @@
+uuid: 06901887-7b77-407e-b334-cf02a3f426f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.storage.config_pages.field_hompage_description_text
+  module:
+    - text
+_core:
+  default_config_hash: dFCsfuBpvLu8aGPc_FYxvj0fL166XaruPDNIntBTzr0
+id: config_pages.event_details.field_hompage_description_text
+field_name: field_hompage_description_text
+entity_type: config_pages
+bundle: event_details
+label: 'Homepage Description Text'
+description: 'Appears in the hero section of the homepage directly under the event name. '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

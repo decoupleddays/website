@@ -1,0 +1,22 @@
+uuid: cd220e59-78a2-4a8c-adbe-1359c74ec4ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - event_platform_details
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: RmZMNYUbvgpSNj0_mmsrIkckb62I9lsbwbek0tVDdtg
+id: decoupleddays_copyright
+theme: decoupleddays
+region: footer_bottom
+weight: 0
+provider: null
+plugin: event_platform_details_copyright
+settings:
+  id: event_platform_details_copyright
+  label: Copyright
+  label_display: '0'
+  provider: event_platform_details
+visibility: {  }

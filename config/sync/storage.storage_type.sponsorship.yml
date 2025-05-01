@@ -1,0 +1,15 @@
+uuid: 8a37b86f-0702-41b0-9016-e4f76a90642d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: f-orLT1m2PP9ePd-ylMU7VuUQDGcjgKE-EWGufN8yK4
+id: sponsorship
+label: Sponsorship
+description: ''
+help: ''
+new_revision: true
+revision_expose: false
+revision_log: false
+name_pattern: '[storage:field_sponsor] [storage:field_level]'
+has_canonical: false

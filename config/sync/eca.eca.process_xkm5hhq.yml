@@ -1,0 +1,42 @@
+uuid: dc586d94-a84d-4392-a7cd-2e3e998138ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.featured_speaker.field_events
+    - field.storage.node.field_events
+    - node.type.featured_speaker
+  module:
+    - eca_content
+_core:
+  default_config_hash: 0jzZ9sOTaj19wmr0EW25WD2DJbsUBIiqcHE_v8ftgi8
+id: process_xkm5hhq
+modeller: bpmn_io
+label: 'New Speaker: Set Events'
+version: ''
+weight: 0
+events:
+  Event_1jbs4wv:
+    plugin: 'content_entity:create'
+    label: 'New Speaker'
+    configuration:
+      type: 'node featured_speaker'
+    successors:
+      -
+        id: Activity_13dscc6
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_13dscc6:
+    plugin: eca_set_field_value
+    label: 'Set events'
+    configuration:
+      field_name: field_events
+      field_value: '[config_page:event_details:field_current:target_id]'
+      method: 'set:empty'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: ''
+    successors: {  }

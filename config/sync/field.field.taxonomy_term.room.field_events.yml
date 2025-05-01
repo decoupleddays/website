@@ -1,0 +1,31 @@
+uuid: 050e928e-f6e5-4d62-9ecd-aa410818105e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_events
+    - taxonomy.vocabulary.event
+    - taxonomy.vocabulary.room
+_core:
+  default_config_hash: Dtrvag9dfxn_3T3ku5Hy4Sh38h6ongTEysvQtWuNgvI
+id: taxonomy_term.room.field_events
+field_name: field_events
+entity_type: taxonomy_term
+bundle: room
+label: Events
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

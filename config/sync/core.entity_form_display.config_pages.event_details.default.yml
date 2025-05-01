@@ -1,0 +1,93 @@
+uuid: 99f89f78-2b6c-4a61-97cc-5f67928714fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.field.config_pages.event_details.field_current
+    - field.field.config_pages.event_details.field_event_name
+    - field.field.config_pages.event_details.field_header_cta
+    - field.field.config_pages.event_details.field_homepage_media_cta
+    - field.field.config_pages.event_details.field_hompage_description_text
+  module:
+    - field_group
+    - inline_entity_form
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_homepage_data:
+      children:
+        - field_header_cta
+        - field_hompage_description_text
+        - field_homepage_media_cta
+      label: 'Website Info'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: f5w3jFw1ClSQ-qWcSIxuFgzxqx_5IMHeTuFXHOUxGjQ
+id: config_pages.event_details.default
+targetEntityType: config_pages
+bundle: event_details
+mode: default
+content:
+  field_current:
+    type: inline_entity_form_complex
+    weight: 0
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: event
+      label_plural: events
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: true
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: keep
+    third_party_settings: {  }
+  field_event_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_header_cta:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_homepage_media_cta:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_hompage_description_text:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  label: true

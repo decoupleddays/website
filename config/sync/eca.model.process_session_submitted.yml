@@ -1,0 +1,137 @@
+uuid: ff5a61d3-280a-4beb-84f6-435434682496
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.process_session_submitted
+_core:
+  default_config_hash: fUN_dpjv3xh4AMeqkINzF9L4lS8t4CAV1PBdbdNFX8U
+id: process_session_submitted
+label: 'Send email on session creation'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="process_session_submitted" name="Send email on session creation" isExecutable="true">
+      <bpmn2:task id="Activity_0nm31kg" name="Send email to author" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[node:author:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>Session "[node:title]" submitted to [eventName] [eventYear]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>Hello,
+
+  On behalf of our team, THANK YOU for submitting your "[node:title]" session to [eventName] [eventYear]. We are beyond grateful and appreciative.
+
+  Your session is viewable at [node:url] and you may edit it at [node:edit-url].
+
+  Important: Please be sure to fill out all fields (including photo, bio, etc) in your user profile at [current-user:edit-url].
+
+  A speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+
+  Thanks again,
+
+  The [eventName] planning team
+  </camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1r1bzld</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1x547cx" sourceRef="Event_1rasplz" targetRef="Activity_19fq9j3" />
+      <bpmn2:startEvent id="Event_1rasplz" name="Create session" camunda:modelerTemplate="org.drupal.event.content_entity:insert">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="content_entity:insert" />
+          </camunda:properties>
+          <camunda:field name="type">
+            <camunda:string>node session</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_1x547cx</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_19fq9j3" name="set eventName" camunda:modelerTemplate="org.drupal.action.eca_token_set_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_set_value" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>eventName</camunda:string>
+          </camunda:field>
+          <camunda:field name="token_value">
+            <camunda:string>[config_page:event_details:field_event_name]</camunda:string>
+          </camunda:field>
+          <camunda:field name="use_yaml">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1x547cx</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1297hcx</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:task id="Activity_01uxs47" name="set eventYear" camunda:modelerTemplate="org.drupal.action.eca_token_set_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_set_value" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>eventYear</camunda:string>
+          </camunda:field>
+          <camunda:field name="token_value">
+            <camunda:string>[config_page:event_details:field_event_year]</camunda:string>
+          </camunda:field>
+          <camunda:field name="use_yaml">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1297hcx</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1r1bzld</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1297hcx" sourceRef="Activity_19fq9j3" targetRef="Activity_01uxs47" />
+      <bpmn2:sequenceFlow id="Flow_1r1bzld" sourceRef="Activity_01uxs47" targetRef="Activity_0nm31kg" />
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-19d6e1fc-1e04-4e7d-9800-6e3fbedd170d">
+      <bpmndi:BPMNPlane id="sid-4780408b-7b76-4a12-a885-232487461caf" bpmnElement="Process_gWiP1y7">
+        <bpmndi:BPMNShape id="Event_15mozxw_di" bpmnElement="Event_1rasplz">
+          <dc:Bounds x="252" y="92" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="233" y="135" width="74" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_19fq9j3_di" bpmnElement="Activity_19fq9j3">
+          <dc:Bounds x="320" y="70" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_01uxs47_di" bpmnElement="Activity_01uxs47">
+          <dc:Bounds x="450" y="70" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0nm31kg_di" bpmnElement="Activity_0nm31kg">
+          <dc:Bounds x="580" y="70" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_1x547cx_di" bpmnElement="Flow_1x547cx">
+          <di:waypoint x="288" y="110" />
+          <di:waypoint x="320" y="110" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1297hcx_di" bpmnElement="Flow_1297hcx">
+          <di:waypoint x="420" y="110" />
+          <di:waypoint x="450" y="110" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1r1bzld_di" bpmnElement="Flow_1r1bzld">
+          <di:waypoint x="550" y="110" />
+          <di:waypoint x="580" y="110" />
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

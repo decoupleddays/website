@@ -1,0 +1,35 @@
+uuid: a47804f1-ea7c-408a-bdb9-fbb05bc8f2ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.job_listings
+  module:
+    - node
+    - views
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: Ai8CgWQcWdKAChDgcndijHtzaI5tN_7RFkaPBzVm95w
+id: decoupleddays_views_block__job_listings_block_1
+theme: decoupleddays
+region: content
+weight: -11
+provider: null
+plugin: 'views_block:job_listings-block_1'
+settings:
+  id: 'views_block:job_listings-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      sponsor: sponsor

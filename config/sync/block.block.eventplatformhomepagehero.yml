@@ -1,0 +1,27 @@
+uuid: 7ce7a0bf-68a0-4c08-847b-9d1012e68514
+langcode: en
+status: true
+dependencies:
+  module:
+    - event_platform_details
+    - system
+  theme:
+    - olivero
+_core:
+  default_config_hash: m0Xx7JjyVk_wKzf3zg8-HLO8pWP8Z33n9i5hLD8xhN8
+id: eventplatformhomepagehero
+theme: olivero
+region: highlighted
+weight: 0
+provider: null
+plugin: event_platform_home_hero
+settings:
+  id: event_platform_home_hero
+  label: 'Event Platform Homepage Hero'
+  label_display: '0'
+  provider: event_platform_details
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

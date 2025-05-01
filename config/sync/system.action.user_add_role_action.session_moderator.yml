@@ -1,0 +1,14 @@
+uuid: fcc69cf2-e034-46f6-a6ef-f0194db46cd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.session_moderator
+  module:
+    - user
+id: user_add_role_action.session_moderator
+label: 'Add the Session moderator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: session_moderator

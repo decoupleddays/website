@@ -1,0 +1,153 @@
+uuid: 2793a7ac-4543-4a07-9e5c-39db18372404
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.session
+  module:
+    - eca_content
+_core:
+  default_config_hash: oYhnuqphXpPSCXxfrraeXtcv3WP8FyOXJx1aaoTkWLo
+id: process_session_moderated
+modeller: bpmn_io
+label: 'Send email on session acceptance / rejection'
+version: ''
+weight: 0
+events:
+  Event_17jybve:
+    plugin: 'content_entity:update'
+    label: 'Session entity updated'
+    configuration:
+      type: 'node session'
+    successors:
+      -
+        id: Activity_00cv6t2
+        condition: ''
+conditions:
+  Flow_0lh9vvi:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: proposed
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: originalentity
+  Flow_1qvq53b:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: accepted
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: updatedentity
+  Flow_1qr8wl6:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: rejected
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: updatedentity
+gateways: {  }
+actions:
+  Activity_00cv6t2:
+    plugin: eca_token_load_entity
+    label: "Load entity's old values"
+    configuration:
+      token_name: originalentity
+      from: current
+      entity_type: _none
+      entity_id: ''
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: true
+      object: ''
+    successors:
+      -
+        id: Activity_0xfxpxt
+        condition: Flow_0lh9vvi
+  Activity_0xfxpxt:
+    plugin: eca_token_load_entity
+    label: "Load entity's new values"
+    configuration:
+      token_name: updatedentity
+      from: current
+      entity_type: _none
+      entity_id: ''
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: Activity_1b8cbnk
+        condition: Flow_1qvq53b
+      -
+        id: Activity_0k76xfu
+        condition: Flow_1qr8wl6
+  Activity_1b8cbnk:
+    plugin: action_send_email_action
+    label: 'Send acceptance email'
+    configuration:
+      recipient: '[node:author:mail]'
+      subject: '🎉 [node:title] Session Accepted at [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]'
+      message: |-
+        Hello,
+
+        Congratulations! Your "[node:title]" session ([node:url]) was successfully accepted to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]! Note that this email only goes to the author of the node, so please inform any additional speakers for this session.
+
+        Please reply to this email indicating that you are are able to do this session in person. You can find a speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors:
+      -
+        id: Activity_0ptj9ye
+        condition: ''
+  Activity_0k76xfu:
+    plugin: action_send_email_action
+    label: 'Send rejection email'
+    configuration:
+      recipient: '[node:author:mail]'
+      subject: '[config_page:event_details:field_event_name] Session, [node:title]'
+      message: |-
+        On behalf of our team, THANK YOU for submitting your "[node:title]" session to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]. We are beyond grateful and appreciative.
+
+        Unfortunately, we could not accept all of the excellent sessions that were submitted, and this session did not make this year's cut.
+
+        Nevertheless, we still hope to see you in [config_page:event_details:field_event_location_short] this year. Please reach out and let us know if you have any questions.
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors:
+      -
+        id: Activity_1cr12zx
+        condition: ''
+  Activity_0ptj9ye:
+    plugin: action_message_action
+    label: 'Display message'
+    configuration:
+      replace_tokens: false
+      message: 'Acceptance email has been sent to the author of the node.'
+    successors: {  }
+  Activity_1cr12zx:
+    plugin: action_message_action
+    label: 'Display message'
+    configuration:
+      replace_tokens: false
+      message: 'Rejection email has been sent to the author of the node.'
+    successors: {  }

@@ -1,0 +1,22 @@
+uuid: 24d85cd7-2fe3-499d-a2c8-0c1307e06dc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - storage
+    - taxonomy
+_core:
+  default_config_hash: zqw2S52h-VLWi4c6oCatxTaEm3oiztTfyiRCnVFIoS8
+id: storage.field_events
+field_name: field_events
+entity_type: storage
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

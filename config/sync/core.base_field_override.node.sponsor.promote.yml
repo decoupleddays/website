@@ -1,0 +1,24 @@
+uuid: bc117c5d-6f49-40ab-b390-d54930cc472f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.sponsor
+_core:
+  default_config_hash: E3QsKcEIKbfvG--8vB0Fx2Le6SxYcAPdev0aezaH5nk
+id: node.sponsor.promote
+field_name: promote
+entity_type: node
+bundle: sponsor
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

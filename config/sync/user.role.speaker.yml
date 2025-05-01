@@ -1,0 +1,21 @@
+uuid: a0f7085b-1313-4973-bab5-a8ddf157a493
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.session
+    - workflows.workflow.session_acceptance
+  module:
+    - content_moderation
+    - node
+_core:
+  default_config_hash: UCH7R8yOLhEGG308gtT7JmmcrTBWjPHg9SapJuoKYRQ
+id: speaker
+label: Speaker
+weight: 1
+is_admin: null
+permissions:
+  - 'create session content'
+  - 'edit own session content'
+  - 'use session_acceptance transition propose_session'
+  - 'view session revisions'

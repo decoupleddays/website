@@ -1,0 +1,19 @@
+uuid: 1ce89f38-d970-42b1-a24a-70652f8ab7e4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mhCajo3QacNf_bSKtP_cgir2QUPSjajDsYltFRCI0uo
+id: event_details
+label: 'Event Details'
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/event-details
+  weight: 0
+  description: 'Event Details'
+token: true

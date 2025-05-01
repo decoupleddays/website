@@ -1,0 +1,22 @@
+uuid: 2c9587cd-5a55-4ae3-a813-e54b26e8e364
+langcode: en
+status: true
+dependencies:
+  module:
+    - storage
+    - taxonomy
+_core:
+  default_config_hash: L1t1c8cBWErwE2SZHV2MAgsrGoaHjvl0gfgsqb36L2o
+id: storage.field_level
+field_name: field_level
+entity_type: storage
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

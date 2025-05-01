@@ -1,0 +1,62 @@
+uuid: 5a6fb584-64ad-492f-a767-194bcb926d9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bof.field_event
+    - field.field.node.session.field_event
+    - field.storage.node.field_event
+    - node.type.bof
+    - node.type.session
+  module:
+    - eca_content
+_core:
+  default_config_hash: zN5M1u0sWJTkffq-XPW9uvPpG8zgFXTOdMCo1Hx_UtY
+id: new_content_set_event
+modeller: bpmn_io
+label: 'New Sessions Content: Set Event'
+version: ''
+weight: 0
+events:
+  Event_04x0t41:
+    plugin: 'content_entity:create'
+    label: 'New Session'
+    configuration:
+      type: 'node session'
+    successors:
+      -
+        id: Activity_0i76cai
+        condition: ''
+  Event_1rlrniz:
+    plugin: 'content_entity:create'
+    label: 'New Time Slot'
+    configuration:
+      type: 'taxonomy_term time_slot'
+    successors:
+      -
+        id: Activity_0i76cai
+        condition: ''
+  Event_00egwx1:
+    plugin: 'content_entity:create'
+    label: 'New BOF'
+    configuration:
+      type: 'node bof'
+    successors:
+      -
+        id: Activity_0i76cai
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_0i76cai:
+    plugin: eca_set_field_value
+    label: 'Set event'
+    configuration:
+      field_name: field_event
+      field_value: '[config_page:event_details:field_current:target_id]'
+      method: 'set:empty'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: ''
+    successors: {  }

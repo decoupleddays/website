@@ -1,0 +1,26 @@
+uuid: a496e84b-c2cf-4c7c-9191-102106311aa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_bio
+    - filter.format.restricted_html
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: u4EY6kU9AkiuzeWW3t9DDElonBB-gO-LvYkyxFy1mII
+id: user.user.field_bio
+field_name: field_bio
+entity_type: user
+bundle: user
+label: Bio
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text_long

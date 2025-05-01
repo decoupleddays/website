@@ -1,0 +1,22 @@
+uuid: 75f3e28e-691c-4997-b22d-93553aa39f7c
+langcode: en
+status: true
+dependencies:
+  module:
+    - event_platform_details
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: xM8Yp2SAyuD0uUK6uAB1_lLVae_jO1f33MHza2Q44ZY
+id: decoupleddays_eventplatformheadercta
+theme: decoupleddays
+region: secondary_menu
+weight: 0
+provider: null
+plugin: event_platform_header_cta
+settings:
+  id: event_platform_header_cta
+  label: 'Event Platform Header CTA'
+  label_display: '0'
+  provider: event_platform_details
+visibility: {  }

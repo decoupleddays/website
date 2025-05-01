@@ -1,0 +1,57 @@
+uuid: c0e9a0b1-e6c9-4732-a757-40e8fc3f7e25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bof.field_description
+    - field.field.node.bof.field_event
+    - field.field.node.bof.field_r
+    - field.field.node.bof.field_short_description
+    - field.field.node.bof.field_time_slot
+    - node.type.bof
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: e1FSvpTv4WNBXZQMJCfNG4K8inciYLee1sfYLl75DpA
+id: node.bof.default
+targetEntityType: node
+bundle: bof
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_r:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_time_slot:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  flag_my_schedule:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  field_event: true
+  field_short_description: true

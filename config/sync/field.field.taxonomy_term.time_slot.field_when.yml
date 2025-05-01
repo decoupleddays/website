@@ -1,0 +1,30 @@
+uuid: 5def9bc1-141d-4b81-a4fa-35a51d4257e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_when
+    - taxonomy.vocabulary.time_slot
+  module:
+    - smart_date
+_core:
+  default_config_hash: 2j2XqUBApsz8GG5SP7tU4BV3au2268mMG0XwLsn8ffg
+id: taxonomy_term.time_slot.field_when
+field_name: field_when
+entity_type: taxonomy_term
+bundle: time_slot
+label: When
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_duration: 45
+    default_duration_increments: "30\r\n45\r\n60|1 hour\r\n90\r\n120|2 hours\r\ncustom"
+    default_date_type: next_hour
+    default_date: ''
+    min: '[config_page:event_details:field_dates:value]'
+    max: '[config_page:event_details:field_dates:end_value]'
+default_value_callback: ''
+settings: {  }
+field_type: smartdate

@@ -1,0 +1,99 @@
+uuid: 1f2bfaa4-516b-4b20-a1ee-fef6a39953e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.session.field_audience
+    - field.field.node.session.field_description
+    - field.field.node.session.field_event
+    - field.field.node.session.field_is_non_session
+    - field.field.node.session.field_is_training
+    - field.field.node.session.field_r
+    - field.field.node.session.field_session_category
+    - field.field.node.session.field_short_description
+    - field.field.node.session.field_social_media_card
+    - field.field.node.session.field_speakers
+    - field.field.node.session.field_time_slot
+    - node.type.session
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: VmNSTFWMj2_5nl-Y4CIHrZkl24gbePn71Sbvv0PYRUE
+id: node.session.default
+targetEntityType: node
+bundle: session
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_audience:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_event:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_r:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_session_category:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_speakers:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: compact
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_time_slot:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  flippy_pager:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_is_non_session: true
+  field_is_training: true
+  field_short_description: true
+  field_social_media_card: true
+  links: true

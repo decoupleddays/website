@@ -1,0 +1,35 @@
+uuid: e7d9e075-9700-47c3-8217-916b89a96ba5
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.job_listings
+  module:
+    - node
+    - views
+  theme:
+    - olivero
+_core:
+  default_config_hash: Ai8CgWQcWdKAChDgcndijHtzaI5tN_7RFkaPBzVm95w
+id: views_block__job_listings_block_1
+theme: olivero
+region: content
+weight: -11
+provider: null
+plugin: 'views_block:job_listings-block_1'
+settings:
+  id: 'views_block:job_listings-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      sponsor: sponsor

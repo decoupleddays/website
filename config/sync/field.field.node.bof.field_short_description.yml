@@ -1,0 +1,21 @@
+uuid: de1ce640-25b0-47e0-b79d-3817abbe0d2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_short_description
+    - node.type.bof
+_core:
+  default_config_hash: SSpud8LLrlDhlEn7oi-qI596fio1FLaSaUG0I0EgPYU
+id: node.bof.field_short_description
+field_name: field_short_description
+entity_type: node
+bundle: bof
+label: 'Short Description'
+description: 'Please provide a short description for your session, up to 600 characters in length.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,32 @@
+uuid: 15b5e456-4f56-43eb-bfd3-1ecae054a69e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.room.field_events
+    - taxonomy.vocabulary.room
+  module:
+    - text
+_core:
+  default_config_hash: RC0-ZzWIIXVyhdJ2XgeejesdHmTBjBEHaa8L0o4oXjs
+id: taxonomy_term.room.default
+targetEntityType: taxonomy_term
+bundle: room
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_events:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

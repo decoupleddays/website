@@ -1,0 +1,25 @@
+uuid: 241f6e28-c988-4def-a7e9-9c1a41286823
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - taxonomy
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+_core:
+  default_config_hash: oOskCykbm4Arc5VmdY174CICKMplKRD4fThsyBMdAlY
+id: taxonomy_term.field_events
+field_name: field_events
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,47 @@
+uuid: 5dfc799e-d97b-402f-b55f-543605ce0a35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.time_slot.field_event
+    - field.field.taxonomy_term.time_slot.field_when
+    - taxonomy.vocabulary.time_slot
+  module:
+    - smart_date
+    - text
+_core:
+  default_config_hash: vEvjKaZqXjrcf_m3lttYS1qp1g5VhVCft3d1rQeu9nc
+id: taxonomy_term.time_slot.default
+targetEntityType: taxonomy_term
+bundle: time_slot
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_event:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_when:
+    type: smartdate_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: default
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

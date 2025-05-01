@@ -1,0 +1,35 @@
+uuid: 7b4fafec-e067-4c7f-9a4b-a0061022dd45
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.featured_speakers
+  module:
+    - taxonomy
+    - views
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: N1f3abrqzOIkXU51ldOmj-hkmRL9hMX1LEJ7Nwa792g
+id: decoupleddays_views_block__featured_speakers_block_1
+theme: decoupleddays
+region: content_above
+weight: 0
+provider: null
+plugin: 'views_block:featured_speakers-block_1'
+settings:
+  id: 'views_block:featured_speakers-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles:
+      event: event

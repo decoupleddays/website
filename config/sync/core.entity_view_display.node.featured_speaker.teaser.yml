@@ -1,0 +1,66 @@
+uuid: dec05024-16ed-4af1-9bea-32f2e7d50faa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.featured_speaker.body
+    - field.field.node.featured_speaker.field_badge
+    - field.field.node.featured_speaker.field_cta_link
+    - field.field.node.featured_speaker.field_events
+    - field.field.node.featured_speaker.field_image
+    - field.field.node.featured_speaker.field_weight
+    - image.style.featured_speaker
+    - node.type.featured_speaker
+  module:
+    - image
+    - link
+    - text
+    - user
+_core:
+  default_config_hash: 1TnBzNcRuTFYUYvH_EI-Ae5_UfBJIh9OIiRFTT32_5E
+id: node.featured_speaker.teaser
+targetEntityType: node
+bundle: featured_speaker
+mode: teaser
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_badge:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_cta_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: featured_speaker
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_events: true
+  field_weight: true
+  links: true

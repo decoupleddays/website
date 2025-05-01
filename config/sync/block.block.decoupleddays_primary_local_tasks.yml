@@ -1,0 +1,22 @@
+uuid: f2710716-8d3f-4efa-b230-00ea7e4cfa98
+langcode: en
+status: true
+dependencies:
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: decoupleddays_primary_local_tasks
+theme: decoupleddays
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

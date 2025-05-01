@@ -1,0 +1,59 @@
+uuid: 2baa05d7-25e4-4288-8acc-43e6f14783c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job_listing.body
+    - field.field.node.job_listing.field_company
+    - field.field.node.job_listing.field_location
+    - field.field.node.job_listing.field_url
+    - node.type.job_listing
+  module:
+    - link
+    - text
+    - user
+_core:
+  default_config_hash: udEcn1ONV3xjW7ynrRzMtNp22w7ZtxqLW5llCEKAVPE
+id: node.job_listing.default
+targetEntityType: node
+bundle: job_listing
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_company:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  links: true

@@ -1,0 +1,22 @@
+uuid: 92d63e7f-e575-40d9-ad31-452328982b88
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - taxonomy
+_core:
+  default_config_hash: AyOACZ5ZgrgVe8olb9QsYCeNgKoK7VrX5im5aqKdkh0
+id: config_pages.field_current
+field_name: field_current
+entity_type: config_pages
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

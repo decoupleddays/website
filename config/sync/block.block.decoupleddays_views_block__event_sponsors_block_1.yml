@@ -1,0 +1,36 @@
+uuid: 1eb7c3ab-3025-45b7-ac7c-7e5b97710ed1
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.event_sponsors
+  module:
+    - taxonomy
+    - views
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: 2WLKqc64Y7Aae3Q4HH7kqSqqxrn4ki74GCn0SqfThZU
+id: decoupleddays_views_block__event_sponsors_block_1
+theme: decoupleddays
+region: sidebar
+weight: 0
+provider: null
+plugin: 'views_block:event_sponsors-block_1'
+settings:
+  id: 'views_block:event_sponsors-block_1'
+  label: 'Sponsored By'
+  label_display: visible
+  provider: views
+  context_mapping:
+    tid: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+  views_label: 'Sponsored By'
+  items_per_page: none
+visibility:
+  'entity_bundle:taxonomy_term':
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    context_mapping:
+      taxonomy_term: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+    bundles:
+      event: event

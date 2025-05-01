@@ -1,0 +1,44 @@
+uuid: 14abce73-270e-4f39-a23e-b817cd8692c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.session_evaluation
+  module:
+    - node
+    - user
+    - views
+  theme:
+    - decoupleddays
+_core:
+  default_config_hash: gxWcxa8Ccga536GjFajUQacvzMbZzW-l76J3XnDmHXA
+id: decoupleddays_views_block__session_evaluation_block_1
+theme: decoupleddays
+region: content_above
+weight: 0
+provider: null
+plugin: 'views_block:session_evaluation-block_1'
+settings:
+  id: 'views_block:session_evaluation-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      session_moderator: session_moderator
+      administrator: administrator
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      session: session

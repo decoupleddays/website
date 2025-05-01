@@ -1,0 +1,24 @@
+uuid: 2e87c44e-3723-466a-bbed-cca58552271b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: yF_c-M-_5goBlaMXP_XH2jfDhy9RJphXHpCj3e621ZA
+id: speakers
+label: Speakers
+type: 'canonical_entities:node'
+pattern: '/speakers/[node:title]'
+selection_criteria:
+  025e1eb7-a5e4-4824-8744-1aea8061a592:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 025e1eb7-a5e4-4824-8744-1aea8061a592
+    context_mapping:
+      node: node
+    bundles:
+      featured_speaker: featured_speaker
+selection_logic: and
+weight: -5
+relationships: {  }

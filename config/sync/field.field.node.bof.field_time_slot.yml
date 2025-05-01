@@ -1,0 +1,27 @@
+uuid: 7f211799-c5f1-49a2-9294-8d4aaebcd29f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_slot
+    - node.type.bof
+_core:
+  default_config_hash: 45uPci0p0_HJ-F_CLuNChaMVHsGeO2eA07kPGuoH7M4
+id: node.bof.field_time_slot
+field_name: field_time_slot
+entity_type: node
+bundle: bof
+label: 'Time Slot'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: reference_view_time_slot_date_taxonomy
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

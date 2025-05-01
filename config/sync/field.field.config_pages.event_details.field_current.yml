@@ -1,0 +1,31 @@
+uuid: 842cfdc3-2b35-43f5-8c59-7384525393e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.storage.config_pages.field_current
+    - taxonomy.vocabulary.event
+_core:
+  default_config_hash: h_dl1ZwcrNWZLTvdknPyvcRW1fvl7fX4I2QtbhmRT9A
+id: config_pages.event_details.field_current
+field_name: field_current
+entity_type: config_pages
+bundle: event_details
+label: Current
+description: 'Please indicate which event should be used for all new content such as time slots, sessions, and more.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

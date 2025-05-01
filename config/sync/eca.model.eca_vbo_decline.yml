@@ -1,0 +1,155 @@
+uuid: 48fb6de7-9b9d-4fff-9990-9a36af473ed5
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.eca_vbo_decline
+_core:
+  default_config_hash: 16relEgmp1a58FzLbaR8r3JoPfnbyFJFaEZ2ysGp4V4
+id: eca_vbo_decline
+label: 'Decline Sessions'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="eca_vbo_decline" name="Decline Sessions" isExecutable="true">
+      <bpmn2:startEvent id="Event_1kvnrp2" name="VBO" camunda:modelerTemplate="org.drupal.event.vbo:execute">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="vbo:execute" />
+          </camunda:properties>
+          <camunda:field name="operation_name">
+            <camunda:string>Decline sessions</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_1uxb0gq</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_033mscy" name="Decline Sessions" camunda:modelerTemplate="org.drupal.action.eca_workflow_transition:session_acceptance">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_workflow_transition:session_acceptance" />
+          </camunda:properties>
+          <camunda:field name="new_state">
+            <camunda:string>rejected</camunda:string>
+          </camunda:field>
+          <camunda:field name="revision_log">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1uxb0gq</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1uxb0gq" sourceRef="Event_1kvnrp2" targetRef="Activity_033mscy" />
+      <bpmn2:startEvent id="Event_1ckpggk" name="VBO Access" camunda:modelerTemplate="org.drupal.event.vbo:custom_access">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="vbo:custom_access" />
+          </camunda:properties>
+          <camunda:field name="operation_name">
+            <camunda:string>Decline sessions</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_0k0yuj1</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_15qt9j3</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_0fk23mc" name="yes" camunda:modelerTemplate="org.drupal.action.eca_vbo_set_custom_access">
+        <bpmn2:extensionElements>
+          <camunda:field name="access_granted">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_vbo_set_custom_access" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0k0yuj1</bpmn2:incoming>
+        <bpmn2:incoming>Flow_15qt9j3</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0k0yuj1" name="admin" camunda:modelerTemplate="org.drupal.condition.eca_current_user_role" sourceRef="Event_1ckpggk" targetRef="Activity_0fk23mc">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_current_user_role" />
+          </camunda:properties>
+          <camunda:field name="role">
+            <camunda:string>administrator</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_15qt9j3" name="session moderator" camunda:modelerTemplate="org.drupal.condition.eca_current_user_role" sourceRef="Event_1ckpggk" targetRef="Activity_0fk23mc">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_current_user_role" />
+          </camunda:properties>
+          <camunda:field name="role">
+            <camunda:string>session_moderator</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-52e415b9-8b05-4483-bd26-339d461b2dfc">
+      <bpmndi:BPMNPlane id="sid-66d99daa-db8d-41e5-8919-cde33512aaad" bpmnElement="Process_dm8tqoD">
+        <bpmndi:BPMNShape id="Event_1kvnrp2_di" bpmnElement="Event_1kvnrp2">
+          <dc:Bounds x="192" y="172" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="199" y="215" width="24" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_033mscy_di" bpmnElement="Activity_033mscy">
+          <dc:Bounds x="290" y="150" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_1ckpggk_di" bpmnElement="Event_1ckpggk">
+          <dc:Bounds x="552" y="172" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="540" y="215" width="62" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0fk23mc_di" bpmnElement="Activity_0fk23mc">
+          <dc:Bounds x="710" y="150" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_1uxb0gq_di" bpmnElement="Flow_1uxb0gq">
+          <di:waypoint x="228" y="190" />
+          <di:waypoint x="290" y="190" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0k0yuj1_di" bpmnElement="Flow_0k0yuj1">
+          <di:waypoint x="588" y="190" />
+          <di:waypoint x="710" y="190" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="634" y="172" width="30" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_15qt9j3_di" bpmnElement="Flow_15qt9j3">
+          <di:waypoint x="588" y="190" />
+          <di:waypoint x="614" y="190" />
+          <di:waypoint x="614" y="220" />
+          <di:waypoint x="710" y="220" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="623" y="206" width="51" height="27" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

@@ -1,0 +1,42 @@
+uuid: d9297683-c37f-48e2-8fd4-24493cfce7a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.storage.sponsorship.field_events
+    - field.storage.storage.field_events
+    - storage.storage_type.sponsorship
+  module:
+    - eca_content
+_core:
+  default_config_hash: AmKk8z8FJ7t_nb1hJQSIj-FaZ5YEBrkIekK1G46MgsI
+id: process_fbvr7yf
+modeller: bpmn_io
+label: 'New Sponsorship: Set Events'
+version: ''
+weight: 0
+events:
+  Event_1jbs4wv:
+    plugin: 'content_entity:create'
+    label: 'New Sponsorship'
+    configuration:
+      type: 'storage sponsorship'
+    successors:
+      -
+        id: Activity_13dscc6
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_13dscc6:
+    plugin: eca_set_field_value
+    label: 'Set events'
+    configuration:
+      field_name: field_events
+      field_value: '[config_page:event_details:field_current:target_id]'
+      method: 'set:empty'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: ''
+    successors: {  }

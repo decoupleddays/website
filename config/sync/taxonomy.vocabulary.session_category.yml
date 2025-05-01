@@ -1,0 +1,11 @@
+uuid: c3373760-bbfe-4a1f-b254-aff66f5339eb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _B3t1dLf32KHpzEnS3nyv1TAunfu8Nu2WKSMcIis91o
+name: 'Session Category'
+vid: session_category
+description: ''
+weight: 0
+new_revision: false

@@ -1,0 +1,21 @@
+uuid: 639eafd6-b24f-482b-9611-60b98f7be5f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_location_short
+    - taxonomy.vocabulary.event
+_core:
+  default_config_hash: DO5KYmI7z87OD-q4jCv1TYPXnQm1RdvZoGFIyGIF0gs
+id: taxonomy_term.event.field_location_short
+field_name: field_location_short
+entity_type: taxonomy_term
+bundle: event
+label: 'Location (Short)'
+description: 'A short representation of the event''s location, e.g. Orlando, FL. For a virtual event use "online" or "virtual"'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
