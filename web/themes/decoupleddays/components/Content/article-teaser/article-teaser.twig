@@ -1,0 +1,14 @@
+<div {{attributes}}>
+  {% if image %}
+    <div class="section__thumbnail-container">
+      {{ content.field_image}}
+    </div>
+  {% endif %}
+  <div class="section__container">
+    <h2 class="section__header">{{ label }}</h2>
+    <div class="section__content">
+      {{ content.body }}
+    </div>
+    {{ field_links }}
+  </div>
+</div>

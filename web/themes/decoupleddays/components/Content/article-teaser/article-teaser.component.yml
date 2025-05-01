@@ -1,0 +1,20 @@
+$schema: https://git.drupalcode.org/project/sdc/-/raw/1.x/src/metadata.schema.json
+name: Article Teaser
+description: This is a component that displays an article teaser.
+status: experimental
+group: Content
+props:
+  type: object
+  required:
+    - primary
+  properties:
+    label:
+      type: string
+      title: Label
+      description: This is a label for the component.
+      default: This is a label
+    content:
+      type: array
+      title: Content
+      description: This is a content for the component.
+      default: This is a content

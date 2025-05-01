@@ -1,0 +1,16 @@
+{
+  "name": "decoupleddays",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.3",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.3"
+  }
+}
