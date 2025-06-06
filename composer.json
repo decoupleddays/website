@@ -26,6 +26,7 @@
         "drupal/nomarkup": "^1.0",
         "drupal/registration_role": "2.x-dev as 2.0.1",
         "drupal/simple_oauth": "^6.0@beta",
+        "drupal/smtp": "^1.4",
         "drupal/views_argument_token": "^2",
         "drush/drush": "^13.3"
     },
