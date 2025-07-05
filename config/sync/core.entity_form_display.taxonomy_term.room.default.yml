@@ -68,4 +68,9 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  tvi:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden: {  }

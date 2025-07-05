@@ -1,7 +1,15 @@
-uuid: c04551aa-84f7-4d33-b9f5-88d64ac146e2
+uuid: cd110d07-c2d7-4bec-9a02-3f29deca660e
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - footer
+      - main
+    parent: 'main:'
 _core:
   default_config_hash: i0snV8Wj--OkRW12UdachUiYiz3FbeMwHu_pZYfzKLc
 name: 'Basic page'

@@ -6,16 +6,9 @@ dependencies:
     - field.storage.node.field_sponsor_logo
     - node.type.sponsor
   module:
-    - content_translation
     - image
-third_party_settings:
-  content_translation:
-    translation_sync:
-      alt: alt
-      title: title
-      file: '0'
 _core:
-  default_config_hash: Q_mTcsSYVQdHQYBsW4VJCcPd5NlzeSb16wOkLwApuKs
+  default_config_hash: NrWDuJR6AxOezVeecjpHS6rDx_Ddy2fcYiNxJ_JyQCQ
 id: node.sponsor.field_sponsor_logo
 field_name: field_sponsor_logo
 entity_type: node

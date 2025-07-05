@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: wvQ8Ao1Aspfrr9iwx4sRxG66-RtHVGc7ASEB3owCEnI
+enable_override: true
+view: event_term
+view_display: page_1
+inherit_settings: true
+pass_arguments: false

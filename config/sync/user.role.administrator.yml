@@ -1,11 +1,18 @@
-uuid: f1b47fed-530b-4ae6-8aef-1f04406da511
+uuid: da8d82fd-eb40-4fbf-8fa9-4b163c0c7304
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 _core:
   default_config_hash: OeKGIkmZA_c-t6QLH81WNQx8gDCc1MRmxaTuQgxBByU
 id: administrator
 label: Administrator
 weight: 3
 is_admin: true
-permissions: {  }
+permissions:
+  - 'create field_event_name'
+  - 'edit field_event_name'
+  - 'edit own field_event_name'
+  - 'view field_event_name'
+  - 'view own field_event_name'

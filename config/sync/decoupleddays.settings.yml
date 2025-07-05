@@ -4,9 +4,10 @@ features:
   comment_user_verification: 0
   favicon: 1
 logo:
-  use_default: 1
+  use_default: 0
+  path: 'public://DD2025-Website-Logo2.png'
 favicon:
   use_default: 1
 mobile_menu_all_widths: 0
 site_branding_bg_color: default
-base_primary_color: '#47625b'
+base_primary_color: '#085413'

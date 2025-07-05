@@ -1,0 +1,31 @@
+uuid: 099324aa-81aa-4a3a-a81f-68ad21ebddb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.storage.config_pages.field_stats
+    - storage.storage_type.stat
+_core:
+  default_config_hash: e6Hmo9Ssv6r3J2aohM0hBfGVcpB5ILBTIB4gTXFo53U
+id: config_pages.event_details.field_stats
+field_name: field_stats
+entity_type: config_pages
+bundle: event_details
+label: Stats
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:storage'
+  handler_settings:
+    target_bundles:
+      stat: stat
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

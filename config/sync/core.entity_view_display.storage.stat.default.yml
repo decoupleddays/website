@@ -1,0 +1,31 @@
+uuid: 178376ae-5210-45a9-b41e-78a0058fcc41
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.storage.stat.field_description
+    - storage.storage_type.stat
+_core:
+  default_config_hash: R06FBu0mxVbEbliBKm_oETuQ4TTrVpRIKDwpPfC8jF0
+id: storage.stat.default
+targetEntityType: storage
+bundle: stat
+mode: default
+content:
+  field_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  user_id: true

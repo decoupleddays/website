@@ -10,11 +10,12 @@ dependencies:
     - field.field.config_pages.event_details.field_header_cta
     - field.field.config_pages.event_details.field_homepage_media_cta
     - field.field.config_pages.event_details.field_hompage_description_text
+    - field.field.config_pages.event_details.field_stats
   module:
     - link
     - text
 _core:
-  default_config_hash: rdp0e9sbkCBhOBgiko0TnZ24n1B4ojWM4kOqggs9I_8
+  default_config_hash: k9_KOu-ouUeHa5uee2rMRQwxDeCC9nI-HZlnQtCWCYk
 id: config_pages.event_details.full
 targetEntityType: config_pages
 bundle: event_details
@@ -61,3 +62,4 @@ content:
     region: content
 hidden:
   field_current: true
+  field_stats: true

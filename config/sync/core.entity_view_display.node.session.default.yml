@@ -28,7 +28,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_audience:
     type: entity_reference_label
@@ -36,14 +36,14 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   field_description:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   field_event:
     type: entity_reference_label
@@ -51,7 +51,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 8
+    weight: 7
     region: content
   field_r:
     type: entity_reference_label
@@ -59,7 +59,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_session_category:
     type: entity_reference_label
@@ -67,7 +67,7 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 7
+    weight: 6
     region: content
   field_speakers:
     type: entity_reference_entity_view
@@ -76,7 +76,7 @@ content:
       view_mode: compact
       link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   field_time_slot:
     type: entity_reference_label
@@ -84,16 +84,20 @@ content:
     settings:
       link: false
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   flippy_pager:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
 hidden:
   field_is_non_session: true
   field_is_training: true
   field_short_description: true
   field_social_media_card: true
-  links: true

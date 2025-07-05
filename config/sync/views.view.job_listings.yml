@@ -452,6 +452,7 @@ display:
         title: 'Job Listings'
         description: ''
         weight: 0
+        enabled: false
         expanded: false
         menu_name: main
         parent: event_platform_sponsors.sponsors_link

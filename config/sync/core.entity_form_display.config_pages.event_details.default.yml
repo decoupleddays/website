@@ -9,6 +9,7 @@ dependencies:
     - field.field.config_pages.event_details.field_header_cta
     - field.field.config_pages.event_details.field_homepage_media_cta
     - field.field.config_pages.event_details.field_hompage_description_text
+    - field.field.config_pages.event_details.field_stats
   module:
     - field_group
     - inline_entity_form
@@ -33,7 +34,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: f5w3jFw1ClSQ-qWcSIxuFgzxqx_5IMHeTuFXHOUxGjQ
+  default_config_hash: BwJss0lTwiFGpj8oKWsZsEX7ooxT5S75XHrioKxQzKk
 id: config_pages.event_details.default
 targetEntityType: config_pages
 bundle: event_details
@@ -88,6 +89,24 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_stats:
+    type: inline_entity_form_complex
+    weight: 8
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: stat
+      label_plural: stats
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: true
+      collapsible: true
+      collapsed: false
+      revision: false
+      removed_reference: delete
     third_party_settings: {  }
 hidden:
   label: true

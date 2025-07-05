@@ -62,6 +62,11 @@ content:
       permission_based: false
       allow_user_settings: true
     third_party_settings: {  }
+  tvi:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden:
   description: true
   path: true

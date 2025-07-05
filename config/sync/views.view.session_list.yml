@@ -24,7 +24,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: Y1yzIn4EomrR5r0X4ZvRowKX5mKF3PfJ7NODPpzZF4s
+  default_config_hash: 4cbaRF3iVCVVLG3NohvbOgEcQgN2WZeOWMjOR_0uFBs
 id: session_list
 label: 'Event Session List'
 module: views
@@ -798,10 +798,10 @@ display:
         options:
           grouping:
             -
-              field: field_when_1
+              field: field_when
               rendered: true
               rendered_strip: false
-          row_class: ''
+          row_class: session-segment
           default_row_class: false
           uses_fields: true
       row:
@@ -838,23 +838,7 @@ display:
           admin_label: 'field_time_slot: Taxonomy term'
           plugin_id: standard
           required: true
-      header:
-        add_content_by_bundle:
-          id: add_content_by_bundle
-          table: views
-          field: add_content_by_bundle
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: add_content_by_bundle
-          label: 'Propose A Session'
-          empty: true
-          bundle: session
-          class: 'button button--primary button--action'
-          target: ''
-          width: 600
-          form_mode: null
-          params: ''
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -1119,13 +1103,10 @@ display:
             title: All
           title_enable: false
           title: ''
-          default_argument_type: taxonomy_tid
+          default_argument_type: raw
           default_argument_options:
-            term_page: '1'
-            node: false
-            limit: false
-            vids: {  }
-            anyall: ','
+            index: 1
+            use_alias: true
           summary_options:
             base_path: events
             count: false
@@ -1144,7 +1125,7 @@ display:
               event: event
             access: false
             operation: view
-            transform: false
+            transform: true
           glossary: false
           limit: 0
           case: ucfirst
@@ -1173,41 +1154,6 @@ display:
             argument: ''
           summary_options:
             base_path: ''
-            count: true
-            override: false
-            items_per_page: 25
-            inline: false
-            separator: ''
-          summary:
-            sort_order: asc
-            number_of_records: 0
-            format: unformatted_summary
-          specify_validation: false
-          validate:
-            type: none
-            fail: 'not found'
-          validate_options: {  }
-          format: 'M j'
-        field_when_value_1:
-          id: field_when_value_1
-          table: taxonomy_term__field_when
-          field: field_when_value
-          relationship: field_time_slot
-          group_type: group
-          admin_label: ''
-          plugin_id: date
-          default_action: summary
-          exception:
-            value: all
-            title_enable: false
-            title: All
-          title_enable: false
-          title: ''
-          default_argument_type: fixed
-          default_argument_options:
-            argument: ''
-          summary_options:
-            base_path: /events/%/schedule
             count: 0
             override: 0
             items_per_page: '25'
@@ -1216,12 +1162,12 @@ display:
             sort_order: asc
             number_of_records: 0
             format: tabs_summary
-          specify_validation: true
+          specify_validation: false
           validate:
             type: none
             fail: 'not found'
           validate_options: {  }
-          format: 'F j, Y'
+          format: 'M j'
       defaults:
         link_display: false
         link_url: false
@@ -1239,7 +1185,7 @@ display:
           noscrolltop: 0
       displays:
         page_1: page_1
-      inherit_arguments: true
+      inherit_arguments: false
     cache_metadata:
       max-age: -1
       contexts:

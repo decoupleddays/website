@@ -1,0 +1,22 @@
+uuid: a7627710-d064-4267-868f-d6c08cd0364a
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - storage
+_core:
+  default_config_hash: FCUlYa64eFCiORquyqz7niqcA1gpbOsgvivMkejqWtQ
+id: config_pages.field_stats
+field_name: field_stats
+entity_type: config_pages
+type: entity_reference
+settings:
+  target_type: storage
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

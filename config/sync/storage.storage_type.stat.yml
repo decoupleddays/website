@@ -1,0 +1,15 @@
+uuid: 0570d7f9-56a0-444b-9adb-7515e1c4db3f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 0yjT2L8AaAYb32tpRBTCToA93OuqNByUIdFAd5TEjgE
+id: stat
+label: Stat
+description: ''
+help: ''
+new_revision: true
+revision_expose: false
+revision_log: false
+name_pattern: ''
+has_canonical: false

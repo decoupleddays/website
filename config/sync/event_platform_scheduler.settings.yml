@@ -1,10 +1,19 @@
 _core:
   default_config_hash: UXfFZqQ_H91mvznJK4mOqpLCXW9QFFkah-o3tdiJsWU
 types:
-  - session
+  session: session
+  article: '0'
+  bof: '0'
+  featured_speaker: '0'
+  job_listing: '0'
+  page: '0'
+  sponsor: '0'
 states:
-  - session_acceptance||accepted
-  - session_acceptance||published
+  session_acceptance||accepted: session_acceptance||accepted
+  session_acceptance||published: session_acceptance||published
+  session_acceptance||proposed: '0'
+  session_acceptance||rejected: '0'
+  session_acceptance||draft: '0'
 filters:
-  - field_audience
-  - field_session_category
+  field_session_category: field_session_category
+  field_audience: '0'

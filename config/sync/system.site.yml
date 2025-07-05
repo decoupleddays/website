@@ -2,9 +2,9 @@ _core:
   default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
 langcode: en
 uuid: f1ac5d84-e33d-4a14-a07e-9bbb6e3848db
-name: 'Decoupled Days'
-mail: admin@example.com
-slogan: ''
+name: 'Decoupled Days 2025'
+mail: decoupleddays@gmail.com
+slogan: 'August 13th-14th 2025, NYC'
 page:
   403: ''
   404: ''
