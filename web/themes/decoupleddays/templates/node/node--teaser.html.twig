@@ -1,1 +1,3 @@
-{% include "decoupleddays:article-teaser" %}
+{% include "decoupleddays:article-teaser" with {
+  body: content.body
+}%}

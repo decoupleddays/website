@@ -1,0 +1,27 @@
+[data-component-id="decoupleddays:session-list"] {
+  h3 {
+    margin: 0;
+  }
+}
+
+[data-drupal-nav-primary-tabs] {
+  ul {
+    display: flex;
+    border-bottom: 3px solid darkseagreen;
+    padding-bottom: 1.5rem;
+    padding-top: 0;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem 1rem 0 0;
+    background-color: darkseagreen;
+  }
+  a.is-active {
+    background-color: var(--color--green);
+  }
+}
