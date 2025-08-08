@@ -1,0 +1,10 @@
+.region--sidebar {
+  h3 {
+    margin-block: var(--sp0-25);
+  }
+
+  .view,
+  .view-content {
+    gap: var(--sp);
+  }
+}

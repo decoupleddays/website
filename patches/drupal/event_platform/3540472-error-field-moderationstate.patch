@@ -1,0 +1,37 @@
+diff --git a/event_platform_details/src/Cache/Context/SessionsOpen.php b/event_platform_details/src/Cache/Context/SessionsOpen.php
+index 4647a65b291592f73fc7837da311ee208f0d74e3..b0728f4ea06396028e675fa023e6d8e5dfaa1e14 100644
+--- a/event_platform_details/src/Cache/Context/SessionsOpen.php
++++ b/event_platform_details/src/Cache/Context/SessionsOpen.php
+@@ -59,8 +59,11 @@ class SessionsOpen implements CacheContextInterface {
+     if (!$event) {
+       return FALSE;
+     }
+-    $state = $event->get('moderation_state')->value;
+-    return $state === 'sessions_open';
++    $has_state = $event->hasField('moderation_state');
++    if ($has_state) {
++      $state = $event->get('moderation_state')->value;
++      return $state === 'sessions_open';
++    }
+   }
+ 
+   /**
+diff --git a/event_platform_details/src/Plugin/Block/EventPlatformHeaderCtaBlock.php b/event_platform_details/src/Plugin/Block/EventPlatformHeaderCtaBlock.php
+index 683375bf47fae3671a71e79173ce5f28db8ce2aa..ba057e5c0b520ec73816e1f5e2dde6d4de9356a1 100644
+--- a/event_platform_details/src/Plugin/Block/EventPlatformHeaderCtaBlock.php
++++ b/event_platform_details/src/Plugin/Block/EventPlatformHeaderCtaBlock.php
+@@ -132,8 +132,12 @@ class EventPlatformHeaderCtaBlock extends BlockBase implements BlockPluginInterf
+     if (!$event) {
+       return $this->getEmptyMarkup();
+     }
+-    $state = $event->get('moderation_state')->value;
+-    $link = $this->configuration[$state . '_state_link'];
++    $has_state = $event->hasField('moderation_state');
++    $link = NULL;
++    if ($has_state) {
++      $state = $event->get('moderation_state')->value;
++      $link = $this->configuration[$state . '_state_link'];
++    }
+     if (empty($link) && !empty($this->configuration['default_state_link'])) {
+       $link = $this->configuration['default_state_link'];
+     }

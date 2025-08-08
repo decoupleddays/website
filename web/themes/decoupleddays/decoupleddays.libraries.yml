@@ -2,3 +2,6 @@
 global:
   js:
     js/decoupleddays.js: {}
+  css:
+    component:
+      css/component/block.css: {}

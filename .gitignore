@@ -31,3 +31,4 @@ web/sites/simpletest
 
 web/modules/contrib
 web/themes/contrib
+/.DS_Store
