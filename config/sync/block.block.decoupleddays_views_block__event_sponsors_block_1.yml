@@ -1,6 +1,6 @@
 uuid: 39a5fad1-9f60-443f-8263-a01ddfb19759
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - views.view.event_sponsors

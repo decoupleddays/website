@@ -5,6 +5,8 @@ dependencies:
   config:
     - filter.format.basic_html
     - filter.format.webform_default
+    - storage.storage_type.sponsorship
+    - storage.storage_type.stat
   module:
     - comment
     - contact
@@ -13,6 +15,7 @@ dependencies:
     - filter
     - search
     - shortcut
+    - storage
     - system
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
@@ -34,3 +37,6 @@ permissions:
   - 'use text format webform_default'
   - 'view field_r'
   - 'view field_time_slot'
+  - 'view published sponsorship storage entities'
+  - 'view published stat storage entities'
+  - 'view published storage entities'

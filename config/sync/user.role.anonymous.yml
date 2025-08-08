@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
+    - storage.storage_type.sponsorship
+    - storage.storage_type.stat
   module:
     - comment
     - contact
     - field_permissions
     - filter
     - search
+    - storage
     - system
 _core:
   default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
@@ -26,3 +29,6 @@ permissions:
   - 'use text format restricted_html'
   - 'view field_r'
   - 'view field_time_slot'
+  - 'view published sponsorship storage entities'
+  - 'view published stat storage entities'
+  - 'view published storage entities'
