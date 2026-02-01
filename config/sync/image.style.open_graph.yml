@@ -1,0 +1,25 @@
+uuid: 9cdbe1ee-26b5-415a-b1d2-8203943eaecf
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: V0OyAsNz6SKVZNQ3O1RlC79lpp1nuGRmBQdqSZxR8E8
+name: open_graph
+label: 'Open Graph'
+effects:
+  3987968c-0772-4bb8-943b-e15fc75abbca:
+    uuid: 3987968c-0772-4bb8-943b-e15fc75abbca
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      crop_type: focal_point
+  565936ab-d7ec-41f7-a866-67ae6cd6187b:
+    uuid: 565936ab-d7ec-41f7-a866-67ae6cd6187b
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

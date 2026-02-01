@@ -3,10 +3,11 @@ _core:
 module:
   auto_entitylabel: -100
   add_content_by_bundle: 0
+  addtocal_augment: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  announcements_feed: 0
   automated_cron: 0
-  backup_migrate: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -15,23 +16,30 @@ module:
   comment: 0
   config: 0
   config_pages: 0
-  contact: 0
   content_moderation: 0
+  content_moderation_link: 0
   contextual: 0
+  crop: 0
+  date_augmenter: 0
   datetime: 0
   datetime_range: 0
   dblog: 0
   dynamic_page_cache: 0
   eca: 0
   eca_base: 0
+  eca_cache: 0
   eca_content: 0
+  eca_log: 0
+  eca_misc: 0
+  eca_tamper: 0
   eca_user: 0
   eca_vbo: 0
+  eca_views: 0
   eca_workflow: 0
   editor: 0
+  event_platform: 0
   event_platform_details: 0
   event_platform_job_listings: 0
-  event_platform_olivero: 0
   event_platform_ratings: 0
   event_platform_scheduler: 0
   event_platform_sessions: 0
@@ -43,30 +51,43 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  focal_point: 0
   help: 0
   history: 0
-  honeypot: 0
   image: 0
   inline_entity_form: 0
   link: 0
   maxlength: 0
   menu_link_content: 0
   menu_ui: 0
+  metatag: 0
+  metatag_open_graph: 0
+  metatag_twitter_cards: 0
   mysql: 0
   node: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
+  schema_article: 0
+  schema_event: 0
+  schema_job_posting: 0
+  schema_metatag: 0
+  schema_organization: 0
+  schema_web_page: 0
+  schema_web_site: 0
   search: 0
   shortcut: 0
+  simple_sitemap: 0
   smart_date: 0
-  smtp: 0
+  smart_menu_links: 0
   storage: 0
   system: 0
+  tamper: 0
   taxonomy: 0
   text: 0
   token: 0
+  token_or: 0
   toolbar: 0
   update: 0
   user: 0
@@ -85,5 +106,4 @@ module:
 theme:
   olivero: 0
   claro: 0
-  decoupleddays: 0
 profile: standard

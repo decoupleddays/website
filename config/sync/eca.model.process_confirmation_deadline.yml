@@ -1,0 +1,509 @@
+uuid: 1c36e043-00bc-4af3-8397-7a928dd2247f
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.process_confirmation_deadline
+_core:
+  default_config_hash: cYKf0oDaONC3qw7Xe_rV-0EsQjRp292e4DqPTDpvWIw
+id: process_confirmation_deadline
+label: 'Confirmation deadline'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="Process_confirmation_deadline" name="Confirmation deadline" isExecutable="true">
+      <bpmn2:startEvent id="Event_08if9ut" name="Cron at 6:00am" camunda:modelerTemplate="org.drupal.event.eca_base:eca_cron">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_base:eca_cron" />
+          </camunda:properties>
+          <camunda:field name="frequency">
+            <camunda:string>0 6 * * *</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_09xitrj</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_0a3o6t5" name="confirmation deadline" camunda:modelerTemplate="org.drupal.action.eca_token_set_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_set_value" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>confirmation_deadline</camunda:string>
+          </camunda:field>
+          <camunda:field name="token_value">
+            <camunda:string>[config_page:event_details:field_current:entity:field_session_confirmation:date:raw]</camunda:string>
+          </camunda:field>
+          <camunda:field name="use_yaml">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_09xitrj</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_04sxiqi</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_06eskz4</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_09xitrj" name="Deadline is set" camunda:modelerTemplate="org.drupal.condition.eca_token_exists" sourceRef="Event_08if9ut" targetRef="Activity_0a3o6t5">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_exists" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>config_page:event_details:field_current:entity:field_session_confirmation</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_04sxiqi" sourceRef="Activity_0a3o6t5" targetRef="Activity_1ier794" />
+      <bpmn2:task id="Activity_0ysu5ih" name="2 days from now" camunda:modelerTemplate="org.drupal.action.eca_tamper:strtotime">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_tamper:strtotime" />
+          </camunda:properties>
+          <camunda:field name="eca_data">
+            <camunda:string>+2 days</camunda:string>
+          </camunda:field>
+          <camunda:field name="eca_token_name">
+            <camunda:string>two_days</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_07l4tfg</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1p2qdnh</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:task id="Activity_1ier794" name="3 days from now" camunda:modelerTemplate="org.drupal.action.eca_tamper:strtotime">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_tamper:strtotime" />
+          </camunda:properties>
+          <camunda:field name="eca_data">
+            <camunda:string>+3 days</camunda:string>
+          </camunda:field>
+          <camunda:field name="eca_token_name">
+            <camunda:string>three_days</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_04sxiqi</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_07l4tfg</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_07l4tfg" name="&#60;3 days away" camunda:modelerTemplate="org.drupal.condition.eca_scalar" sourceRef="Activity_1ier794" targetRef="Activity_0ysu5ih">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_scalar" />
+          </camunda:properties>
+          <camunda:field name="left">
+            <camunda:string>[confirmation_deadline]</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>atmost</camunda:string>
+          </camunda:field>
+          <camunda:field name="right">
+            <camunda:string>[three_days]</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_1p2qdnh" name="&#62;2 days away" camunda:modelerTemplate="org.drupal.condition.eca_scalar" sourceRef="Activity_0ysu5ih" targetRef="Activity_18a9yrv">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_scalar" />
+          </camunda:properties>
+          <camunda:field name="left">
+            <camunda:string>[confirmation_deadline]</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>atleast</camunda:string>
+          </camunda:field>
+          <camunda:field name="right">
+            <camunda:string>[two_days]</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_18a9yrv" name="Get accepted sessions" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>session</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>sessions_by_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>accepted</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1p2qdnh</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_09e2d0p</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:task id="Activity_09mslgr" name="Send email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[entity:author:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>A reminder about your accepted session [entity:title]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>Hello,
+
+  We would still love to have you present "[node:title]" at [config_page:event_details:field_event_name] [config_page:event_details:field_current:entity:name]! Please remember to confirm that you will be able to present it during the camp dates. We would hate to have to give your slot to someone else.
+
+  Thanks again,
+
+  The [config_page:event_details:field_event_name] planning team
+  </camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_13k9bu5</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:task id="Activity_0m5pjz2" name="Reminder" camunda:modelerTemplate="org.drupal.action.eca_trigger_content_entity_custom_event">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_trigger_content_entity_custom_event" />
+          </camunda:properties>
+          <camunda:field name="event_id">
+            <camunda:string>reminder</camunda:string>
+          </camunda:field>
+          <camunda:field name="tokens" />
+          <camunda:field name="object">
+            <camunda:string>session</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_09e2d0p</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:startEvent id="Event_0nvzhl7" name="Reminder" camunda:modelerTemplate="org.drupal.event.content_entity:custom">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="content_entity:custom" />
+          </camunda:properties>
+          <camunda:field name="event_id">
+            <camunda:string>reminder</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_13k9bu5</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="Flow_13k9bu5" sourceRef="Event_0nvzhl7" targetRef="Activity_09mslgr" />
+      <bpmn2:sequenceFlow id="Flow_09e2d0p" sourceRef="Activity_18a9yrv" targetRef="Activity_0m5pjz2" />
+      <bpmn2:task id="Activity_0skweo7" name="1 day from now" camunda:modelerTemplate="org.drupal.action.eca_tamper:strtotime">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_tamper:strtotime" />
+          </camunda:properties>
+          <camunda:field name="eca_data">
+            <camunda:string>+1 day</camunda:string>
+          </camunda:field>
+          <camunda:field name="eca_token_name">
+            <camunda:string>one_day</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_06eskz4</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0kzmvb9</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_06eskz4" sourceRef="Activity_0a3o6t5" targetRef="Activity_0skweo7" />
+      <bpmn2:task id="Activity_1tff4j4" name="now" camunda:modelerTemplate="org.drupal.action.eca_token_set_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_set_value" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>now</camunda:string>
+          </camunda:field>
+          <camunda:field name="token_value">
+            <camunda:string>[date:raw]</camunda:string>
+          </camunda:field>
+          <camunda:field name="use_yaml">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0kzmvb9</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0mzma0w</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0kzmvb9" name="&#60;1 day away" camunda:modelerTemplate="org.drupal.condition.eca_scalar" sourceRef="Activity_0skweo7" targetRef="Activity_1tff4j4">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_scalar" />
+          </camunda:properties>
+          <camunda:field name="left">
+            <camunda:string>[confirmation_deadline]</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>atmost</camunda:string>
+          </camunda:field>
+          <camunda:field name="right">
+            <camunda:string>[one_day]</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_0ruodlq" name="Get accepted sessions" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>session</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>sessions_by_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>accepted</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0mzma0w</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_11ad4ut</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0mzma0w" name="&#62;now" camunda:modelerTemplate="org.drupal.condition.eca_scalar" sourceRef="Activity_1tff4j4" targetRef="Activity_0ruodlq">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_scalar" />
+          </camunda:properties>
+          <camunda:field name="left">
+            <camunda:string>[confirmation_deadline]</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>atleast</camunda:string>
+          </camunda:field>
+          <camunda:field name="right">
+            <camunda:string>[now]</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_0iban3n" name="Final Reminder" camunda:modelerTemplate="org.drupal.action.eca_trigger_content_entity_custom_event">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_trigger_content_entity_custom_event" />
+          </camunda:properties>
+          <camunda:field name="event_id">
+            <camunda:string>final_reminder</camunda:string>
+          </camunda:field>
+          <camunda:field name="tokens">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>session</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_11ad4ut</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_11ad4ut" sourceRef="Activity_0ruodlq" targetRef="Activity_0iban3n" />
+      <bpmn2:startEvent id="Event_0bbw6pt" name="Final Reminder" camunda:modelerTemplate="org.drupal.event.content_entity:custom">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="content_entity:custom" />
+          </camunda:properties>
+          <camunda:field name="event_id">
+            <camunda:string>final_reminder</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_1jibrh4</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_1ivxvt4" name="Send email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[entity:author:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>Final reminder about your accepted session [entity:title]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>Hello,
+
+  This is the final reminder that we would still love to have you present "[node:title]" at [config_page:event_details:field_event_name] [config_page:event_details:field_current:entity:name]! Please remember to confirm that you will be able to present it during the camp dates. We will have to give your spot to someone else if we don't hear from you today!
+
+  Thanks again,
+
+  The [config_page:event_details:field_event_name] planning team
+  </camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1jibrh4</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1jibrh4" sourceRef="Event_0bbw6pt" targetRef="Activity_1ivxvt4" />
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-9a002d0e-cdef-40cd-a037-c386b9daf7f1">
+      <bpmndi:BPMNPlane id="sid-aab0ed21-838d-48ff-a61a-fb5374a40947" bpmnElement="Process_confirmation_deadline">
+        <bpmndi:BPMNShape id="Event_08if9ut_di" bpmnElement="Event_08if9ut">
+          <dc:Bounds x="332" y="-8" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="314" y="-32" width="76" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0a3o6t5_di" bpmnElement="Activity_0a3o6t5">
+          <dc:Bounds x="300" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0m77gcm_di" bpmnElement="Activity_0ysu5ih">
+          <dc:Bounds x="650" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1ier794_di" bpmnElement="Activity_1ier794">
+          <dc:Bounds x="450" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_18a9yrv_di" bpmnElement="Activity_18a9yrv">
+          <dc:Bounds x="850" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0m5pjz2_di" bpmnElement="Activity_0m5pjz2">
+          <dc:Bounds x="980" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0skweo7_di" bpmnElement="Activity_0skweo7">
+          <dc:Bounds x="450" y="190" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1tff4j4_di" bpmnElement="Activity_1tff4j4">
+          <dc:Bounds x="650" y="190" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0ruodlq_di" bpmnElement="Activity_0ruodlq">
+          <dc:Bounds x="850" y="190" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0iban3n_di" bpmnElement="Activity_0iban3n">
+          <dc:Bounds x="980" y="190" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_0nvzhl7_di" bpmnElement="Event_0nvzhl7">
+          <dc:Bounds x="902" y="-8" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="897" y="35" width="48" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_09mslgr_di" bpmnElement="Activity_09mslgr">
+          <dc:Bounds x="980" y="-30" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_0bbw6pt_di" bpmnElement="Event_0bbw6pt">
+          <dc:Bounds x="902" y="322" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="883" y="365" width="75" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1ivxvt4_di" bpmnElement="Activity_1ivxvt4">
+          <dc:Bounds x="980" y="300" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_09xitrj_di" bpmnElement="Flow_09xitrj">
+          <di:waypoint x="350" y="28" />
+          <di:waypoint x="350" y="80" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="363" y="48" width="73" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_04sxiqi_di" bpmnElement="Flow_04sxiqi">
+          <di:waypoint x="400" y="120" />
+          <di:waypoint x="450" y="120" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_07l4tfg_di" bpmnElement="Flow_07l4tfg">
+          <di:waypoint x="550" y="120" />
+          <di:waypoint x="650" y="120" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="569" y="102" width="68" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1p2qdnh_di" bpmnElement="Flow_1p2qdnh">
+          <di:waypoint x="750" y="120" />
+          <di:waypoint x="850" y="120" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="769" y="102" width="68" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_09e2d0p_di" bpmnElement="Flow_09e2d0p">
+          <di:waypoint x="950" y="120" />
+          <di:waypoint x="980" y="120" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_06eskz4_di" bpmnElement="Flow_06eskz4">
+          <di:waypoint x="400" y="120" />
+          <di:waypoint x="430" y="120" />
+          <di:waypoint x="430" y="230" />
+          <di:waypoint x="450" y="230" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0kzmvb9_di" bpmnElement="Flow_0kzmvb9">
+          <di:waypoint x="550" y="230" />
+          <di:waypoint x="650" y="230" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="569" y="212" width="63" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0mzma0w_di" bpmnElement="Flow_0mzma0w">
+          <di:waypoint x="750" y="230" />
+          <di:waypoint x="850" y="230" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="787" y="212" width="27" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_11ad4ut_di" bpmnElement="Flow_11ad4ut">
+          <di:waypoint x="950" y="230" />
+          <di:waypoint x="980" y="230" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_13k9bu5_di" bpmnElement="Flow_13k9bu5">
+          <di:waypoint x="938" y="10" />
+          <di:waypoint x="980" y="10" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1jibrh4_di" bpmnElement="Flow_1jibrh4">
+          <di:waypoint x="938" y="340" />
+          <di:waypoint x="980" y="340" />
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

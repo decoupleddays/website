@@ -1,0 +1,15 @@
+uuid: 026a852d-5298-4417-a2f9-be3dec316cce
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mHt8KWpJ6IIbBbNvnXpHQGwqWg5WRqPUDq4qoRrPklU
+id: node__job_listing
+label: 'Content: Job Listing'
+tags:
+  schema_job_posting_date_posted: '[node:created:html_datetime]'
+  schema_job_posting_description: '[node:summary]'
+  schema_job_posting_hiring_organization: 'a:5:{s:5:"@type";s:12:"Organization";s:3:"@id";s:41:"[node:field_company:entity:url:unaliased]";s:4:"name";s:33:"[node:field_company:entity:title]";s:3:"url";s:31:"[node:field_company:entity:url]";s:4:"logo";a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:56:"[node:field_company:entity:field_sponsor_logo:large:url]";s:5:"width";s:58:"[node:field_company:entity:field_sponsor_logo:large:width]";s:6:"height";s:59:"[node:field_company:entity:field_sponsor_logo:large:height]";}}'
+  schema_job_posting_id: '[node:url:unaliased]'
+  schema_job_posting_title: '[node:title]'
+  schema_job_posting_type: JobPosting

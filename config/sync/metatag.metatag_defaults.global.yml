@@ -1,0 +1,17 @@
+uuid: 662a1cdb-c1a7-42ce-9297-00ad27a60407
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sL588ui1E_8-2c_UupwyYxcqX2OVyMFp3HTLbbFqvPc
+id: global
+label: Global
+tags:
+  canonical_url: '[current-page:url]'
+  og_site_name: '[site:name]'
+  og_type: website
+  og_url: '[current-page:url:absolute]'
+  rights: 'Copyright ©[date:html_year] All rights reserved.'
+  shortlink: '[current-page:url:unaliased]'
+  title: '[current-page:title] | [site:name]'
+  twitter_cards_type: summary

@@ -57,7 +57,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: 5xd8jWMxaFP89bEZ1cskvLTS0sQWQuAMCXNg8Eq4AYQ
+  default_config_hash: etdMd_dhF4lYpVFuY8sKBdr4-6A4z8Nt2yUM8H5p3wU
 id: node.session.default
 targetEntityType: node
 bundle: session
@@ -79,7 +79,7 @@ content:
     third_party_settings: {  }
   field_event:
     type: entity_reference_autocomplete
-    weight: 22
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -170,10 +170,19 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
   created: true
   path: true
   promote: true
   revision_log: true
   sticky: true
-  uid: true

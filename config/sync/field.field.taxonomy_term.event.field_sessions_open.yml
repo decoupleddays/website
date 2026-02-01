@@ -1,0 +1,23 @@
+uuid: 201c3ce4-c4e1-4a22-a40e-c56c903a9029
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_sessions_open
+    - taxonomy.vocabulary.event
+  module:
+    - datetime
+_core:
+  default_config_hash: t0Y8OwavU3jMvetCOgGX1AG0vLizjuL3-uSyrYpLsaQ
+id: taxonomy_term.event.field_sessions_open
+field_name: field_sessions_open
+entity_type: taxonomy_term
+bundle: event
+label: 'Sessions Open'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

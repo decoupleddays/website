@@ -1,0 +1,607 @@
+uuid: 38970a7c-141b-4a85-a33f-6d2f57c7d1a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.update_event_states
+_core:
+  default_config_hash: NDlG7NeimXA_ieza-yw4eG05Y-5dMbjo_K1lp1KmT1U
+id: update_event_states
+label: 'Cron Update Event States'
+tags:
+  - ''
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="update_event_states" name="Cron Update Event States" isExecutable="true">
+      <bpmn2:extensionElements />
+      <bpmn2:startEvent id="Event_cron" name="Cron" camunda:modelerTemplate="org.drupal.event.eca_base:eca_cron">
+        <bpmn2:extensionElements>
+          <camunda:field name="frequency">
+            <camunda:string>* * * * *</camunda:string>
+          </camunda:field>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_base:eca_cron" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_19ihmon</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="Flow_19ihmon" sourceRef="Event_cron" targetRef="Switch_to_user_1" />
+      <bpmn2:task id="Activity_find_to_open" name="Find Events that should Open for Sessions" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>needs_open</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>terms_update</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>open_for_sessions</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0fvuwk5</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0muaegc</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0fvuwk5" sourceRef="Switch_to_user_1" targetRef="Activity_find_to_open" />
+      <bpmn2:task id="Activity_set_to_open" name="Set to Open" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value">
+            <camunda:string>sessions_open</camunda:string>
+          </camunda:field>
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>needs_open</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0muaegc</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1er57fn</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0muaegc" sourceRef="Activity_find_to_open" targetRef="Activity_set_to_open" />
+      <bpmn2:task id="Activity_log_open" name="Log notice" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>taxonomy</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>The event [needs_open:0:name] has been opened for sessions.</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1er57fn</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_180ipd6</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1er57fn" sourceRef="Activity_set_to_open" targetRef="Activity_log_open" />
+      <bpmn2:task id="Activity_find_to_close" name="Find Events that should Close for Sessions" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>needs_close</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>terms_update</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>close_for_sessions</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1x9f5i6</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0b0h1gs</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1x9f5i6" sourceRef="Switch_to_user_1" targetRef="Activity_find_to_close" />
+      <bpmn2:task id="Activity_set_to_closed" name="Set to Closed" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value">
+            <camunda:string>sessions_closed</camunda:string>
+          </camunda:field>
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>needs_close</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0b0h1gs</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_13yixbn</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0b0h1gs" sourceRef="Activity_find_to_close" targetRef="Activity_set_to_closed" />
+      <bpmn2:task id="Activity_log_closed" name="Log notice" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>taxonomy</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>The event [needs_close:0:name] has been closed for sessions.</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_13yixbn</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0uk1wvx</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_13yixbn" sourceRef="Activity_set_to_closed" targetRef="Activity_log_closed" />
+      <bpmn2:task id="Activity_find_to_schedule" name="Find Events that should Publish Schedule" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>needs_schedule</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>terms_update</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>publish_schedule</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0yqd6ex</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1r9ehvx</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0yqd6ex" sourceRef="Switch_to_user_1" targetRef="Activity_find_to_schedule" />
+      <bpmn2:task id="Activity_set_to_scheduled" name="Set to Scheduled" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value">
+            <camunda:string>scheduled</camunda:string>
+          </camunda:field>
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>needs_schedule</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1r9ehvx</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1yrwd7w</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1r9ehvx" sourceRef="Activity_find_to_schedule" targetRef="Activity_set_to_scheduled" />
+      <bpmn2:task id="Activity_log_scheduled" name="Log Notice" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>taxonomy</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>The event [needs_schedule:0:name] has had its Schedule published.</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1yrwd7w</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1k47hjw</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1yrwd7w" sourceRef="Activity_set_to_scheduled" targetRef="Activity_log_scheduled" />
+      <bpmn2:task id="Activity_find_to_underway" name="Find Events that are Underway" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>underway</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>terms_update</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>underway</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1dcrnzu</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_08fbfz5</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1dcrnzu" sourceRef="Switch_to_user_1" targetRef="Activity_find_to_underway" />
+      <bpmn2:task id="Activity_set_to_underway" name="Set to Underway" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value">
+            <camunda:string>underway</camunda:string>
+          </camunda:field>
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>underway</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_08fbfz5</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_14p6l6k</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_08fbfz5" sourceRef="Activity_find_to_underway" targetRef="Activity_set_to_underway" />
+      <bpmn2:task id="Activity_log_underway" name="Log Notice" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>taxonomy</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>The event [underway:0:name] is now Underway.</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_14p6l6k</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1okbpfu</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_14p6l6k" sourceRef="Activity_set_to_underway" targetRef="Activity_log_underway" />
+      <bpmn2:task id="Activity_find_to_complete" name="Find Events that are Complete" camunda:modelerTemplate="org.drupal.action.eca_views_query">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_views_query" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>complete</camunda:string>
+          </camunda:field>
+          <camunda:field name="view_id">
+            <camunda:string>terms_update</camunda:string>
+          </camunda:field>
+          <camunda:field name="display_id">
+            <camunda:string>complete</camunda:string>
+          </camunda:field>
+          <camunda:field name="arguments">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_13ayhx0</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_04p72nu</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_13ayhx0" sourceRef="Switch_to_user_1" targetRef="Activity_find_to_complete" />
+      <bpmn2:task id="Activity_set_to_complete" name="Set to Complete" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value">
+            <camunda:string>published</camunda:string>
+          </camunda:field>
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>complete</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_04p72nu</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0knm6by</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:task id="Activity_log_complete" name="Log Notice" camunda:modelerTemplate="org.drupal.action.eca_write_log_message">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_write_log_message" />
+          </camunda:properties>
+          <camunda:field name="channel">
+            <camunda:string>taxonomy</camunda:string>
+          </camunda:field>
+          <camunda:field name="severity">
+            <camunda:string>5</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>The event [complete:0:name] is now Complete.</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0knm6by</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0sv70hh</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0knm6by" sourceRef="Activity_set_to_complete" targetRef="Activity_log_complete" />
+      <bpmn2:task id="Activity_clear_cache" name="Clear cache" camunda:modelerTemplate="org.drupal.action.eca_raw_cache_invalidate">
+        <bpmn2:extensionElements>
+          <camunda:field name="tags">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_raw_cache_invalidate" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_180ipd6</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0uk1wvx</bpmn2:incoming>
+        <bpmn2:incoming>Flow_1k47hjw</bpmn2:incoming>
+        <bpmn2:incoming>Flow_1okbpfu</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0sv70hh</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_180ipd6" sourceRef="Activity_log_open" targetRef="Activity_clear_cache" />
+      <bpmn2:sequenceFlow id="Flow_0uk1wvx" sourceRef="Activity_log_closed" targetRef="Activity_clear_cache" />
+      <bpmn2:sequenceFlow id="Flow_1k47hjw" sourceRef="Activity_log_scheduled" targetRef="Activity_clear_cache" />
+      <bpmn2:sequenceFlow id="Flow_1okbpfu" sourceRef="Activity_log_underway" targetRef="Activity_clear_cache" />
+      <bpmn2:sequenceFlow id="Flow_0sv70hh" sourceRef="Activity_log_complete" targetRef="Activity_clear_cache" />
+      <bpmn2:sequenceFlow id="Flow_04p72nu" sourceRef="Activity_find_to_complete" targetRef="Activity_set_to_complete" />
+      <bpmn2:task id="Switch_to_user_1" name="Switch to user 1" camunda:modelerTemplate="org.drupal.action.eca_switch_account">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_switch_account" />
+          </camunda:properties>
+          <camunda:field name="user_id">
+            <camunda:string>1</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_19ihmon</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0fvuwk5</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_1x9f5i6</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0yqd6ex</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_1dcrnzu</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_13ayhx0</bpmn2:outgoing>
+      </bpmn2:task>
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-ff39a71d-8ff2-4874-a516-abe6db3d1c01">
+      <bpmndi:BPMNPlane id="sid-5548510b-6ffd-4914-921a-9a883faa2c6b" bpmnElement="update_event_states">
+        <bpmndi:BPMNShape id="Event_1t3s5nb_di" bpmnElement="Event_cron">
+          <dc:Bounds x="202" y="132" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="208" y="175" width="24" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1a5hdm1_di" bpmnElement="Activity_find_to_open">
+          <dc:Bounds x="450" y="110" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1g0n4ga_di" bpmnElement="Activity_set_to_open">
+          <dc:Bounds x="610" y="110" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_00p33s1_di" bpmnElement="Activity_log_open">
+          <dc:Bounds x="770" y="110" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0fk0ih5_di" bpmnElement="Activity_find_to_close">
+          <dc:Bounds x="450" y="220" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1n2o6w6_di" bpmnElement="Activity_set_to_closed">
+          <dc:Bounds x="610" y="220" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0wowj0i_di" bpmnElement="Activity_log_closed">
+          <dc:Bounds x="770" y="220" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1wtwsuc_di" bpmnElement="Activity_find_to_schedule">
+          <dc:Bounds x="450" y="330" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_03re1tf_di" bpmnElement="Activity_set_to_scheduled">
+          <dc:Bounds x="610" y="330" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0dg3ilq_di" bpmnElement="Activity_log_scheduled">
+          <dc:Bounds x="770" y="330" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1fipa63_di" bpmnElement="Activity_find_to_underway">
+          <dc:Bounds x="450" y="440" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1cjrjoq_di" bpmnElement="Activity_set_to_underway">
+          <dc:Bounds x="610" y="440" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_02l4zb3_di" bpmnElement="Activity_log_underway">
+          <dc:Bounds x="770" y="440" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_06uuxy4_di" bpmnElement="Activity_find_to_complete">
+          <dc:Bounds x="450" y="550" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0pcdaft_di" bpmnElement="Activity_set_to_complete">
+          <dc:Bounds x="610" y="550" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_14q1rxk_di" bpmnElement="Activity_log_complete">
+          <dc:Bounds x="770" y="550" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0vp6phn_di" bpmnElement="Activity_clear_cache">
+          <dc:Bounds x="930" y="110" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1poq684_di" bpmnElement="Switch_to_user_1">
+          <dc:Bounds x="290" y="110" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_19ihmon_di" bpmnElement="Flow_19ihmon">
+          <di:waypoint x="238" y="150" />
+          <di:waypoint x="290" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0fvuwk5_di" bpmnElement="Flow_0fvuwk5">
+          <di:waypoint x="390" y="150" />
+          <di:waypoint x="450" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0muaegc_di" bpmnElement="Flow_0muaegc">
+          <di:waypoint x="550" y="150" />
+          <di:waypoint x="610" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1er57fn_di" bpmnElement="Flow_1er57fn">
+          <di:waypoint x="710" y="150" />
+          <di:waypoint x="770" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1x9f5i6_di" bpmnElement="Flow_1x9f5i6">
+          <di:waypoint x="390" y="150" />
+          <di:waypoint x="420" y="150" />
+          <di:waypoint x="420" y="260" />
+          <di:waypoint x="450" y="260" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0b0h1gs_di" bpmnElement="Flow_0b0h1gs">
+          <di:waypoint x="550" y="260" />
+          <di:waypoint x="610" y="260" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_13yixbn_di" bpmnElement="Flow_13yixbn">
+          <di:waypoint x="710" y="260" />
+          <di:waypoint x="770" y="260" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0yqd6ex_di" bpmnElement="Flow_0yqd6ex">
+          <di:waypoint x="390" y="150" />
+          <di:waypoint x="420" y="150" />
+          <di:waypoint x="420" y="370" />
+          <di:waypoint x="450" y="370" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1r9ehvx_di" bpmnElement="Flow_1r9ehvx">
+          <di:waypoint x="550" y="370" />
+          <di:waypoint x="610" y="370" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1yrwd7w_di" bpmnElement="Flow_1yrwd7w">
+          <di:waypoint x="710" y="370" />
+          <di:waypoint x="770" y="370" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1dcrnzu_di" bpmnElement="Flow_1dcrnzu">
+          <di:waypoint x="390" y="150" />
+          <di:waypoint x="420" y="150" />
+          <di:waypoint x="420" y="480" />
+          <di:waypoint x="450" y="480" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_08fbfz5_di" bpmnElement="Flow_08fbfz5">
+          <di:waypoint x="550" y="480" />
+          <di:waypoint x="610" y="480" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_14p6l6k_di" bpmnElement="Flow_14p6l6k">
+          <di:waypoint x="710" y="480" />
+          <di:waypoint x="770" y="480" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_13ayhx0_di" bpmnElement="Flow_13ayhx0">
+          <di:waypoint x="390" y="150" />
+          <di:waypoint x="420" y="150" />
+          <di:waypoint x="420" y="590" />
+          <di:waypoint x="450" y="590" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0knm6by_di" bpmnElement="Flow_0knm6by">
+          <di:waypoint x="710" y="590" />
+          <di:waypoint x="770" y="590" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_180ipd6_di" bpmnElement="Flow_180ipd6">
+          <di:waypoint x="870" y="150" />
+          <di:waypoint x="930" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0uk1wvx_di" bpmnElement="Flow_0uk1wvx">
+          <di:waypoint x="870" y="260" />
+          <di:waypoint x="900" y="260" />
+          <di:waypoint x="900" y="150" />
+          <di:waypoint x="930" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1k47hjw_di" bpmnElement="Flow_1k47hjw">
+          <di:waypoint x="870" y="370" />
+          <di:waypoint x="900" y="370" />
+          <di:waypoint x="900" y="150" />
+          <di:waypoint x="930" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1okbpfu_di" bpmnElement="Flow_1okbpfu">
+          <di:waypoint x="870" y="480" />
+          <di:waypoint x="900" y="480" />
+          <di:waypoint x="900" y="150" />
+          <di:waypoint x="930" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0sv70hh_di" bpmnElement="Flow_0sv70hh">
+          <di:waypoint x="870" y="590" />
+          <di:waypoint x="900" y="590" />
+          <di:waypoint x="900" y="150" />
+          <di:waypoint x="930" y="150" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_04p72nu_di" bpmnElement="Flow_04p72nu">
+          <di:waypoint x="550" y="590" />
+          <di:waypoint x="610" y="590" />
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

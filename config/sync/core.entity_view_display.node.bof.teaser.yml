@@ -13,7 +13,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: WQYoNVM2KREGl-_2I52f3yr3AFm1w9TGOTW96jrGteE
+  default_config_hash: Ns0o4piynnu1lC70KqSZ8brCJH3m0OLkeGiRqWKhlG0
 id: node.bof.teaser
 targetEntityType: node
 bundle: bof

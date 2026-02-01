@@ -1,0 +1,217 @@
+uuid: a0974fdd-5857-43af-9910-59b1728b12af
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.sessions_by_state
+  module:
+    - eca_base
+    - eca_content
+    - eca_tamper
+    - eca_views
+_core:
+  default_config_hash: LhxgWRbQ37PuBdMJIZfVdptJuOR7CJZc0c0jNKOtf3Q
+id: process_confirmation_deadline
+modeller: bpmn_io
+label: 'Confirmation deadline'
+version: ''
+weight: 0
+events:
+  Event_08if9ut:
+    plugin: 'eca_base:eca_cron'
+    label: 'Cron at 6:00am'
+    configuration:
+      frequency: '0 6 * * *'
+    successors:
+      -
+        id: Activity_0a3o6t5
+        condition: Flow_09xitrj
+  Event_0nvzhl7:
+    plugin: 'content_entity:custom'
+    label: Reminder
+    configuration:
+      event_id: reminder
+    successors:
+      -
+        id: Activity_09mslgr
+        condition: ''
+  Event_0bbw6pt:
+    plugin: 'content_entity:custom'
+    label: 'Final Reminder'
+    configuration:
+      event_id: final_reminder
+    successors:
+      -
+        id: Activity_1ivxvt4
+        condition: ''
+conditions:
+  Flow_09xitrj:
+    plugin: eca_token_exists
+    configuration:
+      negate: false
+      token_name: 'config_page:event_details:field_current:entity:field_session_confirmation'
+  Flow_07l4tfg:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[confirmation_deadline]'
+      right: '[three_days]'
+      operator: atmost
+      type: value
+  Flow_1p2qdnh:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[confirmation_deadline]'
+      right: '[two_days]'
+      operator: atleast
+      type: value
+  Flow_0kzmvb9:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[confirmation_deadline]'
+      right: '[one_day]'
+      operator: atmost
+      type: value
+  Flow_0mzma0w:
+    plugin: eca_scalar
+    configuration:
+      negate: false
+      case: false
+      left: '[confirmation_deadline]'
+      right: '[now]'
+      operator: atleast
+      type: value
+gateways: {  }
+actions:
+  Activity_0a3o6t5:
+    plugin: eca_token_set_value
+    label: 'confirmation deadline'
+    configuration:
+      token_name: confirmation_deadline
+      token_value: '[config_page:event_details:field_current:entity:field_session_confirmation:date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_1ier794
+        condition: ''
+      -
+        id: Activity_0skweo7
+        condition: ''
+  Activity_0ysu5ih:
+    plugin: 'eca_tamper:strtotime'
+    label: '2 days from now'
+    configuration:
+      eca_data: '+2 days'
+      eca_token_name: two_days
+    successors:
+      -
+        id: Activity_18a9yrv
+        condition: Flow_1p2qdnh
+  Activity_1ier794:
+    plugin: 'eca_tamper:strtotime'
+    label: '3 days from now'
+    configuration:
+      eca_data: '+3 days'
+      eca_token_name: three_days
+    successors:
+      -
+        id: Activity_0ysu5ih
+        condition: Flow_07l4tfg
+  Activity_18a9yrv:
+    plugin: eca_views_query
+    label: 'Get accepted sessions'
+    configuration:
+      token_name: session
+      view_id: sessions_by_state
+      display_id: accepted
+      arguments: ''
+    successors:
+      -
+        id: Activity_0m5pjz2
+        condition: ''
+  Activity_09mslgr:
+    plugin: action_send_email_action
+    label: 'Send email'
+    configuration:
+      recipient: '[entity:author:mail]'
+      subject: 'A reminder about your accepted session [entity:title]'
+      message: |-
+        Hello,
+
+        We would still love to have you present "[node:title]" at [config_page:event_details:field_event_name] [config_page:event_details:field_current:entity:name]! Please remember to confirm that you will be able to present it during the camp dates. We would hate to have to give your slot to someone else.
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors: {  }
+  Activity_0m5pjz2:
+    plugin: eca_trigger_content_entity_custom_event
+    label: Reminder
+    configuration:
+      event_id: reminder
+      tokens: ''
+      object: session
+    successors: {  }
+  Activity_0skweo7:
+    plugin: 'eca_tamper:strtotime'
+    label: '1 day from now'
+    configuration:
+      eca_data: '+1 day'
+      eca_token_name: one_day
+    successors:
+      -
+        id: Activity_1tff4j4
+        condition: Flow_0kzmvb9
+  Activity_1tff4j4:
+    plugin: eca_token_set_value
+    label: now
+    configuration:
+      token_name: now
+      token_value: '[date:raw]'
+      use_yaml: false
+    successors:
+      -
+        id: Activity_0ruodlq
+        condition: Flow_0mzma0w
+  Activity_0ruodlq:
+    plugin: eca_views_query
+    label: 'Get accepted sessions'
+    configuration:
+      token_name: session
+      view_id: sessions_by_state
+      display_id: accepted
+      arguments: ''
+    successors:
+      -
+        id: Activity_0iban3n
+        condition: ''
+  Activity_0iban3n:
+    plugin: eca_trigger_content_entity_custom_event
+    label: 'Final Reminder'
+    configuration:
+      event_id: final_reminder
+      tokens: ''
+      object: session
+    successors: {  }
+  Activity_1ivxvt4:
+    plugin: action_send_email_action
+    label: 'Send email'
+    configuration:
+      recipient: '[entity:author:mail]'
+      subject: 'Final reminder about your accepted session [entity:title]'
+      message: |-
+        Hello,
+
+        This is the final reminder that we would still love to have you present "[node:title]" at [config_page:event_details:field_event_name] [config_page:event_details:field_current:entity:name]! Please remember to confirm that you will be able to present it during the camp dates. We will have to give your spot to someone else if we don't hear from you today!
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors: {  }

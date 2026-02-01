@@ -1,0 +1,72 @@
+uuid: 755d3b21-0f56-4fd1-8301-3af760c504b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.session_acceptance
+  module:
+    - eca_user
+    - eca_vbo
+    - eca_workflow
+    - views_bulk_operations
+_core:
+  default_config_hash: ClCrfkJQCDbCZWS_qRuehbwCXmRL6pawbtN4uCPVwNY
+id: eca_vbo_waitlist
+modeller: bpmn_io
+label: 'Waitlist Sessions'
+version: ''
+weight: -6
+events:
+  Event_1slqcr2:
+    plugin: 'vbo:execute'
+    label: |
+      VBO
+    configuration:
+      operation_name: 'Waitlist sessions'
+      view_id: ''
+      display_id: ''
+    successors:
+      -
+        id: Activity_1k6zhd3
+        condition: ''
+  Event_11f0osl:
+    plugin: 'vbo:custom_access'
+    label: 'VBO Access'
+    configuration:
+      operation_name: 'Waitlist sessions'
+      view_id: ''
+      display_id: ''
+    successors:
+      -
+        id: Activity_16048ju
+        condition: Flow_0h8ebyf
+      -
+        id: Activity_16048ju
+        condition: Flow_0tlxef3
+conditions:
+  Flow_0h8ebyf:
+    plugin: eca_current_user_role
+    configuration:
+      negate: false
+      role: session_moderator
+  Flow_0tlxef3:
+    plugin: eca_current_user_role
+    configuration:
+      negate: false
+      role: session_moderator
+gateways: {  }
+actions:
+  Activity_1k6zhd3:
+    plugin: 'eca_workflow_transition:session_acceptance'
+    label: 'Waitlist sessions'
+    configuration:
+      new_state: waitlisted
+      revision_log: ''
+      object: ''
+    successors: {  }
+  Activity_16048ju:
+    plugin: eca_vbo_set_custom_access
+    label: 'yes'
+    configuration:
+      access_granted: true
+    successors: {  }

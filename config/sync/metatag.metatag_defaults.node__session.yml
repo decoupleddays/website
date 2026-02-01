@@ -1,0 +1,24 @@
+uuid: 4cbe8097-39cc-46ce-94f6-ca2d3d3d0bf6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 8nsd27drLvwzaC9x7sAbZKMhdYErakMFbH12IiY44g4
+id: node__session
+label: 'Content: Session'
+tags:
+  description: '[node:field_short_description]'
+  og_description: '[node:field_short_description]'
+  og_image: '[node:field_social_media_card:open_graph:url]'
+  og_image_type: '[node:field_social_media_card:open_graph:mimetype]'
+  og_image_width: '[node:field_social_media_card:open_graph:width]'
+  og_image_height: '[node:field_social_media_card:open_graph:height]'
+  og_image_alt: '[config_page:event_details:field_event_name] session, "[node:title]" by [node:field_speakers]'
+  schema_event_description: '[node:field_short_description]'
+  schema_event_end_date: '[node:field_time_slot:entity:field_when:end_value-custom:c]'
+  schema_event_image: 'a:5:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:34:"[node:field_social_media_card:url]";s:5:"width";s:36:"[node:field_social_media_card:width]";s:6:"height";s:37:"[node:field_social_media_card:height]";}'
+  schema_event_name: '[node:title]'
+  schema_event_start_date: '[node:field_time_slot:entity:field_when:value-custom:c]'
+  schema_event_type: EducationEvent
+  schema_event_url: '[node:url:absolute]'
+  twitter_cards_type: summary_large_image

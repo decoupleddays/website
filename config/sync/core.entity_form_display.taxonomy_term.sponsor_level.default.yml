@@ -5,6 +5,7 @@ dependencies:
   config:
     - taxonomy.vocabulary.sponsor_level
   module:
+    - content_moderation
     - hide_revision_field
     - path
     - text
@@ -22,6 +23,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
     third_party_settings: {  }
   name:
     type: string_textfield
@@ -57,4 +64,9 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  tvi:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden: {  }

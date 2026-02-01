@@ -13,7 +13,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: rlRckxCxwZbEvWMWXCrE3hm6ay7FZ1dnGaiVluDjSfQ
+  default_config_hash: WR1WVVU954bM3D9Oewk1kAKB447C_XPoVyrpAn_92S4
 id: event_term
 label: 'Event term'
 module: taxonomy
@@ -349,6 +349,46 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        sticky:
+          id: sticky
+          table: node_field_data
+          field: sticky
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: sticky
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: default
         options:
@@ -429,6 +469,17 @@ display:
           width: 600
           form_mode: null
           params: ''
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h2>Highlighted Sessions</h2>'
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -461,7 +512,7 @@ display:
         type: node_rss
         options:
           relationship: none
-          view_mode: default
+          view_mode: rss
       query:
         type: views_query
         options: {  }

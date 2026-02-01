@@ -8,12 +8,12 @@ dependencies:
     - eca_base
     - eca_content
 _core:
-  default_config_hash: jzR0h55It4RJWuue0BKDL7C01aIusy8AtA684_6fDHU
+  default_config_hash: 70tCM8eUz5ukKaxIg5_c87Jabl6SHRrZc7SJFoUR5CI
 id: process_session_submitted
 modeller: bpmn_io
 label: 'Send email on session creation'
 version: ''
-weight: 0
+weight: 3
 events:
   Event_1rasplz:
     plugin: 'content_entity:insert'

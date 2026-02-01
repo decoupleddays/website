@@ -1,15 +1,16 @@
-uuid: b81cae10-7a91-4c94-bd8c-9a1b4e6e22cd
+uuid: 2842067a-a250-4019-afb0-a3e33fb85f56
 langcode: en
 status: true
 dependencies:
   module:
+    - content_moderation
     - node
     - user
   enforced:
     module:
       - content_moderation
 _core:
-  default_config_hash: fnzhO9h_2CooJpv_VNqRfr517XXSDKz2yIJ-WBgpeXs
+  default_config_hash: SeyUoUjWFNY3MNSth2i3GkQJlgDYe0GECc-zchRdQGQ
 id: moderated_content
 label: 'Moderated content'
 module: views
@@ -532,8 +533,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -574,8 +573,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -618,8 +615,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: true
           is_grouped: false
           group_info:
@@ -661,8 +656,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -776,6 +769,7 @@ display:
           empty_table: true
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:

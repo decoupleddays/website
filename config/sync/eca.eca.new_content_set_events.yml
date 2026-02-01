@@ -5,12 +5,12 @@ dependencies:
   module:
     - eca_content
 _core:
-  default_config_hash: cFLGCLnNHIn-7mm0i-RJ-bna4whqCE3cGE45c1NoAJo
+  default_config_hash: JNmLlrmCB5i6hVmqprn_S-RamIB2_uLFRTMZLIoEm98
 id: new_content_set_events
 modeller: bpmn_io
 label: 'New Room Content: Set Events'
 version: ''
-weight: 0
+weight: -3
 events:
   Event_1jbs4wv:
     plugin: 'content_entity:create'

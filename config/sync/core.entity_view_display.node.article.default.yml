@@ -1,14 +1,18 @@
-uuid: 91b18799-81fd-4701-ae89-602d6939ea1d
+uuid: a17c1f8e-d222-42ed-899c-797138b76642
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
+    - field.field.node.article.comment
+    - field.field.node.article.field_event
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
     - image.style.wide
     - node.type.article
   module:
+    - comment
     - image
     - text
     - user
@@ -25,6 +29,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  comment:
+    type: comment_default
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_image:
     type: image
@@ -50,4 +63,11 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+  test:
+    type: entity_reference_label
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
+    region: content
+hidden:
+  field_event: true

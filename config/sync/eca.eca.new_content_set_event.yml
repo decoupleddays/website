@@ -11,12 +11,12 @@ dependencies:
   module:
     - eca_content
 _core:
-  default_config_hash: zN5M1u0sWJTkffq-XPW9uvPpG8zgFXTOdMCo1Hx_UtY
+  default_config_hash: VczVY7rLG8_XALIQZ4Wgy8SXsXxNOJwJE2bYGKwFfsk
 id: new_content_set_event
 modeller: bpmn_io
 label: 'New Sessions Content: Set Event'
 version: ''
-weight: 0
+weight: -2
 events:
   Event_04x0t41:
     plugin: 'content_entity:create'

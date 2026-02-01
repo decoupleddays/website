@@ -3,16 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.bof.field_r
+    - field.field.node.bof.field_time_slot
+    - field.field.node.session.field_r
+    - field.field.node.session.field_time_slot
+    - field.storage.node.field_r
+    - field.storage.node.field_time_slot
     - node.type.session
   module:
     - eca_content
+    - eca_user
 _core:
-  default_config_hash: oYhnuqphXpPSCXxfrraeXtcv3WP8FyOXJx1aaoTkWLo
+  default_config_hash: P-qH5Pki6ppeX0OxjWLMv8f0Cz9gGXnPkKm6KWrnPuI
 id: process_session_moderated
 modeller: bpmn_io
-label: 'Send email on session acceptance / rejection'
+label: 'Session transitions'
 version: ''
-weight: 0
+weight: 2
 events:
   Event_17jybve:
     plugin: 'content_entity:update'
@@ -54,6 +61,56 @@ conditions:
       operator: equal
       type: value
       entity: updatedentity
+  Flow_11p2189:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: waitlisted
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: updatedentity
+  Flow_0xqozw2:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: waitlisted
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: originalentity
+  Flow_07msu6w:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: accepted
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: updatedentity
+  Flow_0mdwfyl:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: accepted
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: originalentity
+  Flow_10un71b:
+    plugin: eca_entity_field_value
+    configuration:
+      negate: false
+      case: false
+      expected_value: declined
+      field_name: moderation_state
+      operator: equal
+      type: value
+      entity: updatedentity
 gateways: {  }
 actions:
   Activity_00cv6t2:
@@ -74,6 +131,12 @@ actions:
       -
         id: Activity_0xfxpxt
         condition: Flow_0lh9vvi
+      -
+        id: Activity_1mbs8yr
+        condition: Flow_0xqozw2
+      -
+        id: Activity_160sfew
+        condition: Flow_0mdwfyl
   Activity_0xfxpxt:
     plugin: eca_token_load_entity
     label: "Load entity's new values"
@@ -95,6 +158,9 @@ actions:
       -
         id: Activity_0k76xfu
         condition: Flow_1qr8wl6
+      -
+        id: Activity_054ec8a
+        condition: Flow_11p2189
   Activity_1b8cbnk:
     plugin: action_send_email_action
     label: 'Send acceptance email'
@@ -106,7 +172,15 @@ actions:
 
         Congratulations! Your "[node:title]" session ([node:url]) was successfully accepted to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]! Note that this email only goes to the author of the node, so please inform any additional speakers for this session.
 
-        Please reply to this email indicating that you are are able to do this session in person. You can find a speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+        To confirm that you ARE able to present this session, please click the following link:
+        [node:moderation-link:published]
+
+        Conversely, if you are NOT able to present your session, please decline your session by clicking this link:
+        [node:moderation-link:declined]
+
+        Please let us know before [config_page:event_details:field_current:entity:field_session_confirmation:date:custom:l, F j|"we have to give your spot to someone else"].
+
+        If you have questions or want to discuss this further, please reply to this email. You can find a speaker FAQ including important dates is available at [site:url]speaker-info.
 
         Thanks again,
 
@@ -137,17 +211,167 @@ actions:
       -
         id: Activity_1cr12zx
         condition: ''
+      -
+        id: Activity_1yekubf
+        condition: ''
   Activity_0ptj9ye:
     plugin: action_message_action
     label: 'Display message'
     configuration:
       replace_tokens: false
-      message: 'Acceptance email has been sent to the author of the node.'
+      message: 'Acceptance email has been sent to the author of the session.'
     successors: {  }
   Activity_1cr12zx:
     plugin: action_message_action
     label: 'Display message'
     configuration:
       replace_tokens: false
-      message: 'Rejection email has been sent to the author of the node.'
+      message: 'Rejection email has been sent to the author of the session.'
     successors: {  }
+  Activity_054ec8a:
+    plugin: action_send_email_action
+    label: 'Send waitlist email'
+    configuration:
+      recipient: '[node:author:mail]'
+      subject: '[config_page:event_details:field_event_name] Session, [node:title]'
+      message: |-
+        On behalf of our team, THANK YOU for submitting your "[node:title]" session to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]. We are beyond grateful and appreciative.
+
+        Unfortunately, we had to decline many great proposals — but we liked yours so much that we couldn’t let it go completely.
+
+        While we cannot confirm your spot just yet, we’ve placed your session on the waitlist in hopes that we can find a way to include it. If a spot opens up, we’ll reach out as soon as possible!
+
+        Please inform us if you wish to remain on the waitlist up until the day of the event. Feel free to reach out with any questions.
+
+        Nevertheless, we still hope to see you in [config_page:event_details:field_event_location_short] this year. Please reach out and let us know if you have any questions.
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors:
+      -
+        id: Activity_1jjhoas
+        condition: ''
+  Activity_1jjhoas:
+    plugin: action_message_action
+    label: 'Display message'
+    configuration:
+      replace_tokens: false
+      message: 'Waitlist email has been sent to the author of the session.'
+    successors: {  }
+  Activity_1mbs8yr:
+    plugin: eca_token_load_entity
+    label: "Load entity's new values"
+    configuration:
+      token_name: updatedentity
+      from: current
+      entity_type: _none
+      entity_id: ''
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: Activity_1v73an9
+        condition: Flow_07msu6w
+  Activity_1v73an9:
+    plugin: action_send_email_action
+    label: 'Send acceptance email'
+    configuration:
+      recipient: '[node:author:mail]'
+      subject: '🎉 [node:title] Session Accepted at [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]'
+      message: |-
+        Hello,
+
+        Congratulations! Your "[node:title]" waitlisted session ([node:url]) was successfully accepted to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]! Note that this email only goes to the author of the node, so please inform any additional speakers for this session.
+
+        Please reply to this email indicating that you are are able to do this session in person. You can find a speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+
+        Thanks again,
+
+        The [config_page:event_details:field_event_name] planning team
+      replace_tokens: true
+    successors:
+      -
+        id: Activity_0eheffa
+        condition: ''
+  Activity_0eheffa:
+    plugin: action_message_action
+    label: 'Display message'
+    configuration:
+      replace_tokens: false
+      message: 'Acceptance email has been sent to the author of the session.'
+    successors: {  }
+  Activity_18r2swy:
+    plugin: eca_token_load_entity
+    label: "Load entity's new values"
+    configuration:
+      token_name: updatedentity
+      from: current
+      entity_type: _none
+      entity_id: ''
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: Activity_1yekubf
+        condition: Flow_10un71b
+  Activity_1yekubf:
+    plugin: eca_set_field_value
+    label: 'Clear room'
+    configuration:
+      field_name: field_r
+      field_value: ''
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: updatedentity
+    successors:
+      -
+        id: Activity_0ey4hfy
+        condition: ''
+  Activity_0ey4hfy:
+    plugin: eca_set_field_value
+    label: 'Clear time slot and save'
+    configuration:
+      field_name: field_time_slot
+      field_value: ''
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: updatedentity
+    successors:
+      -
+        id: Activity_1rmghhp
+        condition: ''
+  Activity_1rmghhp:
+    plugin: action_send_email_action
+    label: 'Notify site'
+    configuration:
+      recipient: '[site:mail]'
+      subject: 'Session declined: [node:title]'
+      message: |-
+        User [node:author:account-name] declined their accepted session [node:title].
+
+        You can view the full session details at [node:edit-url]
+      replace_tokens: true
+    successors: {  }
+  Activity_160sfew:
+    plugin: eca_switch_account
+    label: 'Switch to admin account'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_18r2swy
+        condition: ''

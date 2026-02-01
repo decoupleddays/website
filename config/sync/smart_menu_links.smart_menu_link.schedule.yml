@@ -1,0 +1,31 @@
+uuid: 7a64be36-5e0d-4956-a3ae-816eb95e2dd4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: YLRHdkctJfFq-QZDjq2WLnO9qdI5lfp7vlqR8I9Xol8
+id: schedule
+label: Schedule
+link_text: Schedule
+link_suffix: schedule
+menu_name: main
+parent: ''
+weight: 0
+expanded: false
+enabled: true
+target_entity_type: taxonomy_term
+target_bundle: event
+moderation_states:
+  scheduled: scheduled
+  underway: underway
+  published: published
+  draft: '0'
+  date: '0'
+  sessions_open: '0'
+  sessions_closed: '0'
+source_path_segment: 2
+source_id_or_name: name
+fallback: '[config_page:event_details:field_current:entity:tid]'
+validate_segment: null
+validate_segment_id: 1
+validate_segment_value: events

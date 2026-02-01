@@ -1,0 +1,134 @@
+uuid: efb0554a-f962-4af1-acad-7e39378a8290
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.event
+  module:
+    - content_moderation
+_core:
+  default_config_hash: 0_0G4gPrzb56wpKi0tnaXQPADmHrXAacF-XFcMhtkAg
+id: event_planning
+label: 'Event Planning'
+type: content_moderation
+type_settings:
+  states:
+    date:
+      label: 'Save the Date'
+      weight: -3
+      published: true
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -4
+      published: false
+      default_revision: false
+    published:
+      label: Complete
+      weight: 2
+      published: true
+      default_revision: true
+    scheduled:
+      label: Scheduled
+      weight: 0
+      published: true
+      default_revision: true
+    sessions_closed:
+      label: 'Sessions Closed'
+      weight: -1
+      published: true
+      default_revision: true
+    sessions_open:
+      label: 'Sessions Open'
+      weight: -2
+      published: true
+      default_revision: true
+    underway:
+      label: Underway
+      weight: 1
+      published: true
+      default_revision: true
+  transitions:
+    announce:
+      label: Announce
+      from:
+        - date
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: date
+      weight: -3
+    begin:
+      label: Begin
+      from:
+        - date
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: underway
+      weight: 1
+    close_for_sessions:
+      label: 'Close for Sessions'
+      from:
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: sessions_closed
+      weight: -1
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - date
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: draft
+      weight: -4
+    open_for_sessions:
+      label: 'Open for Sessions'
+      from:
+        - date
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: sessions_open
+      weight: -2
+    publish:
+      label: Finish
+      from:
+        - draft
+        - published
+        - underway
+      to: published
+      weight: 2
+    publish_schedule:
+      label: 'Publish Schedule'
+      from:
+        - date
+        - draft
+        - published
+        - scheduled
+        - sessions_closed
+        - sessions_open
+        - underway
+      to: scheduled
+      weight: 0
+  entity_types:
+    taxonomy_term:
+      - event
+  default_moderation_state: date

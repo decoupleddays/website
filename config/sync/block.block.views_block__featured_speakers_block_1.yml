@@ -22,9 +22,9 @@ settings:
   label: ''
   label_display: visible
   provider: views
-  views_label: ''
-  items_per_page: none
   context_mapping: {  }
+  views_label: ''
+  items_per_page: null
 visibility:
   'entity_bundle:taxonomy_term':
     id: 'entity_bundle:taxonomy_term'

@@ -1,4 +1,4 @@
-uuid: fae4ace5-e74e-41b6-98b3-6ba11077689a
+uuid: 1ccd509b-7d4b-401b-a65c-4919590236df
 langcode: en
 status: open
 dependencies:
@@ -263,6 +263,7 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      langcode: ''
   email_notification:
     id: email
     label: 'Email notification'
@@ -300,4 +301,5 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+      langcode: ''
 variants: {  }

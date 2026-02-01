@@ -10,12 +10,12 @@ dependencies:
     - eca_workflow
     - views_bulk_operations
 _core:
-  default_config_hash: _HbE4fSYxcPE6ojGFT1oTaKLHn1STDLXXoIx7fY692w
+  default_config_hash: hZt0_sRlk8rRaiTdEq2nV7qs-Aye5YNLWwebpEc4adU
 id: eca_vbo_accept
 modeller: bpmn_io
 label: 'Accept Sessions'
 version: ''
-weight: 0
+weight: -7
 events:
   Event_1kvnrp2:
     plugin: 'vbo:execute'

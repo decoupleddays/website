@@ -1,0 +1,23 @@
+uuid: b871641f-4d05-4faa-bdcf-5f81c5f23292
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_session_confirmation
+    - taxonomy.vocabulary.event
+  module:
+    - datetime
+_core:
+  default_config_hash: gm9fc8Mi-1cOi8ecnIutM9EPldGsnMJVNClNupPggj4
+id: taxonomy_term.event.field_session_confirmation
+field_name: field_session_confirmation
+entity_type: taxonomy_term
+bundle: event
+label: 'Session Confirmation Deadline'
+description: 'Please specify the date by which the session author needs to confirm they will be able to present.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

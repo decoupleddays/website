@@ -7,7 +7,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: 8Hr1iUlZYn3KuPgEVTWP8JX4iWnq4SfjLSIB1h1toxQ
+  default_config_hash: sKG31Cm5R01G8bTBre6fchU4927sZi-VIbsc1KL0kak
 id: taxonomy_term.sponsor_level.default
 targetEntityType: taxonomy_term
 bundle: sponsor_level

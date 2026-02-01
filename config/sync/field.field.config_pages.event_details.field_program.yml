@@ -1,0 +1,21 @@
+uuid: 28a2bed4-2c12-4634-8a45-41c9ca401845
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.event_details
+    - field.storage.config_pages.field_program
+_core:
+  default_config_hash: fBWVRMFdr_iuyIaLfXkFw3FMmBvZmhL-eJCn6rYFaL8
+id: config_pages.event_details.field_program
+field_name: field_program
+entity_type: config_pages
+bundle: event_details
+label: Program
+description: 'Provide a short description of what will happen each day of the event'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

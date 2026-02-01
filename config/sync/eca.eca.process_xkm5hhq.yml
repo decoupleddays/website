@@ -9,12 +9,12 @@ dependencies:
   module:
     - eca_content
 _core:
-  default_config_hash: 0jzZ9sOTaj19wmr0EW25WD2DJbsUBIiqcHE_v8ftgi8
+  default_config_hash: GmlJQoUG8FUbMqEM7aDlpsU4z5Wiun9zOIo3glLSMr8
 id: process_xkm5hhq
 modeller: bpmn_io
 label: 'New Speaker: Set Events'
 version: ''
-weight: 0
+weight: -1
 events:
   Event_1jbs4wv:
     plugin: 'content_entity:create'

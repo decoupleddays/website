@@ -1,0 +1,26 @@
+uuid: acae3b85-38a1-452f-8714-f92219ecfedf
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LXxzTG-xTxaI5y3R5OPGnbW7htAvlmcqPie07QaR9aI
+id: node__article
+label: 'Content: Article'
+tags:
+  article_modified_time: '[node:changed]'
+  article_published_time: '[node:created]'
+  og_image: '[node:field_image:open_graph]'
+  og_image_alt: '[node:field_image:open_graph:alt]'
+  og_image_height: '[node:field_image:open_graph:height]'
+  og_image_type: '[node:field_image:open_graph:mimetype]'
+  og_image_width: '[node:field_image:open_graph:width]'
+  og_updated_time: '[node:changed]'
+  schema_article_date_modified: '[node:changed:html_datetime]'
+  schema_article_date_published: '[node:created:html_datetime]'
+  schema_article_description: '[node:summary]'
+  schema_article_headline: '[node:title]'
+  schema_article_id: '[node:url:unaliased]'
+  schema_article_image: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:33:"[node:field_image:open_graph:url]";s:5:"width";s:35:"[node:field_image:open_graph:width]";s:6:"height";s:36:"[node:field_image:open_graph:height]";}'
+  schema_article_is_accessible_for_free: 'True'
+  schema_article_type: Article
+  twitter_cards_type: summary_large_image

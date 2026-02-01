@@ -5,9 +5,9 @@ dependencies:
   config:
     - eca.eca.process_session_moderated
 _core:
-  default_config_hash: uVK5wpX1AhzgLTmGiF4D4KPBhbGvbhXvFJrX24fgbzk
+  default_config_hash: jLQMgg93gEy866SG7vDzUNIL76uMPBmuG1maQF6dL6Y
 id: process_session_moderated
-label: 'Send email on session acceptance / rejection'
+label: 'Session transitions'
 tags:
   - ''
 documentation: ''
@@ -15,7 +15,7 @@ filename: ''
 modeldata: |
   <?xml version="1.0" encoding="UTF-8"?>
   <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
-    <bpmn2:process id="process_session_moderated" name="Send email on session acceptance / rejection" isExecutable="true">
+    <bpmn2:process id="process_session_moderated" name="Session transitions" isExecutable="true">
       <bpmn2:extensionElements />
       <bpmn2:startEvent id="Event_17jybve" name="Session entity updated" camunda:modelerTemplate="org.drupal.event.content_entity:update">
         <bpmn2:extensionElements>
@@ -66,6 +66,8 @@ modeldata: |
         </bpmn2:extensionElements>
         <bpmn2:incoming>Flow_1kt3cia</bpmn2:incoming>
         <bpmn2:outgoing>Flow_0lh9vvi</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0xqozw2</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0mdwfyl</bpmn2:outgoing>
       </bpmn2:task>
       <bpmn2:sequenceFlow id="Flow_1kt3cia" sourceRef="Event_17jybve" targetRef="Activity_00cv6t2" />
       <bpmn2:sequenceFlow id="Flow_0lh9vvi" name="if was proposed" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_00cv6t2" targetRef="Activity_0xfxpxt">
@@ -133,6 +135,7 @@ modeldata: |
         <bpmn2:incoming>Flow_0lh9vvi</bpmn2:incoming>
         <bpmn2:outgoing>Flow_1qvq53b</bpmn2:outgoing>
         <bpmn2:outgoing>Flow_1qr8wl6</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_11p2189</bpmn2:outgoing>
       </bpmn2:task>
       <bpmn2:task id="Activity_1b8cbnk" name="Send acceptance email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
         <bpmn2:extensionElements>
@@ -150,7 +153,15 @@ modeldata: |
 
   Congratulations! Your "[node:title]" session ([node:url]) was successfully accepted to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]! Note that this email only goes to the author of the node, so please inform any additional speakers for this session.
 
-  Please reply to this email indicating that you are are able to do this session in person. You can find a speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+  To confirm that you ARE able to present this session, please click the following link:
+  [node:moderation-link:published]
+
+  Conversely, if you are NOT able to present your session, please decline your session by clicking this link:
+  [node:moderation-link:declined]
+
+  Please let us know before [config_page:event_details:field_current:entity:field_session_confirmation:date:custom:l, F j|"we have to give your spot to someone else"].
+
+  If you have questions or want to discuss this further, please reply to this email. You can find a speaker FAQ including important dates is available at [site:url]speaker-info.
 
   Thanks again,
 
@@ -220,6 +231,7 @@ modeldata: |
         </bpmn2:extensionElements>
         <bpmn2:incoming>Flow_1qr8wl6</bpmn2:incoming>
         <bpmn2:outgoing>Flow_1vnpks6</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0qbbqtz</bpmn2:outgoing>
       </bpmn2:task>
       <bpmn2:sequenceFlow id="Flow_1qr8wl6" name="if rejected" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_0xfxpxt" targetRef="Activity_0k76xfu">
         <bpmn2:extensionElements>
@@ -255,7 +267,7 @@ modeldata: |
             <camunda:property name="pluginid" value="action_message_action" />
           </camunda:properties>
           <camunda:field name="message">
-            <camunda:string>Acceptance email has been sent to the author of the node.</camunda:string>
+            <camunda:string>Acceptance email has been sent to the author of the session.</camunda:string>
           </camunda:field>
           <camunda:field name="replace_tokens">
             <camunda:string>no</camunda:string>
@@ -270,7 +282,7 @@ modeldata: |
             <camunda:property name="pluginid" value="action_message_action" />
           </camunda:properties>
           <camunda:field name="message">
-            <camunda:string>Rejection email has been sent to the author of the node. </camunda:string>
+            <camunda:string>Rejection email has been sent to the author of the session. </camunda:string>
           </camunda:field>
           <camunda:field name="replace_tokens">
             <camunda:string>no</camunda:string>
@@ -279,9 +291,415 @@ modeldata: |
         <bpmn2:incoming>Flow_1vnpks6</bpmn2:incoming>
       </bpmn2:task>
       <bpmn2:sequenceFlow id="Flow_1vnpks6" sourceRef="Activity_0k76xfu" targetRef="Activity_1cr12zx" />
+      <bpmn2:task id="Activity_054ec8a" name="Send waitlist email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[node:author:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>[config_page:event_details:field_event_name] Session, [node:title]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>On behalf of our team, THANK YOU for submitting your "[node:title]" session to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]. We are beyond grateful and appreciative.
+
+  Unfortunately, we had to decline many great proposals — but we liked yours so much that we couldn’t let it go completely.
+
+  While we cannot confirm your spot just yet, we’ve placed your session on the waitlist in hopes that we can find a way to include it. If a spot opens up, we’ll reach out as soon as possible!
+
+  Please inform us if you wish to remain on the waitlist up until the day of the event. Feel free to reach out with any questions.
+
+  Nevertheless, we still hope to see you in [config_page:event_details:field_event_location_short] this year. Please reach out and let us know if you have any questions.
+
+  Thanks again,
+
+  The [config_page:event_details:field_event_name] planning team</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_11p2189</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0woq26w</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_11p2189" name="if waitlisted" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_0xfxpxt" targetRef="Activity_054ec8a">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_entity_field_value" />
+          </camunda:properties>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="expected_value">
+            <camunda:string>waitlisted</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_1jjhoas" name="Display message" camunda:modelerTemplate="org.drupal.action.action_message_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_message_action" />
+          </camunda:properties>
+          <camunda:field name="message">
+            <camunda:string>Waitlist email has been sent to the author of the session. </camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0woq26w</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0woq26w" sourceRef="Activity_054ec8a" targetRef="Activity_1jjhoas" />
+      <bpmn2:task id="Activity_1mbs8yr" name="Load entity&#39;s new values" camunda:modelerTemplate="org.drupal.action.eca_token_load_entity">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_load_entity" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+          <camunda:field name="from">
+            <camunda:string>current</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity_type">
+            <camunda:string>_none</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="revision_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="langcode">
+            <camunda:string>_interface</camunda:string>
+          </camunda:field>
+          <camunda:field name="latest_revision">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="unchanged">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="properties">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0xqozw2</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_07msu6w</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0xqozw2" name="if was waitlisted" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_00cv6t2" targetRef="Activity_1mbs8yr">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_entity_field_value" />
+          </camunda:properties>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="expected_value">
+            <camunda:string>waitlisted</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity">
+            <camunda:string>originalentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_1v73an9" name="Send acceptance email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[node:author:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>🎉 [node:title] Session Accepted at [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>Hello,
+
+  Congratulations! Your "[node:title]" waitlisted session ([node:url]) was successfully accepted to [config_page:event_details:field_event_name] [config_page:event_details:field_event_year]! Note that this email only goes to the author of the node, so please inform any additional speakers for this session.
+
+  Please reply to this email indicating that you are are able to do this session in person. You can find a speaker FAQ including important dates is available at [site:url]speaker-info. Reply to this email if you have any additional questions.
+
+  Thanks again,
+
+  The [config_page:event_details:field_event_name] planning team
+  </camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_07msu6w</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_053e5mh</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_07msu6w" name="if accepted" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_1mbs8yr" targetRef="Activity_1v73an9">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_entity_field_value" />
+          </camunda:properties>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="expected_value">
+            <camunda:string>accepted</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_0eheffa" name="Display message" camunda:modelerTemplate="org.drupal.action.action_message_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_message_action" />
+          </camunda:properties>
+          <camunda:field name="message">
+            <camunda:string>Acceptance email has been sent to the author of the session.</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_053e5mh</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_053e5mh" sourceRef="Activity_1v73an9" targetRef="Activity_0eheffa" />
+      <bpmn2:task id="Activity_18r2swy" name="Load entity&#39;s new values" camunda:modelerTemplate="org.drupal.action.eca_token_load_entity">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_token_load_entity" />
+          </camunda:properties>
+          <camunda:field name="token_name">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+          <camunda:field name="from">
+            <camunda:string>current</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity_type">
+            <camunda:string>_none</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="revision_id">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="langcode">
+            <camunda:string>_interface</camunda:string>
+          </camunda:field>
+          <camunda:field name="latest_revision">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="unchanged">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="properties">
+            <camunda:string></camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string></camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0l04dz8</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_10un71b</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0mdwfyl" name="if was accepted" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_00cv6t2" targetRef="Activity_160sfew">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_entity_field_value" />
+          </camunda:properties>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="expected_value">
+            <camunda:string>accepted</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity">
+            <camunda:string>originalentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_1yekubf" name="Clear room" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>field_r</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value" />
+          <camunda:field name="save_entity">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_10un71b</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0qbbqtz</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1kozeo3</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_10un71b" name="if declined" camunda:modelerTemplate="org.drupal.condition.eca_entity_field_value" sourceRef="Activity_18r2swy" targetRef="Activity_1yekubf">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_entity_field_value" />
+          </camunda:properties>
+          <camunda:field name="field_name">
+            <camunda:string>moderation_state</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="expected_value">
+            <camunda:string>declined</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="entity">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_0ey4hfy" name="Clear time slot and save" camunda:modelerTemplate="org.drupal.action.eca_set_field_value">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_set_field_value" />
+          </camunda:properties>
+          <camunda:field name="method">
+            <camunda:string>set:clear</camunda:string>
+          </camunda:field>
+          <camunda:field name="strip_tags">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_name">
+            <camunda:string>field_time_slot</camunda:string>
+          </camunda:field>
+          <camunda:field name="trim">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="field_value" />
+          <camunda:field name="save_entity">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+          <camunda:field name="object">
+            <camunda:string>updatedentity</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1kozeo3</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_19mxxwa</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1kozeo3" sourceRef="Activity_1yekubf" targetRef="Activity_0ey4hfy" />
+      <bpmn2:sequenceFlow id="Flow_0qbbqtz" sourceRef="Activity_0k76xfu" targetRef="Activity_1yekubf" />
+      <bpmn2:task id="Activity_1rmghhp" name="Notify site" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[site:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>Session declined: [node:title]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>User [node:author:account-name] declined their accepted session [node:title].
+
+  You can view the full session details at [node:edit-url]</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_19mxxwa</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_19mxxwa" sourceRef="Activity_0ey4hfy" targetRef="Activity_1rmghhp" />
+      <bpmn2:task id="Activity_160sfew" name="Switch to admin account" camunda:modelerTemplate="org.drupal.action.eca_switch_account">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_switch_account" />
+          </camunda:properties>
+          <camunda:field name="user_id">
+            <camunda:string>1</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0mdwfyl</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0l04dz8</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0l04dz8" sourceRef="Activity_160sfew" targetRef="Activity_18r2swy" />
     </bpmn2:process>
     <bpmndi:BPMNDiagram id="sid-86f21d38-5445-44bd-83d7-3d279ae10938">
-      <bpmndi:BPMNPlane id="sid-91a65824-7b8f-471e-b65b-0bd6409904b8" bpmnElement="Process_hHrguwj">
+      <bpmndi:BPMNPlane id="sid-91a65824-7b8f-471e-b65b-0bd6409904b8" bpmnElement="process_session_moderated">
         <bpmndi:BPMNShape id="Event_17jybve_di" bpmnElement="Event_17jybve">
           <dc:Bounds x="522" y="172" width="36" height="36" />
           <bpmndi:BPMNLabel>
@@ -301,7 +719,7 @@ modeldata: |
           <bpmndi:BPMNLabel />
         </bpmndi:BPMNShape>
         <bpmndi:BPMNShape id="Activity_0k76xfu_di" bpmnElement="Activity_0k76xfu">
-          <dc:Bounds x="990" y="260" width="100" height="80" />
+          <dc:Bounds x="990" y="370" width="100" height="80" />
           <bpmndi:BPMNLabel />
         </bpmndi:BPMNShape>
         <bpmndi:BPMNShape id="Activity_0ptj9ye_di" bpmnElement="Activity_0ptj9ye">
@@ -309,7 +727,47 @@ modeldata: |
           <bpmndi:BPMNLabel />
         </bpmndi:BPMNShape>
         <bpmndi:BPMNShape id="Activity_1cr12zx_di" bpmnElement="Activity_1cr12zx">
+          <dc:Bounds x="1130" y="370" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_054ec8a_di" bpmnElement="Activity_054ec8a">
+          <dc:Bounds x="990" y="260" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1jjhoas_di" bpmnElement="Activity_1jjhoas">
           <dc:Bounds x="1130" y="260" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1mbs8yr_di" bpmnElement="Activity_1mbs8yr">
+          <dc:Bounds x="800" y="630" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1v73an9_di" bpmnElement="Activity_1v73an9">
+          <dc:Bounds x="990" y="630" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0eheffa_di" bpmnElement="Activity_0eheffa">
+          <dc:Bounds x="1130" y="630" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_18r2swy_di" bpmnElement="Activity_18r2swy">
+          <dc:Bounds x="870" y="500" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1yekubf_di" bpmnElement="Activity_1yekubf">
+          <dc:Bounds x="1050" y="500" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_0ey4hfy_di" bpmnElement="Activity_0ey4hfy">
+          <dc:Bounds x="1170" y="500" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1rmghhp_di" bpmnElement="Activity_1rmghhp">
+          <dc:Bounds x="1290" y="500" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_160sfew_di" bpmnElement="Activity_160sfew">
+          <dc:Bounds x="750" y="500" width="100" height="80" />
           <bpmndi:BPMNLabel />
         </bpmndi:BPMNShape>
         <bpmndi:BPMNEdge id="Flow_1kt3cia_di" bpmnElement="Flow_1kt3cia">
@@ -332,10 +790,10 @@ modeldata: |
         </bpmndi:BPMNEdge>
         <bpmndi:BPMNEdge id="Flow_1qr8wl6_di" bpmnElement="Flow_1qr8wl6">
           <di:waypoint x="850" y="230" />
-          <di:waypoint x="850" y="300" />
-          <di:waypoint x="990" y="300" />
+          <di:waypoint x="850" y="410" />
+          <di:waypoint x="990" y="410" />
           <bpmndi:BPMNLabel>
-            <dc:Bounds x="911" y="273" width="48" height="14" />
+            <dc:Bounds x="911" y="383" width="48" height="14" />
           </bpmndi:BPMNLabel>
         </bpmndi:BPMNEdge>
         <bpmndi:BPMNEdge id="Flow_0ji43go_di" bpmnElement="Flow_0ji43go">
@@ -343,8 +801,72 @@ modeldata: |
           <di:waypoint x="1130" y="190" />
         </bpmndi:BPMNEdge>
         <bpmndi:BPMNEdge id="Flow_1vnpks6_di" bpmnElement="Flow_1vnpks6">
+          <di:waypoint x="1090" y="410" />
+          <di:waypoint x="1130" y="410" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_11p2189_di" bpmnElement="Flow_11p2189">
+          <di:waypoint x="850" y="230" />
+          <di:waypoint x="850" y="300" />
+          <di:waypoint x="990" y="300" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="908" y="273" width="54" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0woq26w_di" bpmnElement="Flow_0woq26w">
           <di:waypoint x="1090" y="300" />
           <di:waypoint x="1130" y="300" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0xqozw2_di" bpmnElement="Flow_0xqozw2">
+          <di:waypoint x="640" y="230" />
+          <di:waypoint x="640" y="670" />
+          <di:waypoint x="800" y="670" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="709" y="643" width="77" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_07msu6w_di" bpmnElement="Flow_07msu6w">
+          <di:waypoint x="900" y="670" />
+          <di:waypoint x="990" y="670" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="919" y="652" width="54" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_053e5mh_di" bpmnElement="Flow_053e5mh">
+          <di:waypoint x="1090" y="670" />
+          <di:waypoint x="1130" y="670" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0mdwfyl_di" bpmnElement="Flow_0mdwfyl">
+          <di:waypoint x="640" y="230" />
+          <di:waypoint x="640" y="540" />
+          <di:waypoint x="750" y="540" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="657" y="522" width="76" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_10un71b_di" bpmnElement="Flow_10un71b">
+          <di:waypoint x="970" y="540" />
+          <di:waypoint x="1050" y="540" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="988" y="522" width="50" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1kozeo3_di" bpmnElement="Flow_1kozeo3">
+          <di:waypoint x="1150" y="540" />
+          <di:waypoint x="1170" y="540" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0qbbqtz_di" bpmnElement="Flow_0qbbqtz">
+          <di:waypoint x="1040" y="450" />
+          <di:waypoint x="1040" y="475" />
+          <di:waypoint x="1100" y="475" />
+          <di:waypoint x="1100" y="500" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_19mxxwa_di" bpmnElement="Flow_19mxxwa">
+          <di:waypoint x="1270" y="540" />
+          <di:waypoint x="1290" y="540" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0l04dz8_di" bpmnElement="Flow_0l04dz8">
+          <di:waypoint x="850" y="540" />
+          <di:waypoint x="870" y="540" />
         </bpmndi:BPMNEdge>
       </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>

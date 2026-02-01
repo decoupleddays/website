@@ -1,0 +1,29 @@
+uuid: 9b891237-62e4-4f8a-bfd5-775058771591
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.storage.cta.field_link
+    - storage.storage_type.cta
+  module:
+    - link
+_core:
+  default_config_hash: qf0Rz7C9DuTRNmloUvRk_R-12H4Jl_cc35g2hIctXNg
+id: storage.cta.default
+targetEntityType: storage
+bundle: cta
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  name: true
+  revision_log: true
+  status: true
+  user_id: true

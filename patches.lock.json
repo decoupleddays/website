@@ -1,0 +1,17 @@
+{
+    "_hash": "985c463410f74e099d90469d545e3e8fcf2c518f59220a7efd1be19f5eaaa270",
+    "patches": {
+        "drupal/event_platform": [
+            {
+                "package": "drupal/event_platform",
+                "description": "Error: Field moderation_state is unknown (https://dgo.to/3540472)",
+                "url": "patches/drupal/event_platform/3540472-error-field-moderationstate.patch",
+                "sha256": "1fc9bc90e74b042dae68c7e4a5a8a2103db447a11125647b13c349b2731ddfc6",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

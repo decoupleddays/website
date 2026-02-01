@@ -1,0 +1,23 @@
+uuid: 58cacc1c-f7c6-4d0f-a356-38748ad49ff9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event
+    - node.type.article
+_core:
+  default_config_hash: LbaWZ_mNN7kbKLhbTqOcTSNre0a1hc4qJl2CwTODsFE
+id: node.article.field_event
+field_name: field_event
+entity_type: node
+bundle: article
+label: Event
+description: 'The event associated with this article.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

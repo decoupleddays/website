@@ -8,12 +8,12 @@ dependencies:
     - eca_content
     - eca_user
 _core:
-  default_config_hash: _lnRVkHxrdrXBZ81Xg0g-rHryeOSFuVY4PcKI6jtE2I
+  default_config_hash: w_Nl2l4ecCPSK--MrIJqy7MmU_06T8wLHsKEXEi0vv8
 id: process_register_speaker
 modeller: bpmn_io
 label: 'Apply speaker roles to new accounts'
 version: ''
-weight: 0
+weight: -9
 events:
   Event_0vxgplk:
     plugin: 'content_entity:insert'

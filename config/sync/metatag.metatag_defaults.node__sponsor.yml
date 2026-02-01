@@ -1,0 +1,21 @@
+uuid: 57988eb7-9716-45ca-8faf-03ae0ade6d65
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: loDNaeeR77ReddEsIO4Of94oJ4QxRHPV0t0uq0eFEoc
+id: node__sponsor
+label: 'Content: Sponsor'
+tags:
+  og_description: '[node:summary]'
+  og_image: '[node:field_sponsor_logo:large:url]'
+  og_image_alt: '[node:title] logo'
+  og_image_height: '[node:field_sponsor_logo:large:height]'
+  og_image_width: '[node:field_sponsor_logo:large:width]'
+  schema_organization_description: '[node:summary]'
+  schema_organization_id: '[node:url:unaliased]'
+  schema_organization_logo: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:35:"[node:field_sponsor_logo:large:url]";s:5:"width";s:37:"[node:field_sponsor_logo:large:width]";s:6:"height";s:38:"[node:field_sponsor_logo:large:height]";}'
+  schema_organization_name: '[node:title]'
+  schema_organization_type: Organization
+  schema_organization_url: '[node:field_website_address:uri]'
+  twitter_cards_type: summary_large_image

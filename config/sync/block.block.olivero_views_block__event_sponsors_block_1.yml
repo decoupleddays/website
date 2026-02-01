@@ -22,10 +22,10 @@ settings:
   label: 'Sponsored By'
   label_display: visible
   provider: views
-  views_label: 'Sponsored By'
-  items_per_page: none
   context_mapping:
     tid: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'
+  views_label: 'Sponsored By'
+  items_per_page: null
 visibility:
   'entity_bundle:taxonomy_term':
     id: 'entity_bundle:taxonomy_term'

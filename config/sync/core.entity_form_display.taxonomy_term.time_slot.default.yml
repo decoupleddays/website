@@ -7,6 +7,7 @@ dependencies:
     - field.field.taxonomy_term.time_slot.field_when
     - taxonomy.vocabulary.time_slot
   module:
+    - content_moderation
     - hide_revision_field
     - smart_date
 _core:
@@ -41,6 +42,12 @@ content:
         custom
       show_extra: false
       hide_date: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
     third_party_settings: {  }
   name:
     type: string_textfield

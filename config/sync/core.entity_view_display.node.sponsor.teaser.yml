@@ -16,7 +16,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: wymSU9M-agCA9uSv3sR8NS_JCyQ3VAMZqIvxvDHXiDM
+  default_config_hash: 444Et7IW6xbRM20PLmgKqb7_jWFAjH_Hjmai0WZMeZs
 id: node.sponsor.teaser
 targetEntityType: node
 bundle: sponsor

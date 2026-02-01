@@ -1,4 +1,4 @@
-uuid: 9cfbc2f2-8302-4d60-ac34-16a34654f303
+uuid: 02b421fe-a75f-4617-a9d9-627924009551
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - block_content
     - user
 _core:
-  default_config_hash: HfvTcWhiVuvxchoh4DjIkXhKkj9ow2TGgHkLHSvRLq8
+  default_config_hash: 04nFIsNzLdUjlangTCvxrNUJ9vRQldlR9gekgNrRsOM
 id: block_content
 label: 'Content blocks'
 module: views
@@ -317,17 +317,6 @@ display:
           empty: true
           content: 'There are no content blocks available.'
           tokenize: false
-        block_content_listing_empty:
-          id: block_content_listing_empty
-          table: block_content
-          field: block_content_listing_empty
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: block_content
-          plugin_id: block_content_listing_empty
-          label: ''
-          empty: true
       sorts: {  }
       arguments: {  }
       filters:
@@ -359,8 +348,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -401,8 +388,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -503,6 +488,7 @@ display:
           empty_table: true
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:

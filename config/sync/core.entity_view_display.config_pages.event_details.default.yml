@@ -6,15 +6,15 @@ dependencies:
     - config_pages.type.event_details
     - field.field.config_pages.event_details.field_current
     - field.field.config_pages.event_details.field_event_name
-    - field.field.config_pages.event_details.field_header_cta
     - field.field.config_pages.event_details.field_homepage_media_cta
     - field.field.config_pages.event_details.field_hompage_description_text
+    - field.field.config_pages.event_details.field_program
     - field.field.config_pages.event_details.field_stats
   module:
     - link
     - text
 _core:
-  default_config_hash: BM0y1otrfsE3DSsZZ47Tvnbzc_4xyIJjcXHTzNnRNWM
+  default_config_hash: Cg1NAGa3usSFTziFaQ5pFS9lXFELT3ooF4Q2EBQ2vRQ
 id: config_pages.event_details.default
 targetEntityType: config_pages
 bundle: event_details
@@ -36,18 +36,6 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_header_cta:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 4
-    region: content
   field_homepage_media_cta:
     type: link
     label: hidden
@@ -66,6 +54,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_program:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
     region: content
   field_stats:
     type: entity_reference_label

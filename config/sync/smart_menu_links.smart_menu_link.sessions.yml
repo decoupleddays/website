@@ -1,0 +1,31 @@
+uuid: 36b0d043-6e70-4da5-ab8c-c563c071588d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mYidrTrTfoN1qfU-imqs9yCKzoV2U1lFs1S6G0KrDGo
+id: sessions
+label: Sessions
+link_text: Sessions
+link_suffix: sessions
+menu_name: main
+parent: ''
+weight: 0
+expanded: false
+enabled: true
+target_entity_type: taxonomy_term
+target_bundle: event
+moderation_states:
+  sessions_open: sessions_open
+  sessions_closed: sessions_closed
+  draft: '0'
+  date: '0'
+  scheduled: '0'
+  underway: '0'
+  published: '0'
+source_path_segment: 2
+source_id_or_name: name
+fallback: '[config_page:event_details:field_current:entity:tid]'
+validate_segment: null
+validate_segment_id: 1
+validate_segment_value: events

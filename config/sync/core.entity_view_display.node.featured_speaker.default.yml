@@ -16,7 +16,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: TUuHyU5PigZ2bmSlOiDEHXy94a-e3cJOHNiX21GEONY
+  default_config_hash: dlifPjwJpYd1QGqEPCQjQGu6zDcGxr_YlYRTuEfreUM
 id: node.featured_speaker.default
 targetEntityType: node
 bundle: featured_speaker
@@ -27,7 +27,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_badge:
     type: string
@@ -35,7 +35,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 4
+    weight: 1
     region: content
   field_cta_link:
     type: link
@@ -47,7 +47,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_events:
     type: entity_reference_label
@@ -55,7 +55,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_image:
     type: image
@@ -63,17 +63,11 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
-  field_weight:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 3
-    region: content
 hidden:
+  field_weight: true
   links: true

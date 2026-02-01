@@ -1,4 +1,4 @@
-uuid: 9d5ecc11-0d68-4e22-a56e-44943ba173e8
+uuid: 1132615d-dc88-4f6e-9ec1-ee8b595fe878
 langcode: en
 status: true
 dependencies:
@@ -564,8 +564,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -606,8 +604,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
             operator_limit_selection: false
             operator_list: {  }
@@ -736,8 +732,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
             operator_limit_selection: false
             operator_list: {  }

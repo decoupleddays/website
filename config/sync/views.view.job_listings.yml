@@ -13,7 +13,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: fGTLz4gx4Li1jwJT4TfmhiX86Oq0zmvyb_sS3evwDfo
+  default_config_hash: OCmRoguKYl1PykrHo1CFEwmg59utVX3I1qE9TYfFczc
 id: job_listings
 label: 'Job Listings'
 module: views
@@ -449,13 +449,12 @@ display:
       path: job-listings
       menu:
         type: normal
-        title: 'Job Listings'
+        title: Jobs
         description: ''
-        weight: 0
-        enabled: false
+        weight: 50
         expanded: false
         menu_name: main
-        parent: event_platform_sponsors.sponsors_link
+        parent: ''
         context: '0'
     cache_metadata:
       max-age: 0

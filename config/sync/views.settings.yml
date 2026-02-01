@@ -1,11 +1,10 @@
 _core:
-  default_config_hash: 8oDr9oPVb_ostrNnVV6V7VdphwoH_u-NqTS0u7SE7qc
+  default_config_hash: _XeIJp8HLFXacGTv7BbJQAA0otRUXl0XxnqovpotgYQ
 display_extenders: {  }
 sql_signature: false
 ui:
   show:
     additional_queries: false
-    advanced_column: false
     default_display: false
     performance_statistics: false
     preview_information: true

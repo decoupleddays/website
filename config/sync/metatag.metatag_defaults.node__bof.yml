@@ -1,0 +1,18 @@
+uuid: 1289f186-7477-4a7a-9e42-dc4af3001c83
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: bHBNka95WHqt_O1DS6ZCb6EmT_7heuaoGwz2vzRHg0g
+id: node__bof
+label: 'Content: BOF'
+tags:
+  og_description: '[node:field_short_description]'
+  schema_event_description: '[node:field_short_description]'
+  schema_event_end_date: '[node:field_time_slot:entity:field_when:end_value-custom:c]'
+  schema_event_event_status: 'https://schema.org/EventScheduled'
+  schema_event_id: '[node:url:unaliased]'
+  schema_event_name: '[node:title]'
+  schema_event_start_date: '[node:field_time_slot:entity:field_when:value-custom:c]'
+  schema_event_type: EducationEvent
+  schema_event_url: '[node:url:absolute]'

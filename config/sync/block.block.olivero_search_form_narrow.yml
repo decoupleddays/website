@@ -1,6 +1,6 @@
-uuid: 7cd3e85f-0ad8-4e29-bfc6-de7ece6351df
+uuid: 4f655777-723d-445e-9850-0042b655e3d5
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - search

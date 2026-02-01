@@ -1,0 +1,24 @@
+uuid: 9fb86804-04a4-477b-8cda-8e1c60c9e0f4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kTzkGvyJeMag5ytlQjLeiNkFVjWMkv21basyvrpElfE
+id: bofs
+label: BOFs
+link_text: BOFs
+link_suffix: bofs
+menu_name: main
+parent: 'smart_menu_links:schedule'
+weight: 0
+expanded: false
+enabled: true
+target_entity_type: taxonomy_term
+target_bundle: event
+moderation_states: {  }
+source_path_segment: 2
+source_id_or_name: name
+fallback: '[config_page:event_details:field_current:entity:tid]'
+validate_segment: null
+validate_segment_id: 1
+validate_segment_value: events

@@ -1,0 +1,44 @@
+uuid: 2cf98122-cd1b-4428-9c21-586660afaaee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.field_event
+    - field.field.node.bof.field_event
+    - field.field.node.session.field_event
+    - field.storage.node.field_event
+    - node.type.article
+  module:
+    - eca_content
+_core:
+  default_config_hash: LRPUNCpaPJE07aCNI0gEqdYjiaBbxOMdiqVftuuS-dM
+id: new_article_set_event
+modeller: bpmn_io
+label: 'New Article Set Event'
+version: ''
+weight: -4
+events:
+  Event_1689rkl:
+    plugin: 'content_entity:create'
+    label: 'New Article'
+    configuration:
+      type: 'node article'
+    successors:
+      -
+        id: Activity_17va8ae
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_17va8ae:
+    plugin: eca_set_field_value
+    label: 'Set event'
+    configuration:
+      field_name: field_event
+      field_value: '[config_page:event_details:field_current:target_id]'
+      method: 'set:empty'
+      strip_tags: false
+      trim: false
+      save_entity: false
+      object: ''
+    successors: {  }

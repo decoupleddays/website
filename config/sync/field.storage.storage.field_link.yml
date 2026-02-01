@@ -1,0 +1,21 @@
+uuid: f342f951-7085-40c5-9562-dad5a954521a
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - storage
+_core:
+  default_config_hash: sBfAkXmJ80DQsq3al9NSPVPlR5kAEWoC4wYiPERQrl0
+id: storage.field_link
+field_name: field_link
+entity_type: storage
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

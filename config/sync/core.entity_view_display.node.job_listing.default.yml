@@ -13,7 +13,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: udEcn1ONV3xjW7ynrRzMtNp22w7ZtxqLW5llCEKAVPE
+  default_config_hash: 1Jpn_3xXoBsN_v87ElyuCUyw7xAq3hjGcT-Yp7kNnrk
 id: node.job_listing.default
 targetEntityType: node
 bundle: job_listing

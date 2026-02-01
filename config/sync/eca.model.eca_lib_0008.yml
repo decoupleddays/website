@@ -1,0 +1,156 @@
+uuid: 4ace2b11-8c88-4fe1-bdb1-3a5c37ccae76
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.eca_lib_0008
+_core:
+  default_config_hash: CtIpH_TDS2SaaAoIhEV1u7RRurS6Bzr8BZAN7zkRMoM
+id: eca_lib_0008
+label: 'Redirect 403 to Login Page'
+tags:
+  - 'use case'
+  - redirect
+  - 'redirect 403'
+documentation: |-
+  This module redirects page requests, that would normally respond with a "403 Access denied" page, to the login form. Very much like the module "Redirect 403 To Login Page" which can be replaced with this model.
+
+  Note: this model requires ECA 1.2, or you need to apply the patch from https://www.drupal.org/project/eca/issues/3332859 if you want to use it on ECA 1.1
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="eca_lib_0008" name="Redirect 403 to Login Page" isExecutable="true" camunda:versionTag="v1">
+      <bpmn2:documentation>This module redirects page requests, that would normally respond with a "403 Access denied" page, to the login form. Very much like the module "Redirect 403 To Login Page" which can be replaced with this model.
+
+  Note: this model requires ECA 1.2, or you need to apply the patch from https://www.drupal.org/project/eca/issues/3332859 if you want to use it on ECA 1.1</bpmn2:documentation>
+      <bpmn2:extensionElements>
+        <camunda:properties>
+          <camunda:property name="Tags" value="use case, redirect, redirect 403" />
+          <camunda:property name="Changelog v1" value="Initial version" />
+        </camunda:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:task id="Activity_1tyou13" name="AND" camunda:modelerTemplate="org.drupal.action.eca_void_and_condition">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_void_and_condition" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1udoadx</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1j9wjhz</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0pbmd0v</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1j9wjhz" name="anonymous user?" camunda:modelerTemplate="org.drupal.condition.eca_current_user_role" sourceRef="Activity_1tyou13" targetRef="Activity_00dqmll">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_current_user_role" />
+          </camunda:properties>
+          <camunda:field name="role">
+            <camunda:string>anonymous</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_00dqmll" name="Redirect" camunda:modelerTemplate="org.drupal.action.action_goto_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_goto_action" />
+          </camunda:properties>
+          <camunda:field name="url">
+            <camunda:string>/user/login?destination=[event:path]</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1j9wjhz</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0pbmd0v</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0pbmd0v" camunda:modelerTemplate="org.drupal.condition.eca_current_user_id" sourceRef="Activity_1tyou13" targetRef="Activity_00dqmll">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_current_user_id" />
+          </camunda:properties>
+          <camunda:field name="user_id">
+            <camunda:string>0</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+      <bpmn2:startEvent id="Event_0hoctum" name="Response created" camunda:modelerTemplate="org.drupal.event.kernel:exception_status_code">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="kernel:exception_status_code" />
+          </camunda:properties>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_1udoadx</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="Flow_1udoadx" name="access denied?" camunda:modelerTemplate="org.drupal.condition.eca_scalar" sourceRef="Event_0hoctum" targetRef="Activity_1tyou13">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="eca_scalar" />
+          </camunda:properties>
+          <camunda:field name="left">
+            <camunda:string>[event:code]</camunda:string>
+          </camunda:field>
+          <camunda:field name="operator">
+            <camunda:string>equal</camunda:string>
+          </camunda:field>
+          <camunda:field name="right">
+            <camunda:string>403</camunda:string>
+          </camunda:field>
+          <camunda:field name="type">
+            <camunda:string>value</camunda:string>
+          </camunda:field>
+          <camunda:field name="case">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+          <camunda:field name="negate">
+            <camunda:string>no</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+      </bpmn2:sequenceFlow>
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-48393cd5-d003-4016-9fbe-9ccc443c362b">
+      <bpmndi:BPMNPlane id="sid-8195a61e-85f0-47eb-b236-7ced5b1cf59c" bpmnElement="eca_lib_0008">
+        <bpmndi:BPMNShape id="Activity_1tyou13_di" bpmnElement="Activity_1tyou13">
+          <dc:Bounds x="290" y="40" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1f45fmw_di" bpmnElement="Activity_00dqmll">
+          <dc:Bounds x="500" y="40" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Event_0hoctum_di" bpmnElement="Event_0hoctum">
+          <dc:Bounds x="152" y="62" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="125" y="105" width="90" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_1j9wjhz_di" bpmnElement="Flow_1j9wjhz">
+          <di:waypoint x="390" y="80" />
+          <di:waypoint x="500" y="80" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="401" y="62" width="88" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_0pbmd0v_di" bpmnElement="Flow_0pbmd0v">
+          <di:waypoint x="390" y="80" />
+          <di:waypoint x="445" y="80" />
+          <di:waypoint x="445" y="110" />
+          <di:waypoint x="500" y="110" />
+        </bpmndi:BPMNEdge>
+        <bpmndi:BPMNEdge id="Flow_1udoadx_di" bpmnElement="Flow_1udoadx">
+          <di:waypoint x="188" y="80" />
+          <di:waypoint x="290" y="80" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="196" y="62" width="77" height="14" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

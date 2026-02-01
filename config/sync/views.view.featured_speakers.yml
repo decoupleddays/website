@@ -1,16 +1,17 @@
-uuid: ce3badd1-d38e-4fa3-a22d-1b03ea7c7aab
+uuid: cfa9fec3-a078-43cc-81eb-c57d611755d9
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - node.type.featured_speaker
+    - taxonomy.vocabulary.event
   module:
     - add_content_by_bundle
     - node
     - user
 _core:
-  default_config_hash: AMrfUtYA_X0qvLujAUhSO8zvvWX2Td_NEy1PCawsUr8
+  default_config_hash: LhHGFCxp73Xo90SpsGC-xRKPeeEaIVub04xBF1cpnGc
 id: featured_speakers
 label: 'Featured Speakers'
 module: views
@@ -127,7 +128,50 @@ display:
             label: ''
             field_identifier: field_weight_value
           exposed: false
-      arguments: {  }
+      arguments:
+        field_events_target_id:
+          id: field_events_target_id
+          table: node__field_events
+          field: field_events_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: entity_target_id
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: taxonomy_tid
+          default_argument_options:
+            term_page: '1'
+            node: false
+            limit: false
+            vids: {  }
+            anyall: ','
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: 'not found'
+          validate_options:
+            bundles:
+              event: event
+            access: false
+            operation: view
+            multiple: 0
+          break_phrase: false
+          not: false
       filters:
         status:
           id: status
@@ -240,6 +284,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -256,6 +301,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

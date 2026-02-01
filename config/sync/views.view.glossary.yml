@@ -1,4 +1,4 @@
-uuid: 5e9b23c4-039e-4c1f-b868-5839aa9a154e
+uuid: b69c78f4-0cab-4850-9b17-de10d0e75899
 langcode: en
 status: false
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: r-klgGeO4haVHqAwxW1HXZLzdzLSMUVC08OuTBrRh58
+  default_config_hash: msJ3UFBLYSIFO9zalGlk3_7z1reoZ7EHJ4qeRzO5iAE
 id: glossary
 label: Glossary
 module: node
@@ -346,6 +346,7 @@ display:
           summary: ''
           order: asc
           empty_table: false
+          class: ''
       row:
         type: fields
         options:

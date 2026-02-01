@@ -13,7 +13,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: e1FSvpTv4WNBXZQMJCfNG4K8inciYLee1sfYLl75DpA
+  default_config_hash: _UJUzYr13HYruNaujAcDvHhR6K-KeE7WZnj1As2eylY
 id: node.bof.default
 targetEntityType: node
 bundle: bof

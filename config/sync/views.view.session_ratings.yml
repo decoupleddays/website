@@ -12,7 +12,7 @@ dependencies:
     - webform
     - webform_views
 _core:
-  default_config_hash: YkIGDwtY1_P0XfCePF2RbkPBdh6Jv_L-hZkSHh7Hazo
+  default_config_hash: BTNBtDpRoAV-urcLVcJqGsf2tK8kMGUEevzFqZxhJvg
 id: session_ratings
 label: 'Session Ratings'
 module: views
@@ -85,7 +85,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: Speaker(s)
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -217,7 +217,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<a href="/form/session-evaluation?session={{ nid }}&destination=sessions/ratings">Evaluate this session</a>'
+            text: '<a href="/form/session-evaluation?session={{ nid }}&destination=sessions/ratings">Evaluate</a>'
             make_link: false
             path: ''
             absolute: false
@@ -741,6 +741,10 @@ display:
           webform_multiple_value: true
           webform_multiple_delta: 0
           webform_check_access: 1
+      pager:
+        type: none
+        options:
+          offset: 0
       arguments:
         uid:
           id: uid

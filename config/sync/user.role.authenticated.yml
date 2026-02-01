@@ -1,4 +1,4 @@
-uuid: 40e66504-394b-41d2-9474-bcca9e0c2a1a
+uuid: 7433d81a-4780-4fec-987f-b1d3c547a2e8
 langcode: en
 status: true
 dependencies:
@@ -6,10 +6,8 @@ dependencies:
     - filter.format.basic_html
     - filter.format.webform_default
     - storage.storage_type.sponsorship
-    - storage.storage_type.stat
   module:
     - comment
-    - contact
     - field_permissions
     - file
     - filter
@@ -18,7 +16,7 @@ dependencies:
     - storage
     - system
 _core:
-  default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
+  default_config_hash: hcfESiA8tr3D1muRk2KF7tbcun16ZJlG1R5SzKGed6g
 id: authenticated
 label: 'Authenticated user'
 weight: 1
@@ -27,7 +25,6 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access shortcuts'
-  - 'access site-wide contact form'
   - 'access user profiles'
   - 'delete own files'
   - 'post comments'
@@ -38,5 +35,3 @@ permissions:
   - 'view field_r'
   - 'view field_time_slot'
   - 'view published sponsorship storage entities'
-  - 'view published stat storage entities'
-  - 'view published storage entities'

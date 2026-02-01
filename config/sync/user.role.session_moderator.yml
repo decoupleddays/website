@@ -17,7 +17,7 @@ dependencies:
     - taxonomy
     - toolbar
 _core:
-  default_config_hash: 4QkHyXo1STxBIIMeGpUjMolV6br4XMLKRW9cMvziOjQ
+  default_config_hash: kb-Z1rMETMcTPcsKUD-ysYh-cXeqzCef_Sdi0YquGyU
 id: session_moderator
 label: 'Session moderator'
 weight: 2
@@ -43,7 +43,11 @@ permissions:
   - 'edit terms in room'
   - 'edit terms in time_slot'
   - 'use session_acceptance transition accept_session'
+  - 'use session_acceptance transition confirm'
+  - 'use session_acceptance transition decline'
+  - 'use session_acceptance transition edit_confirmed'
   - 'use session_acceptance transition reject_session'
+  - 'use session_acceptance transition waitlist'
   - 'view any unpublished content'
   - 'view bof revisions'
   - 'view event_details config page entity'

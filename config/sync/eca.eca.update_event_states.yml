@@ -1,0 +1,250 @@
+uuid: 05cc4ced-34db-485d-9c36-0a814af82a1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.terms_update
+  module:
+    - eca_base
+    - eca_cache
+    - eca_content
+    - eca_log
+    - eca_user
+    - eca_views
+_core:
+  default_config_hash: NPbsTc3OzIsHyQ40LOELnseissOG3WFI_XCAJTTdwt8
+id: update_event_states
+modeller: bpmn_io
+label: 'Cron Update Event States'
+version: ''
+weight: -8
+events:
+  Event_cron:
+    plugin: 'eca_base:eca_cron'
+    label: Cron
+    configuration:
+      frequency: '* * * * *'
+    successors:
+      -
+        id: Switch_to_user_1
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_find_to_open:
+    plugin: eca_views_query
+    label: 'Find Events that should Open for Sessions'
+    configuration:
+      token_name: needs_open
+      view_id: terms_update
+      display_id: open_for_sessions
+      arguments: ''
+    successors:
+      -
+        id: Activity_set_to_open
+        condition: ''
+  Activity_set_to_open:
+    plugin: eca_set_field_value
+    label: 'Set to Open'
+    configuration:
+      field_name: moderation_state
+      field_value: sessions_open
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: needs_open
+    successors:
+      -
+        id: Activity_log_open
+        condition: ''
+  Activity_log_open:
+    plugin: eca_write_log_message
+    label: 'Log notice'
+    configuration:
+      channel: taxonomy
+      severity: '5'
+      message: 'The event [needs_open:0:name] has been opened for sessions.'
+    successors:
+      -
+        id: Activity_clear_cache
+        condition: ''
+  Activity_find_to_close:
+    plugin: eca_views_query
+    label: 'Find Events that should Close for Sessions'
+    configuration:
+      token_name: needs_close
+      view_id: terms_update
+      display_id: close_for_sessions
+      arguments: ''
+    successors:
+      -
+        id: Activity_set_to_closed
+        condition: ''
+  Activity_set_to_closed:
+    plugin: eca_set_field_value
+    label: 'Set to Closed'
+    configuration:
+      field_name: moderation_state
+      field_value: sessions_closed
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: needs_close
+    successors:
+      -
+        id: Activity_log_closed
+        condition: ''
+  Activity_log_closed:
+    plugin: eca_write_log_message
+    label: 'Log notice'
+    configuration:
+      channel: taxonomy
+      severity: '5'
+      message: 'The event [needs_close:0:name] has been closed for sessions.'
+    successors:
+      -
+        id: Activity_clear_cache
+        condition: ''
+  Activity_find_to_schedule:
+    plugin: eca_views_query
+    label: 'Find Events that should Publish Schedule'
+    configuration:
+      token_name: needs_schedule
+      view_id: terms_update
+      display_id: publish_schedule
+      arguments: ''
+    successors:
+      -
+        id: Activity_set_to_scheduled
+        condition: ''
+  Activity_set_to_scheduled:
+    plugin: eca_set_field_value
+    label: 'Set to Scheduled'
+    configuration:
+      field_name: moderation_state
+      field_value: scheduled
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: needs_schedule
+    successors:
+      -
+        id: Activity_log_scheduled
+        condition: ''
+  Activity_log_scheduled:
+    plugin: eca_write_log_message
+    label: 'Log Notice'
+    configuration:
+      channel: taxonomy
+      severity: '5'
+      message: 'The event [needs_schedule:0:name] has had its Schedule published.'
+    successors:
+      -
+        id: Activity_clear_cache
+        condition: ''
+  Activity_find_to_underway:
+    plugin: eca_views_query
+    label: 'Find Events that are Underway'
+    configuration:
+      token_name: underway
+      view_id: terms_update
+      display_id: underway
+      arguments: ''
+    successors:
+      -
+        id: Activity_set_to_underway
+        condition: ''
+  Activity_set_to_underway:
+    plugin: eca_set_field_value
+    label: 'Set to Underway'
+    configuration:
+      field_name: moderation_state
+      field_value: underway
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: underway
+    successors:
+      -
+        id: Activity_log_underway
+        condition: ''
+  Activity_log_underway:
+    plugin: eca_write_log_message
+    label: 'Log Notice'
+    configuration:
+      channel: taxonomy
+      severity: '5'
+      message: 'The event [underway:0:name] is now Underway.'
+    successors:
+      -
+        id: Activity_clear_cache
+        condition: ''
+  Activity_find_to_complete:
+    plugin: eca_views_query
+    label: 'Find Events that are Complete'
+    configuration:
+      token_name: complete
+      view_id: terms_update
+      display_id: complete
+      arguments: ''
+    successors:
+      -
+        id: Activity_set_to_complete
+        condition: ''
+  Activity_set_to_complete:
+    plugin: eca_set_field_value
+    label: 'Set to Complete'
+    configuration:
+      field_name: moderation_state
+      field_value: published
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: complete
+    successors:
+      -
+        id: Activity_log_complete
+        condition: ''
+  Activity_log_complete:
+    plugin: eca_write_log_message
+    label: 'Log Notice'
+    configuration:
+      channel: taxonomy
+      severity: '5'
+      message: 'The event [complete:0:name] is now Complete.'
+    successors:
+      -
+        id: Activity_clear_cache
+        condition: ''
+  Activity_clear_cache:
+    plugin: eca_raw_cache_invalidate
+    label: 'Clear cache'
+    configuration:
+      tags: ''
+    successors: {  }
+  Switch_to_user_1:
+    plugin: eca_switch_account
+    label: 'Switch to user 1'
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: Activity_find_to_open
+        condition: ''
+      -
+        id: Activity_find_to_close
+        condition: ''
+      -
+        id: Activity_find_to_schedule
+        condition: ''
+      -
+        id: Activity_find_to_underway
+        condition: ''
+      -
+        id: Activity_find_to_complete
+        condition: ''

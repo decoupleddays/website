@@ -1,4 +1,4 @@
-uuid: 71e35ea6-9723-48da-8de0-669d5d06fa09
+uuid: 55f3c1dc-6a5c-44ec-ba5e-c1bad235c8fc
 langcode: en
 status: true
 dependencies:
@@ -12,7 +12,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
+  default_config_hash: Yj33guGRXeB-uq182k6bwtAUtKGpO17nkYxn8FnjhBM
 id: user.user.default
 targetEntityType: user
 bundle: user
@@ -20,9 +20,6 @@ mode: default
 content:
   account:
     weight: -10
-    region: content
-  contact:
-    weight: 5
     region: content
   field_bio:
     type: text_textarea

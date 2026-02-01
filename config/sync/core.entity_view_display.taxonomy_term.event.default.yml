@@ -5,24 +5,32 @@ dependencies:
   config:
     - field.field.taxonomy_term.event.field_dates
     - field.field.taxonomy_term.event.field_location_short
+    - field.field.taxonomy_term.event.field_schedule_published
+    - field.field.taxonomy_term.event.field_session_confirmation
     - field.field.taxonomy_term.event.field_session_deadline
+    - field.field.taxonomy_term.event.field_sessions_open
     - taxonomy.vocabulary.event
   module:
     - smart_date
     - text
 _core:
-  default_config_hash: souTMBZpnXBxAFmtcItu7EHuOfE0SRgYRfvRkzlFhEM
+  default_config_hash: 6fLQZEt9F84R6x3CU9_twVWLpA8pzdhbc5rpm-qAQoY
 id: taxonomy_term.event.default
 targetEntityType: taxonomy_term
 bundle: event
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   description:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
   field_dates:
     type: smartdate_default
@@ -53,29 +61,10 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
-    region: content
-  field_session_deadline:
-    type: smartdate_default
-    label: inline
-    settings:
-      timezone_override: ''
-      format_type: medium
-      format: date_only
-      force_chronological: false
-      add_classes: false
-      time_wrapper: true
-      localize: false
-      parts:
-        start: start
-        end: end
-        duration: '0'
-      duration:
-        separator: ' | '
-        unit: ''
-        decimals: 2
-        suffix: h
-    third_party_settings: {  }
     weight: 3
     region: content
-hidden: {  }
+hidden:
+  field_schedule_published: true
+  field_session_confirmation: true
+  field_session_deadline: true
+  field_sessions_open: true

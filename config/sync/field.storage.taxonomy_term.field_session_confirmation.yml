@@ -1,0 +1,22 @@
+uuid: 4d36b480-18ed-42fd-82ea-a67159c4924d
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - taxonomy
+_core:
+  default_config_hash: uW0xaLqswv1Mdy9rNYfqJ2N3Hjn30-vsB-kIpyuwwPg
+id: taxonomy_term.field_session_confirmation
+field_name: field_session_confirmation
+entity_type: taxonomy_term
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

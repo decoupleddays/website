@@ -1,0 +1,19 @@
+uuid: 82fa19f4-e3f3-408e-a8b7-d6ac4e2e7dba
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: o692Z3IWvLTkHEEhTvpCAH0LjsXgW_wuXqoNgFCcnr8
+id: taxonomy_term__event
+label: 'Taxonomy term: Event'
+tags:
+  og_title: '[config_page:event_details:field_event_name] [term:name]'
+  og_url: '[term:url]'
+  schema_event_end_date: '[term:field_dates:end_date:html_date]'
+  schema_event_event_status: 'https://schema.org/EventScheduled'
+  schema_event_location: 'a:2:{s:5:"@type";s:5:"Place";s:4:"name";s:27:"[term:field_location_short]";}'
+  schema_event_name: '[config_page:event_details:field_event_name] [term:name]'
+  schema_event_start_date: '[term:field_dates:start_date:html_date]'
+  schema_event_type: EventSeries
+  schema_event_url: '[term:url:absolute]'
+  twitter_cards_type: summary

@@ -6,12 +6,13 @@ dependencies:
     - field.storage.node.field_r
     - field.storage.node.field_speakers
     - node.type.session
+    - taxonomy.vocabulary.time_slot
   module:
     - node
     - taxonomy
     - user
 _core:
-  default_config_hash: mHOdu_uO77tfjFCW9CpLi_b7-i4q6QjgLImjIbh2gBA
+  default_config_hash: 0CAMkiGSkoO9V7oBX29EpBp3S0ggUsyzo3QMaDhmKWs
 id: concurrent_sessions
 label: 'Concurrent Sessions'
 module: views
@@ -319,8 +320,8 @@ display:
             argument: '[node:field_time_slot:target_id]'
             process: 1
             and_or: +
-            all_option: 1
-            debug: 1
+            all_option: 0
+            debug: 0
           summary_options:
             base_path: ''
             count: true
@@ -330,11 +331,16 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: 'entity:taxonomy_term'
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            bundles:
+              time_slot: time_slot
+            access: false
+            operation: view
+            multiple: 0
           break_phrase: false
           not: false
       filters:
@@ -385,7 +391,18 @@ display:
           admin_label: 'field_r: Taxonomy term'
           plugin_id: standard
           required: false
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h2>Other sessions at the same time</h2>'
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:

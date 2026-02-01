@@ -19,7 +19,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: Mct171gZA9lheLa1ap5Pwv33jaJFe8oAaBKpfWt78tw
+  default_config_hash: JUvfpM2-vhZe02N9ggRuTimuOqbrMGXmpdn8xGmBaQE
 id: node.session.teaser
 targetEntityType: node
 bundle: session
@@ -69,11 +69,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
 hidden:
   field_description: true
   field_event: true
@@ -81,3 +76,4 @@ hidden:
   field_is_training: true
   field_social_media_card: true
   field_time_slot: true
+  links: true

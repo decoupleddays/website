@@ -18,7 +18,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: 1TnBzNcRuTFYUYvH_EI-Ae5_UfBJIh9OIiRFTT32_5E
+  default_config_hash: ZW2x6siXDT5bAGjYsQHkZ3HeylESknCMw8ueK2IMano
 id: node.featured_speaker.teaser
 targetEntityType: node
 bundle: featured_speaker

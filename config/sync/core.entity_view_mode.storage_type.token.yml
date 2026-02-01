@@ -1,0 +1,11 @@
+uuid: 7edd7bd5-2bea-4bf8-a8c1-d88d472acfb9
+langcode: en
+status: true
+dependencies:
+  module:
+    - storage
+id: storage_type.token
+label: Token
+description: null
+targetEntityType: storage_type
+cache: true

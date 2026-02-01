@@ -1,4 +1,4 @@
-uuid: 8c768d5e-2e2d-4a8b-a2f4-2bed88f02d98
+uuid: f86a13a8-739c-45e5-b05e-37ae337d699a
 langcode: en
 status: true
 dependencies:
@@ -695,6 +695,7 @@ display:
               responsive: ''
           default: created
           empty_table: false
+          class: ''
       defaults:
         style: false
         row: false
@@ -1309,8 +1310,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -1351,8 +1350,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -1393,9 +1390,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              demo_region: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -1496,6 +1490,7 @@ display:
               responsive: ''
           default: created
           empty_table: false
+          class: ''
       row:
         type: fields
         options:
@@ -2250,6 +2245,7 @@ display:
               responsive: ''
           default: created
           empty_table: false
+          class: ''
       row:
         type: fields
         options:
@@ -2285,8 +2281,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -2327,8 +2321,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -2369,9 +2361,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              demo_region: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -3031,6 +3020,7 @@ display:
               responsive: ''
           default: created
           empty_table: false
+          class: ''
       row:
         type: fields
         options:
@@ -3066,8 +3056,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -3108,8 +3096,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false
@@ -3150,9 +3136,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              demo_region: '0'
             operator_limit_selection: false
             operator_list: {  }
           is_grouped: false

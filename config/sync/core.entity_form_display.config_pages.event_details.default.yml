@@ -6,9 +6,9 @@ dependencies:
     - config_pages.type.event_details
     - field.field.config_pages.event_details.field_current
     - field.field.config_pages.event_details.field_event_name
-    - field.field.config_pages.event_details.field_header_cta
     - field.field.config_pages.event_details.field_homepage_media_cta
     - field.field.config_pages.event_details.field_hompage_description_text
+    - field.field.config_pages.event_details.field_program
     - field.field.config_pages.event_details.field_stats
   module:
     - field_group
@@ -34,7 +34,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: BwJss0lTwiFGpj8oKWsZsEX7ooxT5S75XHrioKxQzKk
+  default_config_hash: rvrKhbjhaQyuikxDzT5Nd9UZJXJwhCpXv5AUpiJ9PSY
 id: config_pages.event_details.default
 targetEntityType: config_pages
 bundle: event_details
@@ -42,7 +42,7 @@ mode: default
 content:
   field_current:
     type: inline_entity_form_complex
-    weight: 0
+    weight: 1
     region: content
     settings:
       form_mode: default
@@ -60,19 +60,11 @@ content:
     third_party_settings: {  }
   field_event_name:
     type: string_textfield
-    weight: 1
+    weight: 0
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_header_cta:
-    type: link_default
-    weight: 5
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_homepage_media_cta:
     type: link_default
@@ -88,6 +80,14 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_program:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 40
       placeholder: ''
     third_party_settings: {  }
   field_stats:

@@ -10,12 +10,12 @@ dependencies:
     - eca_workflow
     - views_bulk_operations
 _core:
-  default_config_hash: yASnZK-XfXe2eUU1u984sluBlcaSwNmLRfVurMlGt-s
+  default_config_hash: I7384_-Ubh_eluXykj_CCi6NhWgrLG1pUhIvvHuZ70Q
 id: eca_vbo_decline
 modeller: bpmn_io
 label: 'Decline Sessions'
 version: ''
-weight: 0
+weight: -5
 events:
   Event_1kvnrp2:
     plugin: 'vbo:execute'

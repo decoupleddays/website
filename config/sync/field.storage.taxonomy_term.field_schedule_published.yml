@@ -1,0 +1,22 @@
+uuid: ec0e71f9-676f-4bc1-856c-17f9a5487803
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - taxonomy
+_core:
+  default_config_hash: iNQUKw73yEMqJ_8JWuWL_PajHOJ5JIzDgwOlxI_nCQQ
+id: taxonomy_term.field_schedule_published
+field_name: field_schedule_published
+entity_type: taxonomy_term
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

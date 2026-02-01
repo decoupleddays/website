@@ -1,0 +1,14 @@
+uuid: 93e9393a-63ae-4168-b256-a9cca7c7c6f8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: SmCSZnE8drVFLTP-JXdxtToU2yojGW5mSp_Xifcr1T4
+id: node__featured_speaker
+label: 'Content: Featured Speaker'
+tags:
+  schema_person_description: '[node:summary]'
+  schema_person_id: '[node:url:unaliased]'
+  schema_person_image: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:28:"[node:field_image:large:url]";s:5:"width";s:30:"[node:field_image:large:width]";s:6:"height";s:31:"[node:field_image:large:height]";}'
+  schema_person_name: '[node:title]'
+  schema_person_type: Person

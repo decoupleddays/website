@@ -1,4 +1,4 @@
-uuid: 9ad6b21c-b139-4623-96dd-dc52c638c5e1
+uuid: dc38174d-a3b1-4742-95e3-12d2c0e779c4
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - dblog
     - user
 _core:
-  default_config_hash: SR5P89f0vUTPC7WY2YpLAffkDx8-Ar8LKFfowVXeqNU
+  default_config_hash: QxV85zTbzQHWnwqOjUQ9k-Hza0YP94TJebVvD1rVucg
 id: watchdog
 label: Watchdog
 module: views
@@ -526,8 +526,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -567,8 +565,6 @@ display:
             multiple: true
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -661,6 +657,7 @@ display:
           empty_table: false
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:

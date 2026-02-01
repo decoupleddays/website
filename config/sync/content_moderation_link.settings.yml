@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: 6w7yM-y__VkajXLNZP3aXxJPUURgRln4UEhLv6qVKnc
+allow_multiple: 0
+skip_errors: 1
+destination: ''
+entity_types:
+  node: node
+moderation_states:
+  editorial-published: editorial-published

@@ -1,0 +1,23 @@
+uuid: f60256b7-1c80-41a7-8020-5707fe064b84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_schedule_published
+    - taxonomy.vocabulary.event
+  module:
+    - datetime
+_core:
+  default_config_hash: f_Bm4kQNh8e9dPkSYzAWpaOHkIBJG6yvjoXKlDuRvOk
+id: taxonomy_term.event.field_schedule_published
+field_name: field_schedule_published
+entity_type: taxonomy_term
+bundle: event
+label: 'Schedule Published'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
