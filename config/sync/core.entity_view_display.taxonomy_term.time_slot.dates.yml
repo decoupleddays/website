@@ -1,0 +1,68 @@
+uuid: 8ffaca75-5552-4b91-9f9c-f62f892e1450
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.dates
+    - field.field.taxonomy_term.time_slot.field_event
+    - field.field.taxonomy_term.time_slot.field_when
+    - taxonomy.vocabulary.time_slot
+  module:
+    - date_augmenter
+    - smart_date
+_core:
+  default_config_hash: N9bMrgFgFva8iS21jRd_uV-LsXj7Wlkb85EWYKuLMAw
+id: taxonomy_term.time_slot.dates
+targetEntityType: taxonomy_term
+bundle: time_slot
+mode: dates
+content:
+  field_when:
+    type: smartdate_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: time_only
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+      localize: false
+      parts:
+        start: start
+        end: end
+        duration: '0'
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
+    third_party_settings:
+      date_augmenter:
+        instances:
+          status:
+            addtocal: false
+          weights:
+            order:
+              addtocal:
+                weight: 0
+          settings:
+            addtocal:
+              label: 'Add to calendar'
+              event_title: ''
+              location: ''
+              description: ''
+              retain_spacing: false
+              icons: true
+              max_desc: 60
+              ellipsis: true
+              past_events: false
+              target: ''
+              ignore_timezone_if_UTC: true
+          augmenter_settings:
+            fields__field_when__settings_edit_form__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_event: true

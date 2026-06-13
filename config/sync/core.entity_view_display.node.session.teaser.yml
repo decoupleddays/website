@@ -6,17 +6,17 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.session.field_audience
     - field.field.node.session.field_description
-    - field.field.node.session.field_event
     - field.field.node.session.field_is_non_session
     - field.field.node.session.field_is_training
     - field.field.node.session.field_r
     - field.field.node.session.field_session_category
     - field.field.node.session.field_short_description
     - field.field.node.session.field_social_media_card
-    - field.field.node.session.field_speakers
+    - field.field.node.session.field_speaker_s
     - field.field.node.session.field_time_slot
     - node.type.session
   module:
+    - text
     - user
 _core:
   default_config_hash: JUvfpM2-vhZe02N9ggRuTimuOqbrMGXmpdn8xGmBaQE
@@ -38,6 +38,14 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_description:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_r:
     type: entity_reference_label
     label: inline
@@ -54,14 +62,7 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_short_description:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_speakers:
+  field_speaker_s:
     type: entity_reference_label
     label: inline
     settings:
@@ -70,10 +71,9 @@ content:
     weight: 2
     region: content
 hidden:
-  field_description: true
-  field_event: true
   field_is_non_session: true
   field_is_training: true
+  field_short_description: true
   field_social_media_card: true
   field_time_slot: true
   links: true

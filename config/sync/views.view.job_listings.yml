@@ -451,7 +451,8 @@ display:
         type: normal
         title: Jobs
         description: ''
-        weight: 50
+        weight: -46
+        enabled: false
         expanded: false
         menu_name: main
         parent: ''

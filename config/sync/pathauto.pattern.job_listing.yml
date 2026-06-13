@@ -20,5 +20,5 @@ selection_criteria:
     bundles:
       job_listing: job_listing
 selection_logic: and
-weight: -5
+weight: -7
 relationships: {  }

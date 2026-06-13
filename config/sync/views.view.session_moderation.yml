@@ -1,11 +1,10 @@
 uuid: 208afedb-0c45-4d4d-a13b-9216a53570da
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.field_audience
     - field.storage.node.field_session_category
-    - field.storage.node.field_speakers
     - node.type.session
     - system.menu.admin
     - taxonomy.vocabulary.session_audience
@@ -19,6 +18,8 @@ dependencies:
     - node
     - taxonomy
     - user
+    - webform
+    - webform_views
 _core:
   default_config_hash: AZFElCoRr1PjMyOBrD7wlTFclYW6QELXJbPDTl4HQBQ
 id: session_moderation
@@ -93,7 +94,6 @@ display:
           buttons: false
           action_title: Action
           clear_on_exposed: true
-          force_selection_info: false
           selected_actions:
             -
               action_id: 'eca_vbo_execute:accept_sessions'
@@ -110,6 +110,7 @@ display:
               preconfiguration:
                 message_override: ''
                 skip_confirm: 0
+          force_selection_info: false
         webform_submission_value:
           id: webform_submission_value
           table: webform_submission_field_session_evaluation_ratings
@@ -227,69 +228,6 @@ display:
           settings:
             link_to_entity: true
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_speakers:
-          id: field_speakers
-          table: node__field_speakers
-          field: field_speakers
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -932,7 +870,6 @@ display:
       tags:
         - 'config:field.storage.node.field_audience'
         - 'config:field.storage.node.field_session_category'
-        - 'config:field.storage.node.field_speakers'
         - 'config:workflow_list'
   attachment_1:
     id: attachment_1
@@ -1059,69 +996,6 @@ display:
           settings:
             link_to_entity: true
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_speakers:
-          id: field_speakers
-          table: node__field_speakers
-          field: field_speakers
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1462,7 +1336,6 @@ display:
       tags:
         - 'config:field.storage.node.field_audience'
         - 'config:field.storage.node.field_session_category'
-        - 'config:field.storage.node.field_speakers'
         - 'config:workflow_list'
   attachment_2:
     id: attachment_2
@@ -1589,69 +1462,6 @@ display:
           settings:
             link_to_entity: true
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_speakers:
-          id: field_speakers
-          table: node__field_speakers
-          field: field_speakers
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1992,7 +1802,6 @@ display:
       tags:
         - 'config:field.storage.node.field_audience'
         - 'config:field.storage.node.field_session_category'
-        - 'config:field.storage.node.field_speakers'
         - 'config:workflow_list'
   attachment_3:
     id: attachment_3
@@ -2119,69 +1928,6 @@ display:
           settings:
             link_to_entity: true
           group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_speakers:
-          id: field_speakers
-          table: node__field_speakers
-          field: field_speakers
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -2522,7 +2268,6 @@ display:
       tags:
         - 'config:field.storage.node.field_audience'
         - 'config:field.storage.node.field_session_category'
-        - 'config:field.storage.node.field_speakers'
         - 'config:workflow_list'
   page_1:
     id: page_1
@@ -2572,5 +2317,4 @@ display:
       tags:
         - 'config:field.storage.node.field_audience'
         - 'config:field.storage.node.field_session_category'
-        - 'config:field.storage.node.field_speakers'
         - 'config:workflow_list'

@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.bof.field_description
-    - field.field.node.bof.field_event
     - field.field.node.bof.field_r
     - field.field.node.bof.field_short_description
     - field.field.node.bof.field_time_slot
@@ -46,5 +45,4 @@ content:
     region: content
 hidden:
   field_description: true
-  field_event: true
   field_time_slot: true

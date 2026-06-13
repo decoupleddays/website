@@ -1,0 +1,24 @@
+uuid: 20d34b79-cf0a-4439-b943-34d9414bb804
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bio
+    - filter.format.basic_html
+    - node.type.speaker
+  module:
+    - text
+id: node.speaker.field_bio
+field_name: field_bio
+entity_type: node
+bundle: speaker
+label: Bio
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

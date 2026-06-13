@@ -3,24 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.node.entity_form
     - field.field.node.session.field_audience
     - field.field.node.session.field_description
-    - field.field.node.session.field_event
     - field.field.node.session.field_is_non_session
     - field.field.node.session.field_is_training
     - field.field.node.session.field_r
     - field.field.node.session.field_session_category
     - field.field.node.session.field_short_description
     - field.field.node.session.field_social_media_card
-    - field.field.node.session.field_speakers
+    - field.field.node.session.field_speaker_s
     - field.field.node.session.field_time_slot
     - image.style.thumbnail
     - node.type.session
+    - workflows.workflow.session_acceptance
   module:
     - content_moderation
     - field_group
     - image
-    - maxlength
+    - inline_entity_form
     - text
 third_party_settings:
   field_group:
@@ -33,7 +34,7 @@ third_party_settings:
       label: 'Admin Functions'
       region: content
       parent_name: ''
-      weight: 6
+      weight: 5
       format_type: fieldset
       format_settings:
         classes: ''
@@ -45,11 +46,11 @@ third_party_settings:
       children:
         - field_audience
         - field_session_category
-        - field_speakers
+        - field_speaker_s
       label: 'Session Metadata'
       region: content
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: fieldset
       format_settings:
         classes: ''
@@ -75,16 +76,6 @@ content:
     region: content
     settings:
       rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_event:
-    type: entity_reference_autocomplete
-    weight: 8
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_is_non_session:
@@ -113,18 +104,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_short_description:
-    type: string_textarea
-    weight: 4
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings:
-      maxlength:
-        maxlength_js: 600
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: true
   field_social_media_card:
     type: image_image
     weight: 17
@@ -133,15 +112,23 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_speakers:
-    type: entity_reference_autocomplete_tags
+  field_speaker_s:
+    type: inline_entity_form_complex
     weight: 11
     region: content
     settings:
+      form_mode: entity_form
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
       match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
     third_party_settings: {  }
   field_time_slot:
     type: options_select
@@ -155,9 +142,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  simple_sitemap:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 7
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -172,7 +164,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -182,6 +174,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_short_description: true
   path: true
   promote: true
   revision_log: true

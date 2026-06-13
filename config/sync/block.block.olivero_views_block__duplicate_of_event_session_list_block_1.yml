@@ -1,0 +1,30 @@
+uuid: 482bba64-84af-4a25-b34f-fbe634a97cb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.duplicate_of_event_session_list
+  module:
+    - system
+    - views
+  theme:
+    - olivero
+id: olivero_views_block__duplicate_of_event_session_list_block_1
+theme: olivero
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:duplicate_of_event_session_list-block_1'
+settings:
+  id: 'views_block:duplicate_of_event_session_list-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: null
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /program

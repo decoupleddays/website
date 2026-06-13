@@ -14,9 +14,9 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor5: 0
-  comment: 0
   config: 0
   config_pages: 0
+  contact: 0
   content_moderation: 0
   content_moderation_link: 0
   contextual: 0
@@ -59,6 +59,8 @@ module:
   inline_entity_form: 0
   link: 0
   maxlength: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
@@ -107,4 +109,5 @@ module:
 theme:
   olivero: 0
   claro: 0
+  gin: 0
 profile: standard

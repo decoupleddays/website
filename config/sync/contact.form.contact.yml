@@ -1,0 +1,12 @@
+uuid: 7dbde4b6-02ad-44fe-aa0a-fceeccc9ab4a
+langcode: en
+status: true
+dependencies: {  }
+id: contact
+label: Contact
+recipients:
+  - decoupleddays@gmail.com
+reply: ''
+weight: 0
+message: 'Thank you for your interest. We will reply as soon as possible'
+redirect: /

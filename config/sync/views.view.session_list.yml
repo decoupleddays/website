@@ -392,7 +392,7 @@ display:
           id: name
           table: taxonomy_term_field_data
           field: name
-          relationship: field_event
+          relationship: field_time_slot
           group_type: group
           admin_label: ''
           entity_type: taxonomy_term
@@ -810,15 +810,6 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        field_event:
-          id: field_event
-          table: node__field_event
-          field: field_event
-          relationship: none
-          group_type: group
-          admin_label: 'field_event: Taxonomy term'
-          plugin_id: standard
-          required: true
         field_time_slot:
           id: field_time_slot
           table: node__field_time_slot
@@ -1238,15 +1229,6 @@ display:
         relationships: false
         header: false
       relationships:
-        field_event:
-          id: field_event
-          table: node__field_event
-          field: field_event
-          relationship: none
-          group_type: group
-          admin_label: 'field_event: Taxonomy term'
-          plugin_id: standard
-          required: true
         field_time_slot:
           id: field_time_slot
           table: node__field_time_slot
@@ -1302,7 +1284,7 @@ display:
           id: name
           table: taxonomy_term_field_data
           field: name
-          relationship: field_event
+          relationship: field_time_slot
           group_type: group
           admin_label: ''
           entity_type: taxonomy_term
@@ -1829,13 +1811,13 @@ display:
           id: name
           table: taxonomy_term_field_data
           field: name
-          relationship: field_event
+          relationship: field_time_slot
           group_type: group
           admin_label: ''
           entity_type: taxonomy_term
           entity_field: name
           plugin_id: string
-          default_action: default
+          default_action: ignore
           exception:
             value: all
             title_enable: false
@@ -2606,7 +2588,7 @@ display:
           id: name
           table: taxonomy_term_field_data
           field: name
-          relationship: field_event
+          relationship: field_time_slot
           group_type: group
           admin_label: ''
           entity_type: taxonomy_term
@@ -3459,7 +3441,7 @@ display:
           id: name
           table: taxonomy_term_field_data
           field: name
-          relationship: field_event
+          relationship: field_time_slot
           group_type: group
           admin_label: ''
           entity_type: taxonomy_term

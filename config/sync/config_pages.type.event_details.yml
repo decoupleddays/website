@@ -6,6 +6,7 @@ _core:
   default_config_hash: mhCajo3QacNf_bSKtP_cgir2QUPSjajDsYltFRCI0uo
 id: event_details
 label: 'Event Details'
+token: true
 context:
   show_warning: true
   group:
@@ -16,4 +17,3 @@ menu:
   path: /admin/event-details
   weight: 0
   description: 'Event Details'
-token: true

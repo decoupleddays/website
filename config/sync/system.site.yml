@@ -4,12 +4,12 @@ langcode: en
 uuid: 2b9818ef-579b-429f-b216-3de0329e1ffe
 name: 'Decoupled Days 2026'
 mail: decoupleddays@gmail.com
-slogan: 'August 12 -14. Motreal CA'
+slogan: 'August 6-7, 2026 • Montréal'
 page:
   403: ''
   404: ''
-  front: /node
+  front: /node/1
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
-mail_notification: null
+mail_notification: ''

@@ -9,16 +9,16 @@ _core:
 id: articles
 label: Articles
 type: 'canonical_entities:node'
-pattern: '/events/[node:field_event:entity:name]/news/[node:title]'
+pattern: '/news/[node:title]'
 selection_criteria:
-  cbddec55-9d15-4bae-be37-d58d28a0cd66:
+  88b0e194-4f71-453e-8299-aa116b368774:
     id: 'entity_bundle:node'
     negate: false
-    uuid: cbddec55-9d15-4bae-be37-d58d28a0cd66
+    uuid: 88b0e194-4f71-453e-8299-aa116b368774
     context_mapping:
       node: node
     bundles:
       article: article
 selection_logic: and
-weight: -5
+weight: -10
 relationships: {  }

@@ -426,6 +426,22 @@ display:
     display_plugin: block
     position: 3
     display_options:
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_level
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: weight
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments:
         tid:
           id: tid
@@ -473,7 +489,47 @@ display:
           break_phrase: false
           not: false
       defaults:
+        relationships: false
+        sorts: false
         arguments: false
+      relationships:
+        field_events:
+          id: field_events
+          table: storage__field_events
+          field: field_events
+          relationship: none
+          group_type: group
+          admin_label: 'field_events: Taxonomy term'
+          plugin_id: standard
+          required: true
+        field_sponsor:
+          id: field_sponsor
+          table: storage__field_sponsor
+          field: field_sponsor
+          relationship: none
+          group_type: group
+          admin_label: 'field_sponsor: Content'
+          plugin_id: standard
+          required: false
+        reverse__storage__field_level:
+          id: reverse__storage__field_level
+          table: taxonomy_term_field_data
+          field: reverse__storage__field_level
+          relationship: field_events
+          group_type: group
+          admin_label: field_level
+          entity_type: taxonomy_term
+          plugin_id: entity_reverse
+          required: false
+        field_level:
+          id: field_level
+          table: storage__field_level
+          field: field_level
+          relationship: none
+          group_type: group
+          admin_label: 'field_level: Taxonomy term'
+          plugin_id: standard
+          required: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:

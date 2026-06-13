@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.bof.field_description
-    - field.field.node.bof.field_event
     - field.field.node.bof.field_r
     - field.field.node.bof.field_short_description
     - field.field.node.bof.field_time_slot
@@ -53,5 +52,4 @@ content:
     weight: 4
     region: content
 hidden:
-  field_event: true
   field_short_description: true

@@ -11,14 +11,15 @@ label: Speakers
 type: 'canonical_entities:node'
 pattern: '/speakers/[node:title]'
 selection_criteria:
-  025e1eb7-a5e4-4824-8744-1aea8061a592:
+  1830b066-dc9c-4974-b694-f2fbc3bb0230:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 025e1eb7-a5e4-4824-8744-1aea8061a592
+    uuid: 1830b066-dc9c-4974-b694-f2fbc3bb0230
     context_mapping:
       node: node
     bundles:
       featured_speaker: featured_speaker
+      speaker: speaker
 selection_logic: and
 weight: -5
 relationships: {  }

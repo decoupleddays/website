@@ -7,18 +7,18 @@ dependencies:
 _core:
   default_config_hash: VlIlf_zFpYAQAzcKaEIO7UU4QLmn815MdYkjMYznihg
 id: event_terms
-label: 'Event Terms'
+label: Terms
 type: 'canonical_entities:taxonomy_term'
-pattern: '/events/[term:name]'
+pattern: '/[term:name]'
 selection_criteria:
-  52d9b0dd-7c2c-4f97-bd2e-4ca8476dc83a:
+  7277325e-49e7-42fc-941c-1eb2e40ee232:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 52d9b0dd-7c2c-4f97-bd2e-4ca8476dc83a
+    uuid: 7277325e-49e7-42fc-941c-1eb2e40ee232
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
       event: event
 selection_logic: and
-weight: -5
+weight: -8
 relationships: {  }

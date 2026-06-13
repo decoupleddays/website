@@ -1,0 +1,11 @@
+uuid: a4ac49ee-ab11-4569-b876-421d456c55a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.entity_form
+label: 'Entity Form'
+description: null
+targetEntityType: node
+cache: true

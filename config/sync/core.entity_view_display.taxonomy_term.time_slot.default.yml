@@ -41,6 +41,15 @@ content:
       force_chronological: false
       add_classes: false
       time_wrapper: true
+      localize: false
+      parts:
+        - start
+        - end
+      duration:
+        separator: ' | '
+        unit: ''
+        decimals: 2
+        suffix: h
     third_party_settings: {  }
     weight: 1
     region: content

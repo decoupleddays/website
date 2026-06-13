@@ -46,6 +46,11 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0

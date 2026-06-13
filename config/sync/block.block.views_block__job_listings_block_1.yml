@@ -14,7 +14,7 @@ _core:
 id: views_block__job_listings_block_1
 theme: olivero
 region: content
-weight: -11
+weight: -10
 provider: null
 plugin: 'views_block:job_listings-block_1'
 settings:

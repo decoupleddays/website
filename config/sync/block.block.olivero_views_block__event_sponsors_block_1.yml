@@ -14,13 +14,13 @@ _core:
 id: olivero_views_block__event_sponsors_block_1
 theme: olivero
 region: sidebar
-weight: 0
+weight: -7
 provider: null
 plugin: 'views_block:event_sponsors-block_1'
 settings:
   id: 'views_block:event_sponsors-block_1'
   label: 'Sponsored By'
-  label_display: visible
+  label_display: '0'
   provider: views
   context_mapping:
     tid: '@taxonomy_term.taxonomy_term_route_context:taxonomy_term'

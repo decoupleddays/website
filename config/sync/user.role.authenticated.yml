@@ -7,10 +7,10 @@ dependencies:
     - filter.format.webform_default
     - storage.storage_type.sponsorship
   module:
-    - comment
     - field_permissions
     - file
     - filter
+    - media
     - search
     - shortcut
     - storage
@@ -22,16 +22,14 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
-  - 'access comments'
   - 'access content'
   - 'access shortcuts'
   - 'access user profiles'
   - 'delete own files'
-  - 'post comments'
   - 'search content'
-  - 'skip comment approval'
   - 'use text format basic_html'
   - 'use text format webform_default'
   - 'view field_r'
   - 'view field_time_slot'
+  - 'view media'
   - 'view published sponsorship storage entities'

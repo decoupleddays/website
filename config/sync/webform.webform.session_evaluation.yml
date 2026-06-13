@@ -4,9 +4,9 @@ status: open
 dependencies: {  }
 _core:
   default_config_hash: C3w3uLRUWuw196OswW2q3B1C5CZVQomLmCnJNKSmVj0
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1
 template: false
 archive: false

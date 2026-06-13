@@ -4,12 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.bof.field_description
-    - field.field.node.bof.field_event
     - field.field.node.bof.field_r
     - field.field.node.bof.field_short_description
     - field.field.node.bof.field_time_slot
     - node.type.bof
   module:
+    - content_moderation
     - hide_revision_field
     - maxlength
     - path
@@ -33,16 +33,6 @@ content:
     region: content
     settings:
       rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_event:
-    type: entity_reference_autocomplete
-    weight: 22
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_r:
@@ -99,6 +89,11 @@ content:
       default: ''
       permission_based: false
       allow_user_settings: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

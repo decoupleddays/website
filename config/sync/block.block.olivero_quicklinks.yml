@@ -1,0 +1,28 @@
+uuid: 84f9f110-6fcd-4583-b965-34182a71099d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ae10168b-5a34-47e7-97c7-40b42a6bed07'
+  module:
+    - block_content
+    - system
+  theme:
+    - olivero
+id: olivero_quicklinks
+theme: olivero
+region: sidebar
+weight: -9
+provider: null
+plugin: 'block_content:ae10168b-5a34-47e7-97c7-40b42a6bed07'
+settings:
+  id: 'block_content:ae10168b-5a34-47e7-97c7-40b42a6bed07'
+  label: 'Quick Links'
+  label_display: visible
+  provider: block_content
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1

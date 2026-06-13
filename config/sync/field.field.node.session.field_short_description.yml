@@ -13,7 +13,7 @@ entity_type: node
 bundle: session
 label: 'Short Description'
 description: 'Please provide a short description for your session, up to 600 characters in length.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

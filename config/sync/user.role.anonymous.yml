@@ -6,9 +6,9 @@ dependencies:
     - filter.format.restricted_html
     - storage.storage_type.sponsorship
   module:
-    - comment
     - field_permissions
     - filter
+    - media
     - search
     - storage
     - system
@@ -19,11 +19,11 @@ label: 'Anonymous user'
 weight: 0
 is_admin: false
 permissions:
-  - 'access comments'
   - 'access content'
   - 'access user profiles'
   - 'search content'
   - 'use text format restricted_html'
   - 'view field_r'
   - 'view field_time_slot'
+  - 'view media'
   - 'view published sponsorship storage entities'
